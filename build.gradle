@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'io.xlorey'
-version = '1.0-SNAPSHOT'
+version = '1.0.0'
 
 repositories {
     mavenCentral()
@@ -16,4 +16,35 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+/**
+ * Replacing data with current ones
+ */
+processResources {
+    filesMatching('**/fluxloader.properties') {
+        filter {
+            it.replace('%PROJECT_VERSION%', version)
+                    .replace('%PROJECT_NAME%', rootProject.name)
+        }
+    }
+}
+
+
+/**
+ * Creating an executable JAR file
+ */
+jar {
+    archiveFileName = "${rootProject.name}-${version}.jar"
+    destinationDirectory = file('build')
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
+    manifest {
+        attributes(
+                'Main-Class': 'io.xlorey.Main'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
 }
