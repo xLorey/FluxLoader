@@ -1,21 +1,30 @@
 package io.xlorey;
 
-import io.xlorey.utils.Constants;
-import io.xlorey.utils.Logger;
 
-import java.util.Arrays;
+import io.xlorey.utils.Logger;
+import lombok.experimental.UtilityClass;
 
 /**
  * Main application class
  */
+@UtilityClass
 public class Main {
     /**
      * Application entry point
      * @param args Accepted arguments as flags
      */
-    public static void main(String[] args) {
-        if (args.length != 1 ){
+    public static void main(String[] args) throws Exception {
+        Logger.printCredits();
 
+        if (args.length != 1) {
+            Logger.print("You specified an invalid number of flags! Use: '--install' or '--uninstall'");
+            return;
+        }
+
+        switch (args[0]){
+            case "--install" -> Installer.install();
+            case "--uninstall" -> Installer.uninstall();
+            default -> Logger.print("You specified an unknown flag! Use: '--install' or '--uninstall'");
         }
     }
 }

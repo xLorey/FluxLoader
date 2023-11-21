@@ -10,6 +10,18 @@ repositories {
 }
 
 dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    implementation 'org.ow2.asm:asm:9.2'
+    implementation 'org.ow2.asm:asm-tree:9.2'
+
+    implementation files('libs/zombie.jar')
+    implementation files('libs/fmod.jar')
+    implementation files('libs/se.jar')
+    implementation files('libs/trove-3.0.3.jar')
+    implementation files('libs/uncommons-maths-1.2.3.jar')
+
     testImplementation platform('org.junit:junit-bom:5.9.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
@@ -36,7 +48,7 @@ processResources {
  */
 jar {
     archiveFileName = "${rootProject.name}-${version}.jar"
-    destinationDirectory = file('build')
+    destinationDirectory = file('C:/Program Files (x86)/Steam/steamapps/common/ProjectZomboid')
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 
     manifest {
