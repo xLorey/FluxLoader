@@ -13,7 +13,7 @@ public class Logger {
      * @param text message
      */
     public static void print(String text) {
-        System.out.printf("[%s]: %s%n", Constants.FLUX_NAME, text);
+        System.out.println(String.format("[%s]: %s", Constants.FLUX_NAME, text));
     }
 
     /**

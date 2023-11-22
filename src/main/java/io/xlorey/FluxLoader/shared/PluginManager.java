@@ -29,12 +29,12 @@ public class PluginManager {
         if (!folder.exists()) {
             Logger.print("There is no plugin folder. Creation...");
             if (folder.mkdir()) {
-                System.out.println("The folder was created successfully.");
+                Logger.print("The folder was created successfully.");
             } else {
-                System.out.println("Failed to create folder.");
+                Logger.print("Failed to create folder.");
             }
         } else {
-            System.out.println("Plugins folder found!");
+            Logger.print("Plugins folder found!");
         }
     }
 }
