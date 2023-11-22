@@ -64,7 +64,7 @@ java -jar ./FluxLoader-x-x-x.jar --install
 > To uninstall, use '--uninstall' instead of '--install'
 
 # How to use
-After the successful installation of Flux Loader, you can write and/ or download ready-made plugins and transfer them to the 'FL-Plugins' folder, it is located in the game folder, in the same place as the main folder of the game 'zombie'
+After the successful installation of Flux Loader, you can write and/ or download ready-made plugins and transfer them to the `FL-Plugins` folder, it is located in the game folder, in the same place as the main folder of the game `zombie`
 
 # For developer
 If you are a developer or just want to get acquainted with the documentation about available methods, events, etc., you can look in our [Wiki](docs/Wiki.md). As the project develops, it will be expanded and corrected.
