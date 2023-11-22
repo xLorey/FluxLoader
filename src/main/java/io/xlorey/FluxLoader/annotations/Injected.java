@@ -1,4 +1,4 @@
-package io.xlorey.annotations;
+package io.xlorey.FluxLoader.annotations;
 
 /**
  * Annotation - a flag indicating that injection occurred in this file

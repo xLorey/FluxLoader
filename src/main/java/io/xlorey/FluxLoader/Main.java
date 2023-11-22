@@ -1,7 +1,7 @@
-package io.xlorey;
+package io.xlorey.FluxLoader;
 
 
-import io.xlorey.utils.Logger;
+import io.xlorey.FluxLoader.utils.Logger;
 import lombok.experimental.UtilityClass;
 
 /**

@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'io.xlorey'
-version = '1.0.0'
+version = '0.1.0'
 
 repositories {
     mavenCentral()
@@ -53,7 +53,7 @@ jar {
 
     manifest {
         attributes(
-                'Main-Class': 'io.xlorey.Main'
+                'Main-Class': 'io.xlorey.FluxLoader.Main'
         )
     }
     from {

@@ -1,6 +1,6 @@
-package io.xlorey.utils.patch;
+package io.xlorey.FluxLoader.utils.patch;
 
-import io.xlorey.utils.Constants;
+import io.xlorey.FluxLoader.utils.Constants;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.AbstractInsnNode;
 import org.objectweb.asm.tree.InsnList;
@@ -40,19 +40,25 @@ public class PatchGameWindow extends PatchFile{
         });
 
         PatchTools.injectIntoClass(filePath, "init", true, method -> {
+            InsnList loaderInit = new InsnList();
+            loaderInit.add(new MethodInsnNode(
+                    Opcodes.INVOKESTATIC,
+                    "io/xlorey/FluxLoader/client/core/Core",
+                    "init",
+                    "()V",
+                    false
+            ));
+
+            method.instructions.insert(loaderInit);
+        });
+
+        PatchTools.injectIntoClass(filePath, "init", true, method -> {
             AbstractInsnNode lastInsn = method.instructions.getLast();
             if (lastInsn.getOpcode() == Opcodes.RETURN) {
                 InsnList loaderInit = new InsnList();
                 loaderInit.add(new MethodInsnNode(
                         Opcodes.INVOKESTATIC,
-                        "io/xlorey/core/Core",
-                        "getInstance",
-                        "()Lio/xlorey/core/Core;",
-                        false
-                ));
-                loaderInit.add(new MethodInsnNode(
-                        Opcodes.INVOKEVIRTUAL,
-                        "io/xlorey/core/Core",
+                        "io/xlorey/FluxLoader/client/core/StateManager",
                         "init",
                         "()V",
                         false

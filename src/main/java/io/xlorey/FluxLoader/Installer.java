@@ -1,12 +1,13 @@
-package io.xlorey;
+package io.xlorey.FluxLoader;
 
-import io.xlorey.utils.Constants;
-import io.xlorey.utils.Logger;
-import io.xlorey.utils.patch.PatchFile;
-import io.xlorey.utils.patch.PatchGameWindow;
-import io.xlorey.utils.patch.PatchTools;
+import io.xlorey.FluxLoader.utils.Constants;
+import io.xlorey.FluxLoader.utils.JarTools;
+import io.xlorey.FluxLoader.utils.Logger;
+import io.xlorey.FluxLoader.utils.patch.*;
 import lombok.experimental.UtilityClass;
 
+import java.io.File;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,6 +24,8 @@ public class Installer {
     private static final ArrayList<PatchFile> injectorsList = new ArrayList<>() {
         {
             add(new PatchGameWindow());
+            add(new PatchGameServer());
+            add(new PatchLuaEventManager());
         }
     };
 
@@ -34,6 +37,14 @@ public class Installer {
 
         if(!Files.exists(gameFolderPath) || !Files.isDirectory(gameFolderPath))
             throw new Exception(String.format("There is no game folder '%s' next to %s.\n Please place this 'jar' file in the correct location!\n", Constants.PATH_TO_GAME_CLASS_FOLDER, Constants.FLUX_NAME));
+    }
+
+    /**
+     * Getting the path to the current executable Jar file
+     * @return path to the Jar file
+     */
+    private static String getJarPath() throws URISyntaxException {
+        return new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI()).getPath();
     }
 
     /**
@@ -50,19 +61,39 @@ public class Installer {
         }
 
         PatchTools.saveModifiedClasses();
+
+        Logger.print("Unpacking dependency files...");
+
+        try {
+            String jarPath = getJarPath();
+            String unpackPath = new File(jarPath).getParent();
+            JarTools.unpackJar(Constants.WHITELIST_FLUXLOADER_FILES, jarPath, unpackPath);
+        } catch (Exception e) {
+            Logger.print("Error during installation: " + e.getMessage());
+        }
     }
 
     /**
      * Project uninstallation
      */
     public static void uninstall() throws Exception {
-        Logger.print(String.format("Preparing for removal %s...", Constants.FLUX_NAME));
+        Logger.print(String.format("Preparing for uninstallation %s...", Constants.FLUX_NAME));
         Logger.print("Checking the uninstaller location...");
 
         checkGameFolder();
 
         for (PatchFile injector: injectorsList) {
             injector.rollBackChanges();
+        }
+
+        Logger.print("Removing dependency files...");
+
+        try {
+            String jarPath = getJarPath();
+            String unpackPath = new File(jarPath).getParent();
+            JarTools.deleteJarFilesFromDirectory(Constants.WHITELIST_FLUXLOADER_FILES, jarPath, unpackPath);
+        } catch (Exception e) {
+            Logger.print("Error during uninstallation: " + e.getMessage());
         }
     }
 }

@@ -1,7 +1,5 @@
-package io.xlorey.utils.patch;
+package io.xlorey.FluxLoader.utils;
 
-import io.xlorey.utils.Constants;
-import io.xlorey.utils.Logger;
 import lombok.experimental.UtilityClass;
 
 import java.io.IOException;
@@ -55,6 +53,7 @@ public class BackupTools {
      */
     public static void restoreFile(String pathToClassFile) throws IOException {
         Logger.print(String.format("Attempting to recover a file '%s'...", pathToClassFile));
+
         validateClassFilePath(pathToClassFile);
 
         Path originalFilePath = getFullPath(pathToClassFile);

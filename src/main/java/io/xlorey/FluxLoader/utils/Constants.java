@@ -1,10 +1,11 @@
-package io.xlorey.utils;
+package io.xlorey.FluxLoader.utils;
 
 
 import lombok.experimental.UtilityClass;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Properties;
 
 /**
@@ -13,14 +14,24 @@ import java.util.Properties;
 @UtilityClass
 public class Constants {
         /**
+         * Folder name for plugins (mods)
+         */
+        public static final String PLUGINS_FOLDER_NAME = "FL-Plugins";
+
+        /**
          * Path to compiled game files
          */
         public static final String PATH_TO_GAME_CLASS_FOLDER = "zombie";
 
         /**
+         * Path to the FluxLoader logo
+         */
+        public static final String PATH_FLUXLOADER_LOGO = "io/xlorey/FluxLoader/media/FluxLoader-Logo.png";
+
+        /**
          * Path to project files
          */
-        private static final String PATH_TO_PROJECT_FILES = "io/xlorey";
+        public static final ArrayList<String> WHITELIST_FLUXLOADER_FILES = new ArrayList<>() {{ add("io/xlorey/"); }};
 
         /**
          * Project version
@@ -47,7 +58,7 @@ public class Constants {
          */
         static {
                 Properties properties = new Properties();
-                try (InputStream input = Constants.class.getClassLoader().getResourceAsStream("io/xlorey/config/fluxloader.properties")) {
+                try (InputStream input = Constants.class.getClassLoader().getResourceAsStream("io/xlorey/FluxLoader/config/fluxloader.properties")) {
                         if (input == null) {
                                 throw new IOException("Configuration file not found");
                         }

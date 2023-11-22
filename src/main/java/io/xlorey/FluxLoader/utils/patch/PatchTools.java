@@ -1,7 +1,7 @@
-package io.xlorey.utils.patch;
+package io.xlorey.FluxLoader.utils.patch;
 
-import io.xlorey.utils.Constants;
-import io.xlorey.utils.Logger;
+import io.xlorey.FluxLoader.utils.Constants;
+import io.xlorey.FluxLoader.utils.Logger;
 import lombok.experimental.UtilityClass;
 import org.objectweb.asm.*;
 import org.objectweb.asm.tree.*;
@@ -61,12 +61,19 @@ public class PatchTools {
      * @param classNode     Node of all bytecode classes
      * @param methodName    Name of the method being modified
      */
-    private void addInjectAnnotation(ClassNode classNode, String methodName){
+    private void addInjectAnnotation(ClassNode classNode, String methodName) {
         for (MethodNode method : classNode.methods) {
             if (method.name.equals(methodName)) {
-                if (method.visibleAnnotations == null) {
+                if (method.visibleAnnotations != null) {
+                    boolean alreadyAnnotated = method.visibleAnnotations.stream()
+                            .anyMatch(ann -> ann.desc.equals("Lio/xlorey/annotations/Injected;"));
+                    if (alreadyAnnotated) {
+                        continue;
+                    }
+                } else {
                     method.visibleAnnotations = new LinkedList<>();
                 }
+
                 AnnotationNode annotationNode = new AnnotationNode("Lio/xlorey/annotations/Injected;");
                 method.visibleAnnotations.add(annotationNode);
             }

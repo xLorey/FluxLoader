@@ -1,4 +1,4 @@
-package io.xlorey.utils;
+package io.xlorey.FluxLoader.utils;
 
 import lombok.experimental.UtilityClass;
 
