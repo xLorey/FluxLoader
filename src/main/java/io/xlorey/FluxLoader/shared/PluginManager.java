@@ -8,7 +8,6 @@ import java.io.File;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.*;
-import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
@@ -18,12 +17,12 @@ public class PluginManager {
     /**
      * All loaded plugins
      */
-    private static HashMap<String, FluxPlugin> plugins = new HashMap<>();
+    private static final HashMap<String, FluxPlugin> plugins = new HashMap<>();
 
     /**
      * Plugin dependencies
      */
-    private static HashMap<String, List<String>> dependencies = new HashMap<>();
+    private static final HashMap<String, List<String>> dependencies = new HashMap<>();
 
     /**
      * Manager initialization
@@ -49,8 +48,10 @@ public class PluginManager {
             for (File file : fileList) {
                 try {
                     URLClassLoader classLoader = URLClassLoader.newInstance(new URL[]{file.toURI().toURL()});
-                    JarFile jarFile = new JarFile(file);
-                    String mainClassName = jarFile.getManifest().getMainAttributes().getValue("Main-Class");
+                    String mainClassName;
+                    try (JarFile jarFile = new JarFile(file)) {
+                        mainClassName = jarFile.getManifest().getMainAttributes().getValue("Main-Class");
+                    }
                     Class<?> clazz = Class.forName(mainClassName, true, classLoader);
 
                     if (FluxPlugin.class.isAssignableFrom(clazz)) {
@@ -67,33 +68,44 @@ public class PluginManager {
                     }
                 } catch (Exception e) {
                     Logger.print("Error scanning plugin: " + file.getName());
-                    e.printStackTrace();
+                    Logger.print(e.getMessage());;
                 }
             }
         }
 
-        List<String> sortedPluginIds = topologicalSort(dependencies);
+        List<String> sortedPluginIds = topologicalSortDependencies();
+
         for (String pluginId : sortedPluginIds) {
             FluxPlugin plugin = plugins.get(pluginId);
+
             Logger.print(String.format("Loading plugin '%s' (ID: '%s', Version: %s)", plugin.getPluginName(), plugin.getPluginId(), plugin.getPluginVersion()));
-            plugin.onInitialize();
+
+            try {
+                Class<?> clazz = plugin.getClass();
+
+                EventManager.subscribe(clazz);
+
+                plugin.onInitialize();
+            } catch (Exception e) {
+                Logger.print("Error initializing plugin: " + plugin.getPluginId());
+                Logger.print(e.getMessage());
+            }
         }
     }
 
     /**
      * Sorting dependencies so that each one is downloaded in order
-     * @param dependencies list of dependency plugin IDs
      * @return sorted list of dependencies
      * @throws Exception error while sorting the list
      */
-    private static List<String> topologicalSort(Map<String, List<String>> dependencies) throws Exception {
+    private static List<String> topologicalSortDependencies() throws Exception {
         Set<String> visited = new HashSet<>();
         Set<String> stack = new HashSet<>();
         List<String> sortedList = new ArrayList<>();
 
-        for (String pluginId : dependencies.keySet()) {
+        for (String pluginId : ((Map<String, List<String>>) PluginManager.dependencies).keySet()) {
             if (!visited.contains(pluginId)) {
-                topologicalSortUtil(pluginId, dependencies, visited, stack, sortedList);
+                topologicalSortUtil(pluginId, PluginManager.dependencies, visited, stack, sortedList);
             }
         }
         return sortedList;
@@ -112,9 +124,7 @@ public class PluginManager {
      *                     sorted, this list contains plugins in the order in which they should be loaded.
      * @throws Exception   An exception is thrown if a circular dependency is detected between plugins.
      */
-    private static void topologicalSortUtil(String pluginId, Map<String, List<String>> dependencies,
-                                            Set<String> visited, Set<String> stack,
-                                            List<String> sortedList) throws Exception {
+    private static void topologicalSortUtil(String pluginId, Map<String, List<String>> dependencies, Set<String> visited, Set<String> stack, List<String> sortedList) throws Exception {
         if (stack.contains(pluginId)) {
             throw new Exception(String.format("Detected cyclic dependency involving '%s'", pluginId));
         }
