@@ -26,6 +26,14 @@ public class EventManager {
     /**
      * Send an event to all listeners
      * @param eventName event name
+     */
+    public static void invokeEvent(String eventName) {
+        invokeEvent(eventName, (Object[])null);
+    }
+
+    /**
+     * Send an event to all listeners
+     * @param eventName event name
      * @param args event arguments
      */
     public static void invokeEvent(String eventName, Object... args) {

@@ -50,20 +50,18 @@ public class PatchGameWindow extends PatchFile{
             ));
 
             method.instructions.insert(loaderInit);
-        });
 
-        PatchTools.injectIntoClass(filePath, "init", true, method -> {
             AbstractInsnNode lastInsn = method.instructions.getLast();
             if (lastInsn.getOpcode() == Opcodes.RETURN) {
-                InsnList loaderInit = new InsnList();
-                loaderInit.add(new MethodInsnNode(
+                InsnList stateManagerInit = new InsnList();
+                stateManagerInit.add(new MethodInsnNode(
                         Opcodes.INVOKESTATIC,
                         "io/xlorey/FluxLoader/client/core/StateManager",
                         "init",
                         "()V",
                         false
                 ));
-                method.instructions.insertBefore(lastInsn, loaderInit);
+                method.instructions.insertBefore(lastInsn, stateManagerInit);
             } else {
                 throw new IllegalStateException("Cannot find RETURN instruction in the method");
             }
