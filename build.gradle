@@ -42,7 +42,6 @@ processResources {
     }
 }
 
-
 /**
  * Creating an executable JAR file
  */
@@ -59,4 +58,25 @@ jar {
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
+
+    from("docs/javadoc") {
+        into 'docs'
+    }
+}
+
+/**
+ * Generating JavaDoc for Jar archive
+ */
+tasks.register('generateJavaDoc', Javadoc) {
+    source = sourceSets.main.java.srcDirs
+    classpath = configurations.compileClasspath
+    destinationDir = file("docs/javadoc")
+}
+
+/**
+ * Building a Jar archive with documentation
+ */
+tasks.register('buildJar') {
+    dependsOn generateJavaDoc
+    finalizedBy jar
 }

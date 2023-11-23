@@ -9,8 +9,9 @@ import io.xlorey.FluxLoader.utils.Logger;
 public class Core {
     /**
      * Initializing the loader
+     * @exception Exception error when initializing the plugin loader core
      */
-    public static void init() {
+    public static void init() throws Exception {
         Logger.printCredits();
 
         Logger.print("FluxLoader Core initialization...");

@@ -23,6 +23,7 @@ public class PatchFile {
 
     /**
      * Making changes to a file
+     * @exception Exception error when injection into game files failed
      */
     public void inject() throws Exception {
         BackupTools.createBackup(filePath);
@@ -30,6 +31,7 @@ public class PatchFile {
 
     /**
      * Rollback changes
+     * @exception IOException error when file recovery fails
      */
     public void rollBackChanges() throws IOException {
         BackupTools.restoreFile(filePath);

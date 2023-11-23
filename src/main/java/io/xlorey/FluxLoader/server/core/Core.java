@@ -11,7 +11,7 @@ public class Core {
      */
     public static void init() {
         Logger.printCredits();
-        
+
         Logger.print("FluxLoader Core initialization...");
     }
 }

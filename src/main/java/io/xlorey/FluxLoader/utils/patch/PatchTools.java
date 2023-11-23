@@ -30,6 +30,7 @@ public class PatchTools {
     /**
      * Checks whether the specified annotation is present in the .class file.
      * @param filePath Relative path to the .class file to check.
+     * @exception Exception error when detecting injection annotations in a file
      */
     public static void checkAnnotation(String filePath) throws Exception {
         Path currentPath = Paths.get("").toAbsolutePath();
@@ -83,7 +84,7 @@ public class PatchTools {
     /**
      * Method for injecting annotations and making changes to a given class method.
      * Initially, it reads the bytecode of the class and converts it into a ClassNode for further processing.
-     * Then adds an annotation to the specified method and uses the provided Consumer<MethodNode> action
+     * Then adds an annotation to the specified method and uses the provided Consumer action
      * to make changes to this method. After making all changes, the method writes the changed bytecode
      * back to .class file.
      *
@@ -93,6 +94,7 @@ public class PatchTools {
      * @param modifyMethod  The action that will be applied to the MethodNode to make changes to the method.
      *                      This action takes one parameter - MethodNode, representing the method in which
      *                      subject to change.
+     * @exception Exception error when injection into file failed
      */
     public void injectIntoClass(String className, String methodName, boolean isStatic, Consumer<MethodNode> modifyMethod) throws Exception {
         Logger.print(String.format("Injection into a game file '%s' in method: '%s'", className, methodName));
@@ -129,6 +131,7 @@ public class PatchTools {
 
     /**
      * Applying changes to .class files
+     * @exception Exception error when saving injection changes
      */
     public void saveModifiedClasses() throws Exception {
         for (Map.Entry<String, ClassNode> entry : classNodeMap.entrySet()) {

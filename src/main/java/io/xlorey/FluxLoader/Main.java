@@ -12,6 +12,7 @@ public class Main {
     /**
      * Application entry point
      * @param args Accepted arguments as flags
+     * @exception Exception error when installation or uninstallation failed
      */
     public static void main(String[] args) throws Exception {
         Logger.printCredits();

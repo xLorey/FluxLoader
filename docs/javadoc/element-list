@@ -1,0 +1,9 @@
+io.xlorey.FluxLoader
+io.xlorey.FluxLoader.annotations
+io.xlorey.FluxLoader.client.core
+io.xlorey.FluxLoader.client.gameStates
+io.xlorey.FluxLoader.plugin
+io.xlorey.FluxLoader.server.core
+io.xlorey.FluxLoader.shared
+io.xlorey.FluxLoader.utils
+io.xlorey.FluxLoader.utils.patch

@@ -31,6 +31,7 @@ public class Installer {
 
     /**
      * Checks for the presence of a game folder.
+     * @exception Exception error when the installer is not located in the game folder
      */
     public static void checkGameFolder() throws Exception {
         Path gameFolderPath = Paths.get(Constants.PATH_TO_GAME_CLASS_FOLDER);
@@ -49,6 +50,7 @@ public class Installer {
 
     /**
      * Project installation
+     * @exception Exception error when installation fails
      */
     public static void install() throws Exception {
         Logger.print(String.format("Preparing for installation %s...", Constants.FLUX_NAME));
@@ -75,6 +77,7 @@ public class Installer {
 
     /**
      * Project uninstallation
+     * @exception Exception error when deletion fails
      */
     public static void uninstall() throws Exception {
         Logger.print(String.format("Preparing for uninstallation %s...", Constants.FLUX_NAME));
