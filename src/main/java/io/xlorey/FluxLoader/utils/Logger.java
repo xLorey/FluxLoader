@@ -17,6 +17,15 @@ public class Logger {
     }
 
     /**
+     * Outputting a message to the console/logs with tag
+     * @param text message
+     * @param tag tag to accurately identify the message
+     */
+    public static void print(String text, String tag) {
+        System.out.println(String.format("[%s | %s]: %s", Constants.FLUX_NAME, tag, text));
+    }
+
+    /**
      * Displaying basic information about the project
      */
     public static void printCredits() {
