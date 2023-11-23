@@ -2,7 +2,6 @@ package io.xlorey.FluxLoader.client.core;
 
 import io.xlorey.FluxLoader.shared.PluginManager;
 import io.xlorey.FluxLoader.utils.Logger;
-import zombie.debug.DebugLog;
 
 /**
  * FluxLoader Core
