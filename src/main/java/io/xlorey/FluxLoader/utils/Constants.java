@@ -16,7 +16,7 @@ public class Constants {
         /**
          * Folder name for plugins (mods)
          */
-        public static final String PLUGINS_FOLDER_NAME = "FL-Plugins";
+        public static final String PLUGINS_FOLDER_NAME = "plugins";
 
         /**
          * Path to compiled game files
