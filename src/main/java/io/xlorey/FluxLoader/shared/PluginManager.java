@@ -1,152 +1,130 @@
 package io.xlorey.FluxLoader.shared;
 
-import io.xlorey.FluxLoader.plugin.FluxPlugin;
+import io.xlorey.FluxLoader.plugin.Plugin;
+import io.xlorey.FluxLoader.plugin.PluginInfo;
 import io.xlorey.FluxLoader.utils.Constants;
 import io.xlorey.FluxLoader.utils.Logger;
+import io.xlorey.FluxLoader.utils.VersionChecker;
+import zombie.core.Core;
 
-import java.io.File;
+import java.io.*;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.*;
-import java.util.jar.JarFile;
 
 /**
  * Plugin (mod) management system
  */
 public class PluginManager {
     /**
-     * All loaded plugins
+     * All loaded information about plugins
      */
-    private static final HashMap<String, FluxPlugin> plugins = new HashMap<>();
+    private static final HashMap<File, PluginInfo> pluginsList = new HashMap<>();
 
     /**
-     * Plugin dependencies
+     * Loading plugins for the client
+     * @param isClient flag for loading plugins in the client environment
+     * @throws IOException In case of I/O errors.
      */
-    private static final HashMap<String, List<String>> dependencies = new HashMap<>();
-
-    /**
-     * Manager initialization
-     * @exception Exception error when initializing the plugin management system
-     */
-    public static void init() throws Exception {
-        Logger.print("Initializing the plugin management system...");
+    public static void loadPlugins(boolean isClient) throws Exception {
+        Logger.print("Loading plugins into the environment...");
 
         checkPluginFolder();
 
-        loadPlugins();
-    }
+        ArrayList<File> pluginFiles = getPluginFiles();
 
-    /**
-     * Search and load plugins
-     * @exception Exception error loading plugins
-     */
-    public static void loadPlugins() throws Exception {
-        File pluginsDir = new File(Constants.PLUGINS_FOLDER_NAME);
-        File[] fileList = pluginsDir.listFiles((dir, name) -> name.endsWith(".jar"));
+        for (File plugin : pluginFiles) {
+            PluginInfo pluginInfo = PluginInfo.getInfoFromFile(plugin);
 
-        if (fileList != null) {
-            for (File file : fileList) {
-                try {
-                    URLClassLoader classLoader = URLClassLoader.newInstance(new URL[]{file.toURI().toURL()});
-                    String mainClassName;
-                    try (JarFile jarFile = new JarFile(file)) {
-                        mainClassName = jarFile.getManifest().getMainAttributes().getValue("Main-Class");
-                    }
-                    Class<?> clazz = Class.forName(mainClassName, true, classLoader);
+            if (pluginInfo == null) {
+                Logger.print(String.format("No metadata found for potential plugin '%s'. Skipping...", plugin.getName()));
+                continue;
+            }
+            pluginsList.put(plugin, pluginInfo);
+        }
 
-                    if (FluxPlugin.class.isAssignableFrom(clazz)) {
-                        FluxPlugin plugin = (FluxPlugin) clazz.getDeclaredConstructor().newInstance();
-                        String pluginId = plugin.getPluginId();
+        // Checking for dependency availability and versions
+        for (Map.Entry<File, PluginInfo> entry : pluginsList.entrySet()) {
+            Map<String, String> dependencies = entry.getValue().getDependencies();
 
-                        if (plugins.containsKey(pluginId)) {
-                            Logger.print("Plugin with ID " + pluginId + " already loaded. Skipping...");
-                            continue;
+            for (Map.Entry<String, String> depEntry : dependencies.entrySet()) {
+                String depId = depEntry.getKey();
+                String depVersion = depEntry.getValue();
+
+                switch (depId) {
+                    case "project-zomboid" -> {
+                        if (!VersionChecker.isVersionCompatible(depVersion, Core.getInstance().getVersion())) {
+                            throw new Exception(String.format("Incompatible game version for plugin id '%s'", entry.getValue().getId()));
                         }
-
-                        plugins.put(pluginId, plugin);
-                        dependencies.put(pluginId, Arrays.asList(plugin.getPluginDependencies()));
                     }
-                } catch (Exception e) {
-                    Logger.print("Error scanning plugin: " + file.getName());
-                    Logger.print(e.getMessage());;
+                    case "flux-loader" -> {
+                        if (!VersionChecker.isVersionCompatible(depVersion, Constants.FLUX_VERSION)) {
+                            throw new Exception(String.format("Incompatible flux-loader version for plugin id '%s'", entry.getValue().getId()));
+                        }
+                    }
                 }
             }
         }
 
-        List<String> sortedPluginIds = topologicalSortDependencies();
+        for (Map.Entry<File, PluginInfo> entry : pluginsList.entrySet()) {
+            File plugin = entry.getKey();
+            PluginInfo pluginInfo = entry.getValue();
 
-        for (String pluginId : sortedPluginIds) {
-            FluxPlugin plugin = plugins.get(pluginId);
+            List<String> entryPoints = isClient ? pluginInfo.getEntrypoints().get("client") : pluginInfo.getEntrypoints().get("server");
 
-            Logger.print(String.format("Loading plugin '%s' (ID: '%s', Version: %s)", plugin.getPluginName(), plugin.getPluginId(), plugin.getPluginVersion()));
+            // Checking for empty entry points
+            if (entryPoints == null || entryPoints.isEmpty()) {
+                Logger.print(String.format("No entry points defined for plugin '%s'(ID: '%s', Version: %s). Skipping...",
+                        pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion()));
+                continue;
+            }
 
-            try {
-                Class<?> clazz = plugin.getClass();
+            // Creating a URLClassLoader for the plugin JAR file
+            try (URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()})) {
+                for (String entryPoint : entryPoints) {
+                    // Loading and initializing the plugin class
+                    Class<?> pluginClass = Class.forName(entryPoint, true, classLoader);
+                    Plugin pluginInstance = (Plugin) pluginClass.getDeclaredConstructor().newInstance();
 
-                EventManager.subscribe(clazz);
+                    pluginInstance.setInfo(pluginInfo);
 
-                plugin.onInitialize();
+                    Logger.print(String.format("Loading plugin '%s' (ID: '%s', Version: %s)",
+                            pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion()));
+
+                    pluginInstance.onInitialize();
+
+                    EventManager.subscribe(pluginClass);
+                }
             } catch (Exception e) {
-                Logger.print("Error initializing plugin: " + plugin.getPluginId());
-                Logger.print(e.getMessage());
+                Logger.print(String.format("Failed to load plugin '%s'(ID: '%s', Version: %s): %s",
+                        pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion(), e.getMessage()));
             }
         }
     }
 
     /**
-     * Sorting dependencies so that each one is downloaded in order
-     * @return sorted list of dependencies
-     * @throws Exception error while sorting the list
+     * Finds all JAR plugins in the specified directory.
+     * @return List of JAR files.
+     * @throws IOException In case of I/O errors.
      */
-    private static List<String> topologicalSortDependencies() throws Exception {
-        Set<String> visited = new HashSet<>();
-        Set<String> stack = new HashSet<>();
-        List<String> sortedList = new ArrayList<>();
+    public static ArrayList<File> getPluginFiles() throws IOException {
+        ArrayList<File> jarFiles = new ArrayList<>();
+        File dir = new File(Constants.PLUGINS_FOLDER_NAME);
 
-        for (String pluginId : ((Map<String, List<String>>) PluginManager.dependencies).keySet()) {
-            if (!visited.contains(pluginId)) {
-                topologicalSortUtil(pluginId, PluginManager.dependencies, visited, stack, sortedList);
-            }
+        if (!dir.isDirectory()) {
+            throw new IOException("Path is not a directory: " + dir.getPath());
         }
-        return sortedList;
+
+        File[] files = dir.listFiles((File pathname) -> pathname.isFile() && pathname.getName().endsWith(".jar"));
+        if (files != null) {
+            Collections.addAll(jarFiles, files);
+        }
+
+        return jarFiles;
     }
 
     /**
-     * helper method for topological sorting of plugins
-     *
-     * @param pluginId     ID of the current plugin that is being considered for sorting.
-     * @param dependencies Plugin dependency map, where the key is the plugin ID and the value is a list of IDs
-     *                     dependent plugins.
-     * @param visited      A set of plugin IDs that have already been visited during the sorting process.
-     * @param stack        Set of plugin IDs that are currently in the processed path
-     *                     (used to detect circular dependencies).
-     * @param sortedList   A list to which sorted plugins (plugin IDs) are added. After finishing
-     *                     sorted, this list contains plugins in the order in which they should be loaded.
-     * @throws Exception   An exception is thrown if a circular dependency is detected between plugins.
-     */
-    private static void topologicalSortUtil(String pluginId, Map<String, List<String>> dependencies, Set<String> visited, Set<String> stack, List<String> sortedList) throws Exception {
-        if (stack.contains(pluginId)) {
-            throw new Exception(String.format("Detected cyclic dependency involving '%s'", pluginId));
-        }
-
-        if (!visited.contains(pluginId)) {
-            stack.add(pluginId);
-            visited.add(pluginId);
-
-            List<String> deps = dependencies.get(pluginId);
-            if (deps != null) {
-                for (String depId : deps) {
-                    topologicalSortUtil(depId, dependencies, visited, stack, sortedList);
-                }
-            }
-
-            stack.remove(pluginId);
-            sortedList.add(pluginId);
-        }
-    }
-
-    /**
-     * Checking the presence of a folder for plugins. In its absence - creation
+     * Checking for availability and creating a folder for plugins
      */
     private static void checkPluginFolder() {
         Logger.print("Checking for plugins folder...");
@@ -154,14 +132,9 @@ public class PluginManager {
         File folder = new File(Constants.PLUGINS_FOLDER_NAME);
 
         if (!folder.exists()) {
-            Logger.print("There is no plugin folder. Creation...");
-            if (folder.mkdir()) {
-                Logger.print("The folder was created successfully.");
-            } else {
-                Logger.print("Failed to create folder.");
+            if (!folder.mkdir()) {
+                Logger.print("Failed to create folder...");
             }
-        } else {
-            Logger.print("Plugins folder found!");
         }
     }
 }

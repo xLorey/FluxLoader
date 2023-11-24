@@ -14,8 +14,8 @@ public class Core {
     public static void init() throws Exception {
         Logger.printCredits();
 
-        Logger.print("FluxLoader Core initialization...");
+        Logger.print("FluxLoader Core initialization for the server..");
 
-        PluginManager.init();
+        PluginManager.loadPlugins(false);
     }
 }

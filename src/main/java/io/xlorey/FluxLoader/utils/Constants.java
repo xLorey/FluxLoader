@@ -31,7 +31,10 @@ public class Constants {
         /**
          * Path to project files
          */
-        public static final ArrayList<String> WHITELIST_FLUXLOADER_FILES = new ArrayList<>() {{ add("io/xlorey/"); }};
+        public static final ArrayList<String> WHITELIST_FLUXLOADER_FILES = new ArrayList<>() {{
+                add("io/xlorey/");
+                add("com/google/gson/");
+        }};
 
         /**
          * Project version

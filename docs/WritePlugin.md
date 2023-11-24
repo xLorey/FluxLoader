@@ -77,7 +77,7 @@ Each plugin requires an entry point - the main class Main. In the project direct
 ```java
 package io.xlorey.templateplugin;
 
-import io.xlorey.FluxLoader.plugin.FluxPlugin;
+import io.xlorey.FluxLoader.plugin.IPlugin;
 import io.xlorey.FluxLoader.utils.Logger;
 
 /**

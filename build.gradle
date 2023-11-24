@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'io.xlorey'
-version = '0.1.0'
+version = '0.2.0'
 
 repositories {
     mavenCentral()
@@ -15,6 +15,7 @@ dependencies {
 
     implementation 'org.ow2.asm:asm:9.2'
     implementation 'org.ow2.asm:asm-tree:9.2'
+    implementation 'com.google.code.gson:gson:2.10.1'
 
     implementation files('libs/zombie.jar')
     implementation files('libs/fmod.jar')
