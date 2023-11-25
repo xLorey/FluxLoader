@@ -79,25 +79,29 @@ public class PluginManager {
                 continue;
             }
 
+            ClassLoader appClassLoader;
+
+            if (isClient) {
+                appClassLoader = io.xlorey.FluxLoader.client.core.Core.class.getClassLoader();
+
+            } else {
+                appClassLoader = io.xlorey.FluxLoader.server.core.Core.class.getClassLoader();
+            }
+
             // Creating a URLClassLoader for the plugin JAR file
-            try (URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()})) {
-                for (String entryPoint : entryPoints) {
-                    // Loading and initializing the plugin class
-                    Class<?> pluginClass = Class.forName(entryPoint, true, classLoader);
-                    Plugin pluginInstance = (Plugin) pluginClass.getDeclaredConstructor().newInstance();
+            URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()}, appClassLoader);
+            for (String entryPoint : entryPoints) {
+                Class<?> pluginClass = Class.forName(entryPoint, true, classLoader);
+                Plugin pluginInstance = (Plugin) pluginClass.getDeclaredConstructor().newInstance();
 
-                    pluginInstance.setInfo(pluginInfo);
+                pluginInstance.setInfo(pluginInfo);
 
-                    Logger.print(String.format("Loading plugin '%s' (ID: '%s', Version: %s)",
-                            pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion()));
+                Logger.print(String.format("Loading plugin '%s' (ID: '%s', Version: %s)",
+                        pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion()));
 
-                    pluginInstance.onInitialize();
+                pluginInstance.onInitialize();
 
-                    EventManager.subscribe(pluginClass);
-                }
-            } catch (Exception e) {
-                Logger.print(String.format("Failed to load plugin '%s'(ID: '%s', Version: %s): %s",
-                        pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion(), e.getMessage()));
+                EventManager.subscribe(pluginClass);
             }
         }
     }
