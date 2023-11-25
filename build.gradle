@@ -63,6 +63,10 @@ jar {
     from("docs/javadoc") {
         into 'docs'
     }
+
+    from('.') {
+        include 'LICENSE'
+    }
 }
 
 /**
