@@ -105,14 +105,23 @@ All information about the plugin is generated based on its metadata. They are lo
 ```
 
 `name` - plugin name.
+
 `description` - plugin description.
+
 `id` - unique plugin ID.
+
 `version` - plugin version, dynamically installed by Gradle.
+
 `authors` - list of authors of the project.
+
 `license` - project license.
+
 `icon` - the path to the project icon, size 512x512.
+
 `entrypoints` - a list of entry points, there may be several. Each class must inherit from the FluxLoader of the `Plugin` class.
+
 `dependencies` - list of project dependencies. Specifying `project-zomboid` and `flux-loader` is mandatory. Possible conditions `>=`, `<=`, `<`, `>`.
+
 
 > [!NOTE]
 > To get metadata from the plugin, you can call the `getPluginInfo()` method
