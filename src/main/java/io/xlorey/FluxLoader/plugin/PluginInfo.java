@@ -1,6 +1,8 @@
 package io.xlorey.FluxLoader.plugin;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+import io.xlorey.FluxLoader.utils.Logger;
 import lombok.Data;
 
 import java.io.*;
@@ -88,10 +90,16 @@ public class PluginInfo {
                         jsonBuilder.append(line);
                     }
 
-                    return gson.fromJson(jsonBuilder.toString(), PluginInfo.class);
+                    try {
+                        return gson.fromJson(jsonBuilder.toString(), PluginInfo.class);
+                    } catch (JsonSyntaxException e) {
+                        Logger.print(String.format("Failed to convert metadata to required format in file '%s'", jarFile.getName()));
+                        return null;
+                    }
                 }
             }
         }
         return null;
     }
+
 }
