@@ -66,5 +66,7 @@ public class PatchGameWindow extends PatchFile{
                 throw new IllegalStateException("Cannot find RETURN instruction in the method");
             }
         });
+
+        PatchTools.injectEventInvokerAtEnd(filePath, "init", "onClientWindowInit", true);
     }
 }

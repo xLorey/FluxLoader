@@ -43,7 +43,12 @@ public class PatchLuaEventManager extends PatchFile{
                 eventInvoker.add(new InsnNode(Opcodes.ACONST_NULL));
             }
 
-            eventInvoker.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "io/xlorey/FluxLoader/shared/EventManager", "invokeEvent", "(Ljava/lang/String;[Ljava/lang/Object;)V", false));
+            eventInvoker.add(new MethodInsnNode(
+                    Opcodes.INVOKESTATIC,
+                    "io/xlorey/FluxLoader/shared/EventManager",
+                    "invokeEvent",
+                    "(Ljava/lang/String;[Ljava/lang/Object;)V",
+                    false));
 
             method.instructions.insert(eventInvoker);
         });

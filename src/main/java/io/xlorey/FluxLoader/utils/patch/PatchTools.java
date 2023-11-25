@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 /**
  * A set of tools for embedding into game files
@@ -30,7 +31,7 @@ public class PatchTools {
     /**
      * Checks whether the specified annotation is present in the .class file.
      * @param filePath Relative path to the .class file to check.
-     * @exception Exception error when detecting injection annotations in a file
+     * @exception Exception in cases where an annotation is detected
      */
     public static void checkAnnotation(String filePath) throws Exception {
         Path currentPath = Paths.get("").toAbsolutePath();
@@ -62,7 +63,7 @@ public class PatchTools {
      * @param classNode     Node of all bytecode classes
      * @param methodName    Name of the method being modified
      */
-    private void addInjectAnnotation(ClassNode classNode, String methodName) {
+    private static void addInjectAnnotation(ClassNode classNode, String methodName) {
         for (MethodNode method : classNode.methods) {
             if (method.name.equals(methodName)) {
                 if (method.visibleAnnotations != null) {
@@ -94,9 +95,9 @@ public class PatchTools {
      * @param modifyMethod  The action that will be applied to the MethodNode to make changes to the method.
      *                      This action takes one parameter - MethodNode, representing the method in which
      *                      subject to change.
-     * @exception Exception error when injection into file failed
+     * @exception Exception in cases of unsuccessful injection
      */
-    public void injectIntoClass(String className, String methodName, boolean isStatic, Consumer<MethodNode> modifyMethod) throws Exception {
+    public static void injectIntoClass(String className, String methodName, boolean isStatic, Consumer<MethodNode> modifyMethod) throws Exception {
         Logger.print(String.format("Injection into a game file '%s' in method: '%s'", className, methodName));
 
         checkAnnotation(className);
@@ -130,10 +131,87 @@ public class PatchTools {
     }
 
     /**
-     * Applying changes to .class files
-     * @exception Exception error when saving injection changes
+     * Injecting a custom event call at the beginning of the target method and passing its arguments
+     * @param className     The name of the class to be injected into.
+     * @param methodName    The name of the method to which the annotation will be added and changes made.
+     * @param isStatic      Whether the method you are looking for is static or not
+     * @param eventName     Custom event name
+     * @throws Exception    in cases of unsuccessful injection
      */
-    public void saveModifiedClasses() throws Exception {
+    public static void injectEventInvoker(String className, String methodName, String eventName, boolean isStatic) throws Exception {
+        injectIntoClass(className, methodName, isStatic, method -> {
+            Type[] argumentTypes = Type.getArgumentTypes(method.desc);
+            InsnList eventInvoker = createEventInvokerInsnList(eventName, argumentTypes, isStatic);
+            method.instructions.insertBefore(method.instructions.getFirst(), eventInvoker);
+        });
+    }
+
+    /**
+     * Inserts a custom event call at the end of the target method, passing its arguments.
+     * @param className     The name of the class to be injected into.
+     * @param methodName    The name of the method to which the annotation will be added and changes made.
+     * @param isStatic      Whether the method you are looking for is static or not
+     * @param eventName     Custom event name
+     * @throws Exception    in cases of unsuccessful injection
+     */
+    public static void injectEventInvokerAtEnd(String className, String methodName, String eventName, boolean isStatic) throws Exception {
+        injectIntoClass(className, methodName, isStatic, method -> {
+            Type[] argumentTypes = Type.getArgumentTypes(method.desc);
+            InsnList eventInvoker = createEventInvokerInsnList(eventName, argumentTypes, isStatic);
+
+            // Получаем последнюю инструкцию (обычно RETURN)
+            AbstractInsnNode lastInsn = method.instructions.getLast();
+
+            // Вставляем перед RETURN. Если в методе нет RETURN, добавляем в конец.
+            if (lastInsn.getOpcode() >= Opcodes.IRETURN && lastInsn.getOpcode() <= Opcodes.RETURN) {
+                method.instructions.insertBefore(lastInsn, eventInvoker);
+            } else {
+                method.instructions.add(eventInvoker);
+            }
+        });
+    }
+
+
+    /**
+     * Creates a list of instructions for the event invoker.
+     * This method generates instructions for dynamically injecting event calls
+     * into class methods based on their signatures.
+     *
+     * @param eventName name of the event that will be raised
+     * @param argumentTypes An array of argument types of the method into which the injection occurs
+     * @param isStatic      Whether the method you are looking for is static or not
+     * @return InsnList List of ASM statements that, when inserted into a class method
+     */
+    public static InsnList createEventInvokerInsnList(String eventName, Type[] argumentTypes, boolean isStatic) {
+        InsnList eventInvoker = new InsnList();
+
+        eventInvoker.add(new LdcInsnNode(eventName));
+        eventInvoker.add(new IntInsnNode(Opcodes.BIPUSH, argumentTypes.length));
+        eventInvoker.add(new TypeInsnNode(Opcodes.ANEWARRAY, "java/lang/Object"));
+
+        int startIdx = isStatic ? 0 : 1; // Начинаем с 1, если метод нестатический
+        for (int i = 0; i < argumentTypes.length; i++) {
+            eventInvoker.add(new InsnNode(Opcodes.DUP));
+            eventInvoker.add(new IntInsnNode(Opcodes.BIPUSH, i));
+            eventInvoker.add(new VarInsnNode(Opcodes.ALOAD, i + startIdx)); // Сдвигаем индекс для нестатических методов
+            eventInvoker.add(new InsnNode(Opcodes.AASTORE));
+        }
+
+        eventInvoker.add(new MethodInsnNode(
+                Opcodes.INVOKESTATIC,
+                "io/xlorey/FluxLoader/shared/EventManager",
+                "invokeEvent",
+                "(Ljava/lang/String;[Ljava/lang/Object;)V",
+                false));
+
+        return eventInvoker;
+    }
+
+    /**
+     * Applying changes to .class files
+     * @exception Exception in cases of unsuccessful saving of changes
+     */
+    public static void saveModifiedClasses() throws Exception {
         for (Map.Entry<String, ClassNode> entry : classNodeMap.entrySet()) {
             String className = entry.getKey();
             ClassNode classNode = entry.getValue();

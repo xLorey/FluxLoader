@@ -1,5 +1,6 @@
 package io.xlorey.FluxLoader.utils.patch;
 
+import io.xlorey.FluxLoader.utils.Logger;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
@@ -24,36 +25,56 @@ public class PatchGameServer extends PatchFile{
         super.inject();
 
         PatchTools.injectIntoClass(filePath, "main", true, method -> {
+            Type[] argumentTypes = Type.getArgumentTypes(method.desc);
+
             /*
               Init Flux Loader
              */
-            InsnList loaderInit = new InsnList();
-            loaderInit.add(new MethodInsnNode(
-                    Opcodes.INVOKESTATIC,
-                    "io/xlorey/FluxLoader/server/core/Core",
-                    "init",
-                    "()V",
-                    false
-            ));
-            method.instructions.insert(loaderInit);
+            AbstractInsnNode targetInsn = null;
+
+            for (AbstractInsnNode currentNode = method.instructions.getFirst(); currentNode != null; currentNode = currentNode.getNext()) {
+                if (currentNode instanceof MethodInsnNode methodInsnNode) {
+                    if (methodInsnNode.owner.equals("zombie/debug/DebugLog") && methodInsnNode.name.equals("init")) {
+                        targetInsn = currentNode;
+                        break;
+                    }
+                }
+            }
+
+            if (targetInsn != null) {
+                InsnList toInject = new InsnList();
+
+                toInject.add(new FieldInsnNode(
+                        Opcodes.GETSTATIC,
+                        "zombie/network/GameServer",
+                        "bCoop",
+                        "Z"
+                ));
+
+                LabelNode skipInitLabel = new LabelNode();
+                toInject.add(new JumpInsnNode(Opcodes.IFNE, skipInitLabel));
+
+                toInject.add(new MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        "io/xlorey/FluxLoader/server/core/Core",
+                        "init",
+                        "()V",
+                        false
+                ));
+
+                toInject.add(skipInitLabel);
+
+                method.instructions.insertBefore(targetInsn, toInject);
+            }
 
             /*
               Event onServerInitialize
              */
             AbstractInsnNode currentNode = method.instructions.getFirst();
             while (currentNode != null) {
-                if (currentNode instanceof MethodInsnNode) {
-                    MethodInsnNode methodCall = (MethodInsnNode) currentNode;
+                if (currentNode instanceof MethodInsnNode methodCall) {
                     if (methodCall.owner.contains("GlobalObject") && methodCall.name.equals("refreshAnimSets")) {
-                        InsnList eventInvoker = new InsnList();
-                        eventInvoker.add(new LdcInsnNode("onServerInitialize"));
-                        eventInvoker.add(new MethodInsnNode(
-                                Opcodes.INVOKESTATIC,
-                                "io/xlorey/FluxLoader/shared/EventManager",
-                                "invokeEvent",
-                                "(Ljava/lang/String;)V",
-                                false
-                        ));
+                        InsnList eventInvoker = PatchTools.createEventInvokerInsnList("onServerInitialize", argumentTypes, true);
                         method.instructions.insert(currentNode, eventInvoker);
                         break;
                     }
@@ -66,55 +87,12 @@ public class PatchGameServer extends PatchFile{
             Type[] argumentTypes = Type.getArgumentTypes(method.desc);
 
             if (argumentTypes.length >= 3 && argumentTypes[2].getDescriptor().equals("Ljava/lang/String;")) {
-                InsnList eventInvoker = new InsnList();
-
-                eventInvoker.add(new LdcInsnNode("onPlayerConnect"));
-
-                eventInvoker.add(new IntInsnNode(Opcodes.BIPUSH, argumentTypes.length));
-                eventInvoker.add(new TypeInsnNode(Opcodes.ANEWARRAY, "java/lang/Object"));
-
-                for (int i = 0; i < argumentTypes.length; i++) {
-                    eventInvoker.add(new InsnNode(Opcodes.DUP));
-                    eventInvoker.add(new IntInsnNode(Opcodes.BIPUSH, i));
-                    eventInvoker.add(new VarInsnNode(Opcodes.ALOAD, i));
-                    eventInvoker.add(new InsnNode(Opcodes.AASTORE));
-                }
-
-                eventInvoker.add(new MethodInsnNode(
-                        Opcodes.INVOKESTATIC,
-                        "io/xlorey/FluxLoader/shared/EventManager",
-                        "invokeEvent",
-                        "(Ljava/lang/String;[Ljava/lang/Object;)V",
-                        false));
-
+                InsnList eventInvoker = PatchTools.createEventInvokerInsnList("onPlayerConnect", argumentTypes, true);
                 method.instructions.insertBefore(method.instructions.getFirst(), eventInvoker);
             }
         });
 
-        PatchTools.injectIntoClass(filePath, "disconnectPlayer", true, method -> {
-            Type[] argumentTypes = Type.getArgumentTypes(method.desc);
-            InsnList eventInvoker = new InsnList();
 
-            eventInvoker.add(new LdcInsnNode("onPlayerDisconnect"));
-
-            eventInvoker.add(new IntInsnNode(Opcodes.BIPUSH, argumentTypes.length));
-            eventInvoker.add(new TypeInsnNode(Opcodes.ANEWARRAY, "java/lang/Object"));
-
-            for (int i = 0; i < argumentTypes.length; i++) {
-                eventInvoker.add(new InsnNode(Opcodes.DUP));
-                eventInvoker.add(new IntInsnNode(Opcodes.BIPUSH, i));
-                eventInvoker.add(new VarInsnNode(Opcodes.ALOAD, i));
-                eventInvoker.add(new InsnNode(Opcodes.AASTORE));
-            }
-
-            eventInvoker.add(new MethodInsnNode(
-                    Opcodes.INVOKESTATIC,
-                    "io/xlorey/FluxLoader/shared/EventManager",
-                    "invokeEvent",
-                    "(Ljava/lang/String;[Ljava/lang/Object;)V",
-                    false));
-
-            method.instructions.insertBefore(method.instructions.getFirst(), eventInvoker);
-        });
+        PatchTools.injectEventInvoker(filePath, "disconnectPlayer", "onPlayerDisconnect", true);
     }
 }

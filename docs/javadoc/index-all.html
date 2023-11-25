@@ -91,6 +91,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Creating a backup file</div>
 </dd>
+<dt><a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html#createEventInvokerInsnList(java.lang.String,org.objectweb.asm.Type%5B%5D,boolean)" class="member-name-link">createEventInvokerInsnList(String, Type[], boolean)</a> - Static method in class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchTools</a></dt>
+<dd>
+<div class="block">Creates a list of instructions for the event invoker.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:D">D</h2>
 <dl class="index">
@@ -180,6 +184,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Initializing the loader</div>
 </dd>
+<dt><a href="io/xlorey/FluxLoader/utils/patch/PatchChatServer.html#inject()" class="member-name-link">inject()</a> - Method in class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchChatServer.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchChatServer</a></dt>
+<dd>
+<div class="block">Injection into a game file</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/utils/patch/PatchFile.html#inject()" class="member-name-link">inject()</a> - Method in class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchFile.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchFile</a></dt>
 <dd>
 <div class="block">Making changes to a file</div>
@@ -200,7 +208,15 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Annotation - a flag indicating that injection occurred in this file</div>
 </dd>
-<dt><a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html#injectIntoClass(java.lang.String,java.lang.String,boolean,java.util.function.Consumer)" class="member-name-link">injectIntoClass(String, String, boolean, Consumer&lt;MethodNode&gt;)</a> - Method in class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchTools</a></dt>
+<dt><a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html#injectEventInvoker(java.lang.String,java.lang.String,java.lang.String,boolean)" class="member-name-link">injectEventInvoker(String, String, String, boolean)</a> - Static method in class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchTools</a></dt>
+<dd>
+<div class="block">Injecting a custom event call at the beginning of the target method and passing its arguments</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html#injectEventInvokerAtEnd(java.lang.String,java.lang.String,java.lang.String,boolean)" class="member-name-link">injectEventInvokerAtEnd(String, String, String, boolean)</a> - Static method in class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchTools</a></dt>
+<dd>
+<div class="block">Inserts a custom event call at the end of the target method, passing its arguments.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html#injectIntoClass(java.lang.String,java.lang.String,boolean,java.util.function.Consumer)" class="member-name-link">injectIntoClass(String, String, boolean, Consumer&lt;MethodNode&gt;)</a> - Static method in class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchTools</a></dt>
 <dd>
 <div class="block">Method for injecting annotations and making changes to a given class method.</div>
 </dd>
@@ -297,6 +313,14 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:P">P</h2>
 <dl class="index">
+<dt><a href="io/xlorey/FluxLoader/utils/patch/PatchChatServer.html" class="type-name-link" title="class in io.xlorey.FluxLoader.utils.patch">PatchChatServer</a> - Class in <a href="io/xlorey/FluxLoader/utils/patch/package-summary.html">io.xlorey.FluxLoader.utils.patch</a></dt>
+<dd>
+<div class="block">Embedding in the chat server logic</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/utils/patch/PatchChatServer.html#%3Cinit%3E()" class="member-name-link">PatchChatServer()</a> - Constructor for class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchChatServer.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchChatServer</a></dt>
+<dd>
+<div class="block">Injector constructor</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/utils/patch/PatchFile.html" class="type-name-link" title="class in io.xlorey.FluxLoader.utils.patch">PatchFile</a> - Class in <a href="io/xlorey/FluxLoader/utils/patch/package-summary.html">io.xlorey.FluxLoader.utils.patch</a></dt>
 <dd>
 <div class="block">Base file modification class</div>
@@ -403,7 +427,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
-<dt><a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html#saveModifiedClasses()" class="member-name-link">saveModifiedClasses()</a> - Method in class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchTools</a></dt>
+<dt><a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html#saveModifiedClasses()" class="member-name-link">saveModifiedClasses()</a> - Static method in class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchTools</a></dt>
 <dd>
 <div class="block">Applying changes to .class files</div>
 </dd>

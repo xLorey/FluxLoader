@@ -1,10 +1,54 @@
-# Flux Loader Events
+# Custom event
+Here are all the custom events that are implemented in FluxLoader. Content:
+
+[Client Events](#client-events)
+
+- [onClientWindowInit](#onClientWindowInit)
+
+[Server Events](#server-events)
+
+- [onChatServerMessage](#onChatServerMessage)
+- [onChatWhisperMessage](#onChatWhisperMessage)
+- [onServerInitialize](#onServerInitialize)
+- [onPlayerConnect](#onPlayerConnect)
+- [onPlayerDisconnect](#onPlayerDisconnect)
+
+# Client Events
+
+## onClientWindowInit
+Called when the game window is running and initialized
+```java
+@SubscribeEvent(eventName="onClientWindowInit")
+public void onClientWindowInitHandler(){
+
+}
+```
+
+# Server Events
+
+## onChatServerMessage
+Called when a player sends a chat message
+```java
+@SubscribeEvent(eventName="onChatServerMessage")
+public void onChatServerMessageHandler(ByteBuffer data){
+
+}
+```
+
+## onChatWhisperMessage
+Called when a player sends a whisper message
+```java
+@SubscribeEvent(eventName="onChatWhisperMessage")
+public void onChatWhisperMessageHandler(ByteBuffer data){
+    
+}
+```
 
 ## onServerInitialize
 Called when the server has successfully initialized, before the main loop
 ```java
 @SubscribeEvent(eventName="onServerInitialize")
-public void onServerInitializeHandler(){
+public void onServerInitializeHandler(String[] serverStartupArgs){
     
 }
 ```
