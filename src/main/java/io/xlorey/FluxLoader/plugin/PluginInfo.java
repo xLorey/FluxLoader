@@ -75,7 +75,7 @@ public class PluginInfo {
      * Getting plugin metadata
      * @param jarFile plugin file
      * @return plugin metadata in PluginInfo format
-     * @throws IOException In case of I/O errors.
+     * @throws IOException in cases of I/O problems
      */
     public static PluginInfo getInfoFromFile(File jarFile) throws IOException {
         try (JarFile jar = new JarFile(jarFile)) {

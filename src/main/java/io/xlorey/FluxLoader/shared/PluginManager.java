@@ -24,7 +24,7 @@ public class PluginManager {
     /**
      * Loading plugins for the client
      * @param isClient flag for loading plugins in the client environment
-     * @throws IOException In case of I/O errors.
+     * @throws IOException in cases of input/output problems
      */
     public static void loadPlugins(boolean isClient) throws Exception {
         Logger.print("Loading plugins into the environment...");
@@ -105,7 +105,7 @@ public class PluginManager {
     /**
      * Finds all JAR plugins in the specified directory.
      * @return List of JAR files.
-     * @throws IOException In case of I/O errors.
+     * @throws IOException in cases of input/output problems
      */
     public static ArrayList<File> getPluginFiles() throws IOException {
         ArrayList<File> jarFiles = new ArrayList<>();

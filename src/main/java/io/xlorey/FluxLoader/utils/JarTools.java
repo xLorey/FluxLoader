@@ -24,7 +24,7 @@ public class JarTools {
      * @param whiteListJarPath whitelist of paths (directories and files) that can be unzipped
      * @param jarPath path to the Jar archive to be unzipped
      * @param unpackPath target path where you need to unzip files and folders
-     * @exception IOException error when unzipping a Jar file is unsuccessful, related to paths
+     * @exception IOException in case of failure to unpack the Jar file due to path problems
      */
     public static void unpackJar(ArrayList<String> whiteListJarPath, String jarPath, String unpackPath) throws IOException {
         try (JarFile jarFile = new JarFile(jarPath)) {
@@ -62,7 +62,7 @@ public class JarTools {
      * @param whiteListJarPath whitelist of paths that need to be checked for removal
      * @param jarPath path to the jar archive with which to compare deletion paths
      * @param targetPath target path from which files should be deleted
-     * @exception IOException error when deleting file
+     * @exception IOException in cases of unsuccessful removal
      */
     public static void deleteJarFilesFromDirectory(ArrayList<String> whiteListJarPath, String jarPath, String targetPath) throws IOException {
         try (JarFile jarFile = new JarFile(jarPath)) {

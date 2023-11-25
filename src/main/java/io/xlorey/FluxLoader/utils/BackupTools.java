@@ -21,7 +21,7 @@ public class BackupTools {
     /**
      * Creating a backup file
      * @param pathToClassFile path to the file with '.class' extension
-     * @throws IOException error when creating backup
+     * @throws IOException in cases of unsuccessful backup creation
      */
     public static void createBackup(String pathToClassFile) throws IOException {
         Logger.print(String.format("Trying to create a restore point for a file'%s'...", pathToClassFile));
@@ -49,7 +49,7 @@ public class BackupTools {
     /**
      * Restoring a file if there is a backup
      * @param pathToClassFile path to the modified file (extension '.class')
-     * @throws IOException error during recovery
+     * @throws IOException in cases of unsuccessful recovery
      */
     public static void restoreFile(String pathToClassFile) throws IOException {
         Logger.print(String.format("Attempting to recover a file '%s'...", pathToClassFile));
