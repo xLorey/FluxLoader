@@ -1,4 +1,4 @@
-package io.xlorey.FluxLoader.client.gameStates;
+package io.xlorey.FluxLoader.client.states;
 
 import io.xlorey.FluxLoader.utils.Constants;
 import zombie.GameTime;

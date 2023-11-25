@@ -1,6 +1,6 @@
 package io.xlorey.FluxLoader.client.core;
 
-import io.xlorey.FluxLoader.client.gameStates.FluxLogoState;
+import io.xlorey.FluxLoader.client.states.FluxLogoState;
 import io.xlorey.FluxLoader.utils.Logger;
 import zombie.GameWindow;
 import zombie.gameStates.GameState;
