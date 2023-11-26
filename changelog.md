@@ -1,3 +1,5 @@
+# FluxLoader v0.2.1
+- The system for subscribing classes as listeners has been fixed. Now it is not the class itself that is signed, but its instance.
 # FluxLoader v0.2.0
 - Redesigned plugin loading system
 - Changed plugin creation template

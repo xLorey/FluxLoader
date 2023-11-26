@@ -101,7 +101,7 @@ public class PluginManager {
 
                 pluginInstance.onInitialize();
 
-                EventManager.subscribe(pluginClass);
+                EventManager.subscribe(pluginInstance);
             }
         }
     }

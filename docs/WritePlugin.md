@@ -199,10 +199,10 @@ Test info: Plugin Template
 By default, each point is automatically registered as an event listener, so you can immediately subscribe to events (game and user). However, if there is a need to register a third-party class, then you need to use:
 
 ```java
-EventManager.subscribe(class)
+EventManager.subscribe(classInstance)
 ```
 
-Instead of `class`, you must specify the path to the class that requires registration.
+Instead of `classInstance`, you must specify an instance of the class that needs to be registered as a listener.
 
 > [!WARNING]
 > One method can be subscribed to **only one** [event](Wiki.md)!

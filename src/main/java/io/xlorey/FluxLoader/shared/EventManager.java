@@ -13,14 +13,14 @@ public class EventManager {
     /**
      * Event Listeners
      */
-    private static final ArrayList<Class<?>> listeners = new ArrayList<>();
+    private static final ArrayList<Object> listeners = new ArrayList<>();
 
     /**
      * Subscribing a listener class to events
-     * @param clazz class - listener
+     * @param listener - Object listener
      */
-    public static void subscribe(Class<?> clazz) {
-        listeners.add(clazz);
+    public static void subscribe(Object listener) {
+        listeners.add(listener);
     }
 
     /**
@@ -37,14 +37,14 @@ public class EventManager {
      * @param args event arguments
      */
     public static void invokeEvent(String eventName, Object... args) {
-        for (Class<?> listener : listeners) {
-            for (Method method : listener.getDeclaredMethods()) {
+        for (Object listener : listeners) {
+            for (Method method : listener.getClass().getDeclaredMethods()) {
                 if (method.isAnnotationPresent(SubscribeEvent.class)) {
                     SubscribeEvent annotation = method.getAnnotation(SubscribeEvent.class);
                     if (annotation.eventName().equals(eventName) && isMethodCompatible(method, eventName, args)) {
                         try {
                             method.setAccessible(true);
-                            method.invoke(listener.getDeclaredConstructor().newInstance(), args);
+                            method.invoke(listener, args);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
