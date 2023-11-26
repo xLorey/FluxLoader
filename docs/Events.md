@@ -30,7 +30,7 @@ public void onClientWindowInitHandler(){
 Called when a player sends a chat message
 ```java
 @SubscribeEvent(eventName="onChatServerMessage")
-public void onChatServerMessageHandler(ChatMessage chatMessage){
+public void onChatServerMessageHandler(ChatBase chatBase, ChatMessage chatMessage){
 
 }
 ```
