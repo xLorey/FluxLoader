@@ -19,7 +19,7 @@ public class PluginManager {
     /**
      * All loaded information about plugins
      */
-    private static final HashMap<File, PluginInfo> pluginsList = new HashMap<>();
+    private static final HashMap<File, PluginInfo> pluginsInfoList = new HashMap<>();
 
     /**
      * Loading plugins for the client
@@ -40,11 +40,11 @@ public class PluginManager {
                 Logger.print(String.format("No metadata found for potential plugin '%s'. Skipping...", plugin.getName()));
                 continue;
             }
-            pluginsList.put(plugin, pluginInfo);
+            pluginsInfoList.put(plugin, pluginInfo);
         }
 
         // Checking for dependency availability and versions
-        for (Map.Entry<File, PluginInfo> entry : pluginsList.entrySet()) {
+        for (Map.Entry<File, PluginInfo> entry : pluginsInfoList.entrySet()) {
             Map<String, String> dependencies = entry.getValue().getDependencies();
 
             for (Map.Entry<String, String> depEntry : dependencies.entrySet()) {
@@ -66,7 +66,7 @@ public class PluginManager {
             }
         }
 
-        for (Map.Entry<File, PluginInfo> entry : pluginsList.entrySet()) {
+        for (Map.Entry<File, PluginInfo> entry : pluginsInfoList.entrySet()) {
             File plugin = entry.getKey();
             PluginInfo pluginInfo = entry.getValue();
 
@@ -79,17 +79,9 @@ public class PluginManager {
                 continue;
             }
 
-            ClassLoader appClassLoader;
+            ClassLoader commonClassLoader = PluginManager.class.getClassLoader();
+            URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()}, commonClassLoader);
 
-            if (isClient) {
-                appClassLoader = io.xlorey.FluxLoader.client.core.Core.class.getClassLoader();
-
-            } else {
-                appClassLoader = io.xlorey.FluxLoader.server.core.Core.class.getClassLoader();
-            }
-
-            // Creating a URLClassLoader for the plugin JAR file
-            URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()}, appClassLoader);
             for (String entryPoint : entryPoints) {
                 Class<?> pluginClass = Class.forName(entryPoint, true, classLoader);
                 Plugin pluginInstance = (Plugin) pluginClass.getDeclaredConstructor().newInstance();
