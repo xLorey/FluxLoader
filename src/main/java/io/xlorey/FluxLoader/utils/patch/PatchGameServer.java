@@ -76,11 +76,15 @@ public class PatchGameServer extends PatchFile{
                     if (methodCall.owner.contains("GlobalObject") && methodCall.name.equals("refreshAnimSets")) {
                         InsnList eventInvoker = PatchTools.createEventInvokerInsnList("onServerInitialize", argumentTypes, true);
                         method.instructions.insert(currentNode, eventInvoker);
-                        break;
+                    }
+                    if (methodCall.owner.contains("System") && methodCall.name.equals("exit")) {
+                        InsnList eventInvoker = PatchTools.createEventInvokerInsnList("onServerShutdown", new Type[0], true);
+                        method.instructions.insertBefore(currentNode, eventInvoker);
                     }
                 }
                 currentNode = currentNode.getNext();
             }
+
         });
 
         PatchTools.injectIntoClass(filePath, "receivePlayerConnect", true, method -> {

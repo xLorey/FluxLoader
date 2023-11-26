@@ -10,6 +10,7 @@ Here are all the custom events that are implemented in FluxLoader. Content:
 - [onChatServerMessage](#onChatServerMessage)
 - [onChatWhisperMessage](#onChatWhisperMessage)
 - [onServerInitialize](#onServerInitialize)
+- [onServerShutdown](#onServerShutdown)
 - [onPlayerConnect](#onPlayerConnect)
 - [onPlayerDisconnect](#onPlayerDisconnect)
 
@@ -49,6 +50,15 @@ Called when the server has successfully initialized, before the main loop
 ```java
 @SubscribeEvent(eventName="onServerInitialize")
 public void onServerInitializeHandler(String[] serverStartupArgs){
+    
+}
+```
+
+## onServerShutdown
+Called when the server shuts down
+```java
+@SubscribeEvent(eventName="onServerShutdown")
+public void onServerShutdownHandler(){
     
 }
 ```
