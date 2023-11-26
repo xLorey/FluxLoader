@@ -1,6 +1,7 @@
 # FluxLoader v0.2.2
 - Changed `onChatServerMessage` event arguments
 - Removed `onChatWhisperMessage` event
+- Fixed calling the `onServerShutdown` event
 
 # FluxLoader v0.2.1
 - The system for subscribing classes as listeners has been fixed. Now it is not the class itself that is signed, but its instance.
