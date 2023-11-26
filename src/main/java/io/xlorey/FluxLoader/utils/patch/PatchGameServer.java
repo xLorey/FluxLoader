@@ -1,6 +1,5 @@
 package io.xlorey.FluxLoader.utils.patch;
 
-import io.xlorey.FluxLoader.utils.Logger;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
@@ -76,10 +75,7 @@ public class PatchGameServer extends PatchFile{
                     if (methodCall.owner.contains("GlobalObject") && methodCall.name.equals("refreshAnimSets")) {
                         InsnList eventInvoker = PatchTools.createEventInvokerInsnList("onServerInitialize", argumentTypes, true);
                         method.instructions.insert(currentNode, eventInvoker);
-                    }
-                    if (methodCall.owner.contains("System") && methodCall.name.equals("exit")) {
-                        InsnList eventInvoker = PatchTools.createEventInvokerInsnList("onServerShutdown", new Type[0], true);
-                        method.instructions.insertBefore(currentNode, eventInvoker);
+                        break;
                     }
                 }
                 currentNode = currentNode.getNext();
