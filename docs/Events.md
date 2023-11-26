@@ -8,7 +8,6 @@ Here are all the custom events that are implemented in FluxLoader. Content:
 [Server Events](#server-events)
 
 - [onChatServerMessage](#onChatServerMessage)
-- [onChatWhisperMessage](#onChatWhisperMessage)
 - [onServerInitialize](#onServerInitialize)
 - [onServerShutdown](#onServerShutdown)
 - [onPlayerConnect](#onPlayerConnect)
@@ -31,17 +30,8 @@ public void onClientWindowInitHandler(){
 Called when a player sends a chat message
 ```java
 @SubscribeEvent(eventName="onChatServerMessage")
-public void onChatServerMessageHandler(ByteBuffer data){
+public void onChatServerMessageHandler(ChatMessage chatMessage){
 
-}
-```
-
-## onChatWhisperMessage
-Called when a player sends a whisper message
-```java
-@SubscribeEvent(eventName="onChatWhisperMessage")
-public void onChatWhisperMessageHandler(ByteBuffer data){
-    
 }
 ```
 
