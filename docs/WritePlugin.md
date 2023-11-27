@@ -122,7 +122,6 @@ All information about the plugin is generated based on its metadata. They are lo
 
 `dependencies` - list of project dependencies. Specifying `project-zomboid` and `flux-loader` is mandatory. Possible conditions `>=`, `<=`, `<`, `>`.
 
-
 > [!NOTE]
 > To get metadata from the plugin, you can call the `getPluginInfo()` method
 
@@ -208,6 +207,57 @@ Instead of `classInstance`, you must specify an instance of the class that needs
 > One method can be subscribed to **only one** [event](Wiki.md)!
 
 Subscription to events occurs exclusively through the annotation `@SubscribeEvent` with the event name as an argument. It must be located at the event handler method. If the event implies arguments, they must also be specified in the handler method.
+
+There is also an annotation `@SubscribeSingleEvent(eventName="<...>")`. It is attached to methods that can return something (some object). For example so:
+
+```java
+@SubscribeSingleEvent(eventName = "getTestText")
+public String renderHandler(){
+    return "Text"
+}
+```
+
+**Important!** This annotation is used exclusively in plugins, the event name must be **strictly** unique, preferably using the plugin ID. Such a measure is necessary for the organization of interaction between plugins. In the future, when he finds a better and easier way, everything can change.
+
+## Organization of interaction between plugins
+
+At the moment, in FluxLoader, interaction between plugins is organized through mutual subscription and calling events. To do this, the annotation `@SubscribeSingleEvent` or `@SubscribeEvent` must be attached to the **non-static** method. One of them! Implementation example:
+
+Plugin #1:
+
+```java
+/**
+ * Processing of sending a message, it is necessary to use a unique event name
+ * @param text message text
+ */
+@SubscribeEvent(eventName = "sendMessage")
+public void sendMessageHandler(String text){
+    API.sendMessage(text);
+}
+
+/**
+ * Processing the output of a value from the API
+ * @param embed Embed constructor
+ * @return returns a constant value from the API
+ */
+@SubscriSinglebeEvent(eventName = "getConstantInfo")
+public String getConstantInfoHandler(String arg){
+    return API.getConstantInfo(arg);
+}
+```
+
+Plugin #2:
+
+```java
+/**
+ * Plugin initialization method
+ */
+@Override
+public void onInitialize() {
+    EventManager.invokeEvent("sendMessage", "Hello World!");
+    String infoByExtern = EventManager.invokeSingleEventAndReturn("getConstantInfo", "VERSION"); // If nothing is found returns NULL
+}
+```
 
 ## Compilation
 
