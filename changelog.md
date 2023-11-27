@@ -2,6 +2,7 @@
 - Changed `onChatServerMessage` event arguments
 - Removed `onChatWhisperMessage` event
 - Fixed calling the `onServerShutdown` event
+- Added unique events (the only ones) with the return of the object: annotation `SubscribeSingleEvent` and method `invokeSingleEventAndReturn`
 
 # FluxLoader v0.2.1
 - The system for subscribing classes as listeners has been fixed. Now it is not the class itself that is signed, but its instance.
