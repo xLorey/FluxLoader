@@ -23,7 +23,6 @@ public class EventManager {
      */
     public static void subscribe(Object listener) {
         if (!isUniqueSingleEvents(listener)) {
-            Logger.print("Subscription failed: Duplicate SubscribeSingleEvent detected in " + listener.getClass().getSimpleName());
             return;
         }
 
@@ -62,6 +61,9 @@ public class EventManager {
             HashSet<String> registeredListenerEvents = getSingleEventNames(registeredListener);
             for (String eventName : newListenerEvents) {
                 if (registeredListenerEvents.contains(eventName)) {
+                    Logger.print(String.format("Error subscribing class to events! Duplicate single event '%s' detected in '%s'! Skipping...",
+                            eventName,
+                            newListener.getClass().getName()));
                     return false;
                 }
             }
