@@ -1,4 +1,5 @@
 # FluxLoader v0.4.0
+- Fixed processing of primitive arguments during injection
 - Added `onAddIncoming` event
 
 # FluxLoader v0.3.0

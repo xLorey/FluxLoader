@@ -189,11 +189,17 @@ public class PatchTools {
         eventInvoker.add(new IntInsnNode(Opcodes.BIPUSH, argumentTypes.length));
         eventInvoker.add(new TypeInsnNode(Opcodes.ANEWARRAY, "java/lang/Object"));
 
-        int startIdx = isStatic ? 0 : 1; // Начинаем с 1, если метод нестатический
+        int startIdx = isStatic ? 0 : 1;
         for (int i = 0; i < argumentTypes.length; i++) {
             eventInvoker.add(new InsnNode(Opcodes.DUP));
             eventInvoker.add(new IntInsnNode(Opcodes.BIPUSH, i));
-            eventInvoker.add(new VarInsnNode(Opcodes.ALOAD, i + startIdx)); // Сдвигаем индекс для нестатических методов
+
+            if (argumentTypes[i].getSort() == Type.OBJECT || argumentTypes[i].getSort() == Type.ARRAY) {
+                eventInvoker.add(new VarInsnNode(Opcodes.ALOAD, i + startIdx));
+            } else {
+                wrapPrimitiveType(eventInvoker, argumentTypes[i], i + startIdx);
+            }
+
             eventInvoker.add(new InsnNode(Opcodes.AASTORE));
         }
 
@@ -206,6 +212,90 @@ public class PatchTools {
 
         return eventInvoker;
     }
+
+    /**
+     * Wrapping primitive types into objects
+     * @param instructions the injector instructions
+     * @param type argument type
+     * @param index index
+     */
+    private static void wrapPrimitiveType(InsnList instructions, Type type, int index) {
+        switch (type.getSort()) {
+            case Type.BOOLEAN -> {
+                instructions.add(new VarInsnNode(Opcodes.ILOAD, index));
+                instructions.add(new MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        "java/lang/Boolean",
+                        "valueOf",
+                        "(Z)Ljava/lang/Boolean;",
+                        false));
+            }
+            case Type.CHAR -> {
+                instructions.add(new VarInsnNode(Opcodes.ILOAD, index));
+                instructions.add(new MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        "java/lang/Character",
+                        "valueOf",
+                        "(C)Ljava/lang/Character;",
+                        false));
+            }
+            case Type.BYTE -> {
+                instructions.add(new VarInsnNode(Opcodes.ILOAD, index));
+                instructions.add(new MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        "java/lang/Byte",
+                        "valueOf",
+                        "(B)Ljava/lang/Byte;",
+                        false));
+            }
+            case Type.SHORT -> {
+                instructions.add(new VarInsnNode(Opcodes.ILOAD, index));
+                instructions.add(new MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        "java/lang/Short",
+                        "valueOf",
+                        "(S)Ljava/lang/Short;",
+                        false));
+            }
+            case Type.INT -> {
+                instructions.add(new VarInsnNode(Opcodes.ILOAD, index));
+                instructions.add(new MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        "java/lang/Integer",
+                        "valueOf",
+                        "(I)Ljava/lang/Integer;",
+                        false));
+            }
+            case Type.FLOAT -> {
+                instructions.add(new VarInsnNode(Opcodes.FLOAD, index));
+                instructions.add(new MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        "java/lang/Float",
+                        "valueOf",
+                        "(F)Ljava/lang/Float;",
+                        false));
+            }
+            case Type.LONG -> {
+                instructions.add(new VarInsnNode(Opcodes.LLOAD, index));
+                instructions.add(new MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        "java/lang/Long",
+                        "valueOf",
+                        "(J)Ljava/lang/Long;",
+                        false));
+            }
+            case Type.DOUBLE -> {
+                instructions.add(new VarInsnNode(Opcodes.DLOAD, index));
+                instructions.add(new MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        "java/lang/Double",
+                        "valueOf",
+                        "(D)Ljava/lang/Double;",
+                        false));
+            }
+        }
+    }
+
 
     /**
      * Applying changes to .class files
