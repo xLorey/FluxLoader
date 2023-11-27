@@ -212,7 +212,7 @@ There is also an annotation `@SubscribeSingleEvent(eventName="<...>")`. It is at
 
 ```java
 @SubscribeSingleEvent(eventName = "getTestText")
-public String renderHandler(){
+public String getTestTextHandler(){
     return "Text"
 }
 ```
