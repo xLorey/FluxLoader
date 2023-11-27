@@ -4,7 +4,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- * Subscription to in-game and user events
+ * Subscription to user events
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface SubscribeSingleEvent {
