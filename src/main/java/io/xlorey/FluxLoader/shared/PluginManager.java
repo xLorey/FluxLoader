@@ -62,6 +62,27 @@ public class PluginManager {
                             throw new Exception(String.format("Incompatible flux-loader version for plugin id '%s'", entry.getValue().getId()));
                         }
                     }
+                    default -> {
+                        // Checking the presence of the plugin in the directory
+                        boolean hasPlugin = false;
+
+                        for (Map.Entry<File, PluginInfo> checkEntry : pluginsInfoList.entrySet()) {
+                            String id = checkEntry.getValue().getId();
+                            String version = checkEntry.getValue().getVersion();
+
+                            if (depId.equals(id) && VersionChecker.isVersionCompatible(depVersion, version)){
+                                hasPlugin = true;
+                                break;
+                            }
+                        }
+
+                        if (!hasPlugin) {
+                            throw new Exception(String.format("Plugin '%s' does not have a dependent plugin '%s' or its version does not meet the requirements",
+                                    entry.getValue().getId(),
+                                    depId
+                                    ));
+                        }
+                    }
                 }
             }
         }
