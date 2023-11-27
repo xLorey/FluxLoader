@@ -102,7 +102,6 @@ public class PlayerUtils {
      * @param reason Reason for blocking
      */
     private void banBySteamID(IsoPlayer player, String reason) {
-        EventManager.invokeEvent("onPlayerBan", player, reason);
         String steamID = SteamUtils.convertSteamIDToString(player.getSteamID());
         try {
             ServerWorldDatabase.instance.banSteamID(steamID, reason, true);
@@ -119,7 +118,6 @@ public class PlayerUtils {
      * @param reason Reason for blocking.
      */
     private void banByIP(UdpConnection playerConnection, IsoPlayer player, String reason) {
-        EventManager.invokeEvent("onPlayerBan", player, reason);
         try {
             ServerWorldDatabase.instance.banIp(playerConnection.ip, player.getUsername(), reason, true);
         } catch (SQLException e) {

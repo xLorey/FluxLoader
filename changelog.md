@@ -1,3 +1,6 @@
+# FluxLoader v0.4.0
+- Added `onAddIncoming` event
+
 # FluxLoader v0.3.0
 - Changed `onChatServerMessage` event arguments
 - Removed `onChatWhisperMessage` event

@@ -7,6 +7,7 @@ Here are all the custom events that are implemented in FluxLoader. Content:
 
 [Server Events](#server-events)
 
+- [onAddIncoming](#onaddincoming)
 - [onChatServerMessage](#onChatServerMessage)
 - [onServerInitialize](#onServerInitialize)
 - [onServerShutdown](#onServerShutdown)
@@ -16,6 +17,15 @@ Here are all the custom events that are implemented in FluxLoader. Content:
 - [onPlayerBan](#onplayerban)
 
 # Client Events
+
+## onAddIncoming
+Called whenever new data is received from the client
+```java
+@SubscribeEvent(eventName="onAddIncoming")
+public void onAddIncomingHandler(short index, ByteBuffer data, UdpConnection connection){
+
+}
+```
 
 ## onClientWindowInit
 Called when the game window is running and initialized

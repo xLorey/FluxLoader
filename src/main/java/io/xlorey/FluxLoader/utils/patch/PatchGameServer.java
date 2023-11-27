@@ -94,5 +94,6 @@ public class PatchGameServer extends PatchFile{
 
 
         PatchTools.injectEventInvoker(filePath, "disconnectPlayer", "onPlayerDisconnect", true);
+        PatchTools.injectEventInvoker(filePath, "addIncoming", "onAddIncoming", true);
     }
 }
