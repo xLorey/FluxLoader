@@ -1,10 +1,12 @@
 package io.xlorey.FluxLoader.shared;
 
 import io.xlorey.FluxLoader.annotations.SubscribeEvent;
+import io.xlorey.FluxLoader.annotations.SubscribeSingleEvent;
 import io.xlorey.FluxLoader.utils.Logger;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * Event calling and subscription system
@@ -20,7 +22,80 @@ public class EventManager {
      * @param listener - Object listener
      */
     public static void subscribe(Object listener) {
+        if (!isUniqueSingleEvents(listener)) {
+            Logger.print("Subscription failed: Duplicate SubscribeSingleEvent detected in " + listener.getClass().getSimpleName());
+            return;
+        }
+
         listeners.add(listener);
+    }
+
+    /**
+     * Returns a set of unique event names marked with the SubscribeSingleEvent annotation.
+     * found in the methods of the specified listener object.
+     *
+     * @param listener A listener object whose methods search for event names.
+     * @return Set of unique event names.
+     */
+    private static HashSet<String> getSingleEventNames(Object listener) {
+        HashSet<String> eventNames = new HashSet<>();
+        for (Method method : listener.getClass().getDeclaredMethods()) {
+            if (method.isAnnotationPresent(SubscribeSingleEvent.class)) {
+                SubscribeSingleEvent annotation = method.getAnnotation(SubscribeSingleEvent.class);
+                eventNames.add(annotation.eventName());
+            }
+        }
+        return eventNames;
+    }
+
+    /**
+     * Checks whether the listener object contains methods with the same event names,
+     * marked with the SubscribeSingleEvent annotation, which are already registered in the system.
+     *
+     * @param newListener The listener object to test.
+     * @return true if there are no conflicting event names in the new listener, false otherwise.
+     */
+    private static boolean isUniqueSingleEvents(Object newListener) {
+        HashSet<String> newListenerEvents = getSingleEventNames(newListener);
+
+        for (Object registeredListener : listeners) {
+            HashSet<String> registeredListenerEvents = getSingleEventNames(registeredListener);
+            for (String eventName : newListenerEvents) {
+                if (registeredListenerEvents.contains(eventName)) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Calls a method marked with the SubscribeSingleEvent annotation that matches the given event name.
+     * The method must be compatible with the arguments provided. Returns the result of a method call.
+     *
+     * @param eventName The name of the event to raise.
+     * @param args Arguments passed to the event method.
+     * @return The result of calling the event method. Returns null if no matching method is found.
+     */
+    public static Object invokeSingleEventAndReturn(String eventName, Object... args) {
+        for (Object listener : listeners) {
+            for (Method method : listener.getClass().getDeclaredMethods()) {
+                if (method.isAnnotationPresent(SubscribeSingleEvent.class)) {
+                    SubscribeSingleEvent annotation = method.getAnnotation(SubscribeSingleEvent.class);
+                    if (annotation.eventName().equals(eventName) && isMethodCompatible(method, eventName, args)) {
+                        try {
+                            method.setAccessible(true);
+                            return method.invoke(listener, args);
+                        } catch (Exception e) {
+                            Logger.print(String.format("Error raising single event returning object '%s': %s",
+                                    eventName,
+                                    e.getMessage()));
+                        }
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     /**
@@ -46,7 +121,9 @@ public class EventManager {
                             method.setAccessible(true);
                             method.invoke(listener, args);
                         } catch (Exception e) {
-                            e.printStackTrace();
+                            Logger.print(String.format("Error raising event returning object '%s': %s",
+                                    eventName,
+                                    e.getMessage()));
                         }
                     }
                 }

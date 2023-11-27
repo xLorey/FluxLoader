@@ -1,4 +1,4 @@
-# FluxLoader v0.2.2
+# FluxLoader v0.3.0
 - Changed `onChatServerMessage` event arguments
 - Removed `onChatWhisperMessage` event
 - Fixed calling the `onServerShutdown` event
