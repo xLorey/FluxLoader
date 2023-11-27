@@ -22,7 +22,7 @@ Here are all the custom events that are implemented in FluxLoader. Content:
 Called whenever new data is received from the client
 ```java
 @SubscribeEvent(eventName="onAddIncoming")
-public void onAddIncomingHandler(short opcode, ByteBuffer data, UdpConnection connection){
+public void onAddIncomingHandler(Short opcode, ByteBuffer data, UdpConnection connection){
 
 }
 ```
