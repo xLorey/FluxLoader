@@ -86,7 +86,7 @@ public void onPlayerDisconnectHandler(IsoPlayer playerInstance, UdpConnection pl
 ```
 
 ## onPlayerKick
-Called when kicked from the server
+Called when kicked from the server (when using the API)
 ```java
 @SubscribeEvent(eventName="onPlayerKick")
 public void onPlayerKickHandler(IsoPlayer player, String reason){
@@ -95,7 +95,7 @@ public void onPlayerKickHandler(IsoPlayer player, String reason){
 ```
 
 ## onPlayerBan
-Called when banned from the server
+Called when banned from the server (when using the API)
 ```java
 @SubscribeEvent(eventName="onPlayerBan")
 public void onPlayerBanHandler(IsoPlayer player, String reason){
