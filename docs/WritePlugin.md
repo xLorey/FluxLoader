@@ -212,7 +212,7 @@ There is also an annotation `@SubscribeSingleEvent(eventName="<...>")`. It is at
 
 ```java
 @SubscribeSingleEvent(eventName = "getTestText")
-public String renderHandler(){
+public String getTestTextHandler(){
     return "Text"
 }
 ```
@@ -237,7 +237,7 @@ public void sendMessageHandler(String text){
 
 /**
  * Processing the output of a value from the API
- * @param embed Embed constructor
+ * @param args arguments
  * @return returns a constant value from the API
  */
 @SubscriSinglebeEvent(eventName = "getConstantInfo")
