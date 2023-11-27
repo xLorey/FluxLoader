@@ -12,6 +12,8 @@ Here are all the custom events that are implemented in FluxLoader. Content:
 - [onServerShutdown](#onServerShutdown)
 - [onPlayerConnect](#onPlayerConnect)
 - [onPlayerDisconnect](#onPlayerDisconnect)
+- [onPlayerKick](#onplayerkick)
+- [onPlayerBan](#onplayerban)
 
 # Client Events
 
@@ -69,6 +71,24 @@ Called when a player leaves the server
 ```java
 @SubscribeEvent(eventName="onPlayerDisconnect")
 public void onPlayerDisconnectHandler(IsoPlayer playerInstance, UdpConnection playerConnection){
+    
+}
+```
+
+## onPlayerKick
+Called when kicked from the server
+```java
+@SubscribeEvent(eventName="onPlayerKick")
+public void onPlayerKickHandler(IsoPlayer player, String reason){
+    
+}
+```
+
+## onPlayerBan
+Called when banned from the server
+```java
+@SubscribeEvent(eventName="onPlayerBan")
+public void onPlayerBanHandler(IsoPlayer player, String reason){
     
 }
 ```

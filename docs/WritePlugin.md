@@ -236,9 +236,9 @@ public void sendMessageHandler(String text){
 }
 
 /**
- * Processing the output of a value from the API
+ * Processing the output of a value from the API.md
  * @param args arguments
- * @return returns a constant value from the API
+ * @return returns a constant value from the API.md
  */
 @SubscriSinglebeEvent(eventName = "getConstantInfo")
 public String getConstantInfoHandler(String arg){
