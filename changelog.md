@@ -2,6 +2,7 @@
 - Changed `onChatServerMessage` event arguments
 - Removed `onChatWhisperMessage` event
 - Fixed calling the `onServerShutdown` event
+- Implemented loading plugins in the order of the queue
 - Added unique events (the only ones) with the return of the object: annotation `SubscribeSingleEvent` and method `invokeSingleEventAndReturn`
 
 # FluxLoader v0.2.1
