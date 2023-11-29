@@ -7,6 +7,10 @@ Here are all the custom events that are implemented in FluxLoader. Content:
 
 [Server Events](#server-events)
 
+- [onSendConsoleCommand](#onSendConsoleCommand)
+- [onSendChatCommand](#onSendChatCommand)
+- [onZombieDeath](#onZombieDeath)
+- [onPlayerDeath](#onplayerdeath)
 - [onAddIncoming](#onaddincoming)
 - [onChatServerMessage](#onChatServerMessage)
 - [onServerInitialize](#onServerInitialize)
@@ -18,6 +22,39 @@ Here are all the custom events that are implemented in FluxLoader. Content:
 
 # Client Events
 
+## onSendConsoleCommand
+Called when a player writes a command in console
+```java
+@SubscribeEvent(eventName="onSendConsoleCommand")
+public void onSendConsoleCommandHandler(String command){
+
+}
+```
+
+## onSendChatCommand
+Called when a player writes a command in chat
+```java
+@SubscribeEvent(eventName="onSendChatCommand")
+public void onSendChatCommandHandler(UdpConnection playerConnection, String command){
+
+}
+```
+## onZombieDeath
+Called when a zombie death occurs
+```java
+@SubscribeEvent(eventName="onZombieDeath")
+public void onZombieDeathHandler(DeadZombiePacket packet){
+
+}
+```
+## onPlayerDeath
+Called when a player dies
+```java
+@SubscribeEvent(eventName="onPlayerDeath")
+public void onPlayerDeathHandler(DeadPlayerPacket packet){
+
+}
+```
 ## onAddIncoming
 Called whenever new data is received from the client
 ```java

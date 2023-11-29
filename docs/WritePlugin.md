@@ -1,5 +1,19 @@
 # Writing a plugin (mod)
 
+## Contents
+
+-   [Writing a plugin (mod)](#writing-a-plugin-mod)
+    -   [Contents](#contents)
+    -   [Introduction](#introduction)
+-   [Beginning of work](#beginning-of-work)
+    -   [Setting up Gradle](#setting-up-gradle)
+    -   [Creating plugin metadata](#creating-plugin-metadata)
+    -   [Creating the main plugin class](#creating-the-main-plugin-class)
+    -   [Subscribe to events](#subscribe-to-events)
+    -   [Organization of interaction between plugins](#organization-of-interaction-between-plugins)
+    -   [Custom chat and console command](#custom-chat-and-console-command)
+    -   [Compilation](#compilation)
+
 ## Introduction
 
 The FluxLoader plugin loading system includes the ability to load both server and client plugins.
@@ -257,6 +271,87 @@ public void onInitialize() {
     EventManager.invokeEvent("sendMessage", "Hello World!");
     String infoByExtern = EventManager.invokeSingleEventAndReturn("getConstantInfo", "VERSION"); // If nothing is found returns NULL
 }
+```
+
+## Custom chat and console command
+
+FluxLoader supports creating custom commands for chat and/or console. To create a new command, you need to create a new class and inherit from the `ICommand` interface in the `io.xlorey.FluxLoader.interfaces` package. After implementing the methods, it will look something like this:
+```java
+/**
+ * Implementing a new server command
+ */
+public class ExampleCommand implements ICommand {
+    /**
+     * A flag that indicates whether the command should be executed in the chat when entered by the player
+     * @return true - yes, false - no
+     */
+    public boolean isAllowChatExecute() {
+        return true;
+    };
+
+    /**
+     * A flag that indicates whether the command should be executed in the console when entered by the player
+     * @return true - yes, false - no
+     */
+    public boolean isAllowConsoleExecute() {
+        return true;
+    };
+    /**
+     * Getting the command name
+     * @return command name without slash
+     */
+    public String getCommandName() {
+        return "example"
+    };
+
+    /**
+     * Receiving text for output to when calling a command
+     * @return text that will be displayed in chat when calling the command
+     */
+    String getAfterInvokeText() {
+        return "Example command has been invoked!"
+    };
+
+    /**
+     * Performing a console command action
+     * @param args arguments of the received command
+     */
+    void onInvokeConsoleCommand(String[] args) {
+        <...>
+    };
+
+    /**
+     * Performing a chat command action
+     * @param playerConnection player connection
+     * @param args arguments of the received command
+     */
+    void onInvokeChatCommand(UdpConnection playerConnection, String[] args) {
+        <...>
+    };
+}
+
+```
+
+After that, it needs to be registered, for this in the main class of the plugin (entry point) in the plugin initialization method you need to add the following:
+```java
+/**
+ * Implementing a server plugin
+ */
+public class ServerPlugin extends Plugin {
+    /**
+     * Plugin entry point. Called when a plugin is loaded via FluxLoader.
+     */
+    public void onInitialize() {
+        CommandsManager.addCustomCommand(new ExampleCommand());
+    }
+}
+
+```
+
+Now, depending on what you return in `isAllowChatExecute` and `isAllowConsoleExecute`. This command can be used in chat and/or server console with the ability to pass arguments. For example:
+```bash
+# Without implementing methods, invoke will simply return in chat/console: 'Example command has been invoked!'
+/example args1 args2 ...
 ```
 
 ## Compilation

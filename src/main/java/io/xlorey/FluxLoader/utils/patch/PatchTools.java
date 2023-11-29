@@ -214,6 +214,57 @@ public class PatchTools {
     }
 
     /**
+     * Injecting a custom event after a specific local variable, passing local variables as an argument.
+     * @param filePath     The path to the class file where the injection is to be performed.
+     * @param methodName   The name of the method within the class to which the injection will be applied.
+     * @param afterVarIndex The index of the local variable after which the event invoker is to be injected.
+     * @param eventName    The name of the event to invoke.
+     * @param argVarIndices An array of indices of local variables to be passed as arguments to the event.
+     * @param isStatic     Specifies whether the target method is static.
+     * @throws Exception   If the injection process encounters any errors.
+     */
+    public static void injectEventInvokerWithLocalField(String filePath, String methodName, int afterVarIndex, String eventName, int[] argVarIndices, boolean isStatic) throws Exception {
+        PatchTools.injectIntoClass(filePath, methodName, true, method -> {
+            AbstractInsnNode targetNode = null;
+
+            for (AbstractInsnNode instruction : method.instructions.toArray()) {
+                if (instruction instanceof VarInsnNode && instruction.getOpcode() == Opcodes.ASTORE) {
+                    VarInsnNode varInsnNode = (VarInsnNode) instruction;
+                    if (varInsnNode.var == afterVarIndex) {
+                        targetNode = instruction.getNext();
+                        break;
+                    }
+                }
+            }
+
+            if (targetNode != null) {
+                InsnList eventInvoker = new InsnList();
+
+                eventInvoker.add(new LdcInsnNode(eventName));
+                eventInvoker.add(new IntInsnNode(Opcodes.BIPUSH, argVarIndices.length));
+                eventInvoker.add(new TypeInsnNode(Opcodes.ANEWARRAY, "java/lang/Object"));
+
+                for (int i = 0; i < argVarIndices.length; i++) {
+                    eventInvoker.add(new InsnNode(Opcodes.DUP));
+                    eventInvoker.add(new IntInsnNode(Opcodes.BIPUSH, i));
+                    eventInvoker.add(new VarInsnNode(Opcodes.ALOAD, argVarIndices[i]));
+                    eventInvoker.add(new InsnNode(Opcodes.AASTORE));
+                }
+
+                eventInvoker.add(new MethodInsnNode(
+                        Opcodes.INVOKESTATIC,
+                        "io/xlorey/FluxLoader/shared/EventManager",
+                        "invokeEvent",
+                        "(Ljava/lang/String;[Ljava/lang/Object;)V",
+                        false
+                ));
+
+                method.instructions.insert(targetNode, eventInvoker);
+            }
+        });
+    }
+
+    /**
      * Wrapping primitive types into objects
      * @param instructions the injector instructions
      * @param type argument type

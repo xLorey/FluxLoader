@@ -134,16 +134,26 @@ loadScripts(document, 'script');</script>
 <div class="block">Inserts a custom event call at the end of the target method, passing its arguments.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#injectIntoClass(java.lang.String,java.lang.String,boolean,java.util.function.Consumer)" class="member-name-link">injectIntoClass</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;className,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#injectEventInvokerWithLocalField(java.lang.String,java.lang.String,int,java.lang.String,int%5B%5D,boolean)" class="member-name-link">injectEventInvokerWithLocalField</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filePath,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;methodName,
+ int&nbsp;afterVarIndex,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;eventName,
+ int[]&nbsp;argVarIndices,
+ boolean&nbsp;isStatic)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Injecting a custom event after a specific local variable, passing local variables as an argument.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#injectIntoClass(java.lang.String,java.lang.String,boolean,java.util.function.Consumer)" class="member-name-link">injectIntoClass</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;className,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;methodName,
  boolean&nbsp;isStatic,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html" title="class or interface in java.util.function" class="external-link">Consumer</a>&lt;org.objectweb.asm.tree.MethodNode&gt;&nbsp;modifyMethod)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Method for injecting annotations and making changes to a given class method.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#saveModifiedClasses()" class="member-name-link">saveModifiedClasses</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#saveModifiedClasses()" class="member-name-link">saveModifiedClasses</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Applying changes to .class files</div>
 </div>
 </div>
@@ -273,6 +283,30 @@ loadScripts(document, 'script');</script>
 <dd><code>isStatic</code> - Whether the method you are looking for is static or not</dd>
 <dt>Returns:</dt>
 <dd>InsnList List of ASM statements that, when inserted into a class method</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="injectEventInvokerWithLocalField(java.lang.String,java.lang.String,int,java.lang.String,int[],boolean)">
+<h3>injectEventInvokerWithLocalField</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">injectEventInvokerWithLocalField</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filePath,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;methodName,
+ int&nbsp;afterVarIndex,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;eventName,
+ int[]&nbsp;argVarIndices,
+ boolean&nbsp;isStatic)</span>
+                                             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
+<div class="block">Injecting a custom event after a specific local variable, passing local variables as an argument.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>filePath</code> - The path to the class file where the injection is to be performed.</dd>
+<dd><code>methodName</code> - The name of the method within the class to which the injection will be applied.</dd>
+<dd><code>afterVarIndex</code> - The index of the local variable after which the event invoker is to be injected.</dd>
+<dd><code>eventName</code> - The name of the event to invoke.</dd>
+<dd><code>argVarIndices</code> - An array of indices of local variables to be passed as arguments to the event.</dd>
+<dd><code>isStatic</code> - Specifies whether the target method is static.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code> - If the injection process encounters any errors.</dd>
 </dl>
 </section>
 </li>

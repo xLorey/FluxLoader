@@ -2,6 +2,7 @@ io.xlorey.FluxLoader
 io.xlorey.FluxLoader.annotations
 io.xlorey.FluxLoader.client.core
 io.xlorey.FluxLoader.client.states
+io.xlorey.FluxLoader.interfaces
 io.xlorey.FluxLoader.plugin
 io.xlorey.FluxLoader.server.api
 io.xlorey.FluxLoader.server.core

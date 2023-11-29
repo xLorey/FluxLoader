@@ -5,6 +5,7 @@ import io.xlorey.FluxLoader.plugin.PluginInfo;
 import io.xlorey.FluxLoader.utils.Constants;
 import io.xlorey.FluxLoader.utils.Logger;
 import io.xlorey.FluxLoader.utils.VersionChecker;
+import lombok.experimental.UtilityClass;
 import zombie.core.Core;
 
 import java.io.*;
@@ -15,6 +16,7 @@ import java.util.*;
 /**
  * Plugin (mod) management system
  */
+@UtilityClass
 public class PluginManager {
     /**
      * All loaded information about plugins

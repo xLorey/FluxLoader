@@ -1,5 +1,7 @@
 package io.xlorey.FluxLoader.plugin;
 
+import io.xlorey.FluxLoader.interfaces.IPlugin;
+
 /**
  * Base class of all plugins
  */

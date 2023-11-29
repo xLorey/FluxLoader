@@ -3,6 +3,7 @@ package io.xlorey.FluxLoader.shared;
 import io.xlorey.FluxLoader.annotations.SubscribeEvent;
 import io.xlorey.FluxLoader.annotations.SubscribeSingleEvent;
 import io.xlorey.FluxLoader.utils.Logger;
+import lombok.experimental.UtilityClass;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.HashSet;
 /**
  * Event calling and subscription system
  */
+@UtilityClass
 public class EventManager {
     /**
      * Event Listeners

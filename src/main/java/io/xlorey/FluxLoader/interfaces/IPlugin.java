@@ -1,4 +1,4 @@
-package io.xlorey.FluxLoader.plugin;
+package io.xlorey.FluxLoader.interfaces;
 
 /**
  * Base class of all loader plugins

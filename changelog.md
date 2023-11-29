@@ -1,6 +1,12 @@
 # FluxLoader v0.4.0
 - Fixed processing of primitive arguments during injection
+- Added a tool for injecting event calls using local fields
 - Added `onAddIncoming` event
+- Added `onPlayerDeath` event
+- Added `onZombieDeath` event
+- Added `onSendChatCommand` event
+- Added `onSendConsoleCommand` event
+- Added the ability to implement custom chat commands via `ICommand`
 
 # FluxLoader v0.3.0
 - Changed `onChatServerMessage` event arguments
