@@ -1,11 +1,8 @@
 package io.xlorey.FluxLoader.utils.patch;
 
-import io.xlorey.FluxLoader.utils.Logger;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
-import zombie.network.packets.DeadPlayerPacket;
-
 
 /**
  * Embedding in the game server logic
@@ -160,6 +157,14 @@ public class PatchGameServer extends PatchFile{
                 toInject.add(new VarInsnNode(Opcodes.ASTORE, 4));
 
                 method.instructions.insertBefore(targetNode, toInject);
+            }
+        });
+        PatchTools.injectIntoClass(filePath, "receivePlayerConnect", true, method -> {
+            Type[] argumentTypes = Type.getArgumentTypes(method.desc);
+
+            if (argumentTypes.length >= 3 && argumentTypes[2].getDescriptor().equals("Ljava/lang/String;")) {
+                InsnList eventInvoker = PatchTools.createEventInvokerInsnList("onPlayerConnect", argumentTypes, true);
+                method.instructions.insertBefore(method.instructions.getFirst(), eventInvoker);
             }
         });
         PatchTools.injectEventInvoker(filePath, "disconnectPlayer", "onPlayerDisconnect", true);
