@@ -47,7 +47,7 @@ public class CommandsManager {
         if (commandsMap.containsKey(commandName)) {
             throw new Exception(String.format("The '%s' command is already registered in the system!", commandName));
         }
-        Logger.print(String.format("Added new custom command: '%s'", commandName), CommandsManager.class.getName());
+        Logger.print(String.format("Added new custom command: '%s'", commandName));
 
         commandsMap.put(commandName, command);
     }
