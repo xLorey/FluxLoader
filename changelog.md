@@ -1,4 +1,19 @@
-# FluxLoader v0.4.1
+# FluxLoader v0.5.0
+- public static IsoPlayer getPlayerByRealUserName(String realUserName) {
+  for (int connectionIndex = 0; connectionIndex < udpEngine.connections.size(); ++connectionIndex) {
+  UdpConnection connection = (UdpConnection) udpEngine.connections.get(connectionIndex);
+
+        for (int playerIndex = 0; playerIndex < 4; ++playerIndex) {
+            IsoPlayer player = connection.players[playerIndex];
+            if (player != null && player.username.equals(realUserName)) {
+                return player;
+            }
+        }
+  }
+
+  return null;
+  }
+
 - Added new annotations (CommandName, CommandAccessLevel, CommandChatReturn, CommandExecutionScope) have been created to indicate various aspects of commands.
 - Added AccessLevel and CommandScope enumerations to represent access levels and command scopes, respectively.
 - The logic for creating commands has been fixed, now through annotations (closer to the game logic of commands)

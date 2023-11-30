@@ -84,7 +84,7 @@ public class CommandsManager {
      * @param scopeType The scope (CHAT, CONSOLE, or BOTH) in which to check the command's allowance.
      * @return true if the command is allowed in the specified scope, false otherwise.
      */
-    private boolean isCommandAllowed(String chatCommand, CommandScope scopeType) {
+    private static boolean isCommandAllowed(String chatCommand, CommandScope scopeType) {
         ICommand command = commandsMap.get(chatCommand);
         if (command == null) {
             return false;

@@ -17,6 +17,14 @@ import java.sql.SQLException;
 @UtilityClass
 public class PlayerUtils {
     /**
+     * Returns a player instance on its connection
+     * @param udpConnection player connection
+     * @return player instance or null if player not found
+     */
+    public static IsoPlayer getPlayerByUdpConnection(UdpConnection udpConnection) {
+        return getPlayerByUsername(udpConnection.username);
+    }
+    /**
      * Returns the player's IP address.
      * @param player The player instance for which you want to obtain the IP address.
      * @return The player's IP address or null if the address is not found.
@@ -44,11 +52,40 @@ public class PlayerUtils {
      * @return IsoPlayer instance, or null if not found
      */
     public static IsoPlayer getPlayerByUsername(String username){
-        for (IsoPlayer player : GameServer.getPlayers()){
-            if(player.getDisplayName().equals(username)){
-                return player;
+        for (int connectionIndex = 0; connectionIndex < GameServer.udpEngine.connections.size(); ++connectionIndex) {
+            UdpConnection connection = GameServer.udpEngine.connections.get(connectionIndex);
+
+            for (int playerIndex = 0; playerIndex < 4; ++playerIndex) {
+                IsoPlayer player = connection.players[playerIndex];
+                if (player != null && (player.getDisplayName().equals(username) || player.getUsername().equals(username))) {
+                    return player;
+                }
             }
         }
+        return null;
+    }
+
+    /**
+     * Searches for a player by a full or partial username.
+     * @param userName The full or partial name of the player to search for.
+     * @return The first IsoPlayer object that matches the given username, or null if no match is found.
+     */
+    public static IsoPlayer getPlayerByPartialUsername(String userName) {
+        for (int connectionIndex = 0; connectionIndex < GameServer.udpEngine.connections.size(); ++connectionIndex) {
+            UdpConnection connection = GameServer.udpEngine.connections.get(connectionIndex);
+
+            for (int playerIndex = 0; playerIndex < 4; ++playerIndex) {
+                IsoPlayer player = connection.players[playerIndex];
+                if (player != null) {
+                    String displayNameLower = player.getDisplayName().toLowerCase();
+                    String userNameLower = userName.toLowerCase();
+                    if (displayNameLower.equals(userNameLower) || displayNameLower.startsWith(userNameLower)) {
+                        return player;
+                    }
+                }
+            }
+        }
+
         return null;
     }
 

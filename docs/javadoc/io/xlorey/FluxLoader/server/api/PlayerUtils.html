@@ -112,6 +112,16 @@ loadScripts(document, 'script');</script>
 <div class="block">Blocking a player by IP and SteamID</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static zombie.characters.IsoPlayer</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getPlayerByPartialUsername(java.lang.String)" class="member-name-link">getPlayerByPartialUsername</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;userName)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Searches for a player by a full or partial username.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static zombie.characters.IsoPlayer</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getPlayerByUdpConnection(zombie.core.raknet.UdpConnection)" class="member-name-link">getPlayerByUdpConnection</a><wbr>(zombie.core.raknet.UdpConnection&nbsp;udpConnection)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Returns a player instance on its connection</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static zombie.characters.IsoPlayer</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getPlayerByUsername(java.lang.String)" class="member-name-link">getPlayerByUsername</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;username)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Getting a player instance by nickname</div>
@@ -164,6 +174,19 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
+<section class="detail" id="getPlayerByUdpConnection(zombie.core.raknet.UdpConnection)">
+<h3>getPlayerByUdpConnection</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">zombie.characters.IsoPlayer</span>&nbsp;<span class="element-name">getPlayerByUdpConnection</span><wbr><span class="parameters">(zombie.core.raknet.UdpConnection&nbsp;udpConnection)</span></div>
+<div class="block">Returns a player instance on its connection</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>udpConnection</code> - player connection</dd>
+<dt>Returns:</dt>
+<dd>player instance or null if player not found</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="getPlayerIP(zombie.characters.IsoPlayer)">
 <h3>getPlayerIP</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getPlayerIP</span><wbr><span class="parameters">(zombie.characters.IsoPlayer&nbsp;player)</span></div>
@@ -199,6 +222,19 @@ loadScripts(document, 'script');</script>
 <dd><code>username</code> - player nickname</dd>
 <dt>Returns:</dt>
 <dd>IsoPlayer instance, or null if not found</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getPlayerByPartialUsername(java.lang.String)">
+<h3>getPlayerByPartialUsername</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">zombie.characters.IsoPlayer</span>&nbsp;<span class="element-name">getPlayerByPartialUsername</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;userName)</span></div>
+<div class="block">Searches for a player by a full or partial username.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>userName</code> - The full or partial name of the player to search for.</dd>
+<dt>Returns:</dt>
+<dd>The first IsoPlayer object that matches the given username, or null if no match is found.</dd>
 </dl>
 </section>
 </li>
