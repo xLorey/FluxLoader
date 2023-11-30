@@ -106,12 +106,13 @@ public class PatchGameServer extends PatchFile{
                     false
             ));
 
+            toInject.add(new InsnNode(Opcodes.ACONST_NULL));
             toInject.add(new VarInsnNode(Opcodes.ALOAD, 0));
             toInject.add(new MethodInsnNode(
                     Opcodes.INVOKESTATIC,
                     "io/xlorey/FluxLoader/shared/CommandsManager",
-                    "handleCustomConsoleCommand",
-                    "(Ljava/lang/String;)Ljava/lang/String;",
+                    "handleCustomCommand",
+                    "(Lzombie/core/raknet/UdpConnection;Ljava/lang/String;)Ljava/lang/String;",
                     false
             ));
 
@@ -150,7 +151,7 @@ public class PatchGameServer extends PatchFile{
                 toInject.add(new MethodInsnNode(
                         Opcodes.INVOKESTATIC,
                         "io/xlorey/FluxLoader/shared/CommandsManager",
-                        "handleCustomChatCommand",
+                        "handleCustomCommand",
                         "(Lzombie/core/raknet/UdpConnection;Ljava/lang/String;)Ljava/lang/String;",
                         false
                 ));

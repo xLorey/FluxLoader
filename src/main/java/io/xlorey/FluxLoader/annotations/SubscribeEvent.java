@@ -1,12 +1,11 @@
 package io.xlorey.FluxLoader.annotations;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-
+import java.lang.annotation.*;
 /**
  * Subscription to in-game and user events
  */
 @Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.METHOD})
 public @interface SubscribeEvent {
     /**
      * Event name

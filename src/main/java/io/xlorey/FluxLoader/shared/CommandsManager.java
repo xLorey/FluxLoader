@@ -1,8 +1,16 @@
 package io.xlorey.FluxLoader.shared;
 
+import io.xlorey.FluxLoader.annotations.CommandChatReturn;
+import io.xlorey.FluxLoader.annotations.CommandExecutionScope;
+import io.xlorey.FluxLoader.annotations.CommandName;
+import io.xlorey.FluxLoader.annotations.CommandAccessLevel;
+import io.xlorey.FluxLoader.enums.AccessLevel;
+import io.xlorey.FluxLoader.enums.CommandScope;
 import io.xlorey.FluxLoader.interfaces.ICommand;
+import io.xlorey.FluxLoader.server.api.PlayerUtils;
 import io.xlorey.FluxLoader.utils.Logger;
 import lombok.experimental.UtilityClass;
+import zombie.characters.IsoPlayer;
 import zombie.core.raknet.UdpConnection;
 
 import java.util.Arrays;
@@ -25,10 +33,12 @@ public class CommandsManager {
      * @throws NullPointerException in case the command name is empty
      */
     private static String validateCommandName(ICommand command) throws NullPointerException {
-        String commandName = command.getCommandName();
-        if (commandName.isEmpty()) {
+        CommandName commandNameAnnotation = command.getClass().getAnnotation(CommandName.class);
+        if (commandNameAnnotation == null || commandNameAnnotation.command().isEmpty()) {
             throw new NullPointerException("There is no name specified for the custom command: " + command.getClass());
         }
+
+        String commandName = commandNameAnnotation.command();
 
         if (commandName.startsWith("!") || commandName.startsWith("/")) {
             commandName = commandName.substring(1);
@@ -39,9 +49,25 @@ public class CommandsManager {
     /**
      * Adding a command to the repository
      * @param command chat command instance
-     * @throws Exception in case an attempt is made to re-register a team (duplicate names)
+     * @throws Exception in case an attempt is made to re-register a command (duplicate names) or missing annotations
      */
-    public static void addCustomCommand(ICommand command) throws Exception {
+    public static void addCommand(ICommand command) throws Exception {
+        if (!command.getClass().isAnnotationPresent(CommandName.class)) {
+            throw new Exception("The command must be annotated with @CommandName.");
+        }
+
+        if (!command.getClass().isAnnotationPresent(CommandAccessLevel.class)) {
+            throw new Exception("The command must be annotated with @UserAccessLevel.");
+        }
+
+        if (!command.getClass().isAnnotationPresent(CommandChatReturn.class)) {
+            throw new Exception("The command must be annotated with @CommandChatReturn.");
+        }
+
+        if (!command.getClass().isAnnotationPresent(CommandExecutionScope.class)) {
+            throw new Exception("The command must be annotated with @CommandExecutionScope.");
+        }
+
         String commandName = validateCommandName(command).toLowerCase();
 
         if (commandsMap.containsKey(commandName)) {
@@ -53,48 +79,74 @@ public class CommandsManager {
     }
 
     /**
-     * Processing custom console commands
-     * @param chatCommand command entered by the player
-     * @return output text to chat when calling a command or null if there is no such command
+     * Checks if the execution of a specified command is allowed in a given scope.
+     * @param chatCommand The name of the command to be checked.
+     * @param scopeType The scope (CHAT, CONSOLE, or BOTH) in which to check the command's allowance.
+     * @return true if the command is allowed in the specified scope, false otherwise.
      */
-    public static String handleCustomConsoleCommand(String chatCommand){
-        String[] commandArgs = parseAndValidateCommand(chatCommand);
-        if(commandArgs == null) {
-            return null;
+    private boolean isCommandAllowed(String chatCommand, CommandScope scopeType) {
+        ICommand command = commandsMap.get(chatCommand);
+        if (command == null) {
+            return false;
         }
 
-        ICommand command = commandsMap.get(commandArgs[0]);
-        if(command == null || !command.isAllowConsoleExecute()) {
-            return null;
+        CommandExecutionScope executionScope = command.getClass().getAnnotation(CommandExecutionScope.class);
+        if (executionScope == null) {
+            return false;
         }
 
-        String[] commandArgsToInvoke = Arrays.copyOfRange(commandArgs, 1, commandArgs.length);
-
-        command.onInvokeConsoleCommand(commandArgsToInvoke);
-        return command.getAfterInvokeText();
+        CommandScope scope = executionScope.value();
+        return scope == scopeType || scope == CommandScope.BOTH;
     }
 
     /**
-     * Processing custom chat commands
-     * @param playerConnection player connection
-     * @param chatCommand command entered by the player
-     * @return output text to chat when calling a command or null if there is no such command
+     * Processing custom chat and console commands.
+     * @param playerConnection player connection (null if command is executed from console).
+     * @param chatCommand command entered by the player or console.
+     * @return output text to chat when calling a command or null if there is no such command.
      */
-    public static String handleCustomChatCommand(UdpConnection playerConnection, String chatCommand){
+    public static String handleCustomCommand(UdpConnection playerConnection, String chatCommand) {
         String[] commandArgs = parseAndValidateCommand(chatCommand);
-        if(commandArgs == null) {
+        if (commandArgs == null) {
             return null;
         }
 
-        ICommand command = commandsMap.get(commandArgs[0]);
-        if(command == null || !command.isAllowChatExecute()) {
+        ICommand command = commandsMap.get(commandArgs[0].toLowerCase());
+        if (command == null) {
             return null;
+        }
+
+        boolean isConsole = playerConnection == null;
+
+        if (!isCommandAllowed(commandArgs[0], isConsole ? CommandScope.CONSOLE : CommandScope.CHAT)) {
+            return "This command is not allowed here.";
+        }
+
+        if (!isConsole) {
+            IsoPlayer player = PlayerUtils.getPlayerByUsername(playerConnection.username);
+            if (player == null) {
+                return "Could not check your access level! Please try later...";
+            }
+
+            CommandAccessLevel accessLevelAnnotation = command.getClass().getAnnotation(CommandAccessLevel.class);
+            if (accessLevelAnnotation != null) {
+                AccessLevel requiredAccessLevel = accessLevelAnnotation.accessLevel();
+                AccessLevel userAccessLevel = AccessLevel.fromString(player.accessLevel.toLowerCase());
+                if (requiredAccessLevel.getPriority() > userAccessLevel.getPriority()) {
+                    return "You do not have permission to execute this command.";
+                }
+            }
         }
 
         String[] commandArgsToInvoke = Arrays.copyOfRange(commandArgs, 1, commandArgs.length);
+        command.onInvoke(playerConnection, commandArgsToInvoke);
 
-        command.onInvokeChatCommand(playerConnection, commandArgsToInvoke);
-        return command.getAfterInvokeText();
+        CommandChatReturn chatReturnAnnotation = command.getClass().getAnnotation(CommandChatReturn.class);
+        if (chatReturnAnnotation != null && chatReturnAnnotation.text() != null) {
+            return chatReturnAnnotation.text();
+        }
+
+        return "";
     }
 
     /**

@@ -3,42 +3,17 @@ package io.xlorey.FluxLoader.interfaces;
 import zombie.core.raknet.UdpConnection;
 
 /**
- * Interface for implementing a new command
+ * Interface for implementing a new command.
+ * Implementing classes must use the @CommandName annotation to specify the command name.
+ * They may also use the @UserAccessLevel annotation to specify the required access level for the command.
+ * The @CommandChatReturn annotation can be used to provide text that will be displayed in chat when the command is invoked.
+ * The @CommandExecutionScope annotation should be used to define where the command is available (e.g., in chat, in console, or both).
  */
 public interface ICommand {
     /**
-     * A flag that indicates whether the command should be executed in the chat when entered by the player
-     * @return true - yes, false - no
-     */
-    boolean isAllowChatExecute();
-
-    /**
-     * A flag that indicates whether the command should be executed in the console when entered by the player
-     * @return true - yes, false - no
-     */
-    boolean isAllowConsoleExecute();
-    /**
-     * Getting the command name
-     * @return command name without slash
-     */
-    String getCommandName();
-
-    /**
-     * Receiving text for output to when calling a command
-     * @return text that will be displayed in chat when calling the command
-     */
-    String getAfterInvokeText();
-
-    /**
-     * Performing a console command action
-     * @param args arguments of the received command
-     */
-    void onInvokeConsoleCommand(String[] args);
-
-    /**
      * Performing a chat command action
-     * @param playerConnection player connection
+     * @param playerConnection player connection, if called from the console, the connection will return as null
      * @param args arguments of the received command
      */
-    void onInvokeChatCommand(UdpConnection playerConnection, String[] args);
+    void onInvoke(UdpConnection playerConnection, String[] args);
 }

@@ -1,3 +1,7 @@
+# FluxLoader v0.4.1
+- Added new annotations (CommandName, CommandAccessLevel, CommandChatReturn, CommandExecutionScope) have been created to indicate various aspects of commands.
+- Added AccessLevel and CommandScope enumerations to represent access levels and command scopes, respectively.
+- The logic for creating commands has been fixed, now through annotations (closer to the game logic of commands)
 # FluxLoader v0.4.0
 - Fixed processing of primitive arguments during injection
 - Added a tool for injecting event calls using local fields
