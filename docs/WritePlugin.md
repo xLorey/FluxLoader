@@ -278,54 +278,32 @@ public void onInitialize() {
 FluxLoader supports creating custom commands for chat and/or console. To create a new command, you need to create a new class and inherit from the `ICommand` interface in the `io.xlorey.FluxLoader.interfaces` package. After implementing the methods, it will look something like this:
 ```java
 /**
+ * An annotation that includes the name of the command (without slashes or other prefixes)
+ */
+@CommandName(command = "example")
+/**
+ * An annotation to specify the scope where a command can be executed.
+ */
+@CommandExecutionScope(scope = CommandScope.BOTH)
+/**
+ * An annotation that provides the text to be output to chat when the command is used
+ */
+@CommandChatReturn(text = "Example command has been invoked!")
+/**
+ * An annotation that indicates the required access level for a user.
+ * Users with a lower access level than specified will not have access to the functionality.
+ */
+@CommandAccessLevel(accessLevel = AccessLevel.ADMIN)
+/**
  * Implementing a new server command
  */
 public class ExampleCommand implements ICommand {
     /**
-     * A flag that indicates whether the command should be executed in the chat when entered by the player
-     * @return true - yes, false - no
-     */
-    public boolean isAllowChatExecute() {
-        return true;
-    };
-
-    /**
-     * A flag that indicates whether the command should be executed in the console when entered by the player
-     * @return true - yes, false - no
-     */
-    public boolean isAllowConsoleExecute() {
-        return true;
-    };
-    /**
-     * Getting the command name
-     * @return command name without slash
-     */
-    public String getCommandName() {
-        return "example"
-    };
-
-    /**
-     * Receiving text for output to when calling a command
-     * @return text that will be displayed in chat when calling the command
-     */
-    String getAfterInvokeText() {
-        return "Example command has been invoked!"
-    };
-
-    /**
-     * Performing a console command action
-     * @param args arguments of the received command
-     */
-    void onInvokeConsoleCommand(String[] args) {
-        <...>
-    };
-
-    /**
      * Performing a chat command action
-     * @param playerConnection player connection
+     * @param playerConnection player connection, if called from the console, the connection will return as null
      * @param args arguments of the received command
      */
-    void onInvokeChatCommand(UdpConnection playerConnection, String[] args) {
+    void onInvoke(UdpConnection playerConnection, String[] args) {
         <...>
     };
 }
@@ -342,13 +320,13 @@ public class ServerPlugin extends Plugin {
      * Plugin entry point. Called when a plugin is loaded via FluxLoader.
      */
     public void onInitialize() {
-        CommandsManager.addCustomCommand(new ExampleCommand());
+        CommandsManager.addCommand(new ExampleCommand());
     }
 }
 
 ```
 
-Now, depending on what you return in `isAllowChatExecute` and `isAllowConsoleExecute`. This command can be used in chat and/or server console with the ability to pass arguments. For example:
+Now, depending on what scope you have set, this command can be used in chat and/or the server console with the ability to pass arguments. For example:
 ```bash
 # Without implementing methods, invoke will simply return in chat/console: 'Example command has been invoked!'
 /example args1 args2 ...

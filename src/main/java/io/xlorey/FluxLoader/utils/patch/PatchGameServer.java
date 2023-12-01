@@ -81,8 +81,6 @@ public class PatchGameServer extends PatchFile{
             }
 
         });
-        PatchTools.injectEventInvokerWithLocalField(filePath, "receivePlayerDeath", 3, "onPlayerDeath", new int[] {3}, true);
-        PatchTools.injectEventInvokerWithLocalField(filePath, "receiveZombieDeath", 3, "onZombieDeath", new int[] {3}, true);
         PatchTools.injectEventInvokerWithLocalField(filePath, "receiveReceiveCommand", 3, "onSendChatCommand", new int[] {1, 3}, true);
         PatchTools.injectIntoClass(filePath, "handleServerCommand", true, method -> {
             InsnList toInject = new InsnList();

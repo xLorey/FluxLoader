@@ -156,8 +156,11 @@ public class EventManager {
         Class<?>[] parameterTypes = method.getParameterTypes();
         for (int i = 0; i < parameterTypes.length; i++) {
             if (!parameterTypes[i].isInstance(args[i])) {
-                Logger.print(String.format("Mismatch of passed and received argument types when calling event '%s' in method '%s' (class '%s')",
-                        eventName, method.getName(), method.getDeclaringClass().getSimpleName()));
+                String expectedTypeName = parameterTypes[i].getName();
+                String receivedTypeName = args[i] == null ? "null" : args[i].getClass().getName();
+
+                Logger.print(String.format("Mismatch of passed and received argument types when calling event '%s' in method '%s' (class '%s'). Expected '%s', but got '%s'",
+                        eventName, method.getName(), method.getDeclaringClass().getSimpleName(), expectedTypeName, receivedTypeName));
                 return false;
             }
         }

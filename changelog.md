@@ -1,22 +1,11 @@
-# FluxLoader v0.5.0
-- public static IsoPlayer getPlayerByRealUserName(String realUserName) {
-  for (int connectionIndex = 0; connectionIndex < udpEngine.connections.size(); ++connectionIndex) {
-  UdpConnection connection = (UdpConnection) udpEngine.connections.get(connectionIndex);
-
-        for (int playerIndex = 0; playerIndex < 4; ++playerIndex) {
-            IsoPlayer player = connection.players[playerIndex];
-            if (player != null && player.username.equals(realUserName)) {
-                return player;
-            }
-        }
-  }
-
-  return null;
-  }
-
+# FluxLoader v0.4.1
 - Added new annotations (CommandName, CommandAccessLevel, CommandChatReturn, CommandExecutionScope) have been created to indicate various aspects of commands.
 - Added AccessLevel and CommandScope enumerations to represent access levels and command scopes, respectively.
 - The logic for creating commands has been fixed, now through annotations (closer to the game logic of commands)
+- Fixed logging of incorrect arguments when calling an event
+- Removed duplicate events `onPlayerDeath` and `onZombieDeath`
+- Updated Wiki
+
 # FluxLoader v0.4.0
 - Fixed processing of primitive arguments during injection
 - Added a tool for injecting event calls using local fields

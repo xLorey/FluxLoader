@@ -95,9 +95,12 @@ public class CommandsManager {
             return false;
         }
 
-        CommandScope scope = executionScope.value();
+        // Получаем значение атрибута scope аннотации CommandExecutionScope
+        CommandScope scope = executionScope.scope();
+
         return scope == scopeType || scope == CommandScope.BOTH;
     }
+
 
     /**
      * Processing custom chat and console commands.

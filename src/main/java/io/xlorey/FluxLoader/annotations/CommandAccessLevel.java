@@ -12,7 +12,6 @@ import java.lang.annotation.*;
 public @interface CommandAccessLevel {
     /**
      * Specifies the required access level.
-     *
      * @return The access level required for the functionality.
      *         The default is AccessLevel.NONE, meaning no specific access level is required.
      */
