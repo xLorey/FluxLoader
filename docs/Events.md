@@ -13,6 +13,7 @@ Here are all the custom events that are implemented in FluxLoader. Content:
 - [onChatServerMessage](#onChatServerMessage)
 - [onServerInitialize](#onServerInitialize)
 - [onServerShutdown](#onServerShutdown)
+- [onPlayerFullyConnected](#onPlayerFullyConnected)
 - [onPlayerConnect](#onPlayerConnect)
 - [onPlayerDisconnect](#onPlayerDisconnect)
 - [onPlayerKick](#onplayerkick)
@@ -81,6 +82,17 @@ Called when the server shuts down
 ```java
 @SubscribeEvent(eventName="onServerShutdown")
 public void onServerShutdownHandler(){
+    
+}
+```
+
+## onPlayerFullyConnected
+Called when the player is fully connected to the server
+```java
+@SubscribeEvent(eventName="onPlayerFullyConnected")
+public void onPlayerFullyConnectedHandler(ByteBuffer playerData,
+        UdpConnection playerConnection,
+        String username){
     
 }
 ```

@@ -45,10 +45,9 @@ PluginProject
         └── java
             └── ...
         └── resources
-            └── resources
-                └── plugin.json
-                └── icon.png
-                └── ...
+            └── plugin.json
+            └── icon.png
+            └── ...
     └── ...
 └── build.gradle
 └── settings.gradle

@@ -142,6 +142,8 @@ public class CommandsManager {
         }
 
         String[] commandArgsToInvoke = Arrays.copyOfRange(commandArgs, 1, commandArgs.length);
+        String playerName = playerConnection == null ? "Console" : playerConnection.username;
+        Logger.print(String.format("Player '%s' called command '%s' with arguments: '%s'", playerName, commandArgs[0], Arrays.toString(commandArgsToInvoke)));
         command.onInvoke(playerConnection, commandArgsToInvoke);
 
         CommandChatReturn chatReturnAnnotation = command.getClass().getAnnotation(CommandChatReturn.class);

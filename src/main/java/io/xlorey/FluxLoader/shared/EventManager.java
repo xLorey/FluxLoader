@@ -125,9 +125,7 @@ public class EventManager {
                             method.setAccessible(true);
                             method.invoke(listener, args);
                         } catch (Exception e) {
-                            Logger.print(String.format("Error raising event returning object '%s': %s",
-                                    eventName,
-                                    e.getMessage()));
+                            Logger.print(String.format("Error raising event returning object '%s': %s", eventName, e));
                         }
                     }
                 }

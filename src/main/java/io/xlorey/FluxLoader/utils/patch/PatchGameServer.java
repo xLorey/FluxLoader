@@ -1,5 +1,6 @@
 package io.xlorey.FluxLoader.utils.patch;
 
+import io.xlorey.FluxLoader.utils.Logger;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
@@ -162,8 +163,23 @@ public class PatchGameServer extends PatchFile{
             Type[] argumentTypes = Type.getArgumentTypes(method.desc);
 
             if (argumentTypes.length >= 3 && argumentTypes[2].getDescriptor().equals("Ljava/lang/String;")) {
-                InsnList eventInvoker = PatchTools.createEventInvokerInsnList("onPlayerConnect", argumentTypes, true);
-                method.instructions.insertBefore(method.instructions.getFirst(), eventInvoker);
+                InsnList onPlayerConnectInvoker = PatchTools.createEventInvokerInsnList("onPlayerConnect", argumentTypes, true);
+                method.instructions.insertBefore(method.instructions.getFirst(), onPlayerConnectInvoker);
+
+                AbstractInsnNode currentNode = method.instructions.getFirst();
+                while (currentNode != null) {
+                    if (currentNode instanceof MethodInsnNode) {
+                        MethodInsnNode methodInsnNode = (MethodInsnNode) currentNode;
+                        // Проверяем, является ли это вызовом метода addPlayer на объекте ServerLOS.instance
+                        if (methodInsnNode.getOpcode() == Opcodes.INVOKEVIRTUAL && methodInsnNode.owner.equals("zombie/network/ServerLOS") && methodInsnNode.name.equals("addPlayer")) {
+                            InsnList onPlayerFullyConnectedInvoker = PatchTools.createEventInvokerInsnList("onPlayerFullyConnected", argumentTypes, true);
+                            // Вставляем после вызова метода addPlayer
+                            method.instructions.insert(currentNode.getNext(), onPlayerFullyConnectedInvoker);
+                            break;
+                        }
+                    }
+                    currentNode = currentNode.getNext();
+                }
             }
         });
         PatchTools.injectEventInvoker(filePath, "disconnectPlayer", "onPlayerDisconnect", true);
