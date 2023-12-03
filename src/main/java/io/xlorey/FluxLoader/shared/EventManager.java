@@ -91,9 +91,8 @@ public class EventManager {
                             method.setAccessible(true);
                             return method.invoke(listener, args);
                         } catch (Exception e) {
-                            Logger.print(String.format("Error raising single event returning object '%s': %s",
-                                    eventName,
-                                    e.getMessage()));
+                            String className = listener.getClass().getName();
+                            Logger.print(String.format("Error invoking single event '%s' in class '%s': %s", eventName, className, e));
                         }
                     }
                 }
@@ -125,7 +124,8 @@ public class EventManager {
                             method.setAccessible(true);
                             method.invoke(listener, args);
                         } catch (Exception e) {
-                            Logger.print(String.format("Error raising event returning object '%s': %s", eventName, e));
+                            String className = listener.getClass().getName();
+                            Logger.print(String.format("Error invoking event '%s' in class '%s': %s", eventName, className, e));
                         }
                     }
                 }

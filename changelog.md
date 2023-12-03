@@ -2,6 +2,7 @@
 - Added a tool for sending a message from the server to a specific user
 - Added `onPlayerFullyConnected` event
 - Added logging of custom command calls
+- Fixed error output when calling events
 # FluxLoader v0.4.1
 - Added new annotations (CommandName, CommandAccessLevel, CommandChatReturn, CommandExecutionScope) have been created to indicate various aspects of commands.
 - Added AccessLevel and CommandScope enumerations to represent access levels and command scopes, respectively.
