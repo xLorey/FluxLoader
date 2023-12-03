@@ -3,6 +3,7 @@
 - Added `onPlayerFullyConnected` event
 - Added logging of custom command calls
 - Added packet blocking mechanism to `IncomingPacket.blockPacket()`
+- Added date and time output via `Logger.print()`
 - Fixed error output when calling events
 # FluxLoader v0.4.1
 - Added new annotations (CommandName, CommandAccessLevel, CommandChatReturn, CommandExecutionScope) have been created to indicate various aspects of commands.

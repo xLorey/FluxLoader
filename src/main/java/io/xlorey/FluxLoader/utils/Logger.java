@@ -2,6 +2,9 @@ package io.xlorey.FluxLoader.utils;
 
 import lombok.experimental.UtilityClass;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 /**
  * A set of tools to simplify logging
  */
@@ -13,7 +16,9 @@ public class Logger {
      * @param text message
      */
     public static void print(String text) {
-        System.out.println(String.format("[%s]: %s", Constants.FLUX_NAME, text));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        String time = LocalDateTime.now().format(formatter);
+        System.out.println(String.format("<%s> [%s]: %s", time, Constants.FLUX_NAME, text));
     }
 
     /**
