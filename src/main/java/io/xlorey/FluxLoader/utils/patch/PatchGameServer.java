@@ -170,10 +170,8 @@ public class PatchGameServer extends PatchFile{
                 while (currentNode != null) {
                     if (currentNode instanceof MethodInsnNode) {
                         MethodInsnNode methodInsnNode = (MethodInsnNode) currentNode;
-                        // Проверяем, является ли это вызовом метода addPlayer на объекте ServerLOS.instance
                         if (methodInsnNode.getOpcode() == Opcodes.INVOKEVIRTUAL && methodInsnNode.owner.equals("zombie/network/ServerLOS") && methodInsnNode.name.equals("addPlayer")) {
                             InsnList onPlayerFullyConnectedInvoker = PatchTools.createEventInvokerInsnList("onPlayerFullyConnected", argumentTypes, true);
-                            // Вставляем после вызова метода addPlayer
                             method.instructions.insert(currentNode.getNext(), onPlayerFullyConnectedInvoker);
                             break;
                         }
@@ -183,6 +181,24 @@ public class PatchGameServer extends PatchFile{
             }
         });
         PatchTools.injectEventInvoker(filePath, "disconnectPlayer", "onPlayerDisconnect", true);
+        PatchTools.injectIntoClass(filePath, "addIncoming", true, method -> {
+            InsnList toInject = new InsnList();
+
+            toInject.add(new MethodInsnNode(
+                    Opcodes.INVOKESTATIC,
+                    "io/xlorey/FluxLoader/server/core/IncomingPacket",
+                    "checkAndResetPacketBlocking",
+                    "()Z",
+                    false
+            ));
+
+            LabelNode continueLabel = new LabelNode();
+            toInject.add(new JumpInsnNode(Opcodes.IFEQ, continueLabel));
+            toInject.add(new InsnNode(Opcodes.RETURN));
+            toInject.add(continueLabel);
+
+            method.instructions.insert(toInject);
+        });
         PatchTools.injectEventInvoker(filePath, "addIncoming", "onAddIncoming", true);
     }
 }
