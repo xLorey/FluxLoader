@@ -106,14 +106,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#blockPacket()" class="member-name-link">blockPacket</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#blockPacket(java.nio.ByteBuffer)" class="member-name-link">blockPacket</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a>&nbsp;byteBuffer)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Blocks the packets.</div>
+<div class="block">Blocks a packet.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#checkAndResetPacketBlocking()" class="member-name-link">checkAndResetPacketBlocking</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#checkAndResetPacketBlocking(java.nio.ByteBuffer)" class="member-name-link">checkAndResetPacketBlocking</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a>&nbsp;byteBuffer)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Checks if the packets are blocked and resets the block.</div>
+<div class="block">Checks if a packet is blocked and resets the block for that specific packet.</div>
 </div>
 </div>
 </div>
@@ -147,20 +147,26 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="blockPacket()">
+<section class="detail" id="blockPacket(java.nio.ByteBuffer)">
 <h3>blockPacket</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">blockPacket</span>()</div>
-<div class="block">Blocks the packets.</div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">blockPacket</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a>&nbsp;byteBuffer)</span></div>
+<div class="block">Blocks a packet.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>byteBuffer</code> - package data</dd>
+</dl>
 </section>
 </li>
 <li>
-<section class="detail" id="checkAndResetPacketBlocking()">
+<section class="detail" id="checkAndResetPacketBlocking(java.nio.ByteBuffer)">
 <h3>checkAndResetPacketBlocking</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">checkAndResetPacketBlocking</span>()</div>
-<div class="block">Checks if the packets are blocked and resets the block.</div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">checkAndResetPacketBlocking</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/ByteBuffer.html" title="class or interface in java.nio" class="external-link">ByteBuffer</a>&nbsp;byteBuffer)</span></div>
+<div class="block">Checks if a packet is blocked and resets the block for that specific packet.</div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>byteBuffer</code> - package data</dd>
 <dt>Returns:</dt>
-<dd>true if the packets were blocked, false otherwise.</dd>
+<dd>true if the packet was blocked, false otherwise.</dd>
 </dl>
 </section>
 </li>

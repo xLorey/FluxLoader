@@ -184,11 +184,12 @@ public class PatchGameServer extends PatchFile{
         PatchTools.injectIntoClass(filePath, "addIncoming", true, method -> {
             InsnList toInject = new InsnList();
 
+            toInject.add(new VarInsnNode(Opcodes.ALOAD, 1));
             toInject.add(new MethodInsnNode(
                     Opcodes.INVOKESTATIC,
                     "io/xlorey/FluxLoader/server/core/IncomingPacket",
                     "checkAndResetPacketBlocking",
-                    "()Z",
+                    "(Ljava/nio/ByteBuffer;)Z",
                     false
             ));
 

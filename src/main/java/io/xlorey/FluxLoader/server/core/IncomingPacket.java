@@ -1,27 +1,38 @@
 package io.xlorey.FluxLoader.server.core;
 
+import io.xlorey.FluxLoader.utils.Logger;
+
+import java.nio.ByteBuffer;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.Map;
+
 /**
  * Toolkit for managing packet blocking status.
  */
 public class IncomingPacket {
-    private static volatile boolean isPacketBlocked = false;
+    private static final Map<ByteBuffer, Boolean> blockedPackets = new ConcurrentHashMap<>();
 
     /**
-     * Blocks the packets.
+     * Blocks a packet.
+     * @param byteBuffer package data
      */
-    public static synchronized void blockPacket() {
-        isPacketBlocked = true;
+    public static void blockPacket(ByteBuffer byteBuffer) {
+        blockedPackets.put(byteBuffer, true);
     }
 
     /**
-     * Checks if the packets are blocked and resets the block.
-     * @return true if the packets were blocked, false otherwise.
+     * Checks if a packet is blocked and resets the block for that specific packet.
+     * @param byteBuffer package data
+     * @return true if the packet was blocked, false otherwise.
      */
-    public static synchronized boolean checkAndResetPacketBlocking() {
-        if (isPacketBlocked) {
-            isPacketBlocked = false;
+    public static boolean checkAndResetPacketBlocking(ByteBuffer byteBuffer) {
+        Boolean isBlocked = blockedPackets.get(byteBuffer);
+        if (isBlocked != null && isBlocked) {
+            Logger.print("Packet was blocked!");
+            blockedPackets.remove(byteBuffer);
             return true;
         }
         return false;
     }
+
 }
