@@ -5,6 +5,7 @@ import io.xlorey.FluxLoader.annotations.SubscribeSingleEvent;
 import io.xlorey.FluxLoader.utils.Logger;
 import lombok.experimental.UtilityClass;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -90,7 +91,7 @@ public class EventManager {
                         try {
                             method.setAccessible(true);
                             return method.invoke(listener, args);
-                        } catch (Exception e) {
+                        } catch (InvocationTargetException | IllegalAccessException e) {
                             String className = listener.getClass().getName();
                             Logger.print(String.format("Error invoking single event '%s' in class '%s': %s", eventName, className, e));
                         }
@@ -123,7 +124,7 @@ public class EventManager {
                         try {
                             method.setAccessible(true);
                             method.invoke(listener, args);
-                        } catch (Exception e) {
+                        } catch (InvocationTargetException | IllegalAccessException e) {
                             String className = listener.getClass().getName();
                             Logger.print(String.format("Error invoking event '%s' in class '%s': %s", eventName, className, e));
                         }
