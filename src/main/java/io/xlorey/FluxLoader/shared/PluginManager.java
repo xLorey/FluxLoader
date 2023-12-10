@@ -21,7 +21,21 @@ public class PluginManager {
     /**
      * All loaded information about plugins
      */
-    private static final HashMap<File, PluginInfo> pluginsInfoList = new HashMap<>();
+    private static final HashMap<File, PluginInfo> pluginsInfoRegistry = new HashMap<>();
+
+    /**
+     * Registry of all loaded plugins
+     */
+    private static final HashMap<PluginInfo, Plugin> loadedPluginsRegistry = new HashMap<>();
+
+    /**
+     * Retrieves the list of loaded plugins.
+     * @return A HashMap containing information about loaded plugins, where the key is PluginInfo
+     *         and the value is the corresponding Plugin instance.
+     */
+    public static HashMap<PluginInfo, Plugin> getLoadedPlugins() {
+        return loadedPluginsRegistry;
+    }
 
     /**
      * Loading plugins for the client
@@ -48,7 +62,7 @@ public class PluginManager {
                 Logger.print(String.format("No metadata found for potential plugin '%s'. Skipping...", plugin.getName()));
                 continue;
             }
-            pluginsInfoList.put(plugin, pluginInfo);
+            pluginsInfoRegistry.put(plugin, pluginInfo);
         }
 
         /*
@@ -65,7 +79,7 @@ public class PluginManager {
             Loading the plugin
          */
         for (File plugin : sortedOrder) {
-            PluginInfo pluginInfo = pluginsInfoList.get(plugin);
+            PluginInfo pluginInfo = pluginsInfoRegistry.get(plugin);
 
             List<String> entryPoints = isClient ? pluginInfo.getEntrypoints().get("client") : pluginInfo.getEntrypoints().get("server");
 
@@ -77,20 +91,26 @@ public class PluginManager {
             }
 
             ClassLoader commonClassLoader = PluginManager.class.getClassLoader();
-            URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()}, commonClassLoader);
+            try (URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()}, commonClassLoader)) {
+                for (String entryPoint : entryPoints) {
+                    Class<?> pluginClass = Class.forName(entryPoint, true, classLoader);
+                    Plugin pluginInstance = (Plugin) pluginClass.getDeclaredConstructor().newInstance();
 
-            for (String entryPoint : entryPoints) {
-                Class<?> pluginClass = Class.forName(entryPoint, true, classLoader);
-                Plugin pluginInstance = (Plugin) pluginClass.getDeclaredConstructor().newInstance();
+                    pluginInstance.setPluginInfo(pluginInfo);
 
-                pluginInstance.setPluginInfo(pluginInfo);
+                    Logger.print(String.format("Loading plugin '%s' (ID: '%s', Version: %s)",
+                            pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion()));
 
-                Logger.print(String.format("Loading plugin '%s' (ID: '%s', Version: %s)",
-                        pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion()));
+                    pluginInstance.onInitialize();
 
-                pluginInstance.onInitialize();
+                    if (!isClient) pluginInstance.onEnable();
 
-                EventManager.subscribe(pluginInstance);
+                    loadedPluginsRegistry.put(pluginInfo, pluginInstance);
+
+                    EventManager.subscribe(pluginInstance);
+                }
+            } catch (Exception e) {
+                throw new Exception(String.format("Failed to load '%s': %s", pluginInfo.getId(), e.getMessage()));
             }
         }
     }
@@ -110,7 +130,7 @@ public class PluginManager {
         HashMap<String, File> pluginFilesMap = new HashMap<>();
 
         // Initializing the graph and states
-        for (Map.Entry<File, PluginInfo> entry : pluginsInfoList.entrySet()) {
+        for (Map.Entry<File, PluginInfo> entry : pluginsInfoRegistry.entrySet()) {
             String pluginId = entry.getValue().getId();
             pluginFilesMap.put(pluginId, entry.getKey());
             state.put(pluginId, 0); // 0 - not visited, 1 - on the stack, 2 - visited
@@ -178,7 +198,7 @@ public class PluginManager {
      * @throws Exception in case the dependent plugin is not found among those found or its version does not meet the requirements
      */
     private static void dependencyVerification() throws Exception {
-        for (Map.Entry<File, PluginInfo> entry : pluginsInfoList.entrySet()) {
+        for (Map.Entry<File, PluginInfo> entry : pluginsInfoRegistry.entrySet()) {
             Map<String, String> dependencies = entry.getValue().getDependencies();
 
             for (Map.Entry<String, String> depEntry : dependencies.entrySet()) {
@@ -200,7 +220,7 @@ public class PluginManager {
                         // Checking the presence of the plugin in the directory
                         boolean hasPlugin = false;
 
-                        for (Map.Entry<File, PluginInfo> checkEntry : pluginsInfoList.entrySet()) {
+                        for (Map.Entry<File, PluginInfo> checkEntry : pluginsInfoRegistry.entrySet()) {
                             String id = checkEntry.getValue().getId();
                             String version = checkEntry.getValue().getVersion();
 
