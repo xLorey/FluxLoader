@@ -21,6 +21,17 @@ Here are all the custom events that are implemented in FluxLoader. Content:
 
 # Client Events
 
+## onClientWindowInit
+Called when the game window is running and initialized
+```java
+@SubscribeEvent(eventName="onClientWindowInit")
+public void onClientWindowInitHandler(){
+
+}
+```
+
+# Server Events
+
 ## onSendConsoleCommand
 Called when a player writes a command in console
 ```java
@@ -47,17 +58,6 @@ public void onAddIncomingHandler(Short opcode, ByteBuffer data, UdpConnection co
 
 }
 ```
-
-## onClientWindowInit
-Called when the game window is running and initialized
-```java
-@SubscribeEvent(eventName="onClientWindowInit")
-public void onClientWindowInitHandler(){
-
-}
-```
-
-# Server Events
 
 ## onChatServerMessage
 Called when a player sends a chat message
