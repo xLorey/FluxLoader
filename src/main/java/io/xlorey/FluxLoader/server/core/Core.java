@@ -1,5 +1,7 @@
 package io.xlorey.FluxLoader.server.core;
 
+import io.xlorey.FluxLoader.server.events.ServerEventsHandler;
+import io.xlorey.FluxLoader.shared.EventManager;
 import io.xlorey.FluxLoader.shared.PluginManager;
 import io.xlorey.FluxLoader.utils.Logger;
 
@@ -15,6 +17,8 @@ public class Core {
         Logger.printCredits();
 
         Logger.print("FluxLoader Core initialization for the server..");
+
+        EventManager.subscribe(new ServerEventsHandler());
 
         PluginManager.loadPlugins(false);
     }
