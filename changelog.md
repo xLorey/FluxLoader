@@ -1,7 +1,8 @@
 # FluxLoader v0.6.0
-- Added `onEnable` and `onDisable` events for plugins. On the server: `onEnable` is called at startup and `onDisable` - at shutdown. On the client: `onEnable` and `onDisable` are called through the main game menu when enabling/disabling the plugin.
+- Added `onExecute` and `onTerminate` events for plugins. On the server: `onExecute` is called at startup and `onTerminate` - at shutdown. On the client: `onExecute` and `onTerminate` called when entering a single player game (if enabled in the main menu).
 - Added a registry of all loaded plugins
 - Added client/server events handler
+
 # FluxLoader v0.5.0
 - Added a tool for sending a message from the server to a specific user
 - Added `onPlayerFullyConnected` event

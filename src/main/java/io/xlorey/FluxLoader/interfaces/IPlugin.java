@@ -10,14 +10,12 @@ public interface IPlugin {
     void onInitialize();
 
     /**
-     * Plugin activation event
-     * Called when the plugin is enabled through the main game menu
+     * Plugin start event
      */
-    void onEnable();
+    void onExecute();
 
     /**
-     * Plugin deactivation event
-     * Called when the plugin is disabled through the main game menu
+     * Plugin termination event
      */
-    void onDisable();
+    void onTerminate();
 }

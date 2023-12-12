@@ -20,20 +20,24 @@ import java.util.*;
 public class PluginManager {
     /**
      * All loaded information about plugins
+     * Key: plugin file
+     * Value: information about the plugin
      */
     private static final HashMap<File, PluginInfo> pluginsInfoRegistry = new HashMap<>();
 
     /**
      * Registry of all loaded plugins
+     * Key: plugin id
+     * Value: plugin instance
      */
-    private static final HashMap<PluginInfo, Plugin> loadedPluginsRegistry = new HashMap<>();
+    private static final HashMap<String, Plugin> loadedPluginsRegistry = new HashMap<>();
 
     /**
      * Retrieves the list of loaded plugins.
-     * @return A HashMap containing information about loaded plugins, where the key is PluginInfo
+     * @return A HashMap containing information about loaded plugins, where the key is plugin id
      *         and the value is the corresponding Plugin instance.
      */
-    public static HashMap<PluginInfo, Plugin> getLoadedPlugins() {
+    public static HashMap<String, Plugin> getLoadedPlugins() {
         return loadedPluginsRegistry;
     }
 
@@ -103,9 +107,11 @@ public class PluginManager {
 
                     pluginInstance.onInitialize();
 
-                    if (!isClient) pluginInstance.onEnable();
+                    if (!isClient) {
+                        pluginInstance.onExecute();
+                    }
 
-                    loadedPluginsRegistry.put(pluginInfo, pluginInstance);
+                    loadedPluginsRegistry.put(pluginInfo.getId(), pluginInstance);
 
                     EventManager.subscribe(pluginInstance);
                 }

@@ -17,20 +17,18 @@ public class Plugin implements IPlugin {
     }
 
     /**
-     * Plugin activation event
-     * Called when the plugin is enabled through the main game menu
+     * Plugin start event
      */
     @Override
-    public void onEnable() {
+    public void onExecute() {
 
     }
 
     /**
-     * Plugin deactivation event
-     * Called when the plugin is disabled through the main game menu
+     * Plugin termination event
      */
     @Override
-    public void onDisable() {
+    public void onTerminate() {
 
     }
 
