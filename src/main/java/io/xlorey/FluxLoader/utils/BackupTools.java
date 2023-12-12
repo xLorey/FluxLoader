@@ -99,14 +99,14 @@ public class BackupTools {
         ArrayList<Path> additionalFiles = validateAdditionalFilesForBackup(getAdditionalFiles(directoryPath, originalFilePath));
 
         if (Files.exists(backupFilePath)) {
-            Logger.print(String.format("Backup of the file '%s' already exists. Skipping backup.", pathToClassFile));
+            Logger.print(String.format("Backup of the file '%s' already exists. Skipping backup.", originalFilePath.getFileName()));
             return;
         }
 
         try {
             Files.copy(originalFilePath, backupFilePath);
 
-            Logger.print(String.format("Backup for file '%s' saved!", pathToClassFile));
+            Logger.print(String.format("Backup for file '%s' saved!", originalFilePath.getFileName()));
 
             for (Path file : additionalFiles) {
                 Path backupPath = file.resolveSibling(file.getFileName() + BACKUP_EXTENSION);
@@ -140,14 +140,14 @@ public class BackupTools {
         ArrayList<Path> additionalFiles = validateAdditionalFilesForRestore(getAdditionalFiles(directoryPath, originalFilePath));
 
         if (!Files.exists(backupFilePath)) {
-            Logger.print(String.format("Backup file for '%s' not found. Skipping restore", pathToClassFile));
+            Logger.print(String.format("Backup file for '%s' not found. Skipping restore", originalFilePath.getFileName()));
             return;
         }
 
         try {
             Files.move(backupFilePath, originalFilePath, StandardCopyOption.REPLACE_EXISTING);
 
-            Logger.print(String.format("File '%s' was restored!", pathToClassFile));
+            Logger.print(String.format("File '%s' was restored!", originalFilePath.getFileName()));
 
             for (Path file : additionalFiles) {
                 Path backupPath = file.resolveSibling(file.getFileName() + BACKUP_EXTENSION);
