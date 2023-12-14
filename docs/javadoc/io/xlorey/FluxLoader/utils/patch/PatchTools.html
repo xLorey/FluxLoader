@@ -152,8 +152,17 @@ loadScripts(document, 'script');</script>
 <div class="block">Method for injecting annotations and making changes to a given class method.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#saveModifiedClasses()" class="member-name-link">saveModifiedClasses</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#injectIntoNestedClass(java.lang.String,java.lang.String,java.lang.String,boolean,java.util.function.Consumer)" class="member-name-link">injectIntoNestedClass</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;className,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nestedClassName,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;methodName,
+ boolean&nbsp;isStatic,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html" title="class or interface in java.util.function" class="external-link">Consumer</a>&lt;org.objectweb.asm.tree.MethodNode&gt;&nbsp;modifyMethod)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Injects code into a specified method of a nested class within a given class</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#saveModifiedClasses()" class="member-name-link">saveModifiedClasses</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Applying changes to .class files</div>
 </div>
 </div>
@@ -198,6 +207,28 @@ loadScripts(document, 'script');</script>
 <dd><code>filePath</code> - Relative path to the .class file to check.</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code> - in cases where an annotation is detected</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="injectIntoNestedClass(java.lang.String,java.lang.String,java.lang.String,boolean,java.util.function.Consumer)">
+<h3>injectIntoNestedClass</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">injectIntoNestedClass</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;className,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nestedClassName,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;methodName,
+ boolean&nbsp;isStatic,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html" title="class or interface in java.util.function" class="external-link">Consumer</a>&lt;org.objectweb.asm.tree.MethodNode&gt;&nbsp;modifyMethod)</span>
+                                  throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
+<div class="block">Injects code into a specified method of a nested class within a given class</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>className</code> - The name of the outer class containing the nested class.</dd>
+<dd><code>nestedClassName</code> - The name of the nested class to inject into.</dd>
+<dd><code>methodName</code> - The name of the method to inject code into.</dd>
+<dd><code>isStatic</code> - Indicates whether the method is static.</dd>
+<dd><code>modifyMethod</code> - A consumer that modifies the target method with injected code.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code> - If an error occurs during the injection process.</dd>
 </dl>
 </section>
 </li>

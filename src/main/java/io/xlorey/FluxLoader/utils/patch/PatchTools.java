@@ -6,6 +6,7 @@ import lombok.experimental.UtilityClass;
 import org.objectweb.asm.*;
 import org.objectweb.asm.tree.*;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -83,6 +84,50 @@ public class PatchTools {
     }
 
     /**
+     * Injects code into a specified method of a nested class within a given class
+     * @param className The name of the outer class containing the nested class.
+     * @param nestedClassName The name of the nested class to inject into.
+     * @param methodName The name of the method to inject code into.
+     * @param isStatic Indicates whether the method is static.
+     * @param modifyMethod A consumer that modifies the target method with injected code.
+     * @throws Exception If an error occurs during the injection process.
+     */
+    public static void injectIntoNestedClass(String className, String nestedClassName, String methodName, boolean isStatic, Consumer<MethodNode> modifyMethod) throws Exception {
+        if (!className.startsWith("zombie/")) {
+            className = "zombie/" + className;
+        }
+
+        String fullNestedClassName = className.replace(".class", "") + "$" + nestedClassName;
+
+        try {
+            ClassNode classNode = classNodeMap.getOrDefault(fullNestedClassName, new ClassNode());
+            if (!classNodeMap.containsKey(fullNestedClassName)) {
+                ClassReader classReader = new ClassReader(fullNestedClassName);
+                classReader.accept(classNode, 0);
+            }
+
+            boolean methodFound = false;
+            for (MethodNode method : classNode.methods) {
+                if (method.name.equals(methodName) && Modifier.isStatic(method.access) == isStatic) {
+                    addInjectAnnotation(classNode, methodName);
+                    modifyMethod.accept(method);
+                    methodFound = true;
+                }
+            }
+
+            if (!methodFound) {
+                Logger.print(String.format("Method '%s' not found in class '%s'", methodName, fullNestedClassName));
+            }
+
+            classNodeMap.put(fullNestedClassName, classNode);
+
+        } catch (IOException e) {
+            Logger.print(String.format("An error occurred during injection into nested class '%s'", fullNestedClassName));
+            throw e;
+        }
+    }
+
+    /**
      * Method for injecting annotations and making changes to a given class method.
      * Initially, it reads the bytecode of the class and converts it into a ClassNode for further processing.
      * Then adds an annotation to the specified method and uses the provided Consumer action
@@ -105,8 +150,7 @@ public class PatchTools {
         if (!className.startsWith("zombie"))
             className = "zombie/" + className;
 
-        if (className.endsWith(".class"))
-            className = className.replace(".class", "");
+        className = className.replace(".class", "");
 
         try {
             ClassNode classNode = classNodeMap.getOrDefault(className, new ClassNode());
@@ -159,10 +203,8 @@ public class PatchTools {
             Type[] argumentTypes = Type.getArgumentTypes(method.desc);
             InsnList eventInvoker = createEventInvokerInsnList(eventName, argumentTypes, isStatic);
 
-            // Получаем последнюю инструкцию (обычно RETURN)
             AbstractInsnNode lastInsn = method.instructions.getLast();
 
-            // Вставляем перед RETURN. Если в методе нет RETURN, добавляем в конец.
             if (lastInsn.getOpcode() >= Opcodes.IRETURN && lastInsn.getOpcode() <= Opcodes.RETURN) {
                 method.instructions.insertBefore(lastInsn, eventInvoker);
             } else {
@@ -361,7 +403,9 @@ public class PatchTools {
             classNode.accept(classWriter);
             byte[] modifiedClass = classWriter.toByteArray();
 
-            try (FileOutputStream fos = new FileOutputStream(className + ".class")) {
+            String fileName = className.replace('/', File.separatorChar) + ".class";
+
+            try (FileOutputStream fos = new FileOutputStream(fileName)) {
                 fos.write(modifiedClass);
             } catch (IOException e) {
                 Logger.print(String.format("An error occurred while writing the modified class '%s'", className));

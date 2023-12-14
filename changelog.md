@@ -2,6 +2,7 @@
 - Added `onExecute` and `onTerminate` events for plugins. On the server: `onExecute` is called at startup and `onTerminate` - at shutdown. On the client: `onExecute` and `onTerminate` called when entering a single player game (if enabled in the main menu).
 - Added a registry of all loaded plugins
 - Added client/server events handler
+- Added patcher for nested classes
 
 # FluxLoader v0.5.0
 - Added a tool for sending a message from the server to a specific user
