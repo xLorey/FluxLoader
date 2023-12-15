@@ -34,7 +34,7 @@ public class BackupTools {
             files.forEach(file -> {
                 String fileName = file.getFileName().toString().replace(".class", "");
                 String originalFileName = originalFilePath.getFileName().toString().replace(".class", "");
-                if (fileName.contains(originalFileName) && fileName.contains("$") && !fileName.contains(BACKUP_EXTENSION)){
+                if (fileName.contains(originalFileName + "$") && !fileName.contains(BACKUP_EXTENSION)){
                     additionalFiles.add(file.toAbsolutePath());
                 }
             });
@@ -55,7 +55,7 @@ public class BackupTools {
         for (Path file : additionalFiles) {
             Path backupPath = file.resolveSibling(file.getFileName() + BACKUP_EXTENSION);
             if (Files.exists(backupPath)) {
-                Logger.print(String.format("Backup of the file '%s' already exists. Skipping backup.", file.getFileName()));
+                Logger.print(String.format("Backup of the file '%s' already exists. Skipping backup...", file.getFileName()));
             } else {
                 validatedFiles.add(file);
             }
@@ -99,20 +99,20 @@ public class BackupTools {
         ArrayList<Path> additionalFiles = validateAdditionalFilesForBackup(getAdditionalFiles(directoryPath, originalFilePath));
 
         if (Files.exists(backupFilePath)) {
-            Logger.print(String.format("Backup of the file '%s' already exists. Skipping backup.", originalFilePath.getFileName()));
+            Logger.print(String.format("Backup of the file '%s' already exists. Skipping backup...", originalFilePath.getFileName()));
             return;
         }
 
         try {
             Files.copy(originalFilePath, backupFilePath);
 
-            Logger.print(String.format("Backup for file '%s' saved!", originalFilePath.getFileName()));
+            Logger.print(String.format("The backup for the main file '%s' has been successfully created!", originalFilePath.getFileName()));
 
             for (Path file : additionalFiles) {
                 Path backupPath = file.resolveSibling(file.getFileName() + BACKUP_EXTENSION);
                 Files.copy(file, backupPath);
 
-                Logger.print(String.format("Backup for file '%s' saved!", file.getFileName()));
+                Logger.print(String.format("Backup for dependent file '%s' was successfully created!", file.getFileName()));
             }
 
         } catch (IOException e) {
@@ -140,20 +140,20 @@ public class BackupTools {
         ArrayList<Path> additionalFiles = validateAdditionalFilesForRestore(getAdditionalFiles(directoryPath, originalFilePath));
 
         if (!Files.exists(backupFilePath)) {
-            Logger.print(String.format("Backup file for '%s' not found. Skipping restore", originalFilePath.getFileName()));
+            Logger.print(String.format("Backup file for '%s' not found. Skipping restore...", originalFilePath.getFileName()));
             return;
         }
 
         try {
             Files.move(backupFilePath, originalFilePath, StandardCopyOption.REPLACE_EXISTING);
 
-            Logger.print(String.format("File '%s' was restored!", originalFilePath.getFileName()));
+            Logger.print(String.format("The main file '%s' was successfully restored!", originalFilePath.getFileName()));
 
             for (Path file : additionalFiles) {
                 Path backupPath = file.resolveSibling(file.getFileName() + BACKUP_EXTENSION);
                 Files.move(backupPath, file, StandardCopyOption.REPLACE_EXISTING);
 
-                Logger.print(String.format("File '%s' was restored!", file.getFileName()));
+                Logger.print(String.format("Dependent file '%s' was successfully restored!", file.getFileName()));
             }
         } catch (IOException e) {
             Logger.print("Error when restoring the game file.");
@@ -168,7 +168,7 @@ public class BackupTools {
      */
     private static void validateClassFilePath(String path) {
         if (!path.endsWith(".class")) {
-            throw new IllegalArgumentException("Invalid file format. Path must end with '.class'");
+            throw new IllegalArgumentException("Invalid file format. Path must end with '.class'!");
         }
     }
 
