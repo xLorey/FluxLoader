@@ -1,4 +1,4 @@
-package io.xlorey.FluxLoader.server.core;
+package io.xlorey.FluxLoader.server.api;
 
 import io.xlorey.FluxLoader.utils.Logger;
 
