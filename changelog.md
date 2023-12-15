@@ -3,6 +3,7 @@
 - Added a registry of all loaded plugins
 - Added client/server events handler
 - Added patcher for nested classes
+- Fix `Zip Slip` vulnerability in `JarTools` extraction method (#9)
 
 # FluxLoader v0.5.0
 - Added a tool for sending a message from the server to a specific user
