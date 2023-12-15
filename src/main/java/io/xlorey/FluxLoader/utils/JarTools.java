@@ -31,7 +31,7 @@ public class JarTools {
             File jarFileObj = new File(jarFile.getName());
             String jarFileName = jarFileObj.getName();
 
-            Logger.print(String.format("Attempting to unzip Jar archive '%s'...", jarFileName));
+            Logger.print(String.format("Trying to unpack '%s' archive...", jarFileName));
 
             Enumeration<JarEntry> entries = jarFile.entries();
 
@@ -73,7 +73,7 @@ public class JarTools {
             File jarFileObj = new File(jarFile.getName());
             String jarFileName = jarFileObj.getName();
 
-            Logger.print(String.format("Attempting to delete archive files '%s'...", jarFileName));
+            Logger.print(String.format("Trying to delete files from '%s' archive...", jarFileName));
 
             Enumeration<JarEntry> entries = jarFile.entries();
 
