@@ -35,13 +35,17 @@ public class JarTools {
 
             Enumeration<JarEntry> entries = jarFile.entries();
 
-            Path targetPath = Paths.get(unpackPath);
+            Path targetPath = Paths.get(unpackPath).toAbsolutePath().normalize();
 
             while (entries.hasMoreElements()) {
                 JarEntry entry = entries.nextElement();
 
                 if (isPathAllowed(whiteListJarPath, entry.getName())) {
-                    Path extractPath = targetPath.resolve(entry.getName());
+                    Path extractPath = targetPath.resolve(entry.getName()).normalize();
+
+                    if (!extractPath.startsWith(targetPath)) {
+                        throw new IOException("Entry is outside of the target dir: " + entry.getName());
+                    }
 
                     if (entry.isDirectory()) {
                         Files.createDirectories(extractPath);
