@@ -23,7 +23,7 @@ dependencies {
     implementation files('libs/trove-3.0.3.jar')
     implementation files('libs/uncommons-maths-1.2.3.jar')
 
-    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation platform('org.junit:junit-bom:5.10.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
