@@ -14,7 +14,7 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
     implementation 'org.ow2.asm:asm:9.2'
-    implementation 'org.ow2.asm:asm-tree:9.2'
+    implementation 'org.ow2.asm:asm-tree:9.6'
     implementation 'com.google.code.gson:gson:2.10.1'
 
     implementation files('libs/zombie.jar')
