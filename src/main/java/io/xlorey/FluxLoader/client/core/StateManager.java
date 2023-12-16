@@ -19,8 +19,7 @@ public class StateManager {
         List<GameState> states = GameWindow.states.States;
         GameState tisLogoState = states.get(0);
 
-        if (tisLogoState instanceof TISLogoState)
-        {
+        if (tisLogoState instanceof TISLogoState) {
             GameWindow.states.States.add(1, new FluxLogoState());
             GameWindow.states.LoopToState = 2;
         }

@@ -20,5 +20,7 @@ public class Core {
         EventManager.subscribe(new EventsHandler());
 
         PluginManager.loadPlugins(true);
+
+        UIManager.init();
     }
 }
