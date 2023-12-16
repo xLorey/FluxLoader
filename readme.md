@@ -9,8 +9,11 @@
     <a href="https://discord.gg/BwSuTdEGJ4" style="text-decoration: none;">
          <img alt="Discord" src="https://img.shields.io/discord/1174285070761197599.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2">
     </a>
-    <a href="[https://discord.gg/BwSuTdEGJ](https://github.com/xLorey/FluxLoader-PZ/actions/workflows/gradle.yml)4" style="text-decoration: none;">
+    <a href="https://github.com/xLorey/FluxLoader-PZ/actions/workflows/gradle.yml" style="text-decoration: none;">
          <img alt="Java CI with Gradle" src="https://github.com/xLorey/FluxLoader-PZ/actions/workflows/gradle.yml/badge.svg">
+    </a>
+    <a href="https://github.com/xLorey/FluxLoader-PZ/actions/workflows/codeql.yml" style="text-decoration: none;">
+         <img alt="CodeQL" src="https://github.com/xLorey/FluxLoader-PZ/actions/workflows/codeql.yml/badge.svg">
     </a>
     <img alt="GitHub License" src="https://img.shields.io/github/license/xLorey/FluxLoader-PZ">
     <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/xlorey/FluxLoader-PZ">
