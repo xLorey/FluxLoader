@@ -48,7 +48,7 @@ processResources {
  */
 jar {
     archiveFileName = "${rootProject.name}-${version}.jar"
-    destinationDirectory = file('D:\\SteamLibrary\\steamapps\\common\\ProjectZomboid')
+    destinationDirectory = file('build')
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 
     manifest {
