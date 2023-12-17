@@ -21,6 +21,6 @@ public class Core {
 
         PluginManager.loadPlugins(true);
 
-        UIManager.init();
+        WidgetManager.init();
     }
 }

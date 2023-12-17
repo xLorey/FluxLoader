@@ -1,10 +1,13 @@
 package io.xlorey.FluxLoader.client.core;
 
 import imgui.ImGui;
-import imgui.flag.ImGuiMouseCursor;
+import imgui.ImGuiIO;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
 import io.xlorey.FluxLoader.client.api.TextTools;
+import io.xlorey.FluxLoader.client.ui.pluginMenu.MainMenuButton;
+import io.xlorey.FluxLoader.client.ui.pluginMenu.PluginMenu;
+import io.xlorey.FluxLoader.interfaces.IWidget;
 import io.xlorey.FluxLoader.utils.Constants;
 import org.lwjglx.opengl.Display;
 import zombie.GameWindow;
@@ -13,10 +16,12 @@ import zombie.core.opengl.RenderThread;
 import zombie.gameStates.MainScreenState;
 import zombie.ui.UIFont;
 
+import java.util.ArrayList;
+
 /**
  * Custom UI management system
  */
-public class UIManager {
+public class WidgetManager {
     /**
      * Pointer to the game window
      */
@@ -38,10 +43,16 @@ public class UIManager {
     private static boolean isImGuiInit = false;
 
     /**
-     * Initializing the UIManager
+     * A register of all UI elements that should be rendered
+     */
+    public static ArrayList<IWidget> widgetsRegistry = new ArrayList<>();
+
+    /**
+     * Initializing the UI Manager
      */
     public static void init(){
-        RenderThread.invokeOnRenderContext(UIManager::initImGui);
+        RenderThread.invokeOnRenderContext(WidgetManager::initImGui);
+        loadPluginsMenu();
     }
 
     /**
@@ -50,12 +61,27 @@ public class UIManager {
     private static void initImGui() {
         ImGui.createContext();
 
+
+        ImGuiIO io = ImGui.getIO();
+        // Preventing UI Elements from Saving State
+        io.setIniFilename(null);
+
         imGuiGlfw.init(windowHandler, true);
         imGuiGl3.init("#version 130");
 
         isImGuiInit = true;
     }
 
+    /**
+     * Loading a custom plugin management menu
+     */
+    private static void loadPluginsMenu() {
+        MainMenuButton screenMenuButton = new MainMenuButton();
+        screenMenuButton.addToScreenDraw();
+
+        PluginMenu pluginMenu = new PluginMenu();
+        pluginMenu.addToScreenDraw();
+    }
     /**
      * FluxLoader credits rendering update
      */
@@ -86,7 +112,13 @@ public class UIManager {
         imGuiGlfw.newFrame();
         ImGui.newFrame();
 
-        ImGui.showDemoWindow();
+        for (IWidget widget : widgetsRegistry) {
+            widget.update();
+
+            if (widget.isVisible()) {
+                widget.render();
+            }
+        }
 
         ImGui.render();
 

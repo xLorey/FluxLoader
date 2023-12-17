@@ -5,6 +5,8 @@
 - Added patcher for nested classes
 - Added tools for manipulating text on the client
 - Added/changed custom UI logic, now based on ImGui
+- Added a button to open/close the menu and the plugin management menu itself
+- Added basic templates for UI widgets
 - Fix `Zip Slip` vulnerability in `JarTools` extraction method (#9)
 
 # FluxLoader v0.5.0

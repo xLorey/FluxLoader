@@ -11,7 +11,7 @@ public class EventsHandler {
      */
     @SubscribeEvent(eventName = "OnPostUIDraw")
     public void onPostDrawUIHandler() {
-        UIManager.update();
+        WidgetManager.update();
     }
 
     /**
@@ -25,6 +25,6 @@ public class EventsHandler {
      * Handling render events on the render thread
      */
     public static void onDrawWithRenderThreadHandler(){
-        UIManager.drawImGui();
+        WidgetManager.drawImGui();
     }
 }
