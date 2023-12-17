@@ -20,4 +20,11 @@ public class EventsHandler {
     @SubscribeEvent(eventName="onClientWindowInit")
     public void onClientWindowInitHandler(){
     }
+
+    /**
+     * Handling render events on the render thread
+     */
+    public static void onDrawWithRenderThreadHandler(){
+        UIManager.drawImGui();
+    }
 }

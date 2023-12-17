@@ -33,6 +33,7 @@ public class Constants {
          */
         public static final ArrayList<String> WHITELIST_FLUXLOADER_FILES = new ArrayList<>() {{
                 add("io/");
+                add("imgui/");
                 add("com/google/gson/");
         }};
 

@@ -10,6 +10,9 @@ repositories {
 }
 
 dependencies {
+    /**
+     * Other dependencies
+     */
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
@@ -17,12 +20,28 @@ dependencies {
     implementation 'org.ow2.asm:asm-tree:9.6'
     implementation 'com.google.code.gson:gson:2.10.1'
 
+    /**
+     * Zomboid dependencies
+     */
     implementation files('libs/zombie.jar')
     implementation files('libs/fmod.jar')
     implementation files('libs/se.jar')
     implementation files('libs/trove-3.0.3.jar')
     implementation files('libs/uncommons-maths-1.2.3.jar')
+    compileOnly files('libs/lwjglx.jar')
 
+    /**
+     * ImGui
+     */
+    implementation "io.github.spair:imgui-java-binding:1.86.11"
+    implementation "io.github.spair:imgui-java-lwjgl3:1.86.11"
+    implementation "io.github.spair:imgui-java-natives-windows:1.86.11"
+    implementation "io.github.spair:imgui-java-natives-macos:1.86.11"
+    implementation "io.github.spair:imgui-java-natives-linux:1.86.11"
+
+    /**
+     * Test dependencies
+     */
     testImplementation platform('org.junit:junit-bom:5.10.1')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }

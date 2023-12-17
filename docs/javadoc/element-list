@@ -3,7 +3,6 @@ io.xlorey.FluxLoader.annotations
 io.xlorey.FluxLoader.client.api
 io.xlorey.FluxLoader.client.core
 io.xlorey.FluxLoader.client.states
-io.xlorey.FluxLoader.client.ui.components
 io.xlorey.FluxLoader.enums
 io.xlorey.FluxLoader.interfaces
 io.xlorey.FluxLoader.plugin
