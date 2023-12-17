@@ -47,8 +47,10 @@ processResources {
  * Creating an executable JAR file
  */
 jar {
+    String buildDir = System.getenv('BUILD_DIR') ?: 'build'
+
     archiveFileName = "${rootProject.name}-${version}.jar"
-    destinationDirectory = file('build')
+    destinationDirectory = file(buildDir)
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 
     manifest {
