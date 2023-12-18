@@ -9,16 +9,16 @@
     <a href="https://discord.gg/BwSuTdEGJ4" style="text-decoration: none;">
          <img alt="Discord" src="https://img.shields.io/discord/1174285070761197599.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2">
     </a>
-    <a href="https://github.com/xLorey/FluxLoader-PZ/actions/workflows/gradle.yml" style="text-decoration: none;">
-         <img alt="Java CI with Gradle" src="https://github.com/xLorey/FluxLoader-PZ/actions/workflows/gradle.yml/badge.svg">
+    <a href="https://github.com/xLorey/FluxLoader/actions/workflows/gradle.yml" style="text-decoration: none;">
+         <img alt="Java CI with Gradle" src="https://github.com/xLorey/FluxLoader/actions/workflows/gradle.yml/badge.svg">
     </a>
-    <a href="https://github.com/xLorey/FluxLoader-PZ/actions/workflows/codeql.yml" style="text-decoration: none;">
-         <img alt="CodeQL" src="https://github.com/xLorey/FluxLoader-PZ/actions/workflows/codeql.yml/badge.svg">
+    <a href="https://github.com/xLorey/FluxLoader/actions/workflows/codeql.yml" style="text-decoration: none;">
+         <img alt="CodeQL" src="https://github.com/xLorey/FluxLoader/actions/workflows/codeql.yml/badge.svg">
     </a>
-    <img alt="GitHub License" src="https://img.shields.io/github/license/xLorey/FluxLoader-PZ">
-    <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/xlorey/FluxLoader-PZ">
-    <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/xlorey/FluxLoader-PZ">
-    <img alt="GitHub release (with filter)" src="https://img.shields.io/github/v/release/xlorey/FluxLoader-PZ">
+    <img alt="GitHub License" src="https://img.shields.io/github/license/xLorey/FluxLoader">
+    <img alt="GitHub issues" src="https://img.shields.io/github/issues-raw/xlorey/FluxLoader">
+    <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/xlorey/FluxLoader">
+    <img alt="GitHub release (with filter)" src="https://img.shields.io/github/v/release/xlorey/FluxLoader">
 </p>
 
 **Flux Loader** is a universal toolchain for creating plugins (mods) for the [Project Zomboid](https://store.steampowered.com/app/108600/Project_Zomboid/) game, oriented for both the client and the server. 
@@ -39,7 +39,7 @@ Our tools already have:
 
 # Installation
 To install this project, you need to do the following:
-1) Download the latest version from the [releases page](https://github.com/xLorey/FluxLoader-PZ/releases)
+1) Download the latest version from the [releases page](https://github.com/xLorey/FluxLoader/releases)
 2) Transfer the downloaded Jar archive to the folder with the game (or server).
 3) Open the terminal (Windows command prompt) in the folder where the downloaded Jar file is located. Or enter the following command
 ```bash
@@ -90,4 +90,4 @@ We welcome any help in the development of this project! How can you help:
 - **Join our community at discord** - we want to create a healthy community of enthusiastic developers where everyone can learn something and find new friends.
 
 # License 
-This project is licensed under [GNU General Public License v3.0](https://github.com/xLorey/FluxLoader-PZ/blob/master/LICENSE).
+This project is licensed under [GNU General Public License v3.0](https://github.com/xLorey/FluxLoader/blob/master/LICENSE).
