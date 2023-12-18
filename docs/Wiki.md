@@ -9,4 +9,4 @@ So, you are determined to create your own new and unique modification. Well, tha
 -   [Project Zomboid Java Doc](https://zomboid-javadoc.com/)
 -   [Project Zomboid Events](https://pzwiki.net/wiki/Lua_Events)
 -   [Flux Loader Custom Events](./Events.md)
--   [Flux Loader Java Doc](https://xlorey.github.io/FluxLoader-PZ/)
+-   [Flux Loader Java Doc](https://xlorey.github.io/FluxLoader/)
