@@ -8,6 +8,7 @@
 - Added a button to open/close the menu and the plugin management menu itself
 - Added basic templates for UI widgets
 - Fix `Zip Slip` vulnerability in `JarTools` extraction method (#9)
+- Fixed (separated) logic for loading plugins from the server and client sides
 
 # FluxLoader v0.5.0
 - Added a tool for sending a message from the server to a specific user

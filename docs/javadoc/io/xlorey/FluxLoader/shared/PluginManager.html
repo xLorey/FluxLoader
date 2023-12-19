@@ -105,10 +105,20 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getLoadedPlugins()" class="member-name-link">getLoadedPlugins</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#executePlugins(java.util.HashMap)" class="member-name-link">executePlugins</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&gt;&nbsp;pluginsRegistry)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Retrieves the list of loaded plugins.</div>
+<div class="block">Starts the execution of all plugins specified in the past registry.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getLoadedClientPlugins()" class="member-name-link">getLoadedClientPlugins</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Retrieves the list of loaded client plugins</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&gt;</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getLoadedServerPlugins()" class="member-name-link">getLoadedServerPlugins</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Retrieves the list of loaded server plugins</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html" title="class or interface in java.util" class="external-link">ArrayList</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getPluginFiles()" class="member-name-link">getPluginFiles</a>()</code></div>
@@ -116,9 +126,14 @@ loadScripts(document, 'script');</script>
 <div class="block">Finds all JAR plugins in the specified directory.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadPlugins(boolean)" class="member-name-link">loadPlugins</a><wbr>(boolean&nbsp;isClient)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#loadPlugins()" class="member-name-link">loadPlugins</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Loading plugins for the client</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#terminatePlugins(java.util.HashMap)" class="member-name-link">terminatePlugins</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&gt;&nbsp;pluginsRegistry)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Stops all plugins specified in the past registry.</div>
 </div>
 </div>
 </div>
@@ -152,26 +167,64 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="getLoadedPlugins()">
-<h3>getLoadedPlugins</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&gt;</span>&nbsp;<span class="element-name">getLoadedPlugins</span>()</div>
-<div class="block">Retrieves the list of loaded plugins.</div>
+<section class="detail" id="getLoadedClientPlugins()">
+<h3>getLoadedClientPlugins</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&gt;</span>&nbsp;<span class="element-name">getLoadedClientPlugins</span>()</div>
+<div class="block">Retrieves the list of loaded client plugins</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>A HashMap containing information about loaded plugins, where the key is plugin id
+<dd>A HashMap containing information about loaded client plugins, where the key is plugin id
          and the value is the corresponding Plugin instance.</dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="loadPlugins(boolean)">
+<section class="detail" id="getLoadedServerPlugins()">
+<h3>getLoadedServerPlugins</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&gt;</span>&nbsp;<span class="element-name">getLoadedServerPlugins</span>()</div>
+<div class="block">Retrieves the list of loaded server plugins</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>A HashMap containing information about loaded server plugins, where the key is plugin id
+         and the value is the corresponding Plugin instance.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="executePlugins(java.util.HashMap)">
+<h3>executePlugins</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">executePlugins</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&gt;&nbsp;pluginsRegistry)</span></div>
+<div class="block">Starts the execution of all plugins specified in the past registry.
+ This method iterates through all the plugins in the provided registry and calls their onExecute method.
+ During the execution of each plugin, messages about the start and successful completion are logged.
+ If exceptions occur during plugin execution, the method also logs the corresponding errors.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pluginsRegistry</code> - A registry of plugins, each of which will be executed.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="terminatePlugins(java.util.HashMap)">
+<h3>terminatePlugins</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">terminatePlugins</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html" title="class or interface in java.util" class="external-link">HashMap</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="../plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&gt;&nbsp;pluginsRegistry)</span></div>
+<div class="block">Stops all plugins specified in the past registry.
+ This method iterates through all the plugins in the provided registry and calls their onTerminate method.
+ During the process of stopping each plugin, messages about the start and successful completion are logged.
+ If exceptions occur when stopping the plugin, the method also logs the corresponding errors.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pluginsRegistry</code> - A registry of plugins, each of which will be stopped.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="loadPlugins()">
 <h3>loadPlugins</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadPlugins</span><wbr><span class="parameters">(boolean&nbsp;isClient)</span>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadPlugins</span>()
                         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></span></div>
 <div class="block">Loading plugins for the client</div>
 <dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>isClient</code> - flag for loading plugins in the client environment</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - in cases of input/output problems</dd>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Exception.html" title="class or interface in java.lang" class="external-link">Exception</a></code></dd>

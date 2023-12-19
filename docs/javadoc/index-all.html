@@ -238,6 +238,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="io/xlorey/FluxLoader/server/core/EventsHandler.html#%3Cinit%3E()" class="member-name-link">EventsHandler()</a> - Constructor for class io.xlorey.FluxLoader.server.core.<a href="io/xlorey/FluxLoader/server/core/EventsHandler.html" title="class in io.xlorey.FluxLoader.server.core">EventsHandler</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html#executePlugins(java.util.HashMap)" class="member-name-link">executePlugins(HashMap&lt;String, Plugin&gt;)</a> - Static method in class io.xlorey.FluxLoader.shared.<a href="io/xlorey/FluxLoader/shared/PluginManager.html" title="class in io.xlorey.FluxLoader.shared">PluginManager</a></dt>
+<dd>
+<div class="block">Starts the execution of all plugins specified in the past registry.</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/client/states/FluxLogoState.html#exit()" class="member-name-link">exit()</a> - Method in class io.xlorey.FluxLoader.client.states.<a href="io/xlorey/FluxLoader/client/states/FluxLogoState.html" title="class in io.xlorey.FluxLoader.client.states">FluxLogoState</a></dt>
 <dd>
 <div class="block">Method called when exiting state</div>
@@ -280,9 +284,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Getting plugin metadata</div>
 </dd>
-<dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html#getLoadedPlugins()" class="member-name-link">getLoadedPlugins()</a> - Static method in class io.xlorey.FluxLoader.shared.<a href="io/xlorey/FluxLoader/shared/PluginManager.html" title="class in io.xlorey.FluxLoader.shared">PluginManager</a></dt>
+<dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html#getLoadedClientPlugins()" class="member-name-link">getLoadedClientPlugins()</a> - Static method in class io.xlorey.FluxLoader.shared.<a href="io/xlorey/FluxLoader/shared/PluginManager.html" title="class in io.xlorey.FluxLoader.shared">PluginManager</a></dt>
 <dd>
-<div class="block">Retrieves the list of loaded plugins.</div>
+<div class="block">Retrieves the list of loaded client plugins</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html#getLoadedServerPlugins()" class="member-name-link">getLoadedServerPlugins()</a> - Static method in class io.xlorey.FluxLoader.shared.<a href="io/xlorey/FluxLoader/shared/PluginManager.html" title="class in io.xlorey.FluxLoader.shared">PluginManager</a></dt>
+<dd>
+<div class="block">Retrieves the list of loaded server plugins</div>
 </dd>
 <dt><a href="io/xlorey/FluxLoader/server/api/PlayerUtils.html#getPlayerByPartialUsername(java.lang.String)" class="member-name-link">getPlayerByPartialUsername(String)</a> - Static method in class io.xlorey.FluxLoader.server.api.<a href="io/xlorey/FluxLoader/server/api/PlayerUtils.html" title="class in io.xlorey.FluxLoader.server.api">PlayerUtils</a></dt>
 <dd>
@@ -472,6 +480,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Base class of all loader plugins</div>
 </dd>
+<dt><a href="io/xlorey/FluxLoader/client/core/Core.html#isClientLoaded()" class="member-name-link">isClientLoaded()</a> - Static method in class io.xlorey.FluxLoader.client.core.<a href="io/xlorey/FluxLoader/client/core/Core.html" title="class in io.xlorey.FluxLoader.client.core">Core</a></dt>
+<dd>
+<div class="block">Checks if client plugins have been loaded.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/server/core/Core.html#isCoopServer()" class="member-name-link">isCoopServer()</a> - Static method in class io.xlorey.FluxLoader.server.core.<a href="io/xlorey/FluxLoader/server/core/Core.html" title="class in io.xlorey.FluxLoader.server.core">Core</a></dt>
+<dd>
+<div class="block">Determines whether the current server is a Coop Server.</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/client/ui/pluginMenu/PluginMenu.html#isOpened()" class="member-name-link">isOpened()</a> - Static method in class io.xlorey.FluxLoader.client.ui.pluginMenu.<a href="io/xlorey/FluxLoader/client/ui/pluginMenu/PluginMenu.html" title="class in io.xlorey.FluxLoader.client.ui.pluginMenu">PluginMenu</a></dt>
 <dd>
 <div class="block">Returns the current visibility state of the plugins menu.</div>
@@ -515,7 +531,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:L">L</h2>
 <dl class="index">
-<dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html#loadPlugins(boolean)" class="member-name-link">loadPlugins(boolean)</a> - Static method in class io.xlorey.FluxLoader.shared.<a href="io/xlorey/FluxLoader/shared/PluginManager.html" title="class in io.xlorey.FluxLoader.shared">PluginManager</a></dt>
+<dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html#loadPlugins()" class="member-name-link">loadPlugins()</a> - Static method in class io.xlorey.FluxLoader.shared.<a href="io/xlorey/FluxLoader/shared/PluginManager.html" title="class in io.xlorey.FluxLoader.shared">PluginManager</a></dt>
 <dd>
 <div class="block">Loading plugins for the client</div>
 </dd>
@@ -854,6 +870,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
+<dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html#terminatePlugins(java.util.HashMap)" class="member-name-link">terminatePlugins(HashMap&lt;String, Plugin&gt;)</a> - Static method in class io.xlorey.FluxLoader.shared.<a href="io/xlorey/FluxLoader/shared/PluginManager.html" title="class in io.xlorey.FluxLoader.shared">PluginManager</a></dt>
+<dd>
+<div class="block">Stops all plugins specified in the past registry.</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/annotations/CommandChatReturn.html#text()" class="member-name-link">text()</a> - Element in annotation interface io.xlorey.FluxLoader.annotations.<a href="io/xlorey/FluxLoader/annotations/CommandChatReturn.html" title="annotation interface in io.xlorey.FluxLoader.annotations">CommandChatReturn</a></dt>
 <dd>
 <div class="block">Text that will be displayed when using the command</div>

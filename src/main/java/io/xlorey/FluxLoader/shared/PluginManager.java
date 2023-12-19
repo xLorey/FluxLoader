@@ -26,27 +26,90 @@ public class PluginManager {
     private static final HashMap<File, PluginInfo> pluginsInfoRegistry = new HashMap<>();
 
     /**
-     * Registry of all loaded plugins
+     * Register of all loaded client plugins
      * Key: plugin id
      * Value: plugin instance
      */
-    private static final HashMap<String, Plugin> loadedPluginsRegistry = new HashMap<>();
+    private static final HashMap<String, Plugin> clientPluginsRegistry = new HashMap<>();
 
     /**
-     * Retrieves the list of loaded plugins.
-     * @return A HashMap containing information about loaded plugins, where the key is plugin id
+     * Register of all loaded server plugins
+     * Key: plugin id
+     * Value: plugin instance
+     */
+    private static final HashMap<String, Plugin> serverPluginsRegistry = new HashMap<>();
+
+    /**
+     * Retrieves the list of loaded client plugins
+     * @return A HashMap containing information about loaded client plugins, where the key is plugin id
      *         and the value is the corresponding Plugin instance.
      */
-    public static HashMap<String, Plugin> getLoadedPlugins() {
-        return loadedPluginsRegistry;
+    public static HashMap<String, Plugin> getLoadedClientPlugins() {
+        return clientPluginsRegistry;
+    }
+
+    /**
+     * Retrieves the list of loaded server plugins
+     * @return A HashMap containing information about loaded server plugins, where the key is plugin id
+     *         and the value is the corresponding Plugin instance.
+     */
+    public static HashMap<String, Plugin> getLoadedServerPlugins() {
+        return serverPluginsRegistry;
+    }
+
+    /**
+     * Starts the execution of all plugins specified in the past registry.
+     * This method iterates through all the plugins in the provided registry and calls their onExecute method.
+     * During the execution of each plugin, messages about the start and successful completion are logged.
+     * If exceptions occur during plugin execution, the method also logs the corresponding errors.
+     * @param pluginsRegistry A registry of plugins, each of which will be executed.
+     */
+    public static void executePlugins(HashMap<String, Plugin> pluginsRegistry) {
+        for (Map.Entry<String, Plugin> entry : pluginsRegistry.entrySet()) {
+            String pluginId = entry.getKey();
+            Plugin pluginInstance = entry.getValue();
+
+            Logger.print(String.format("Plugin '%s' started trying to execute...", pluginId));
+
+            try {
+                pluginInstance.onExecute();
+            } catch (Exception e) {
+                Logger.print(String.format("Plugin '%s' failed to execute correctly due to: %s", pluginId, e));
+            }
+
+            Logger.print(String.format("Plugin '%s' has been successfully executed. All internal processes have been successfully launched.", pluginId));
+        }
+    }
+
+    /**
+     * Stops all plugins specified in the past registry.
+     * This method iterates through all the plugins in the provided registry and calls their onTerminate method.
+     * During the process of stopping each plugin, messages about the start and successful completion are logged.
+     * If exceptions occur when stopping the plugin, the method also logs the corresponding errors.
+     * @param pluginsRegistry A registry of plugins, each of which will be stopped.
+     */
+    public static void terminatePlugins(HashMap<String, Plugin> pluginsRegistry) {
+        for (Map.Entry<String, Plugin> entry : pluginsRegistry.entrySet()) {
+            String pluginId = entry.getKey();
+            Plugin pluginInstance = entry.getValue();
+
+            Logger.print(String.format("Plugin '%s' is starting to shut down...", pluginId));
+
+            try {
+                pluginInstance.onTerminate();
+            } catch (Exception e) {
+                Logger.print(String.format("Plugin '%s' failed to shut down correctly due to: %s", pluginId, e));
+            }
+
+            Logger.print(String.format("Plugin '%s' has been successfully terminated. All internal processes have been completed.", pluginId));
+        }
     }
 
     /**
      * Loading plugins for the client
-     * @param isClient flag for loading plugins in the client environment
      * @throws IOException in cases of input/output problems
      */
-    public static void loadPlugins(boolean isClient) throws Exception {
+    public static void loadPlugins() throws Exception {
         Logger.print("Loading plugins into the environment...");
 
         checkPluginFolder();
@@ -85,40 +148,74 @@ public class PluginManager {
         for (File plugin : sortedOrder) {
             PluginInfo pluginInfo = pluginsInfoRegistry.get(plugin);
 
-            List<String> entryPoints = isClient ? pluginInfo.getEntrypoints().get("client") : pluginInfo.getEntrypoints().get("server");
+            List<String> clientEntryPoints = pluginInfo.getEntrypoints().get("client");
+            List<String> serverEntryPoints = pluginInfo.getEntrypoints().get("server");
 
             // Checking for empty entry points
-            if (entryPoints == null || entryPoints.isEmpty()) {
-                Logger.print(String.format("No entry points defined for plugin '%s'(ID: '%s', Version: %s). Skipping...",
-                        pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion()));
+            if (!isValidEntryPoints(clientEntryPoints, "client", pluginInfo) || !isValidEntryPoints(serverEntryPoints, "server", pluginInfo)) {
                 continue;
             }
 
             ClassLoader commonClassLoader = PluginManager.class.getClassLoader();
             try (URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()}, commonClassLoader)) {
-                for (String entryPoint : entryPoints) {
-                    Class<?> pluginClass = Class.forName(entryPoint, true, classLoader);
-                    Plugin pluginInstance = (Plugin) pluginClass.getDeclaredConstructor().newInstance();
-
-                    pluginInstance.setPluginInfo(pluginInfo);
-
-                    Logger.print(String.format("Loading plugin '%s' (ID: '%s', Version: %s)",
-                            pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion()));
-
-                    pluginInstance.onInitialize();
-
-                    if (!isClient) {
-                        pluginInstance.onExecute();
-                    }
-
-                    loadedPluginsRegistry.put(pluginInfo.getId(), pluginInstance);
-
-                    EventManager.subscribe(pluginInstance);
-                }
-            } catch (Exception e) {
+                loadEntryPoints(clientEntryPoints, clientPluginsRegistry, pluginInfo, classLoader);
+                loadEntryPoints(serverEntryPoints, serverPluginsRegistry, pluginInfo, classLoader);
+            } catch (Exception e){
                 throw new Exception(String.format("Failed to load '%s': %s", pluginInfo.getId(), e.getMessage()));
             }
         }
+    }
+
+    /**
+     * Loads plugin input points using the provided class loader.
+     * This method is designed to load and initialize plugin classes based on lists of input points.
+     * For each input point in the list, the method tries to load the corresponding class, create an instance
+     * plugin and add it to the specified plugin registry. In case of errors during class loading process
+     * or creating instances, the method throws an exception.
+     * @param entryPoints List of string identifiers of the plugin classes' entry points.
+     * @param targetRegistry The registry to which loaded plugin instances should be added.
+     * @param pluginInfo Plugin information used to log and associate instances with plugin data.
+     * @param classLoader {@link URLClassLoader} for loading plugin classes.
+     * @throws Exception If errors occur while loading classes or creating instances.
+     */
+    private static void loadEntryPoints(List<String> entryPoints, HashMap<String, Plugin> targetRegistry, PluginInfo pluginInfo, URLClassLoader classLoader) throws Exception {
+        for (String entryPoint : entryPoints) {
+            Class<?> pluginClass = Class.forName(entryPoint, true, classLoader);
+            Plugin pluginInstance = (Plugin) pluginClass.getDeclaredConstructor().newInstance();
+
+            pluginInstance.setPluginInfo(pluginInfo);
+
+            Logger.print(String.format("Plugin '%s'(ID: '%s', Version: %s) detected. Initialization attempt...",
+                    pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion()));
+
+            pluginInstance.onInitialize();
+
+            if (!targetRegistry.containsKey(pluginInfo.getId())) {
+                targetRegistry.put(pluginInfo.getId(), pluginInstance);
+            }
+
+            EventManager.subscribe(pluginInstance);
+        }
+    }
+
+    /**
+     * Checks the presence and non-empty list of input points for the plugin.
+     * This method is used to check if the input points for the plugin are defined.
+     * If the list of input points is empty or null, the method logs a message about loading skipped
+     * plugin and returns false.
+     *
+     * @param entryPoints List of plugin entry points. Can be null.
+     * @param type The type of input points (e.g. "client" or "server").
+     * @param pluginInfo Plugin information used for logging.
+     * @return true if the list of input points is not empty or null, false otherwise.
+     */
+    private static boolean isValidEntryPoints(List<String> entryPoints, String type, PluginInfo pluginInfo) {
+        if (entryPoints == null || entryPoints.isEmpty()) {
+            Logger.print(String.format("No %s entry points defined for plugin '%s' (ID: '%s', Version: %s). Skipping...",
+                    type, pluginInfo.getName(), pluginInfo.getId(), pluginInfo.getVersion()));
+            return false;
+        }
+        return true;
     }
 
     /**
