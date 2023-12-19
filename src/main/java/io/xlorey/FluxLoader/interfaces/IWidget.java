@@ -22,4 +22,11 @@ public interface IWidget {
      * @return boolean - true if the widget is visible, false if it is not.
      */
     boolean isVisible();
+
+    /**
+     * Set the visibility of the widget.
+     * @param visible boolean - the desired visibility state of the widget.
+     *                True to make the widget visible, false to hide it.
+     */
+    void setVisible(boolean visible);
 }
