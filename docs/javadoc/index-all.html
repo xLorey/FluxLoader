@@ -280,7 +280,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Getting line height from a given font</div>
 </dd>
-<dt><a href="io/xlorey/FluxLoader/plugin/PluginInfo.html#getInfoFromFile(java.io.File)" class="member-name-link">getInfoFromFile(File)</a> - Static method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/PluginInfo.html" title="class in io.xlorey.FluxLoader.plugin">PluginInfo</a></dt>
+<dt><a href="io/xlorey/FluxLoader/plugin/Metadata.html#getInfoFromFile(java.io.File)" class="member-name-link">getInfoFromFile(File)</a> - Static method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Metadata.html" title="class in io.xlorey.FluxLoader.plugin">Metadata</a></dt>
 <dd>
 <div class="block">Getting plugin metadata</div>
 </dd>
@@ -316,9 +316,9 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Finds all JAR plugins in the specified directory.</div>
 </dd>
-<dt><a href="io/xlorey/FluxLoader/plugin/Plugin.html#getPluginInfo()" class="member-name-link">getPluginInfo()</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a></dt>
+<dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html#getPluginsDirectory()" class="member-name-link">getPluginsDirectory()</a> - Static method in class io.xlorey.FluxLoader.shared.<a href="io/xlorey/FluxLoader/shared/PluginManager.html" title="class in io.xlorey.FluxLoader.shared">PluginManager</a></dt>
 <dd>
-<div class="block">Getting information about a plugin</div>
+<div class="block">Gets the directory for plugins.</div>
 </dd>
 <dt><a href="io/xlorey/FluxLoader/client/api/TextTools.html#getTextHeight(java.lang.String,zombie.ui.UIFont)" class="member-name-link">getTextHeight(String, UIFont)</a> - Static method in class io.xlorey.FluxLoader.client.api.<a href="io/xlorey/FluxLoader/client/api/TextTools.html" title="class in io.xlorey.FluxLoader.client.api">TextTools</a></dt>
 <dd>
@@ -560,6 +560,12 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/xlorey/FluxLoader/client/ui/pluginMenu/MainMenuButton.html#%3Cinit%3E()" class="member-name-link">MainMenuButton()</a> - Constructor for class io.xlorey.FluxLoader.client.ui.pluginMenu.<a href="io/xlorey/FluxLoader/client/ui/pluginMenu/MainMenuButton.html" title="class in io.xlorey.FluxLoader.client.ui.pluginMenu">MainMenuButton</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Metadata.html" class="type-name-link" title="class in io.xlorey.FluxLoader.plugin">Metadata</a> - Class in <a href="io/xlorey/FluxLoader/plugin/package-summary.html">io.xlorey.FluxLoader.plugin</a></dt>
+<dd>
+<div class="block">The PluginInfo class represents plugin data loaded from the plugin.json file.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Metadata.html#%3Cinit%3E()" class="member-name-link">Metadata()</a> - Constructor for class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Metadata.html" title="class in io.xlorey.FluxLoader.plugin">Metadata</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="io/xlorey/FluxLoader/enums/AccessLevel.html#MODERATOR" class="member-name-link">MODERATOR</a> - Enum constant in enum class io.xlorey.FluxLoader.enums.<a href="io/xlorey/FluxLoader/enums/AccessLevel.html" title="enum class in io.xlorey.FluxLoader.enums">AccessLevel</a></dt>
 <dd>
 <div class="block">Access level for moderators, who manage user interactions and content.</div>
@@ -713,12 +719,6 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/xlorey/FluxLoader/plugin/Plugin.html#%3Cinit%3E()" class="member-name-link">Plugin()</a> - Constructor for class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="io/xlorey/FluxLoader/plugin/PluginInfo.html" class="type-name-link" title="class in io.xlorey.FluxLoader.plugin">PluginInfo</a> - Class in <a href="io/xlorey/FluxLoader/plugin/package-summary.html">io.xlorey.FluxLoader.plugin</a></dt>
-<dd>
-<div class="block">The PluginInfo class represents plugin data loaded from the plugin.json file.</div>
-</dd>
-<dt><a href="io/xlorey/FluxLoader/plugin/PluginInfo.html#%3Cinit%3E()" class="member-name-link">PluginInfo()</a> - Constructor for class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/PluginInfo.html" title="class in io.xlorey.FluxLoader.plugin">PluginInfo</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html" class="type-name-link" title="class in io.xlorey.FluxLoader.shared">PluginManager</a> - Class in <a href="io/xlorey/FluxLoader/shared/package-summary.html">io.xlorey.FluxLoader.shared</a></dt>
 <dd>
 <div class="block">Plugin (mod) management system</div>
@@ -832,10 +832,6 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/FluxLoader/client/ui/pluginMenu/PluginMenu.html#setOpen(boolean)" class="member-name-link">setOpen(boolean)</a> - Static method in class io.xlorey.FluxLoader.client.ui.pluginMenu.<a href="io/xlorey/FluxLoader/client/ui/pluginMenu/PluginMenu.html" title="class in io.xlorey.FluxLoader.client.ui.pluginMenu">PluginMenu</a></dt>
 <dd>
 <div class="block">Sets the visibility state of the plugins menu.</div>
-</dd>
-<dt><a href="io/xlorey/FluxLoader/plugin/Plugin.html#setPluginInfo(io.xlorey.FluxLoader.plugin.PluginInfo)" class="member-name-link">setPluginInfo(PluginInfo)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a></dt>
-<dd>
-<div class="block">Setting information about a plugin</div>
 </dd>
 <dt><a href="io/xlorey/FluxLoader/client/ui/ComponentWidget.html#setVisible(boolean)" class="member-name-link">setVisible(boolean)</a> - Method in class io.xlorey.FluxLoader.client.ui.<a href="io/xlorey/FluxLoader/client/ui/ComponentWidget.html" title="class in io.xlorey.FluxLoader.client.ui">ComponentWidget</a></dt>
 <dd>

@@ -19,7 +19,7 @@
 The FluxLoader plugin loading system includes the ability to load both server and client plugins.
 To work, you need to move your plugin in Jar format to the `plugins` folder in the game/server directory.
 
-Loading of plugins starts automatically when the server/client starts with information output to the logs.
+Loading of plugins starts automatically when the server/client starts with metadata output to the logs.
 
 Plugin Template: [GitHub](https://github.com/xLorey/FluxLoader-PluginTemplate)
 
@@ -94,7 +94,7 @@ Now, when you run the Jar script, an archive will be created in the `build` fold
 
 ## Creating plugin metadata
 
-All information about the plugin is generated based on its metadata. They are located in `plugin.json` in the folder with the resources of your project. Its contents look something like this (required fields and values):
+All metadata about the plugin is generated based on its metadata. They are located in `plugin.json` in the folder with the resources of your project. Its contents look something like this (required fields and values):
 
 ```json
 {

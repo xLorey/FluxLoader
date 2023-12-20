@@ -15,7 +15,7 @@ import java.util.zip.ZipEntry;
  * The PluginInfo class represents plugin data loaded from the plugin.json file.
  */
 @Data
-public class PluginInfo {
+public class Metadata {
     /**
      * Tool for working with JSON files
      */
@@ -77,7 +77,7 @@ public class PluginInfo {
      * @return plugin metadata in PluginInfo format
      * @throws IOException in cases of I/O problems
      */
-    public static PluginInfo getInfoFromFile(File jarFile) throws IOException {
+    public static Metadata getInfoFromFile(File jarFile) throws IOException {
         try (JarFile jar = new JarFile(jarFile)) {
             ZipEntry entry = jar.getEntry("plugin.json");
             if (entry != null) {
@@ -91,7 +91,7 @@ public class PluginInfo {
                     }
 
                     try {
-                        return gson.fromJson(jsonBuilder.toString(), PluginInfo.class);
+                        return gson.fromJson(jsonBuilder.toString(), Metadata.class);
                     } catch (JsonSyntaxException e) {
                         Logger.print(String.format("Failed to convert metadata to required format in file '%s'", jarFile.getName()));
                         return null;
@@ -101,5 +101,4 @@ public class PluginInfo {
         }
         return null;
     }
-
 }
