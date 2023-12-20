@@ -79,7 +79,7 @@ public class Metadata {
      */
     public static Metadata getInfoFromFile(File jarFile) throws IOException {
         try (JarFile jar = new JarFile(jarFile)) {
-            ZipEntry entry = jar.getEntry("plugin.json");
+            ZipEntry entry = jar.getEntry("metadata.json");
             if (entry != null) {
                 try (InputStream input = jar.getInputStream(entry);
                      BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {

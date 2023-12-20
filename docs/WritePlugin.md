@@ -45,7 +45,7 @@ PluginProject
         └── java
             └── ...
         └── resources
-            └── plugin.json
+            └── metadata.json
             └── icon.png
             └── ...
     └── ...
@@ -94,7 +94,7 @@ Now, when you run the Jar script, an archive will be created in the `build` fold
 
 ## Creating plugin metadata
 
-All metadata about the plugin is generated based on its metadata. They are located in `plugin.json` in the folder with the resources of your project. Its contents look something like this (required fields and values):
+All metadata about the plugin is generated based on its metadata. They are located in `metadata.json` in the folder with the resources of your project. Its contents look something like this (required fields and values):
 
 ```json
 {
@@ -143,7 +143,7 @@ All metadata about the plugin is generated based on its metadata. They are locat
 > [!WARNING]
 > Each class - the entry point - must inherit from the `Plugin` class in FluxLoader
 
-Each plugin requires an entry point for both the server side and the client side (there may be several for each of the parties). They are specified as the path to the class in `plugin.json` in the string `entrypoints`. After loading the plugin, the `OnInitialize` method will be called at each entry point. Accordingly, when loading the game (client), the entry points specified in the `client` line will be called, in case of server startup - `server`.
+Each plugin requires an entry point for both the server side and the client side (there may be several for each of the parties). They are specified as the path to the class in `metadata.json` in the string `entrypoints`. After loading the plugin, the `OnInitialize` method will be called at each entry point. Accordingly, when loading the game (client), the entry points specified in the `client` line will be called, in case of server startup - `server`.
 
 Plugins can be client-only or server-only. To do this, just leave the desired line empty. For example:
 
@@ -154,9 +154,7 @@ Plugins can be client-only or server-only. To do this, just leave the desired li
     "client": [
       "io.xlorey.plugintemplate.client.ClientPlugin"
     ],
-    "server": [
-      ""
-    ]
+    "server": []
   },
   <...>
 }
@@ -253,7 +251,7 @@ public void sendMessageHandler(String text){
  * @param args arguments
  * @return returns a constant value from the API.md
  */
-@SubscriSinglebeEvent(eventName = "getConstantInfo")
+@SubscribeSingleEvent(eventName = "getConstantInfo")
 public String getConstantInfoHandler(String arg){
     return API.getConstantInfo(arg);
 }
