@@ -60,8 +60,7 @@ public class WidgetManager {
      */
     private static void initImGui() {
         ImGui.createContext();
-
-
+        
         ImGuiIO io = ImGui.getIO();
         // Preventing UI Elements from Saving State
         io.setIniFilename(null);
