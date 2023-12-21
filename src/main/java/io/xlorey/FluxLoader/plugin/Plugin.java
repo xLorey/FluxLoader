@@ -16,6 +16,7 @@ import java.io.InputStream;
 public class Plugin implements IPlugin {
     /**
      * Standard plugin configuration file
+     * Returns null if the configuration file was not saved/loaded
      */
     @Getter
     private Configuration config;
