@@ -90,7 +90,7 @@ public class WidgetManager {
         int screenHeight = Core.getInstance().getScreenHeight();
         int fontHeight = TextTools.getFontHeight(font);
         String creditsText = String.format("Modded with %s (v%s)", Constants.FLUX_NAME, Constants.FLUX_VERSION);
-        TextTools.drawText(creditsText, font, margin,  screenHeight - fontHeight - margin, 1f, 1f, 1f, 1f);
+        TextTools.drawText(creditsText, font, margin,  screenHeight - fontHeight - margin, 1f, 1f, 1f, 0.5f);
     }
 
     /**

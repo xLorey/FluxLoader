@@ -9,7 +9,6 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * A set of tools for creating plugin configuration files
@@ -48,12 +47,12 @@ public class Configuration {
      * After reloading, the updated configuration is available for use.
      */
     public void reload() {
-        Logger.print("Reloading the configuration file:" + configName);
+        Logger.print("Reloading the configuration file: " + configName);
 
         save();
         load();
 
-        Logger.print("Configuration file reloaded: %s"+ configName);
+        Logger.print("Configuration file reloaded: "+ configName);
     }
 
     /**
@@ -154,23 +153,18 @@ public class Configuration {
      * @param key A configuration key that can include nested levels separated by dots.
      * @return The value for the specified key or {@code null} if the key is not found or does not lead to a map.
      */
+    @SuppressWarnings("unchecked")
     private Object getConfigValue(String key) {
         String[] keys = key.split("\\.");
-        Object current = config;
+        Map<String, Object> configMap = config;
 
         for (int i = 0; i < keys.length - 1; i++) {
-            if (current instanceof Map<?, ?>) {
-                current = ((Map<?, ?>) current).get(keys[i]);
-            } else {
+            configMap = (Map<String, Object>) configMap.get(keys[i]);
+            if (configMap == null) {
                 return null;
             }
         }
-
-        if (current instanceof Map<?, ?>) {
-            return ((Map<?, ?>) current).get(keys[keys.length - 1]);
-        } else {
-            return null;
-        }
+        return configMap.get(keys[keys.length - 1]);
     }
 
     /**
@@ -186,20 +180,20 @@ public class Configuration {
     @SuppressWarnings("unchecked")
     private void setConfigValue(String key, Object value) {
         String[] keys = key.split("\\.");
-        Map<String, Object> currentMap = config;
+        Map<String, Object> configMap = config;
 
         for (int i = 0; i < keys.length - 1; i++) {
-            Object current = currentMap.get(keys[i]);
+            Object current = configMap.get(keys[i]);
 
             if (!(current instanceof Map)) {
                 current = new LinkedHashMap<String, Object>();
-                currentMap.put(keys[i], current);
+                configMap.put(keys[i], current);
             }
 
-            currentMap = (Map<String, Object>) current;
+            configMap = (Map<String, Object>) current;
         }
 
-        currentMap.put(keys[keys.length - 1], value);
+        configMap.put(keys[keys.length - 1], value);
     }
 
     /**
@@ -308,18 +302,20 @@ public class Configuration {
      * @param sectionKey The configuration section key.
      * @return The set of section keys, or {@code null} if the section is not found or is not a map.
      */
+    @SuppressWarnings("unchecked")
     public Set<String> getSectionKeys(String sectionKey) {
         Object section = getConfigValue(sectionKey);
-        if (section instanceof Map<?, ?>) {
-            Map<?, ?> map = (Map<?, ?>) section;
-            return map.keySet().stream().map(Object::toString).collect(Collectors.toSet());
+
+        if (section instanceof Map) {
+            Map<String, Object> map = (Map<String, Object>) section;
+            return map.keySet();
         }
+
         return null;
     }
 
     /**
      * Gets a collection of values for the specified configuration section.
-     *
      * @param sectionKey The configuration section key.
      * @return Collection of section values as {@code Collection<Object>},
      * or {@code null} if the section is not found or is not a map.
@@ -327,8 +323,8 @@ public class Configuration {
     @SuppressWarnings("unchecked")
     public Collection<Object> getSectionValues(String sectionKey) {
         Object section = getConfigValue(sectionKey);
-        if (section instanceof Map<?, ?>) {
-            return (Collection<Object>) ((Map<?, ?>) section).values();
+        if (section instanceof Map) {
+            return ((Map<String, Object>) section).values();
         }
         return null;
     }
