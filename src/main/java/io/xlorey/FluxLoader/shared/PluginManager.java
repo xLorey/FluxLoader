@@ -159,6 +159,17 @@ public class PluginManager {
                 continue;
             }
 
+            // creating a folder for configs
+            File configFolder = metadata.getConfigFolder();
+            if (!configFolder.exists()) {
+                try {
+                    configFolder.mkdir();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Logger.print(String.format("An error occurred while creating the config folder for plugin '%s'", metadata.getId()));
+                }
+            }
+
             ClassLoader commonClassLoader = PluginManager.class.getClassLoader();
             try (URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()}, commonClassLoader)) {
                 loadEntryPoints(true, clientEntryPoints, clientPluginsRegistry, metadata, classLoader);

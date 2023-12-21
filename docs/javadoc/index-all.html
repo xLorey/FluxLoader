@@ -152,6 +152,14 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/xlorey/FluxLoader/client/ui/ComponentWidget.html#%3Cinit%3E()" class="member-name-link">ComponentWidget()</a> - Constructor for class io.xlorey.FluxLoader.client.ui.<a href="io/xlorey/FluxLoader/client/ui/ComponentWidget.html" title="class in io.xlorey.FluxLoader.client.ui">ComponentWidget</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html" class="type-name-link" title="class in io.xlorey.FluxLoader.plugin">Configuration</a> - Class in <a href="io/xlorey/FluxLoader/plugin/package-summary.html">io.xlorey.FluxLoader.plugin</a></dt>
+<dd>
+<div class="block">A set of tools for creating plugin configuration files</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#%3Cinit%3E(java.lang.String)" class="member-name-link">Configuration(String)</a> - Constructor for class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Configuration file constructor</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/enums/CommandScope.html#CONSOLE" class="member-name-link">CONSOLE</a> - Enum constant in enum class io.xlorey.FluxLoader.enums.<a href="io/xlorey/FluxLoader/enums/CommandScope.html" title="enum class in io.xlorey.FluxLoader.enums">CommandScope</a></dt>
 <dd>
 <div class="block">Indicates that the command is available for execution only in the console.</div>
@@ -174,6 +182,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="io/xlorey/FluxLoader/server/core/Core.html#%3Cinit%3E()" class="member-name-link">Core()</a> - Constructor for class io.xlorey.FluxLoader.server.core.<a href="io/xlorey/FluxLoader/server/core/Core.html" title="class in io.xlorey.FluxLoader.server.core">Core</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#create()" class="member-name-link">create()</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Creates a configuration file if it does not exist.</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/utils/BackupTools.html#createBackup(java.lang.String)" class="member-name-link">createBackup(String)</a> - Static method in class io.xlorey.FluxLoader.utils.<a href="io/xlorey/FluxLoader/utils/BackupTools.html" title="class in io.xlorey.FluxLoader.utils">BackupTools</a></dt>
 <dd>
 <div class="block">Creating a backup file</div>
@@ -181,6 +193,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html#createEventInvokerInsnList(java.lang.String,org.objectweb.asm.Type%5B%5D,boolean)" class="member-name-link">createEventInvokerInsnList(String, Type[], boolean)</a> - Static method in class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchTools</a></dt>
 <dd>
 <div class="block">Creates a list of instructions for the event invoker.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#createIfNotExists()" class="member-name-link">createIfNotExists()</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Checks for the existence of a configuration file and creates it if it does not exist.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:D">D</h2>
@@ -276,6 +292,26 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#getBoolean(java.lang.String)" class="member-name-link">getBoolean(String)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Gets a boolean value for the specified configuration key.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Plugin.html#getConfigFile(java.lang.String)" class="member-name-link">getConfigFile(String)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a></dt>
+<dd>
+<div class="block">Returns a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link"><code>File</code></a> object representing the configuration file.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Metadata.html#getConfigFolder()" class="member-name-link">getConfigFolder()</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Metadata.html" title="class in io.xlorey.FluxLoader.plugin">Metadata</a></dt>
+<dd>
+<div class="block">Returns a File object representing the configuration directory for this plugin.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Plugin.html#getConfigPath(java.lang.String)" class="member-name-link">getConfigPath(String)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a></dt>
+<dd>
+<div class="block">Returns the absolute path to the configuration file with the specified name.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#getDouble(java.lang.String)" class="member-name-link">getDouble(String)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Gets the floating point value (double) for the specified configuration key.</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/client/api/TextTools.html#getFontHeight(zombie.ui.UIFont)" class="member-name-link">getFontHeight(UIFont)</a> - Static method in class io.xlorey.FluxLoader.client.api.<a href="io/xlorey/FluxLoader/client/api/TextTools.html" title="class in io.xlorey.FluxLoader.client.api">TextTools</a></dt>
 <dd>
 <div class="block">Getting line height from a given font</div>
@@ -283,6 +319,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/FluxLoader/plugin/Metadata.html#getInfoFromFile(java.io.File)" class="member-name-link">getInfoFromFile(File)</a> - Static method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Metadata.html" title="class in io.xlorey.FluxLoader.plugin">Metadata</a></dt>
 <dd>
 <div class="block">Getting plugin metadata</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#getInt(java.lang.String)" class="member-name-link">getInt(String)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Gets the integer value for the specified configuration key.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#getList(java.lang.String)" class="member-name-link">getList(String)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Retrieves a List of objects for the specified configuration key.</div>
 </dd>
 <dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html#getLoadedClientPlugins()" class="member-name-link">getLoadedClientPlugins()</a> - Static method in class io.xlorey.FluxLoader.shared.<a href="io/xlorey/FluxLoader/shared/PluginManager.html" title="class in io.xlorey.FluxLoader.shared">PluginManager</a></dt>
 <dd>
@@ -319,6 +363,18 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html#getPluginsDirectory()" class="member-name-link">getPluginsDirectory()</a> - Static method in class io.xlorey.FluxLoader.shared.<a href="io/xlorey/FluxLoader/shared/PluginManager.html" title="class in io.xlorey.FluxLoader.shared">PluginManager</a></dt>
 <dd>
 <div class="block">Gets the directory for plugins.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#getSectionKeys(java.lang.String)" class="member-name-link">getSectionKeys(String)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Retrieves a set of keys for the specified configuration section.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#getSectionValues(java.lang.String)" class="member-name-link">getSectionValues(String)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Gets a collection of values for the specified configuration section.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#getString(java.lang.String)" class="member-name-link">getString(String)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Gets the configuration string value for the specified key.</div>
 </dd>
 <dt><a href="io/xlorey/FluxLoader/client/api/TextTools.html#getTextHeight(java.lang.String,zombie.ui.UIFont)" class="member-name-link">getTextHeight(String, UIFont)</a> - Static method in class io.xlorey.FluxLoader.client.api.<a href="io/xlorey/FluxLoader/client/api/TextTools.html" title="class in io.xlorey.FluxLoader.client.api">TextTools</a></dt>
 <dd>
@@ -488,6 +544,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Determines whether the current server is a Coop Server.</div>
 </dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#isExists()" class="member-name-link">isExists()</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Checks if the configuration file exists.</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/client/ui/pluginMenu/PluginMenu.html#isOpened()" class="member-name-link">isOpened()</a> - Static method in class io.xlorey.FluxLoader.client.ui.pluginMenu.<a href="io/xlorey/FluxLoader/client/ui/pluginMenu/PluginMenu.html" title="class in io.xlorey.FluxLoader.client.ui.pluginMenu">PluginMenu</a></dt>
 <dd>
 <div class="block">Returns the current visibility state of the plugins menu.</div>
@@ -531,6 +591,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:L">L</h2>
 <dl class="index">
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#load()" class="member-name-link">load()</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Loads configuration from a file.</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/shared/PluginManager.html#loadPlugins()" class="member-name-link">loadPlugins()</a> - Static method in class io.xlorey.FluxLoader.shared.<a href="io/xlorey/FluxLoader/shared/PluginManager.html" title="class in io.xlorey.FluxLoader.shared">PluginManager</a></dt>
 <dd>
 <div class="block">Loading plugins for the client</div>
@@ -758,6 +822,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#reload()" class="member-name-link">reload()</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Reloads the configuration file.</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/client/ui/ScreenWidget.html#removeChild(io.xlorey.FluxLoader.client.ui.ComponentWidget)" class="member-name-link">removeChild(ComponentWidget)</a> - Method in class io.xlorey.FluxLoader.client.ui.<a href="io/xlorey/FluxLoader/client/ui/ScreenWidget.html" title="class in io.xlorey.FluxLoader.client.ui">ScreenWidget</a></dt>
 <dd>
 <div class="block">Removing a widget from the registry of child components so as not to update its state (call the update method)</div>
@@ -801,6 +869,14 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#save()" class="member-name-link">save()</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Saves the current configuration to a file.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Plugin.html#saveDefaultConfig()" class="member-name-link">saveDefaultConfig()</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a></dt>
+<dd>
+<div class="block">Saves the default configuration for the plugin.</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html#saveModifiedClasses()" class="member-name-link">saveModifiedClasses()</a> - Static method in class io.xlorey.FluxLoader.utils.patch.<a href="io/xlorey/FluxLoader/utils/patch/PatchTools.html" title="class in io.xlorey.FluxLoader.utils.patch">PatchTools</a></dt>
 <dd>
 <div class="block">Applying changes to .class files</div>
@@ -829,9 +905,29 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/xlorey/FluxLoader/server/api/ServerUtils.html#%3Cinit%3E()" class="member-name-link">ServerUtils()</a> - Constructor for class io.xlorey.FluxLoader.server.api.<a href="io/xlorey/FluxLoader/server/api/ServerUtils.html" title="class in io.xlorey.FluxLoader.server.api">ServerUtils</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#setBoolean(java.lang.String,boolean)" class="member-name-link">setBoolean(String, boolean)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Sets a boolean value for the specified configuration key.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#setDouble(java.lang.String,double)" class="member-name-link">setDouble(String, double)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Sets the floating point value (double) for the specified configuration key.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#setInt(java.lang.String,int)" class="member-name-link">setInt(String, int)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Sets the integer value for the specified configuration key.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#setList(java.lang.String,java.util.List)" class="member-name-link">setList(String, List&lt;Object&gt;)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Sets a List of objects for the specified configuration key.</div>
+</dd>
 <dt><a href="io/xlorey/FluxLoader/client/ui/pluginMenu/PluginMenu.html#setOpen(boolean)" class="member-name-link">setOpen(boolean)</a> - Static method in class io.xlorey.FluxLoader.client.ui.pluginMenu.<a href="io/xlorey/FluxLoader/client/ui/pluginMenu/PluginMenu.html" title="class in io.xlorey.FluxLoader.client.ui.pluginMenu">PluginMenu</a></dt>
 <dd>
 <div class="block">Sets the visibility state of the plugins menu.</div>
+</dd>
+<dt><a href="io/xlorey/FluxLoader/plugin/Configuration.html#setString(java.lang.String,java.lang.String)" class="member-name-link">setString(String, String)</a> - Method in class io.xlorey.FluxLoader.plugin.<a href="io/xlorey/FluxLoader/plugin/Configuration.html" title="class in io.xlorey.FluxLoader.plugin">Configuration</a></dt>
+<dd>
+<div class="block">Sets the configuration string value to the specified key.</div>
 </dd>
 <dt><a href="io/xlorey/FluxLoader/client/ui/ComponentWidget.html#setVisible(boolean)" class="member-name-link">setVisible(boolean)</a> - Method in class io.xlorey.FluxLoader.client.ui.<a href="io/xlorey/FluxLoader/client/ui/ComponentWidget.html" title="class in io.xlorey.FluxLoader.client.ui">ComponentWidget</a></dt>
 <dd>

@@ -35,6 +35,7 @@ public class Constants {
                 add("io/");
                 add("imgui/");
                 add("com/google/");
+                add("org/yaml/");
         }};
 
         /**

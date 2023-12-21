@@ -2,10 +2,13 @@ package io.xlorey.FluxLoader.plugin;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import io.xlorey.FluxLoader.shared.PluginManager;
 import io.xlorey.FluxLoader.utils.Logger;
 import lombok.Data;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.jar.JarFile;
@@ -70,6 +73,20 @@ public class Metadata {
      * Plugin dependencies on other projects or libraries
      */
     private Map<String, String> dependencies;
+
+    /**
+     * Returns a File object representing the configuration directory for this plugin.
+     * The directory path is normalized to prevent problems with various file systems.
+     * @return A File object pointing to the normalized path to the plugin configuration directory.
+     */
+    public File getConfigFolder() {
+        File pluginsDirectory = PluginManager.getPluginsDirectory();
+        String pluginId = getId();
+
+        Path path = Paths.get(pluginsDirectory.getAbsolutePath(), pluginId).normalize();
+
+        return path.toFile();
+    }
 
     /**
      * Getting plugin metadata
