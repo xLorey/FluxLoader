@@ -7,7 +7,10 @@ import io.xlorey.FluxLoader.utils.Logger;
 import io.xlorey.FluxLoader.utils.VersionChecker;
 import lombok.experimental.UtilityClass;
 import zombie.core.Core;
+import zombie.core.textures.Texture;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -26,22 +29,38 @@ public class PluginManager {
     private static final HashMap<File, Metadata> pluginsInfoRegistry = new HashMap<>();
 
     /**
-     * Register of all loaded client plugins
+     * Registry of icons of loaded plugins
      * Key: plugin id
+     *Value: texture object
+     */
+    private static final HashMap<String, Texture> pluginIconRegistry = new HashMap<>();
+
+    /**
+     * Register of all loaded client plugins
+     * Key: "entryPoint:ID:Version"
      * Value: plugin instance
      */
     private static final HashMap<String, Plugin> clientPluginsRegistry = new HashMap<>();
 
     /**
      * Register of all loaded server plugins
-     * Key: plugin id
+     * Key: "entryPoint:ID:Version"
      * Value: plugin instance
      */
     private static final HashMap<String, Plugin> serverPluginsRegistry = new HashMap<>();
 
     /**
+     * Retrieves the list of loaded client plugins icons
+     * @return HashMap containing information about loaded client plugin icons, where the key is the plugin ID.
+     *         and the value is the corresponding texture instance.
+     */
+    public static HashMap<String, Texture> getPluginIconRegistry() {
+        return pluginIconRegistry;
+    }
+
+    /**
      * Retrieves the list of loaded client plugins
-     * @return A HashMap containing information about loaded client plugins, where the key is plugin id
+     * @return A HashMap containing information about loaded client plugins, where the key is "entryPoint:ID:Version"
      *         and the value is the corresponding Plugin instance.
      */
     public static HashMap<String, Plugin> getLoadedClientPlugins() {
@@ -50,7 +69,7 @@ public class PluginManager {
 
     /**
      * Retrieves the list of loaded server plugins
-     * @return A HashMap containing information about loaded server plugins, where the key is plugin id
+     * @return A HashMap containing information about loaded server plugins, where the key is "entryPoint:ID:Version"
      *         and the value is the corresponding Plugin instance.
      */
     public static HashMap<String, Plugin> getLoadedServerPlugins() {
@@ -174,6 +193,19 @@ public class PluginManager {
             try (URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()}, commonClassLoader)) {
                 loadEntryPoints(true, clientEntryPoints, clientPluginsRegistry, metadata, classLoader);
                 loadEntryPoints(false, serverEntryPoints, serverPluginsRegistry, metadata, classLoader);
+
+                String iconPath = metadata.getIcon();
+                URL iconUrl = classLoader.getResource(iconPath);
+
+                if (iconUrl != null) {
+                    try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
+                        Texture texture = new Texture(iconPath, bis, true);
+                        pluginIconRegistry.put(metadata.getId(), texture);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
+                    }
+                }
             } catch (Exception e){
                 e.printStackTrace();
                 throw new Exception(String.format("Failed to load '%s'", metadata.getId()));
@@ -218,8 +250,10 @@ public class PluginManager {
 
             pluginInstance.onInitialize();
 
-            if (!targetRegistry.containsKey(metadata.getId())) {
-                targetRegistry.put(metadata.getId(), pluginInstance);
+            String registryKey = String.format("%s:%s:%s", entryPoint, metadata.getId(), metadata.getVersion());
+
+            if (!targetRegistry.containsKey(registryKey)) {
+                targetRegistry.put(registryKey, pluginInstance);
             }
 
             EventManager.subscribe(pluginInstance);

@@ -114,7 +114,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static boolean</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isOpened()" class="member-name-link">isOpened</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Returns the current visibility state of the plugins menu.</div>
+<div class="block">Returns the current visibility state of the plugin's menu.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#render()" class="member-name-link">render</a>()</code></div>
@@ -124,7 +124,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#setOpen(boolean)" class="member-name-link">setOpen</a><wbr>(boolean&nbsp;open)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Sets the visibility state of the plugins menu.</div>
+<div class="block">Sets the visibility state of the plugin's menu.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update()" class="member-name-link">update</a>()</code></div>
@@ -179,23 +179,10 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="render()">
-<h3>render</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">render</span>()</div>
-<div class="block">Rendering the plugin menu</div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="../../../interfaces/IWidget.html#render()">render</a></code>&nbsp;in interface&nbsp;<code><a href="../../../interfaces/IWidget.html" title="interface in io.xlorey.FluxLoader.interfaces">IWidget</a></code></dd>
-<dt>Overrides:</dt>
-<dd><code><a href="../ScreenWidget.html#render()">render</a></code>&nbsp;in class&nbsp;<code><a href="../ScreenWidget.html" title="class in io.xlorey.FluxLoader.client.ui">ScreenWidget</a></code></dd>
-</dl>
-</section>
-</li>
-<li>
 <section class="detail" id="setOpen(boolean)">
 <h3>setOpen</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setOpen</span><wbr><span class="parameters">(boolean&nbsp;open)</span></div>
-<div class="block">Sets the visibility state of the plugins menu.
+<div class="block">Sets the visibility state of the plugin's menu.
  This method allows you to programmatically open or close the plugin menu.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -207,11 +194,24 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="isOpened()">
 <h3>isOpened</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isOpened</span>()</div>
-<div class="block">Returns the current visibility state of the plugins menu.
+<div class="block">Returns the current visibility state of the plugin's menu.
  This method allows you to determine whether the plugins menu is currently open.</div>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>true if the plugins menu is open; false if closed.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="render()">
+<h3>render</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">render</span>()</div>
+<div class="block">Rendering the plugin menu</div>
+<dl class="notes">
+<dt>Specified by:</dt>
+<dd><code><a href="../../../interfaces/IWidget.html#render()">render</a></code>&nbsp;in interface&nbsp;<code><a href="../../../interfaces/IWidget.html" title="interface in io.xlorey.FluxLoader.interfaces">IWidget</a></code></dd>
+<dt>Overrides:</dt>
+<dd><code><a href="../ScreenWidget.html#render()">render</a></code>&nbsp;in class&nbsp;<code><a href="../ScreenWidget.html" title="class in io.xlorey.FluxLoader.client.ui">ScreenWidget</a></code></dd>
 </dl>
 </section>
 </li>
