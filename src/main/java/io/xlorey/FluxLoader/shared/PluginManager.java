@@ -209,7 +209,7 @@ public class PluginManager {
                 loadEntryPoints(true, clientEntryPoints, clientPluginsRegistry, metadata, classLoader);
                 loadEntryPoints(false, serverEntryPoints, serverPluginsRegistry, metadata, classLoader);
 
-                String controlsClassName = metadata.getControls();
+                String controlsClassName = metadata.getControlsEntrypoint();
                 if (controlsClassName != null && !controlsClassName.isEmpty()) {
                     Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
                     IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
