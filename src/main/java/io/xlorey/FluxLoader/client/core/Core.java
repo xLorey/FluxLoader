@@ -14,6 +14,11 @@ public class Core {
     private static boolean isClientLoaded = false;
 
     /**
+     * Flag indicating whether client plugins are running
+     */
+    public static boolean isPluginsExecuted = false;
+
+    /**
      * Initializing the loader
      * @exception Exception in cases of unsuccessful core initialization
      */

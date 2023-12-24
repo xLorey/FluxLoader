@@ -1,6 +1,7 @@
 package io.xlorey.FluxLoader.client.core;
 
 import io.xlorey.FluxLoader.annotations.SubscribeEvent;
+import io.xlorey.FluxLoader.shared.PluginManager;
 
 /**
  * Client event handler
@@ -19,6 +20,28 @@ public class EventsHandler {
      */
     @SubscribeEvent(eventName="onClientWindowInit")
     public void onClientWindowInitHandler(){
+    }
+
+    /**
+     * Game session loading event handler
+     */
+    @SubscribeEvent(eventName = "OnInitWorld")
+    public void onInitWorldHandler(){
+        if (!Core.isPluginsExecuted) {
+            PluginManager.executePlugins(PluginManager.getLoadedClientPlugins());
+            Core.isPluginsExecuted = true;
+        }
+    }
+
+    /**
+     * Main menu exit event handler
+     */
+    @SubscribeEvent(eventName = "OnMainMenuEnter")
+    public void onMainMenuEnterHandler(){
+        if (Core.isPluginsExecuted) {
+            PluginManager.terminatePlugins(PluginManager.getLoadedClientPlugins());
+            Core.isPluginsExecuted = false;
+        }
     }
 
     /**
