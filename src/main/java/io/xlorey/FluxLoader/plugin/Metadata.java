@@ -15,7 +15,7 @@ import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
 /**
- * The PluginInfo class represents plugin data loaded from the plugin.json file.
+ * The Metadata class represents plugin data loaded from the metadata.json file.
  */
 @Data
 public class Metadata {
@@ -72,7 +72,7 @@ public class Metadata {
     /**
      * Entry point for rendering controls in the plugin configuration menu
      */
-    private String controls;
+    private String controlsEntrypoint;
 
     /**
      * Plugin dependencies on other projects or libraries
@@ -96,7 +96,7 @@ public class Metadata {
     /**
      * Getting plugin metadata
      * @param jarFile plugin file
-     * @return plugin metadata in PluginInfo format
+     * @return plugin metadata in Metadata format
      * @throws IOException in cases of I/O problems
      */
     public static Metadata getInfoFromFile(File jarFile) throws IOException {
