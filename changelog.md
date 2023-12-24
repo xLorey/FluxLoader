@@ -8,6 +8,7 @@
 - Added a button to open/close the menu and the plugin management menu itself
 - Added basic templates for UI widgets
 - Added configuration system for the plugin
+- Added the ability to create plugin widget controls in the menu
 - Fix `Zip Slip` vulnerability in `JarTools` extraction method (#9)
 - Fixed (separated) logic for loading plugins from the server and client sides
 

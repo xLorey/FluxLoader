@@ -70,6 +70,11 @@ public class Metadata {
     private Map<String, List<String>> entrypoints;
 
     /**
+     * Entry point for rendering controls in the plugin configuration menu
+     */
+    private String controls;
+
+    /**
      * Plugin dependencies on other projects or libraries
      */
     private Map<String, String> dependencies;

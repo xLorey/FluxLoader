@@ -3,20 +3,18 @@ package io.xlorey.FluxLoader.client.ui.pluginMenu;
 import imgui.ImGui;
 import imgui.flag.ImGuiCol;
 import imgui.flag.ImGuiStyleVar;
-import imgui.flag.ImGuiTreeNodeFlags;
 import imgui.flag.ImGuiWindowFlags;
 import imgui.type.ImBoolean;
 import io.xlorey.FluxLoader.client.ui.ScreenWidget;
+import io.xlorey.FluxLoader.interfaces.IControlsWidget;
 import io.xlorey.FluxLoader.plugin.Metadata;
 import io.xlorey.FluxLoader.plugin.Plugin;
 import io.xlorey.FluxLoader.shared.PluginManager;
 import io.xlorey.FluxLoader.utils.Constants;
-import io.xlorey.FluxLoader.utils.Logger;
 import zombie.GameWindow;
 import zombie.core.textures.Texture;
 import zombie.gameStates.MainScreenState;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +27,25 @@ public class PluginMenu extends ScreenWidget {
      * Flag indicating whether the window is open
      */
     private static final ImBoolean isOpened = new ImBoolean(false);
+
+    /**
+     * ID of the selected plugin in the menu
+     */
+    private String selectedPluginId;
+
+    /**
+     * Loaded client plugins
+     */
+    private final Map<String, Plugin> loadedPlugins = PluginManager.getLoadedClientPlugins();
+
+    /**
+     * Initializing the widget
+     */
+    public PluginMenu(){
+        if (!loadedPlugins.isEmpty()) {
+            selectedPluginId = loadedPlugins.keySet().iterator().next();
+        }
+    }
 
     /**
      * Update window state
@@ -63,20 +80,26 @@ public class PluginMenu extends ScreenWidget {
      */
     @Override
     public void render() {
-        HashMap<String, Plugin> clientPlugins = PluginManager.getLoadedClientPlugins();
-        ImGui.setNextWindowSize(500, 400);
+        ImGui.setNextWindowSize(650, 400);
 
         ImGui.pushStyleVar(ImGuiStyleVar.WindowRounding, 8);
         ImGui.pushStyleVar(ImGuiStyleVar.FramePadding, 10, 10);
+        ImGui.pushStyleVar(ImGuiStyleVar.ScrollbarSize, 3);
 
         ImGui.pushStyleColor(ImGuiCol.WindowBg, 12, 12, 12, 255);
         ImGui.pushStyleColor(ImGuiCol.TitleBg, 30, 30, 30, 255);
         ImGui.pushStyleColor(ImGuiCol.TitleBgActive, 30, 30, 30, 255);
-        ImGui.pushStyleColor(ImGuiCol.ButtonActive, 0, 0, 0, 0);
-        ImGui.pushStyleColor(ImGuiCol.ButtonHovered, 0, 0, 0, 0);
+
+        int emeraldActive = ImGui.getColorU32(0.0f, 0.55f, 0.55f, 1.0f);
+        int emeraldHovered = ImGui.getColorU32(0.0f, 0.65f, 0.65f, 1.0f);
+        int emeraldNormal = ImGui.getColorU32(0.0f, 0.60f, 0.60f, 1.0f);
+
+        ImGui.pushStyleColor(ImGuiCol.ButtonActive, emeraldActive);
+        ImGui.pushStyleColor(ImGuiCol.ButtonHovered, emeraldHovered);
+        ImGui.pushStyleColor(ImGuiCol.Button, emeraldNormal);
 
         ImGui.begin(Constants.FLUX_NAME + " - Plugins", isOpened, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse);
-            if(clientPlugins.isEmpty()) {
+            if(loadedPlugins.isEmpty()) {
                 String text = "No client plugins found";
                 float windowWidth = ImGui.getWindowWidth();
                 float windowHeight = ImGui.getWindowHeight();
@@ -87,53 +110,84 @@ public class PluginMenu extends ScreenWidget {
                 ImGui.setCursorPosY((windowHeight - textHeight) * 0.5f);
                 ImGui.text(text);
             } else {
-                renderPluginsInfo(clientPlugins);
+                renderPluginsInfo();
             }
         ImGui.end();
 
-        ImGui.popStyleColor(5);
-        ImGui.popStyleVar(2);
+        ImGui.popStyleColor(6);
+        ImGui.popStyleVar(3);
     }
 
     /**
      * Rendering information about plugins
-     * @param clientPlugins loaded client plugins
      */
-    private void renderPluginsInfo(HashMap<String, Plugin> clientPlugins) {
-        HashSet<String> displayedMetadata = new HashSet<>();
+    private void renderPluginsInfo() {
+        ImGui.columns(2);
 
-        for (Map.Entry<String, Plugin> entry : clientPlugins.entrySet()) {
+        ImGui.setColumnWidth(0, 256);
+
+        ImGui.beginChild("#LeftPluginMenuColumn", -1, -1, false);
+        HashSet<String> displayedPlugin = new HashSet<>();
+
+        for (Map.Entry<String, Plugin> entry : loadedPlugins.entrySet()) {
             Plugin plugin = entry.getValue();
             Metadata metadata = plugin.getMetadata();
+            String mapKey = entry.getKey();
             String metadataKey = metadata.getId() + ":" + metadata.getVersion();
-            if (!displayedMetadata.contains(metadataKey)) {
-                Texture icon = PluginManager.getPluginIconRegistry().get(metadata.getId());
-                if (icon != null) {
-                    ImGui.image(icon.getID(), 64, 64);
-                    ImGui.sameLine();
+
+            if (!displayedPlugin.contains(metadataKey)) {
+                boolean isSelected = selectedPluginId != null && selectedPluginId.equals(mapKey);
+                if (!isSelected) {
+                    ImGui.pushStyleColor(ImGuiCol.Button, 0, 0, 0, 0);
                 }
 
-                ImGui.pushStyleVar(ImGuiStyleVar.FramePadding, 0, 25);
-                ImGui.pushStyleColor(ImGuiCol.HeaderActive, 25, 25, 25, 255);
-                ImGui.pushStyleColor(ImGuiCol.HeaderHovered, 40, 40, 40, 255);
-                ImGui.pushStyleColor(ImGuiCol.Header, 30, 30, 30, 255);
-
-                if (ImGui.collapsingHeader(metadata.getName())) {
-                    ImGui.text("Plugin description: " + metadata.getDescription());
-                    ImGui.text("ID: " + metadata.getId());
-                    ImGui.text("Version: " + metadata.getVersion());
-                    ImGui.text("License: " + metadata.getLicense());
-
-                    renderListWithTitle("Authors", metadata.getAuthors());
-                    renderListWithTitle("Contacts", metadata.getContact());
+                if (ImGui.button(plugin.getMetadata().getName(), -1, 30)) {
+                    selectedPluginId = mapKey;
                 }
 
-                ImGui.popStyleVar();
-                ImGui.popStyleColor(3);
-
-                displayedMetadata.add(metadataKey);
+                if (!isSelected) {
+                    ImGui.popStyleColor();
+                }
+                displayedPlugin.add(metadataKey);
             }
         }
+
+        ImGui.endChild();
+
+        ImGui.nextColumn();
+
+        ImGui.beginChild("#RightPluginMenuColumn", -1, -1, false);
+        if (selectedPluginId != null) {
+            Plugin selectedPlugin = loadedPlugins.get(selectedPluginId);
+            Metadata metadata = selectedPlugin.getMetadata();
+
+            Texture icon = PluginManager.getPluginIconRegistry().get(metadata.getId());
+            float iconSize = 256;
+            float windowWidth = ImGui.getWindowWidth();
+            float iconPosX = (windowWidth - iconSize) * 0.5f;
+
+            ImGui.setCursorPosX(iconPosX);
+            ImGui.image(icon.getID(), iconSize, iconSize);
+
+            ImGui.textWrapped("Name: " + metadata.getName());
+            ImGui.textWrapped("Description: " + metadata.getDescription());
+            ImGui.textWrapped("ID: " + metadata.getId());
+            ImGui.textWrapped("Version: " + metadata.getVersion());
+            ImGui.textWrapped("License: " + metadata.getLicense());
+
+            renderListWithTitle("Authors", metadata.getAuthors());
+            renderListWithTitle("Contacts", metadata.getContact());
+
+            IControlsWidget controls = PluginManager.getPluginControlsRegistry().get(metadata.getId());
+            if (controls != null) {
+                ImGui.newLine();
+                controls.render();
+            }
+        }
+
+        ImGui.endChild();
+
+        ImGui.columns(1);
     }
 
     /**
@@ -157,6 +211,6 @@ public class PluginMenu extends ScreenWidget {
             }
         }
 
-        ImGui.text(title + ": " + stringBuilder);
+        ImGui.textWrapped(title + ": " + stringBuilder);
     }
 }

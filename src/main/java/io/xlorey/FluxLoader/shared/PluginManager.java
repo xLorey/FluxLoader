@@ -1,5 +1,6 @@
 package io.xlorey.FluxLoader.shared;
 
+import io.xlorey.FluxLoader.interfaces.IControlsWidget;
 import io.xlorey.FluxLoader.plugin.Metadata;
 import io.xlorey.FluxLoader.plugin.Plugin;
 import io.xlorey.FluxLoader.utils.Constants;
@@ -9,8 +10,6 @@ import lombok.experimental.UtilityClass;
 import zombie.core.Core;
 import zombie.core.textures.Texture;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -36,6 +35,13 @@ public class PluginManager {
     private static final HashMap<String, Texture> pluginIconRegistry = new HashMap<>();
 
     /**
+     * Register of loaded plugin controls
+     * Key: plugin id
+     * Value: Controls widget
+     */
+    private static final HashMap<String, IControlsWidget> pluginControlsRegistry = new HashMap<>();
+
+    /**
      * Register of all loaded client plugins
      * Key: "entryPoint:ID:Version"
      * Value: plugin instance
@@ -48,6 +54,15 @@ public class PluginManager {
      * Value: plugin instance
      */
     private static final HashMap<String, Plugin> serverPluginsRegistry = new HashMap<>();
+
+    /**
+     * Retrieves the list of loaded client plugins controls
+     * @return HashMap containing information about loaded client plugin icons, where the key is the plugin ID.
+     *         and the value is the corresponding ControlsWidget instance.
+     */
+    public static HashMap<String, IControlsWidget> getPluginControlsRegistry() {
+        return pluginControlsRegistry;
+    }
 
     /**
      * Retrieves the list of loaded client plugins icons
@@ -193,6 +208,14 @@ public class PluginManager {
             try (URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()}, commonClassLoader)) {
                 loadEntryPoints(true, clientEntryPoints, clientPluginsRegistry, metadata, classLoader);
                 loadEntryPoints(false, serverEntryPoints, serverPluginsRegistry, metadata, classLoader);
+
+                String controlsClassName = metadata.getControls();
+                if (controlsClassName != null && !controlsClassName.isEmpty()) {
+                    Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
+                    IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
+
+                    pluginControlsRegistry.put(metadata.getId(), controlsInstance);
+                }
 
                 String iconPath = metadata.getIcon();
                 URL iconUrl = classLoader.getResource(iconPath);

@@ -110,6 +110,7 @@ All metadata about the plugin is generated based on its metadata. They are locat
         "client": ["io.xlorey.plugintemplate.client.ClientPlugin"],
         "server": ["io.xlorey.plugintemplate.server.ServerPlugin"]
     },
+  "controls": "io.xlorey.plugintemplate.client.Controls",
     "dependencies": {
         "project-zomboid": "=41.78.16",
         "flux-loader": "=0.2.0"
