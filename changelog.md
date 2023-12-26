@@ -9,6 +9,7 @@
 - Added basic templates for UI widgets
 - Added configuration system for the plugin
 - Added the ability to create plugin widget controls in the menu
+- Added a method for capturing mouse events in widgets
 - Fix `Zip Slip` vulnerability in `JarTools` extraction method (#9)
 - Fixed (separated) logic for loading plugins from the server and client sides
 

@@ -4,10 +4,7 @@ import io.xlorey.FluxLoader.utils.Logger;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -30,14 +27,59 @@ public class Configuration {
     private final String configName;
 
     /**
-     * Configuration file constructor
-     * @param configPath path to the configuration file
+     * Plugin instance
      */
-    public Configuration(String configPath) {
+    private final Plugin plugin;
+
+    /**
+     * Constructor of the Configuration class.
+     * This constructor initializes a new configuration instance for the plugin.
+     * It sets the path to the configuration file and stores a link to the plugin instance.
+     * The configuration file name is also determined based on the path provided.
+     * @param configPath Path to the configuration file that will be used to load and save data.
+     * @param plugin The plugin instance for which the configuration is being created. This instance is used
+     * to interact with other plugin components and its environment.
+     */
+    public Configuration(String configPath, Plugin plugin) {
         this.configPath = configPath;
+        this.plugin = plugin;
 
         File configFile = new File(configPath);
         this.configName = configFile.getName();
+    }
+
+    /**
+     * Copies or loads a configuration file.
+     * This method checks for the presence of a configuration file at the path specified in {@code configPath}.
+     * If the file does not exist, the method tries to find and copy it from the JAR resources.
+     * The file name to search for in the JAR is based on the name of the configuration file with a ".yml" extension.
+     * If there is no file in the JAR resources, the method creates a new empty configuration file.
+     * If the file already exists, the method simply loads the configuration from that file.
+     */
+    public void copyOrLoadConfig() {
+        File configFile = new File(configPath);
+
+        if (!isExists()) {
+            String fileName = configFile.getName();
+
+            try (InputStream in = plugin.getClass().getClassLoader().getResourceAsStream(fileName);
+                 FileOutputStream out = new FileOutputStream(configFile)) {
+                if (in == null) {
+                    create();
+                    return;
+                }
+
+                byte[] buffer = new byte[1024];
+                int bytesRead;
+                while ((bytesRead = in.read(buffer)) != -1) {
+                    out.write(buffer, 0, bytesRead);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        load();
     }
 
     /**
@@ -52,7 +94,7 @@ public class Configuration {
         save();
         load();
 
-        Logger.print("Configuration file reloaded: "+ configName);
+        Logger.print(String.format("Configuration file '%s' has been reloaded.", configName));
     }
 
     /**
@@ -76,14 +118,17 @@ public class Configuration {
 
     /**
      * Loads configuration from a file.
-     * Before reading a file, the method checks for its existence and creates it if it does not exist.
-     * Then the method reads the YAML file, the path to which is determined by the value of the {@code configPath} field,
+     * Before reading a file, the method checks for its existence by calling {@code isExists()}.
+     * If the file exists, the method reads the YAML file, the path to which is determined by the value of the {@code configPath} field,
      * and loads its contents into the {@code config} map.
+     * If the file content is null, the configuration is not loaded.
      * If an I/O error occurs while reading a file,
-     * the exception is caught and output to the stacktrace, but is not thrown further.
+     * the exception is caught and pushed onto the trace stack, but is not thrown further.
      */
     public void load() {
-        createIfNotExists();
+        if (!isExists()) {
+            return;
+        }
 
         Yaml yaml = new Yaml();
         try (FileInputStream inputStream = new FileInputStream(configPath)) {
@@ -101,7 +146,7 @@ public class Configuration {
      * Checks for the existence of a configuration file and creates it if it does not exist.
      * In case of an error, displays a stack trace.
      */
-    public void createIfNotExists() {
+    public void create() {
         File configFile = new File(configPath);
 
         if (!configFile.exists()) {
@@ -123,25 +168,6 @@ public class Configuration {
     public boolean isExists() {
         File configFile = new File(configPath);
         return configFile.exists();
-    }
-
-    /**
-     * Creates a configuration file if it does not exist.
-     * In case of an error, displays the stack trace.
-     */
-    public void create() {
-        File configFile = new File(configPath);
-
-        if (!configFile.exists()) {
-            try {
-                if (!configFile.createNewFile()) {
-                    throw new IOException("Failed to create configuration file:" + configPath);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                Logger.print("An error occurred while creating the configuration file!");
-            }
-        }
     }
 
     /**

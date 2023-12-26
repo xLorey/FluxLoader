@@ -122,7 +122,7 @@ public class Plugin implements IPlugin {
             }
         }
 
-        config = new Configuration(defaultConfig.getAbsolutePath());
+        config = new Configuration(defaultConfig.getAbsolutePath(), this);
         getConfig().load();
     }
 }

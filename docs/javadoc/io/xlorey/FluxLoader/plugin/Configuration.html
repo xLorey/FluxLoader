@@ -89,9 +89,10 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String)" class="member-name-link">Configuration</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;configPath)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.lang.String,io.xlorey.FluxLoader.plugin.Plugin)" class="member-name-link">Configuration</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;configPath,
+ <a href="Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&nbsp;plugin)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Configuration file constructor</div>
+<div class="block">Constructor of the Configuration class.</div>
 </div>
 </div>
 </section>
@@ -108,12 +109,12 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#create()" class="member-name-link">create</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#copyOrLoadConfig()" class="member-name-link">copyOrLoadConfig</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Creates a configuration file if it does not exist.</div>
+<div class="block">Copies or loads a configuration file.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createIfNotExists()" class="member-name-link">createIfNotExists</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#create()" class="member-name-link">create</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Checks for the existence of a configuration file and creates it if it does not exist.</div>
 </div>
@@ -220,13 +221,19 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(java.lang.String)">
+<section class="detail" id="&lt;init&gt;(java.lang.String,io.xlorey.FluxLoader.plugin.Plugin)">
 <h3>Configuration</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Configuration</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;configPath)</span></div>
-<div class="block">Configuration file constructor</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Configuration</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;configPath,
+ <a href="Plugin.html" title="class in io.xlorey.FluxLoader.plugin">Plugin</a>&nbsp;plugin)</span></div>
+<div class="block">Constructor of the Configuration class.
+ This constructor initializes a new configuration instance for the plugin.
+ It sets the path to the configuration file and stores a link to the plugin instance.
+ The configuration file name is also determined based on the path provided.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>configPath</code> - path to the configuration file</dd>
+<dd><code>configPath</code> - Path to the configuration file that will be used to load and save data.</dd>
+<dd><code>plugin</code> - The plugin instance for which the configuration is being created. This instance is used
+ to interact with other plugin components and its environment.</dd>
 </dl>
 </section>
 </li>
@@ -238,6 +245,18 @@ loadScripts(document, 'script');</script>
 <section class="method-details" id="method-detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="copyOrLoadConfig()">
+<h3>copyOrLoadConfig</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">copyOrLoadConfig</span>()</div>
+<div class="block">Copies or loads a configuration file.
+ This method checks for the presence of a configuration file at the path specified in <code>configPath</code>.
+ If the file does not exist, the method tries to find and copy it from the JAR resources.
+ The file name to search for in the JAR is based on the name of the configuration file with a ".yml" extension.
+ If there is no file in the JAR resources, the method creates a new empty configuration file.
+ If the file already exists, the method simply loads the configuration from that file.</div>
+</section>
+</li>
 <li>
 <section class="detail" id="reload()">
 <h3>reload</h3>
@@ -264,17 +283,18 @@ loadScripts(document, 'script');</script>
 <h3>load</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">load</span>()</div>
 <div class="block">Loads configuration from a file.
- Before reading a file, the method checks for its existence and creates it if it does not exist.
- Then the method reads the YAML file, the path to which is determined by the value of the <code>configPath</code> field,
+ Before reading a file, the method checks for its existence by calling <code>isExists()</code>.
+ If the file exists, the method reads the YAML file, the path to which is determined by the value of the <code>configPath</code> field,
  and loads its contents into the <code>config</code> map.
+ If the file content is null, the configuration is not loaded.
  If an I/O error occurs while reading a file,
- the exception is caught and output to the stacktrace, but is not thrown further.</div>
+ the exception is caught and pushed onto the trace stack, but is not thrown further.</div>
 </section>
 </li>
 <li>
-<section class="detail" id="createIfNotExists()">
-<h3>createIfNotExists</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">createIfNotExists</span>()</div>
+<section class="detail" id="create()">
+<h3>create</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">create</span>()</div>
 <div class="block">Checks for the existence of a configuration file and creates it if it does not exist.
  In case of an error, displays a stack trace.</div>
 </section>
@@ -288,14 +308,6 @@ loadScripts(document, 'script');</script>
 <dt>Returns:</dt>
 <dd><code>true</code> if the configuration file exists, otherwise <code>false</code>.</dd>
 </dl>
-</section>
-</li>
-<li>
-<section class="detail" id="create()">
-<h3>create</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">create</span>()</div>
-<div class="block">Creates a configuration file if it does not exist.
- In case of an error, displays the stack trace.</div>
 </section>
 </li>
 <li>
