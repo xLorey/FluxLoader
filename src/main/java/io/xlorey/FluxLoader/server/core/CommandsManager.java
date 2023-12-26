@@ -1,4 +1,4 @@
-package io.xlorey.FluxLoader.shared;
+package io.xlorey.FluxLoader.server.core;
 
 import io.xlorey.FluxLoader.annotations.CommandChatReturn;
 import io.xlorey.FluxLoader.annotations.CommandExecutionScope;

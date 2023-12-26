@@ -109,7 +109,7 @@ public class PatchGameServer extends PatchFile{
             toInject.add(new VarInsnNode(Opcodes.ALOAD, 0));
             toInject.add(new MethodInsnNode(
                     Opcodes.INVOKESTATIC,
-                    "io/xlorey/FluxLoader/shared/CommandsManager",
+                    "io/xlorey/FluxLoader/server/core/CommandsManager",
                     "handleCustomCommand",
                     "(Lzombie/core/raknet/UdpConnection;Ljava/lang/String;)Ljava/lang/String;",
                     false
@@ -149,7 +149,7 @@ public class PatchGameServer extends PatchFile{
                 toInject.add(new VarInsnNode(Opcodes.ALOAD, 3));
                 toInject.add(new MethodInsnNode(
                         Opcodes.INVOKESTATIC,
-                        "io/xlorey/FluxLoader/shared/CommandsManager",
+                        "io/xlorey/FluxLoader/server/core/CommandsManager",
                         "handleCustomCommand",
                         "(Lzombie/core/raknet/UdpConnection;Ljava/lang/String;)Ljava/lang/String;",
                         false
@@ -157,6 +157,36 @@ public class PatchGameServer extends PatchFile{
                 toInject.add(new VarInsnNode(Opcodes.ASTORE, 4));
 
                 method.instructions.insertBefore(targetNode, toInject);
+            }
+        });
+        PatchTools.injectIntoClass(filePath, "receiveReceiveCommand", true, method -> {
+            InsnList instructions = method.instructions;
+            AbstractInsnNode currentNode = instructions.getFirst();
+
+            while (currentNode != null) {
+                if (currentNode instanceof MethodInsnNode) {
+                    MethodInsnNode methodInsnNode = (MethodInsnNode) currentNode;
+                    if (methodInsnNode.owner.equals("zombie/network/chat/ChatServer") &&
+                            methodInsnNode.name.equals("sendMessageToServerChat")) {
+
+                        LabelNode continueLabel = new LabelNode();
+                        InsnList toInject = new InsnList();
+                        toInject.add(new VarInsnNode(Opcodes.ALOAD, 4));
+                        toInject.add(new MethodInsnNode(
+                                Opcodes.INVOKEVIRTUAL,
+                                "java/lang/String",
+                                "isEmpty",
+                                "()Z",
+                                false
+                        ));
+                        toInject.add(new JumpInsnNode(Opcodes.IFEQ, continueLabel));
+                        toInject.add(new InsnNode(Opcodes.RETURN));
+                        toInject.add(continueLabel);
+
+                        instructions.insertBefore(currentNode, toInject);
+                    }
+                }
+                currentNode = currentNode.getNext();
             }
         });
         PatchTools.injectIntoClass(filePath, "receivePlayerConnect", true, method -> {
