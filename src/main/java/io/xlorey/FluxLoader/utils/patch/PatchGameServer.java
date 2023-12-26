@@ -201,5 +201,45 @@ public class PatchGameServer extends PatchFile{
             method.instructions.insert(toInject);
         });
         PatchTools.injectEventInvoker(filePath, "addIncoming", "onAddIncoming", true);
+        PatchTools.injectIntoClass(filePath, "addIncoming", true, method -> {
+            InsnList instructions = method.instructions;
+            InsnList markInstructions = new InsnList();
+            markInstructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+            markInstructions.add(new MethodInsnNode(
+                    Opcodes.INVOKEVIRTUAL,
+                    "java/nio/ByteBuffer",
+                    "mark",
+                    "()Ljava/nio/ByteBuffer;",
+                    false
+            ));
+            markInstructions.add(new InsnNode(Opcodes.POP));
+
+            instructions.insert(markInstructions);
+
+            AbstractInsnNode currentNode = instructions.getFirst();
+            while (currentNode != null) {
+                if (currentNode instanceof MethodInsnNode) {
+                    MethodInsnNode methodInsnNode = (MethodInsnNode) currentNode;
+                    if (methodInsnNode.owner.equals("io/xlorey/FluxLoader/shared/EventManager") &&
+                            methodInsnNode.name.equals("invokeEvent")) {
+
+                        InsnList resetInstructions = new InsnList();
+                        resetInstructions.add(new VarInsnNode(Opcodes.ALOAD, 1));
+                        resetInstructions.add(new MethodInsnNode(
+                                Opcodes.INVOKEVIRTUAL,
+                                "java/nio/ByteBuffer",
+                                "reset",
+                                "()Ljava/nio/ByteBuffer;",
+                                false
+                        ));
+                        resetInstructions.add(new InsnNode(Opcodes.POP));
+                        instructions.insert(currentNode, resetInstructions);
+
+                        break;
+                    }
+                }
+                currentNode = currentNode.getNext();
+            }
+        });
     }
 }
