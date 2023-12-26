@@ -79,6 +79,17 @@ public class EventManager {
      * The method must be compatible with the arguments provided. Returns the result of a method call.
      *
      * @param eventName The name of the event to raise.
+     * @return The result of calling the event method. Returns null if no matching method is found.
+     */
+    public static Object invokeSingleEventAndReturn(String eventName) {
+        return invokeSingleEventAndReturn(eventName, (Object[]) null);
+    }
+
+    /**
+     * Calls a method marked with the SubscribeSingleEvent annotation that matches the given event name.
+     * The method must be compatible with the arguments provided. Returns the result of a method call.
+     *
+     * @param eventName The name of the event to raise.
      * @param args Arguments passed to the event method.
      * @return The result of calling the event method. Returns null if no matching method is found.
      */
