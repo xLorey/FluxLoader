@@ -99,19 +99,23 @@ public class PluginMenu extends ScreenWidget {
         ImGui.pushStyleColor(ImGuiCol.Button, emeraldNormal);
 
         ImGui.begin(Constants.FLUX_NAME + " - Plugins", isOpened, ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoCollapse);
-            if(loadedPlugins.isEmpty()) {
-                String text = "No client plugins found";
-                float windowWidth = ImGui.getWindowWidth();
-                float windowHeight = ImGui.getWindowHeight();
-                float textWidth = ImGui.calcTextSize(text).x;
-                float textHeight = ImGui.calcTextSize(text).y;
 
-                ImGui.setCursorPosX((windowWidth - textWidth) * 0.5f);
-                ImGui.setCursorPosY((windowHeight - textHeight) * 0.5f);
-                ImGui.text(text);
-            } else {
-                renderPluginsInfo();
-            }
+        captureMouseFocus();
+        
+        if(loadedPlugins.isEmpty()) {
+            String text = "No client plugins found";
+            float windowWidth = ImGui.getWindowWidth();
+            float windowHeight = ImGui.getWindowHeight();
+            float textWidth = ImGui.calcTextSize(text).x;
+            float textHeight = ImGui.calcTextSize(text).y;
+
+            ImGui.setCursorPosX((windowWidth - textWidth) * 0.5f);
+            ImGui.setCursorPosY((windowHeight - textHeight) * 0.5f);
+            ImGui.text(text);
+        } else {
+            renderPluginsInfo();
+        }
+
         ImGui.end();
 
         ImGui.popStyleColor(6);

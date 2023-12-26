@@ -26,6 +26,7 @@ public class Installer {
             add(new PatchGameWindow());
             add(new PatchGameServer());
             add(new PatchLuaEventManager());
+            add(new PatchUIManager());
             add(new PatchSpriteRenderer());
             add(new PatchServerMap());
             add(new PatchChatServer());

@@ -5,6 +5,7 @@ import imgui.ImGuiIO;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
 import io.xlorey.FluxLoader.client.api.TextTools;
+import io.xlorey.FluxLoader.client.ui.ScreenWidget;
 import io.xlorey.FluxLoader.client.ui.pluginMenu.MainMenuButton;
 import io.xlorey.FluxLoader.client.ui.pluginMenu.PluginMenu;
 import io.xlorey.FluxLoader.interfaces.IWidget;
@@ -46,6 +47,33 @@ public class WidgetManager {
      * A register of all UI elements that should be rendered
      */
     public static ArrayList<IWidget> widgetsRegistry = new ArrayList<>();
+
+    /**
+     * Flag showing mouse capture for ImGui widgets (prevents events for standard UI)
+     */
+    private static boolean isMouseCapture = false;
+
+    /**
+     * Change mouse capture state for ImGui widgets. Used only inside widgets via the captureMouseFocus method
+     */
+    public static void captureMouse() {
+        isMouseCapture = true;
+    }
+
+    /**
+     * Returns the value of the mouse capture flag.
+     * @return true if the mouse is captured, false otherwise.
+     */
+    public static boolean isMouseCapture() {
+        return isMouseCapture;
+    }
+
+    /**
+     * Release the mouse from being captured by ImGui widgets
+     */
+    public static void releaseMouse() {
+        isMouseCapture = false;
+    }
 
     /**
      * Initializing the UI Manager
@@ -111,12 +139,24 @@ public class WidgetManager {
         imGuiGlfw.newFrame();
         ImGui.newFrame();
 
+        boolean isScreenWidgetHovered = false;
+
         for (IWidget widget : widgetsRegistry) {
             widget.update();
 
             if (widget.isVisible()) {
                 widget.render();
             }
+            if (widget instanceof ScreenWidget screenWidget) {
+                if(screenWidget.isWidgetHovered()) {
+                    isScreenWidgetHovered = true;
+                    captureMouse();
+                }
+            }
+        }
+
+        if (!isScreenWidgetHovered) {
+            releaseMouse();
         }
 
         ImGui.render();

@@ -1,5 +1,7 @@
 package io.xlorey.FluxLoader.client.ui;
 
+import imgui.ImGui;
+import imgui.ImVec2;
 import io.xlorey.FluxLoader.client.core.WidgetManager;
 import io.xlorey.FluxLoader.interfaces.IWidget;
 
@@ -9,6 +11,11 @@ import java.util.ArrayList;
  * A basic UI widget class that can be added to display on screen independently of other widgets
  */
 public class ScreenWidget implements IWidget {
+    /**
+     * Flag indicating whether the mouse cursor is inside the widget
+     */
+    private boolean isWidgetHovered = false;
+
     /**
      * Flag indicating whether the widget is displayed
      */
@@ -41,6 +48,10 @@ public class ScreenWidget implements IWidget {
      */
     @Override
     public void update() {
+        if (!isVisible()) {
+            isWidgetHovered = false;
+        }
+
         for (ComponentWidget widget : registryChildWidgets) {
             widget.update();
         }
@@ -92,5 +103,30 @@ public class ScreenWidget implements IWidget {
      */
     public void setVisible(boolean visible) {
         isVisible = visible;
+    }
+
+    /**
+     * Captures mouse focus, redirecting mouse interaction to the current element.
+     * This method is used to temporarily limit the user's interaction with others user interface elements.
+     */
+    public void captureMouseFocus() {
+        ImVec2 windowSize = ImGui.getWindowSize();
+        ImVec2 windowPos = ImGui.getWindowPos();
+
+        ImVec2 mousePos = ImGui.getMousePos();
+
+        isWidgetHovered = mousePos.x >= windowPos.x && mousePos.y >= windowPos.y &&
+                mousePos.x <= windowPos.x + windowSize.x && mousePos.y <= windowPos.y + windowSize.y;
+    }
+
+    /**
+     * Checks whether the mouse cursor is within the given widget.
+     * This method is useful for determining whether the mouse is over a widget,
+     * which can be used to implement various interactions
+     * user interface.
+     * @return true if the mouse cursor is inside the widget, false otherwise.
+     */
+    public boolean isWidgetHovered() {
+        return isWidgetHovered;
     }
 }

@@ -124,10 +124,20 @@ implements <a href="../../interfaces/IWidget.html" title="interface in io.xlorey
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Add this widget to the screen draw queue.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isVisible()" class="member-name-link">isVisible</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#captureMouseFocus()" class="member-name-link">captureMouseFocus</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Captures mouse focus, redirecting mouse interaction to the current element.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isVisible()" class="member-name-link">isVisible</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Check if the widget is currently visible on the screen.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isWidgetHovered()" class="member-name-link">isWidgetHovered</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks whether the mouse cursor is within the given widget.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#removeChild(io.xlorey.FluxLoader.client.ui.ComponentWidget)" class="member-name-link">removeChild</a><wbr>(<a href="ComponentWidget.html" title="class in io.xlorey.FluxLoader.client.ui">ComponentWidget</a>&nbsp;widget)</code></div>
@@ -273,6 +283,28 @@ implements <a href="../../interfaces/IWidget.html" title="interface in io.xlorey
 <dt>Parameters:</dt>
 <dd><code>visible</code> - boolean - the desired visibility state of the widget.
                 True to make the widget visible, false to hide it.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="captureMouseFocus()">
+<h3>captureMouseFocus</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">captureMouseFocus</span>()</div>
+<div class="block">Captures mouse focus, redirecting mouse interaction to the current element.
+ This method is used to temporarily limit the user's interaction with others user interface elements.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="isWidgetHovered()">
+<h3>isWidgetHovered</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isWidgetHovered</span>()</div>
+<div class="block">Checks whether the mouse cursor is within the given widget.
+ This method is useful for determining whether the mouse is over a widget,
+ which can be used to implement various interactions
+ user interface.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true if the mouse cursor is inside the widget, false otherwise.</dd>
 </dl>
 </section>
 </li>

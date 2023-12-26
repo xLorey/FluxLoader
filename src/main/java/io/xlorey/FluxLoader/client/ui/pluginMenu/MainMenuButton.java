@@ -70,22 +70,23 @@ public class MainMenuButton extends ScreenWidget {
         ImGui.pushStyleColor(ImGuiCol.Border, 0.7f, 0.7f, 0.7f, 1.0f);
         ImGui.pushStyleVar(ImGuiStyleVar.FrameBorderSize, 1.0f);
 
-        ImGui.begin("##uniqueId", new ImBoolean(false),
+        ImGui.begin("Plugin Menu Button", new ImBoolean(false),
                 ImGuiWindowFlags.NoMove | ImGuiWindowFlags.NoTitleBar |
                         ImGuiWindowFlags.NoResize | ImGuiWindowFlags.NoScrollbar |
                         ImGuiWindowFlags.NoCollapse | ImGuiWindowFlags.NoBackground);
 
+        ImGui.pushStyleColor(ImGuiCol.Button, 0.0f, 0.0f, 0.0f, 0.5f);
+        ImGui.pushStyleColor(ImGuiCol.ButtonHovered, 0.5f, 0.5f, 0.5f, 0.5f);
+        ImGui.pushStyleColor(ImGuiCol.ButtonActive, 0.3f, 0.3f, 0.3f, 0.5f);
+        ImGui.pushStyleColor(ImGuiCol.Text, 0.7f, 0.7f, 0.7f, 1.0f);
 
-            ImGui.pushStyleColor(ImGuiCol.Button, 0.0f, 0.0f, 0.0f, 0.5f);
-            ImGui.pushStyleColor(ImGuiCol.ButtonHovered, 0.5f, 0.5f, 0.5f, 0.5f);
-            ImGui.pushStyleColor(ImGuiCol.ButtonActive, 0.3f, 0.3f, 0.3f, 0.5f);
-            ImGui.pushStyleColor(ImGuiCol.Text, 0.7f, 0.7f, 0.7f, 1.0f);
+        if (ImGui.button(Constants.FLUX_NAME, -1, -1)) {
+            PluginMenu.setOpen(!PluginMenu.isOpened());
+        }
 
-            if (ImGui.button(Constants.FLUX_NAME, -1, -1)) {
-                PluginMenu.setOpen(!PluginMenu.isOpened());
-            }
+        ImGui.popStyleColor(4);
 
-            ImGui.popStyleColor(4);
+        captureMouseFocus();
 
         ImGui.end();
 
