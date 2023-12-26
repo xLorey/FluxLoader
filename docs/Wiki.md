@@ -1,19 +1,12 @@
 # Wiki
 
-Writing mods for any game can be a challenging task for beginners, especially without proper documentation. If you decide to start expanding the capabilities of Project Zomboid, we will try to help you with this. First of all, we recommend reading [the basics](https://github.com/cocolabs/pz-modding-guide#writing-code) on writing modifications.
+Creating modifications for the game can be quite a difficult task for beginners, so we recommend reading the [Project Zomboid modding guide](https://github.com/cocolabs/pz-modding-guide#writing-code).
 
-Flux Loader provides many more features than it might seem at first glance. You can familiarize yourself with all internal processes through the source code, and you can find [example plugin](https://github.com/xLorey/FluxLoader-PluginTemplate) in our GitHub profile.
+So, you are determined to create your own new and unique modification. Well, that's commendable. Here we will try to describe as easy as possible to start with writing Java Flux Plugins. Please read the [useful links](#useful-links), they will help in writing plugins. Creating your first plugin is described [here (How to write plugin)](./WritePlugin.md).
 
-We also highly recommend that you familiarize yourself with these resources, they will greatly help you understand the logic of the game:
+## Useful links
+
 -   [Project Zomboid Java Doc](https://zomboid-javadoc.com/)
 -   [Project Zomboid Events](https://pzwiki.net/wiki/Lua_Events)
 -   [Flux Loader Custom Events](./Events.md)
 -   [Flux Loader Java Doc](https://xlorey.github.io/FluxLoader/)
-
-# Content
-- [Beginning](./Beginning.md)
-- [Using events](./UsingEvents.md)
-- [Console/Server commands](./CreateCommands.md)
-- [UI Widget](./UIWidget.md)
-- [Configuration files](./Configs.md)
-- [Compilation](./Compilation.md)
