@@ -100,8 +100,8 @@ public class PluginManager {
      */
     public static void executePlugins(HashMap<String, Plugin> pluginsRegistry) {
         for (Map.Entry<String, Plugin> entry : pluginsRegistry.entrySet()) {
-            String pluginId = entry.getKey();
             Plugin pluginInstance = entry.getValue();
+            String pluginId = pluginInstance.getMetadata().getId();
 
             Logger.print(String.format("Plugin '%s' started trying to execute...", pluginId));
 
@@ -124,8 +124,8 @@ public class PluginManager {
      */
     public static void terminatePlugins(HashMap<String, Plugin> pluginsRegistry) {
         for (Map.Entry<String, Plugin> entry : pluginsRegistry.entrySet()) {
-            String pluginId = entry.getKey();
             Plugin pluginInstance = entry.getValue();
+            String pluginId = pluginInstance.getMetadata().getId();
 
             Logger.print(String.format("Plugin '%s' is starting to shut down...", pluginId));
 
