@@ -29,11 +29,12 @@ public class PatchGameServer extends PatchFile{
               Init Flux Loader
              */
             InsnList initFluxLoader = new InsnList();
+            initFluxLoader.add(new VarInsnNode(Opcodes.ALOAD, 0));
             initFluxLoader.add(new MethodInsnNode(
                     Opcodes.INVOKESTATIC,
                     "io/xlorey/FluxLoader/server/core/Core",
                     "init",
-                    "()V",
+                    "([Ljava/lang/String;)V",
                     false
             ));
             method.instructions.insert(initFluxLoader);
@@ -52,7 +53,6 @@ public class PatchGameServer extends PatchFile{
                 }
                 targetServerInit = targetServerInit.getNext();
             }
-
 
             /*
               Event onServerShutDown

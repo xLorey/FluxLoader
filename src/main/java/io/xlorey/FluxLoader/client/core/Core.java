@@ -9,11 +9,6 @@ import io.xlorey.FluxLoader.utils.Logger;
  */
 public class Core {
     /**
-     * Flag indicating whether client plugins have been loaded
-     */
-    private static boolean isClientLoaded = false;
-
-    /**
      * Flag indicating whether client plugins are running
      */
     public static boolean isPluginsExecuted = false;
@@ -32,18 +27,5 @@ public class Core {
         PluginManager.loadPlugins();
 
         WidgetManager.init();
-
-        isClientLoaded = true;
-    }
-
-    /**
-     * Checks if client plugins have been loaded.
-     * This method provides information about the initialization state of the FluxLoader client.
-     * It returns the value of a flag that indicates whether initialization was successful
-     * and loading client plugins.
-     * @return true if client plugins were loaded successfully; otherwise false.
-     */
-    public static boolean isClientLoaded() {
-        return isClientLoaded;
     }
 }
