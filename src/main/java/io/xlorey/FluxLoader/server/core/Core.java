@@ -14,17 +14,19 @@ public class Core {
      * @exception Exception in cases of unsuccessful core initialization
      */
     public static void init(String[] serverArgs) throws Exception {
+        boolean isCoop = false;
+
         for (String serverArg : serverArgs) {
             if (serverArg != null) {
                 if (serverArg.equals("-coop")) {
                     Logger.print("Launching a co-op server...");
-                    PluginManager.executePlugins(PluginManager.getLoadedServerPlugins());
-                    return;
+                    isCoop = true;
+                    break;
                 }
             }
         }
 
-        Logger.printCredits();
+        if (!isCoop) Logger.printCredits();
 
         Logger.print("FluxLoader Core initialization for the server..");
 
