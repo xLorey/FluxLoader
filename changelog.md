@@ -1,6 +1,7 @@
 # FluxLoader v0.6.1
 - Fixed missing `onServerShutdown` events in `main` method
 - Fixed missing `onPlayerBan` events when using commands
+- Fixed missing `onPlayerKick` events when using commands
 
 # FluxLoader v0.6.0
 - Added `onExecute` and `onTerminate` events for plugins. On the server: `onExecute` is called at startup and `onTerminate` - at shutdown. On the client: `onExecute` and `onTerminate` called when entering a single player game (if enabled in the main menu).

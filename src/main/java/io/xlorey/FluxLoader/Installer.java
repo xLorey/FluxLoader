@@ -32,6 +32,7 @@ public class Installer {
             add(new PatchChatServer());
             add(new PatchBanCommand());
             add(new PatchBanSteamIDCommand());
+            add(new PatchKickCommand());
         }
     };
 
