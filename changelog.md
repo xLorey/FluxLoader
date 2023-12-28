@@ -1,3 +1,6 @@
+# FluxLoader v0.6.1
+- Added missing `onServerShutdown` events in `main` method
+
 # FluxLoader v0.6.0
 - Added `onExecute` and `onTerminate` events for plugins. On the server: `onExecute` is called at startup and `onTerminate` - at shutdown. On the client: `onExecute` and `onTerminate` called when entering a single player game (if enabled in the main menu).
 - Added a registry of all loaded plugins

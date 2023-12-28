@@ -1,6 +1,5 @@
 package io.xlorey.FluxLoader.utils.patch;
 
-import io.xlorey.FluxLoader.utils.Logger;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.Type;
 import org.objectweb.asm.tree.*;
@@ -29,58 +28,45 @@ public class PatchGameServer extends PatchFile{
             /*
               Init Flux Loader
              */
-            AbstractInsnNode targetInsn = null;
-
-            for (AbstractInsnNode currentNode = method.instructions.getFirst(); currentNode != null; currentNode = currentNode.getNext()) {
-                if (currentNode instanceof MethodInsnNode methodInsnNode) {
-                    if (methodInsnNode.owner.equals("zombie/debug/DebugLog") && methodInsnNode.name.equals("init")) {
-                        targetInsn = currentNode;
-                        break;
-                    }
-                }
-            }
-
-            if (targetInsn != null) {
-                InsnList toInject = new InsnList();
-
-                toInject.add(new FieldInsnNode(
-                        Opcodes.GETSTATIC,
-                        "zombie/network/GameServer",
-                        "bCoop",
-                        "Z"
-                ));
-
-                LabelNode skipInitLabel = new LabelNode();
-                toInject.add(new JumpInsnNode(Opcodes.IFNE, skipInitLabel));
-
-                toInject.add(new MethodInsnNode(
-                        Opcodes.INVOKESTATIC,
-                        "io/xlorey/FluxLoader/server/core/Core",
-                        "init",
-                        "()V",
-                        false
-                ));
-
-                toInject.add(skipInitLabel);
-
-                method.instructions.insertBefore(targetInsn, toInject);
-            }
+            InsnList initFluxLoader = new InsnList();
+            initFluxLoader.add(new MethodInsnNode(
+                    Opcodes.INVOKESTATIC,
+                    "io/xlorey/FluxLoader/server/core/Core",
+                    "init",
+                    "()V",
+                    false
+            ));
+            method.instructions.insert(initFluxLoader);
 
             /*
               Event onServerInitialize
              */
-            AbstractInsnNode currentNode = method.instructions.getFirst();
-            while (currentNode != null) {
-                if (currentNode instanceof MethodInsnNode methodCall) {
+            AbstractInsnNode targetServerInit = method.instructions.getFirst();
+            while (targetServerInit != null) {
+                if (targetServerInit instanceof MethodInsnNode methodCall) {
                     if (methodCall.owner.contains("GlobalObject") && methodCall.name.equals("refreshAnimSets")) {
                         InsnList eventInvoker = PatchTools.createEventInvokerInsnList("onServerInitialize", argumentTypes, true);
-                        method.instructions.insert(currentNode, eventInvoker);
+                        method.instructions.insert(targetServerInit, eventInvoker);
                         break;
                     }
                 }
-                currentNode = currentNode.getNext();
+                targetServerInit = targetServerInit.getNext();
             }
 
+
+            /*
+              Event onServerShutDown
+             */
+            AbstractInsnNode targetServerShutdown = method.instructions.getFirst();
+            while (targetServerShutdown != null) {
+                if (targetServerShutdown instanceof MethodInsnNode methodCall) {
+                    if (methodCall.owner.contains("System") && methodCall.name.equals("exit")) {
+                        InsnList eventInvoker = PatchTools.createEventInvokerInsnList("onServerShutdown", new Type[]{}, true);
+                        method.instructions.insertBefore(targetServerShutdown, eventInvoker);
+                    }
+                }
+                targetServerShutdown = targetServerShutdown.getNext();
+            }
         });
         PatchTools.injectEventInvokerWithLocalField(filePath, "receiveReceiveCommand", 3, "onSendChatCommand", new int[] {1, 3}, true);
         PatchTools.injectIntoClass(filePath, "handleServerCommand", true, method -> {
