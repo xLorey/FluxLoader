@@ -30,6 +30,8 @@ public class Installer {
             add(new PatchSpriteRenderer());
             add(new PatchServerMap());
             add(new PatchChatServer());
+            add(new PatchBanCommand());
+            add(new PatchBanSteamIDCommand());
         }
     };
 
