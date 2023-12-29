@@ -1,6 +1,7 @@
 # FluxLoader v0.6.2
 - Fixed a critical error loading plugins on the server side
 - Fixed error output when calling events
+- Fixed class loading issue for static utility classes in plugins
 
 # FluxLoader v0.6.1
 - Fixed missing `onServerShutdown` events in `main` method
