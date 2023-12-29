@@ -28,7 +28,6 @@ public class IncomingPacket {
     public static boolean checkAndResetPacketBlocking(ByteBuffer byteBuffer) {
         Boolean isBlocked = blockedPackets.get(byteBuffer);
         if (isBlocked != null && isBlocked) {
-            Logger.print("Packet was blocked!");
             blockedPackets.remove(byteBuffer);
             return true;
         }
