@@ -102,9 +102,15 @@ public class EventManager {
                         try {
                             method.setAccessible(true);
                             return method.invoke(listener, args);
-                        } catch (InvocationTargetException | IllegalAccessException e) {
+                        } catch (InvocationTargetException e) {
+                            Throwable cause = e.getCause();
                             String className = listener.getClass().getName();
-                            Logger.print(String.format("Error invoking single event '%s' in class '%s': %s", eventName, className, e));
+                            String methodName = method.getName();
+                            Logger.print(String.format("Error invoking single event '%s' method '%s' in class '%s': %s", eventName, methodName, className, cause));
+                            cause.printStackTrace();
+                        } catch (IllegalAccessException e) {
+                            Logger.print(String.format("Illegal access when invoking single event '%s' in class '%s': %s", eventName, listener.getClass().getName(), e));
+                            e.printStackTrace();
                         }
                     }
                 }
@@ -135,9 +141,15 @@ public class EventManager {
                         try {
                             method.setAccessible(true);
                             method.invoke(listener, args);
-                        } catch (InvocationTargetException | IllegalAccessException e) {
+                        } catch (InvocationTargetException e) {
+                            Throwable cause = e.getCause();
                             String className = listener.getClass().getName();
-                            Logger.print(String.format("Error invoking event '%s' in class '%s': %s", eventName, className, e));
+                            String methodName = method.getName();
+                            Logger.print(String.format("Error invoking event '%s' method '%s' in class '%s': %s", eventName, methodName, className, cause));
+                            cause.printStackTrace();
+                        } catch (IllegalAccessException e) {
+                            Logger.print(String.format("Illegal access when invoking event '%s' in class '%s': %s", eventName, listener.getClass().getName(), e));
+                            e.printStackTrace();
                         }
                     }
                 }
