@@ -10,10 +10,13 @@ import lombok.experimental.UtilityClass;
 import zombie.core.Core;
 import zombie.core.textures.Texture;
 
-import java.io.*;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 /**
  * Plugin (mod) management system
@@ -206,19 +209,21 @@ public class PluginManager {
             }
 
             ClassLoader commonClassLoader = PluginManager.class.getClassLoader();
-            try (URLClassLoader classLoader = new URLClassLoader(new URL[]{plugin.toURI().toURL()}, commonClassLoader)) {
+            try (PluginClassLoader classLoader = new PluginClassLoader(new URL[]{plugin.toURI().toURL()}, commonClassLoader)) {
                 loadEntryPoints(true, clientEntryPoints, clientPluginsRegistry, metadata, classLoader);
                 loadEntryPoints(false, serverEntryPoints, serverPluginsRegistry, metadata, classLoader);
 
-                String controlsClassName = metadata.getControlsEntrypoint();
-                if (controlsClassName != null && !controlsClassName.isEmpty()) {
-                    Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
-                    IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
-
-                    pluginControlsRegistry.put(metadata.getId(), controlsInstance);
-                }
+                loadRemainingClasses(plugin, classLoader);
 
                 if (isClient) {
+                    String controlsClassName = metadata.getControlsEntrypoint();
+                    if (controlsClassName != null && !controlsClassName.isEmpty()) {
+                        Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
+                        IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
+
+                        pluginControlsRegistry.put(metadata.getId(), controlsInstance);
+                    }
+
                     String iconPath = metadata.getIcon();
                     URL iconUrl = classLoader.getResource(iconPath);
 
@@ -240,6 +245,35 @@ public class PluginManager {
     }
 
     /**
+     * Loads any remaining classes from the specified plugin JAR file that have not already been loaded.
+     * <p>This method scans through the JAR file of a plugin and attempts to load each class that has not yet been loaded.
+     * This is particularly useful for ensuring that classes containing static methods or utilities are available
+     * to the plugin at runtime.</p>
+     * @param pluginFile   The plugin JAR file from which to load classes.
+     * @param classLoader  The custom {@link PluginClassLoader} used to load the classes.
+     * @throws IOException If an I/O error occurs while reading the JAR file.
+     */
+    private static void loadRemainingClasses(File pluginFile, PluginClassLoader classLoader) throws IOException {
+        try (JarFile jarFile = new JarFile(pluginFile)) {
+            Enumeration<JarEntry> entries = jarFile.entries();
+
+            while (entries.hasMoreElements()) {
+                JarEntry entry = entries.nextElement();
+                if (entry.getName().endsWith(".class")) {
+                    String className = entry.getName().replace('/', '.').replace(".class", "");
+                    if (classLoader.findLoaded(className) == null) {
+                        try {
+                            classLoader.loadClass(className);
+                        } catch (ClassNotFoundException e) {
+                            Logger.print("Could not load class: " + className);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
      * Loads plugin input points using the provided class loader.
      * This method is designed to load and initialize plugin classes based on lists of input points.
      * For each input point in the list, the method tries to load the corresponding class, create an instance
@@ -249,10 +283,10 @@ public class PluginManager {
      * @param entryPoints List of string identifiers of the plugin classes' entry points.
      * @param targetRegistry The registry to which loaded plugin instances should be added.
      * @param metadata Plugin information used to log and associate instances with plugin data.
-     * @param classLoader {@link URLClassLoader} for loading plugin classes.
+     * @param classLoader {@link PluginClassLoader} for loading plugin classes.
      * @throws Exception If errors occur while loading classes or creating instances.
      */
-    private static void loadEntryPoints(boolean isClient, List<String> entryPoints, HashMap<String, Plugin> targetRegistry, Metadata metadata, URLClassLoader classLoader) throws Exception {
+    private static void loadEntryPoints(boolean isClient, List<String> entryPoints, HashMap<String, Plugin> targetRegistry, Metadata metadata, PluginClassLoader classLoader) throws Exception {
         String pluginType = isClient ? "client" : "server";
 
         if (entryPoints == null || entryPoints.isEmpty()) {
