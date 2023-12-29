@@ -140,10 +140,11 @@ public class PluginManager {
     }
 
     /**
-     * Loading plugins for the client
+     * Loading plugins into the game context
+     * @param isClient flag indicating whether loading occurs on the client side
      * @throws IOException in cases of input/output problems
      */
-    public static void loadPlugins() throws Exception {
+    public static void loadPlugins(boolean isClient) throws Exception {
         Logger.print("Loading plugins into the environment...");
 
         /*
@@ -217,16 +218,18 @@ public class PluginManager {
                     pluginControlsRegistry.put(metadata.getId(), controlsInstance);
                 }
 
-                String iconPath = metadata.getIcon();
-                URL iconUrl = classLoader.getResource(iconPath);
+                if (isClient) {
+                    String iconPath = metadata.getIcon();
+                    URL iconUrl = classLoader.getResource(iconPath);
 
-                if (iconUrl != null) {
-                    try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
-                        Texture texture = new Texture(iconPath, bis, true);
-                        pluginIconRegistry.put(metadata.getId(), texture);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
+                    if (iconUrl != null) {
+                        try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
+                            Texture texture = new Texture(iconPath, bis, true);
+                            pluginIconRegistry.put(metadata.getId(), texture);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
+                        }
                     }
                 }
             } catch (Exception e){

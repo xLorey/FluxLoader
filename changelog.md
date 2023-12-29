@@ -1,3 +1,6 @@
+# FluxLoader v0.6.2
+- Fixed a critical error loading plugins on the server side
+
 # FluxLoader v0.6.1
 - Fixed missing `onServerShutdown` events in `main` method
 - Fixed missing `onPlayerBan` events when using commands

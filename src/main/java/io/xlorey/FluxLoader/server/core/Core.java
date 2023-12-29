@@ -32,7 +32,7 @@ public class Core {
 
         EventManager.subscribe(new EventsHandler());
 
-        PluginManager.loadPlugins();
+        PluginManager.loadPlugins(false);
 
         PluginManager.executePlugins(PluginManager.getLoadedServerPlugins());
     }
