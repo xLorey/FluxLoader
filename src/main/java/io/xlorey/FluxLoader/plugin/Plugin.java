@@ -106,7 +106,7 @@ public class Plugin implements IPlugin {
             try (InputStream in = getClass().getClassLoader().getResourceAsStream("config.yml");
                  FileOutputStream out = new FileOutputStream(defaultConfig)) {
                 if (in == null) {
-                    Logger.print(String.format("Could not find 'config.yml' in JAR resources for plugin '%s'",
+                    Logger.printLog(String.format("Could not find 'config.yml' in JAR resources for plugin '%s'",
                             getMetadata().getId()));
                     config = null;
                     return;

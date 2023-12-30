@@ -12,5 +12,5 @@ public @interface SubscribeSingleEvent {
      * Event name
      * @return The default event name for the subscription. If not specified, an empty string is returned.
      */
-    String eventName() default "";
+    String eventName();
 }

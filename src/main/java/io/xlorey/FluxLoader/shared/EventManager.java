@@ -8,6 +8,7 @@ import lombok.experimental.UtilityClass;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 
 /**
@@ -64,7 +65,7 @@ public class EventManager {
             HashSet<String> registeredListenerEvents = getSingleEventNames(registeredListener);
             for (String eventName : newListenerEvents) {
                 if (registeredListenerEvents.contains(eventName)) {
-                    Logger.print(String.format("Error subscribing class to events! Duplicate single event '%s' detected in '%s'! Skipping...",
+                    Logger.printLog(String.format("Error subscribing class to events! Duplicate single event '%s' detected in '%s'! Skipping...",
                             eventName,
                             newListener.getClass().getName()));
                     return false;
@@ -106,11 +107,9 @@ public class EventManager {
                             Throwable cause = e.getCause();
                             String className = listener.getClass().getName();
                             String methodName = method.getName();
-                            Logger.print(String.format("Error invoking single event '%s' method '%s' in class '%s': %s", eventName, methodName, className, cause));
-                            cause.printStackTrace();
+                            Logger.printLog(String.format("Error invoking single event '%s' method '%s' in class '%s': %s", eventName, methodName, className, Arrays.toString(cause.getStackTrace())));
                         } catch (IllegalAccessException e) {
-                            Logger.print(String.format("Illegal access when invoking single event '%s' in class '%s': %s", eventName, listener.getClass().getName(), e));
-                            e.printStackTrace();
+                            Logger.printLog(String.format("Illegal access when invoking single event '%s' in class '%s': %s", eventName, listener.getClass().getName(), Arrays.toString(e.getStackTrace())));
                         }
                     }
                 }
@@ -145,11 +144,9 @@ public class EventManager {
                             Throwable cause = e.getCause();
                             String className = listener.getClass().getName();
                             String methodName = method.getName();
-                            Logger.print(String.format("Error invoking event '%s' method '%s' in class '%s': %s", eventName, methodName, className, cause));
-                            cause.printStackTrace();
+                            Logger.printLog(String.format("Error invoking event '%s' method '%s' in class '%s': %s", eventName, methodName, className, Arrays.toString(cause.getStackTrace())));
                         } catch (IllegalAccessException e) {
-                            Logger.print(String.format("Illegal access when invoking event '%s' in class '%s': %s", eventName, listener.getClass().getName(), e));
-                            e.printStackTrace();
+                            Logger.printLog(String.format("Illegal access when invoking event '%s' in class '%s': %s", eventName, listener.getClass().getName(), Arrays.toString(e.getStackTrace())));
                         }
                     }
                 }
@@ -170,7 +167,7 @@ public class EventManager {
         }
 
         if (method.getParameterCount() != args.length) {
-            Logger.print(String.format("Number of arguments mismatch when calling event '%s' in method '%s' (class '%s')",
+            Logger.printLog(String.format("Number of arguments mismatch when calling event '%s' in method '%s' (class '%s')",
                     eventName, method.getName(), method.getDeclaringClass().getSimpleName()));
             return false;
         }
@@ -181,7 +178,7 @@ public class EventManager {
                 String expectedTypeName = parameterTypes[i].getName();
                 String receivedTypeName = args[i] == null ? "null" : args[i].getClass().getName();
 
-                Logger.print(String.format("Mismatch of passed and received argument types when calling event '%s' in method '%s' (class '%s'). Expected '%s', but got '%s'",
+                Logger.printLog(String.format("Mismatch of passed and received argument types when calling event '%s' in method '%s' (class '%s'). Expected '%s', but got '%s'",
                         eventName, method.getName(), method.getDeclaringClass().getSimpleName(), expectedTypeName, receivedTypeName));
                 return false;
             }

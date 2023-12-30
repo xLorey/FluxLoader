@@ -24,7 +24,7 @@ public class StateManager {
             GameWindow.states.LoopToState = 2;
         }
         else {
-            Logger.print(String.format(
+            Logger.printLog(String.format(
                     "Unexpected GameState found at index 0 (%s) expected %s",
                     tisLogoState.getClass().getName(), TISLogoState.class.getName()));
         }
@@ -34,7 +34,7 @@ public class StateManager {
      * Initializing
      */
     public static void init() {
-        Logger.print("Initializing the state manager...");
+        Logger.printLog("Initializing the state manager...");
 
         initLogoState();
     }

@@ -1,6 +1,10 @@
 package io.xlorey.FluxLoader.utils;
 
 import lombok.experimental.UtilityClass;
+import zombie.core.logger.LoggerManager;
+import zombie.core.logger.ZLogger;
+import zombie.debug.DebugLog;
+import zombie.network.GameServer;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -10,24 +14,32 @@ import java.time.format.DateTimeFormatter;
  */
 @UtilityClass
 public class Logger {
-    private static final int WIDTH = 50;
     /**
-     * Outputting a message to the console/logs
+     * Outputting a message to the console installer
      * @param text message
      */
-    public static void print(String text) {
+    public static void printSystem(String text) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         String time = LocalDateTime.now().format(formatter);
         System.out.println(String.format("<%s> [%s]: %s", time, Constants.FLUX_NAME, text));
     }
 
     /**
-     * Outputting a message to the console/logs with tag
+     * Outputting a message to the console/logs
      * @param text message
-     * @param tag tag to accurately identify the message
      */
-    public static void print(String text, String tag) {
-        System.out.println(String.format("[%s | %s]: %s", Constants.FLUX_NAME, tag, text));
+    public static void printLog(String text) {
+        ZLogger fluxLogger = LoggerManager.getLogger(GameServer.bServer ? "FluxLog-server" : "FluxLog-client");
+        fluxLogger.write(text, "FluxLogger");
+    }
+
+    /**
+     * Outputting a message to the console/logs
+     * @param logger custom logger
+     * @param text message
+     */
+    public static void printLog(ZLogger logger, String text) {
+        logger.write(text);
     }
 
     /**

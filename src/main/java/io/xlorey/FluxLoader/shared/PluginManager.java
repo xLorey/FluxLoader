@@ -106,15 +106,15 @@ public class PluginManager {
             Plugin pluginInstance = entry.getValue();
             String pluginId = pluginInstance.getMetadata().getId();
 
-            Logger.print(String.format("Plugin '%s' started trying to execute...", pluginId));
+            Logger.printLog(String.format("Plugin '%s' started trying to execute...", pluginId));
 
             try {
                 pluginInstance.onExecute();
             } catch (Exception e) {
-                Logger.print(String.format("Plugin '%s' failed to execute correctly due to: %s", pluginId, e));
+                Logger.printLog(String.format("Plugin '%s' failed to execute correctly due to: %s", pluginId, e));
             }
 
-            Logger.print(String.format("Plugin '%s' has been successfully executed. All internal processes have been successfully launched.", pluginId));
+            Logger.printLog(String.format("Plugin '%s' has been successfully executed. All internal processes have been successfully launched.", pluginId));
         }
     }
 
@@ -130,15 +130,15 @@ public class PluginManager {
             Plugin pluginInstance = entry.getValue();
             String pluginId = pluginInstance.getMetadata().getId();
 
-            Logger.print(String.format("Plugin '%s' is starting to shut down...", pluginId));
+            Logger.printLog(String.format("Plugin '%s' is starting to shut down...", pluginId));
 
             try {
                 pluginInstance.onTerminate();
             } catch (Exception e) {
-                Logger.print(String.format("Plugin '%s' failed to shut down correctly due to: %s", pluginId, e));
+                Logger.printLog(String.format("Plugin '%s' failed to shut down correctly due to: %s", pluginId, e));
             }
 
-            Logger.print(String.format("Plugin '%s' has been successfully terminated. All internal processes have been completed.", pluginId));
+            Logger.printLog(String.format("Plugin '%s' has been successfully terminated. All internal processes have been completed.", pluginId));
         }
     }
 
@@ -148,7 +148,7 @@ public class PluginManager {
      * @throws IOException in cases of input/output problems
      */
     public static void loadPlugins(boolean isClient) throws Exception {
-        Logger.print("Loading plugins into the environment...");
+        Logger.printLog("Loading plugins into the environment...");
 
         /*
           Checking the presence of a folder for plugins and validating it
@@ -167,7 +167,7 @@ public class PluginManager {
             Metadata metadata = Metadata.getInfoFromFile(plugin);
 
             if (metadata == null) {
-                Logger.print(String.format("No metadata found for potential plugin '%s'. Skipping...", plugin.getName()));
+                Logger.printLog(String.format("No metadata found for potential plugin '%s'. Skipping...", plugin.getName()));
                 continue;
             }
             pluginsInfoRegistry.put(plugin, metadata);
@@ -204,7 +204,7 @@ public class PluginManager {
                     configFolder.mkdir();
                 } catch (Exception e) {
                     e.printStackTrace();
-                    Logger.print(String.format("An error occurred while creating the config folder for plugin '%s'", metadata.getId()));
+                    Logger.printLog(String.format("An error occurred while creating the config folder for plugin '%s'", metadata.getId()));
                 }
             }
 
@@ -265,7 +265,7 @@ public class PluginManager {
                         try {
                             classLoader.loadClass(className);
                         } catch (ClassNotFoundException e) {
-                            Logger.print("Could not load class: " + className);
+                            Logger.printLog("Could not load class: " + className);
                         }
                     }
                 }
@@ -290,7 +290,7 @@ public class PluginManager {
         String pluginType = isClient ? "client" : "server";
 
         if (entryPoints == null || entryPoints.isEmpty()) {
-            Logger.print(String.format("There are no %s entry points for plugin '%s'", pluginType, metadata.getId()));
+            Logger.printLog(String.format("There are no %s entry points for plugin '%s'", pluginType, metadata.getId()));
             return;
         }
 
@@ -305,7 +305,7 @@ public class PluginManager {
 
             pluginInstance.setMetadata(metadata);
 
-            Logger.print(String.format("Loading %s plugin entry point %d/%d: '%s'(ID: '%s', Version: %s)...",
+            Logger.printLog(String.format("Loading %s plugin entry point %d/%d: '%s'(ID: '%s', Version: %s)...",
                     pluginType, currentEntryPointIndex, totalEntryPoints, metadata.getName(), metadata.getId(), metadata.getVersion()));
 
             pluginInstance.onInitialize();
@@ -333,7 +333,7 @@ public class PluginManager {
      */
     private static boolean isValidEntryPoints(List<String> entryPoints, String type, Metadata metadata) {
         if (entryPoints == null) {
-            Logger.print(String.format("Entry points list is null for %s plugin '%s' (ID: '%s', Version: %s). Skipping...",
+            Logger.printLog(String.format("Entry points list is null for %s plugin '%s' (ID: '%s', Version: %s). Skipping...",
                     type, metadata.getName(), metadata.getId(), metadata.getVersion()));
             return false;
         }
@@ -501,7 +501,7 @@ public class PluginManager {
      * @throws IOException in cases of input/output problems
      */
     private static void checkPluginFolder() throws IOException {
-        Logger.print("Checking for plugins folder...");
+        Logger.printLog("Checking for plugins folder...");
 
         File folder = getPluginsDirectory();
 
@@ -511,7 +511,7 @@ public class PluginManager {
 
         if (!folder.exists()) {
             if (!folder.mkdir()) {
-                Logger.print("Failed to create folder...");
+                Logger.printLog("Failed to create folder...");
             }
         }
     }

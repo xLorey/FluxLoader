@@ -42,14 +42,14 @@ public class Installer {
      * @exception Exception in cases of unsuccessful installation
      */
     public static void install() throws Exception {
-        Logger.print(String.format("Preparing for installation %s...", Constants.FLUX_NAME));
-        Logger.print("Checking the installer location...");
+        Logger.printSystem(String.format("Preparing for installation %s...", Constants.FLUX_NAME));
+        Logger.printSystem("Checking the installer location...");
 
         checkGameFolder();
 
         ArrayList<String> modifiedFileList = JarTools.getFilesInFolder(getJarPath(), "zombie");
 
-        Logger.print("Preparing to create backups...");
+        Logger.printSystem("Preparing to create backups...");
 
         for (String modifiedFile : modifiedFileList) {
             if (modifiedFile.contains("$")) continue;
@@ -59,19 +59,19 @@ public class Installer {
             BackupTools.createBackup(modifiedFile);
         }
 
-        Logger.print("Unpacking dependency files...");
+        Logger.printSystem("Unpacking dependency files...");
 
         try {
             String jarPath = getJarPath();
             String unpackPath = new File(jarPath).getParent();
 
-            Logger.print("Attempting to extract the core files...");
+            Logger.printSystem("Attempting to extract the core files...");
             JarTools.unpackJar(Constants.WHITELIST_FLUXLOADER_FILES, jarPath, unpackPath);
 
-            Logger.print("Attempting to extract modified game files...");
+            Logger.printSystem("Attempting to extract modified game files...");
             JarTools.unpackJar(modifiedFileList, jarPath, unpackPath);
         } catch (Exception e) {
-            Logger.print("Error during installation: " + e.getMessage());
+            Logger.printSystem("Error during installation: " + e.getMessage());
         }
     }
 
@@ -80,14 +80,14 @@ public class Installer {
      * @exception Exception in cases of unsuccessful removal
      */
     public static void uninstall() throws Exception {
-        Logger.print(String.format("Preparing for uninstallation %s...", Constants.FLUX_NAME));
-        Logger.print("Checking the uninstaller location...");
+        Logger.printSystem(String.format("Preparing for uninstallation %s...", Constants.FLUX_NAME));
+        Logger.printSystem("Checking the uninstaller location...");
 
         checkGameFolder();
 
         ArrayList<String> modifiedFileList = JarTools.getFilesInFolder(getJarPath(), "zombie");
 
-        Logger.print("Preparing to restore backups...");
+        Logger.printSystem("Preparing to restore backups...");
 
         for (String modifiedFile : modifiedFileList) {
             if (modifiedFile.contains("$")) continue;
@@ -97,15 +97,15 @@ public class Installer {
             BackupTools.restoreFile(modifiedFile);
         }
 
-        Logger.print("Removing dependency files...");
+        Logger.printSystem("Removing dependency files...");
 
         try {
             String jarPath = getJarPath();
             String unpackPath = new File(jarPath).getParent();
-            Logger.print("Attempting to delete core files...");
+            Logger.printSystem("Attempting to delete core files...");
             JarTools.deleteJarFilesFromDirectory(Constants.WHITELIST_FLUXLOADER_FILES, jarPath, unpackPath);
         } catch (Exception e) {
-            Logger.print("Error during uninstallation: " + e.getMessage());
+            Logger.printSystem("Error during uninstallation: " + e.getMessage());
         }
     }
 }

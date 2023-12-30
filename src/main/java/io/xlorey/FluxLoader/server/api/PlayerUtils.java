@@ -106,7 +106,7 @@ public class PlayerUtils {
 
         String logMessage = String.format("Player `%s` (SteamID: %s) was kicked from this server for the following reason: `%s`",
                 player.getDisplayName(), player.getSteamID(), reason);
-        Logger.print(logMessage);
+        Logger.printSystem(logMessage);
     }
 
     /**
@@ -130,7 +130,7 @@ public class PlayerUtils {
 
         String logMessage = String.format("Player `%s` (SteamID: %s) was banned from this server for the following reason: `%s`",
                 player.getDisplayName(), player.getSteamID(), reason);
-        Logger.print(logMessage);
+        Logger.printSystem(logMessage);
     }
 
     /**
@@ -144,7 +144,7 @@ public class PlayerUtils {
             ServerWorldDatabase.instance.banSteamID(steamID, reason, true);
         } catch (SQLException e) {
             String errorMessage = String.format("Error while ban SteamID: '%s', error: %s", steamID, e);
-            Logger.print(errorMessage);
+            Logger.printSystem(errorMessage);
         }
     }
 
@@ -159,7 +159,7 @@ public class PlayerUtils {
             ServerWorldDatabase.instance.banIp(playerConnection.ip, player.getUsername(), reason, true);
         } catch (SQLException e) {
             String errorMessage = String.format("Error while ban IP: '%s', error: %s", playerConnection.ip, e);
-            Logger.print(errorMessage);
+            Logger.printSystem(errorMessage);
         }
     }
 }

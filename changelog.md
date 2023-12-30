@@ -1,4 +1,5 @@
 # FluxLoader v0.7.0
+- The logic for creating logs has been changed, now you can create custom loggers (for individual files)
 - Changed the logic for modifying game files
 
 # FluxLoader v0.6.2

@@ -39,7 +39,7 @@ public class BackupTools {
                 }
             });
         } catch (IOException e) {
-            Logger.print("Error while listing files in the directory.");
+            Logger.printSystem("Error while listing files in the directory.");
             throw e;
         }
         return additionalFiles;
@@ -55,7 +55,7 @@ public class BackupTools {
         for (Path file : additionalFiles) {
             Path backupPath = file.resolveSibling(file.getFileName() + BACKUP_EXTENSION);
             if (Files.exists(backupPath)) {
-                Logger.print(String.format("Backup of the file '%s' already exists. Skipping backup...", file.getFileName()));
+                Logger.printSystem(String.format("Backup of the file '%s' already exists. Skipping backup...", file.getFileName()));
             } else {
                 validatedFiles.add(file);
             }
@@ -73,7 +73,7 @@ public class BackupTools {
         for (Path file : additionalFiles) {
             Path backupPath = file.resolveSibling(file.getFileName() + BACKUP_EXTENSION);
             if (!Files.exists(backupPath)) {
-                Logger.print(String.format("Backup file for '%s' not found. Skipping restore...", file.getFileName()));
+                Logger.printSystem(String.format("Backup file for '%s' not found. Skipping restore...", file.getFileName()));
             } else {
                 validatedFiles.add(file);
             }
@@ -87,7 +87,7 @@ public class BackupTools {
      * @throws IOException in cases of unsuccessful backup creation
      */
     public static void createBackup(String pathToClassFile) throws IOException {
-        Logger.print(String.format("Trying to create a restore point for a file '%s'...", pathToClassFile));
+        Logger.printSystem(String.format("Trying to create a restore point for a file '%s'...", pathToClassFile));
 
         validateClassFilePath(pathToClassFile);
 
@@ -99,24 +99,24 @@ public class BackupTools {
         ArrayList<Path> additionalFiles = validateAdditionalFilesForBackup(getAdditionalFiles(directoryPath, originalFilePath));
 
         if (Files.exists(backupFilePath)) {
-            Logger.print(String.format("Backup of the file '%s' already exists. Skipping backup...", originalFilePath.getFileName()));
+            Logger.printSystem(String.format("Backup of the file '%s' already exists. Skipping backup...", originalFilePath.getFileName()));
             return;
         }
 
         try {
             Files.copy(originalFilePath, backupFilePath);
 
-            Logger.print(String.format("The backup for the main file '%s' has been successfully created!", originalFilePath.getFileName()));
+            Logger.printSystem(String.format("The backup for the main file '%s' has been successfully created!", originalFilePath.getFileName()));
 
             for (Path file : additionalFiles) {
                 Path backupPath = file.resolveSibling(file.getFileName() + BACKUP_EXTENSION);
                 Files.copy(file, backupPath);
 
-                Logger.print(String.format("Backup for dependent file '%s' was successfully created!", file.getFileName()));
+                Logger.printSystem(String.format("Backup for dependent file '%s' was successfully created!", file.getFileName()));
             }
 
         } catch (IOException e) {
-            Logger.print("Error while creating backup file.");
+            Logger.printSystem("Error while creating backup file.");
             throw e;
         }
 
@@ -128,7 +128,7 @@ public class BackupTools {
      * @throws IOException in cases of unsuccessful recovery
      */
     public static void restoreFile(String pathToClassFile) throws IOException {
-        Logger.print(String.format("Attempting to recover a file '%s'...", pathToClassFile));
+        Logger.printSystem(String.format("Attempting to recover a file '%s'...", pathToClassFile));
 
         validateClassFilePath(pathToClassFile);
 
@@ -140,23 +140,23 @@ public class BackupTools {
         ArrayList<Path> additionalFiles = validateAdditionalFilesForRestore(getAdditionalFiles(directoryPath, originalFilePath));
 
         if (!Files.exists(backupFilePath)) {
-            Logger.print(String.format("Backup file for '%s' not found. Skipping restore...", originalFilePath.getFileName()));
+            Logger.printSystem(String.format("Backup file for '%s' not found. Skipping restore...", originalFilePath.getFileName()));
             return;
         }
 
         try {
             Files.move(backupFilePath, originalFilePath, StandardCopyOption.REPLACE_EXISTING);
 
-            Logger.print(String.format("The main file '%s' was successfully restored!", originalFilePath.getFileName()));
+            Logger.printSystem(String.format("The main file '%s' was successfully restored!", originalFilePath.getFileName()));
 
             for (Path file : additionalFiles) {
                 Path backupPath = file.resolveSibling(file.getFileName() + BACKUP_EXTENSION);
                 Files.move(backupPath, file, StandardCopyOption.REPLACE_EXISTING);
 
-                Logger.print(String.format("Dependent file '%s' was successfully restored!", file.getFileName()));
+                Logger.printSystem(String.format("Dependent file '%s' was successfully restored!", file.getFileName()));
             }
         } catch (IOException e) {
-            Logger.print("Error when restoring the game file.");
+            Logger.printSystem("Error when restoring the game file.");
             throw e;
         }
 

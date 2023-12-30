@@ -33,5 +33,4 @@ public class IncomingPacket {
         }
         return false;
     }
-
 }

@@ -407,8 +407,6 @@ public class GameServer {
     }
 
     public static void main(String[] var0) throws Exception {
-        io.xlorey.FluxLoader.server.core.Core.init(var0);
-
         MainThread = Thread.currentThread();
         bServer = true;
         bSoftReset = System.getProperty("softreset") != null;
@@ -447,6 +445,9 @@ public class GameServer {
         DebugLog.init();
         LoggerManager.init();
         DebugLog.log("cachedir set to \"" + ZomboidFileSystem.instance.getCacheDir() + "\"");
+
+        io.xlorey.FluxLoader.server.core.Core.init(var0);
+
         if (bCoop) {
             try {
                 setupCoop();
@@ -6556,9 +6557,7 @@ public class GameServer {
     }
 
     public static void addIncoming(short var0, ByteBuffer var1, UdpConnection var2) {
-        var1.mark();
         EventManager.invokeEvent("onAddIncoming", var0, var1, var2);
-        var1.reset();
 
         ZomboidNetData var3 = null;
         if (var1.limit() > 2048) {

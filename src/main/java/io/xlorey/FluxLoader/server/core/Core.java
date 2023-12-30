@@ -19,7 +19,7 @@ public class Core {
         for (String serverArg : serverArgs) {
             if (serverArg != null) {
                 if (serverArg.equals("-coop")) {
-                    Logger.print("Launching a co-op server...");
+                    Logger.printLog("Launching a co-op server...");
                     isCoop = true;
                     break;
                 }
@@ -28,7 +28,7 @@ public class Core {
 
         if (!isCoop) Logger.printCredits();
 
-        Logger.print("FluxLoader Core initialization for the server..");
+        Logger.printLog("FluxLoader Core initialization for the server..");
 
         EventManager.subscribe(new EventsHandler());
 
