@@ -78,7 +78,13 @@ jar {
 
     manifest {
         attributes(
-                'Main-Class': 'io.xlorey.FluxLoader.Main'
+                'Main-Class': 'io.xlorey.FluxLoader.Main',
+                'Implementation-Title': 'FluxLoader',
+                'Implementation-Version': version,
+                'Implementation-Vendor': 'io.xlorey',
+                'Specification-Title': 'FluxLoader API',
+                'Specification-Version': '1.0',
+                'Specification-Vendor': 'io.xlorey'
         )
     }
     from {

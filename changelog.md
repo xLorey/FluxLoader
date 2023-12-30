@@ -1,5 +1,6 @@
 # FluxLoader v0.7.0
 - Added a log of all changes to game files
+- Added additional JAR manifest attributes
 - Added a new feature to check for the presence of the Modified annotation in methods of class files, enhancing security and integrity checks.
 - The logic for creating logs has been changed, now you can create custom loggers (for individual files)
 - Changed the logic for modifying game files
@@ -78,7 +79,7 @@
 # FluxLoader v0.2.0
 - Redesigned plugin loading system
 - Changed plugin creation template
-- Added metadata logic for the 
+- Added metadata logic for the plugin
 
 # FluxLoader v0.1.0
 - Beta version of the implementation of the basic functionality of the plugin loader.
