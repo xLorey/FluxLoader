@@ -8,6 +8,7 @@ import zombie.core.raknet.UdpConnection;
 import zombie.core.znet.SteamUtils;
 import zombie.network.GameServer;
 import zombie.network.ServerWorldDatabase;
+import zombie.network.Userlog;
 
 import java.sql.SQLException;
 
@@ -95,7 +96,10 @@ public class PlayerUtils {
      * @param reason kick reason
      */
     public void kickPlayer(IsoPlayer player, String reason) {
+        if (player == null) return;
+
         EventManager.invokeEvent("onPlayerKick", player, reason);
+
         UdpConnection playerConnection = GameServer.getConnectionFromPlayer(player);
 
         if (playerConnection == null) return;
@@ -104,33 +108,42 @@ public class PlayerUtils {
         GameServer.kick(playerConnection, kickMessage, null);
         playerConnection.forceDisconnect("command-kick");
 
-        String logMessage = String.format("Player `%s` (SteamID: %s) was kicked from this server for the following reason: `%s`",
-                player.getDisplayName(), player.getSteamID(), reason);
-        Logger.printSystem(logMessage);
+        String logMessage = String.format("Player `%s` (IP: %s | SteamID: %s) was kicked from this server for the following reason: `%s`",
+                player.getDisplayName(), playerConnection.ip, player.getSteamID(), reason);
+        Logger.printLog(logMessage);
     }
 
     /**
-     * Blocking a player by IP and SteamID
+     * Blocking a user by nickname, IP and/or SteamID
      * @param player Player instance
      * @param reason Reason for blocking
+     * @param banIP flag whether to block by IP
+     * @param banSteamID flag whether to block by SteamID
      */
-    public void banPlayer(IsoPlayer player, String reason) {
+    public void banPlayer(IsoPlayer player, String reason, boolean banIP, boolean banSteamID) {
+        if (player == null) return;
+
         EventManager.invokeEvent("onPlayerBan", player, reason);
+
         UdpConnection playerConnection = GameServer.getConnectionFromPlayer(player);
 
         if (playerConnection == null) return;
 
-        if (SteamUtils.isSteamModeEnabled()) banBySteamID(player, reason);
+        ServerWorldDatabase.instance.addUserlog(player.getUsername(), Userlog.UserlogType.Banned, reason, "Server", 1);
 
-        banByIP(playerConnection, player, reason);
+        banByName(player);
+
+        if (SteamUtils.isSteamModeEnabled() && banSteamID) banBySteamID(player, reason);
+
+        if (banIP) banByIP(playerConnection, player, reason);
 
         String kickMessage = String.format("You have been banned from this server for the following reason: `%s`", reason);
         GameServer.kick(playerConnection, kickMessage, null);
         playerConnection.forceDisconnect("command-ban-ip");
 
-        String logMessage = String.format("Player `%s` (SteamID: %s) was banned from this server for the following reason: `%s`",
-                player.getDisplayName(), player.getSteamID(), reason);
-        Logger.printSystem(logMessage);
+        String logMessage = String.format("Player `%s` (IP: %s | SteamID: %s) was banned from this server for the following reason: `%s`",
+                player.getDisplayName(), playerConnection.ip, player.getSteamID(), reason);
+        Logger.printLog(logMessage);
     }
 
     /**
@@ -144,7 +157,7 @@ public class PlayerUtils {
             ServerWorldDatabase.instance.banSteamID(steamID, reason, true);
         } catch (SQLException e) {
             String errorMessage = String.format("Error while ban SteamID: '%s', error: %s", steamID, e);
-            Logger.printSystem(errorMessage);
+            Logger.printLog(errorMessage);
         }
     }
 
@@ -159,7 +172,20 @@ public class PlayerUtils {
             ServerWorldDatabase.instance.banIp(playerConnection.ip, player.getUsername(), reason, true);
         } catch (SQLException e) {
             String errorMessage = String.format("Error while ban IP: '%s', error: %s", playerConnection.ip, e);
-            Logger.printSystem(errorMessage);
+            Logger.printLog(errorMessage);
+        }
+    }
+
+    /**
+     * Blocks a player by username.
+     * @param player The player to block.
+     */
+    private void banByName(IsoPlayer player) {
+        try {
+            ServerWorldDatabase.instance.banUser(player.getUsername(), true);
+        } catch (SQLException e) {
+            String errorMessage = String.format("Error while ban user: '%s', error: %s", player.getUsername(), e);
+            Logger.printLog(errorMessage);
         }
     }
 }
