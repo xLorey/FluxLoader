@@ -1,6 +1,8 @@
 # FluxLoader v0.7.0
 - The logic for creating logs has been changed, now you can create custom loggers (for individual files)
 - Changed the logic for modifying game files
+- Moved the call to the `onServerShutdown` event to the `quit` command
+- Removed packet blocking logic due to its inoperability
 
 # FluxLoader v0.6.2
 - Fixed a critical error loading plugins on the server side
