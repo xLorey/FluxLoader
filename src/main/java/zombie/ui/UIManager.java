@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import io.xlorey.FluxLoader.annotations.Modified;
 import io.xlorey.FluxLoader.client.core.WidgetManager;
 import se.krka.kahlua.vm.KahluaThread;
 import zombie.GameTime;
@@ -464,6 +465,7 @@ public final class UIManager {
         return getPickedTile();
     }
 
+    @Modified
     public static void update() {
         if (!bSuspend) {
             if (!toRemove.isEmpty()) {

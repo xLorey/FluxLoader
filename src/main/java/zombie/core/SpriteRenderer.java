@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 
+import io.xlorey.FluxLoader.annotations.Modified;
 import io.xlorey.FluxLoader.client.core.EventsHandler;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
@@ -265,6 +266,7 @@ public final class SpriteRenderer {
         this.m_states.getPopulating().prePopulating();
     }
 
+    @Modified
     public void postRender() {
         SpriteRenderState var1 = this.m_states.getRendering();
         if (var1.numSprites == 0 && var1.stateUI.numSprites == 0) {

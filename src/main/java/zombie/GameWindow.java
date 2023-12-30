@@ -24,6 +24,7 @@ import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import io.xlorey.FluxLoader.annotations.Modified;
 import io.xlorey.FluxLoader.client.core.StateManager;
 import io.xlorey.FluxLoader.shared.EventManager;
 import io.xlorey.FluxLoader.utils.Constants;
@@ -330,6 +331,7 @@ public final class GameWindow {
         GameWindow.s_performance.statesRender.invokeAndMeasure(states, GameStateMachine::render);
     }
 
+    @Modified
     public static void InitDisplay() throws IOException, LWJGLException {
         String newTitle = String.format("Project Zomboid by %s (v%s)",  Constants.FLUX_NAME, Constants.FLUX_VERSION);
 
@@ -914,6 +916,7 @@ public final class GameWindow {
 
     }
 
+    @Modified
     private static void init() throws Exception {
         io.xlorey.FluxLoader.client.core.Core.init();
         initFonts();
@@ -967,8 +970,8 @@ public final class GameWindow {
         CustomSandboxOptions.instance.initInstance(SandboxOptions.instance);
         LuaManager.LoadDirBase();
         ZomboidGlobals.Load();
-        StateManager.init();
         LuaEventManager.triggerEvent("OnLoadSoundBanks");
+        StateManager.init();
         EventManager.invokeEvent("onClientWindowInit");
     }
 

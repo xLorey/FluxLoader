@@ -25,6 +25,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import io.xlorey.FluxLoader.annotations.Modified;
 import io.xlorey.FluxLoader.server.core.CommandsManager;
 import io.xlorey.FluxLoader.shared.EventManager;
 import se.krka.kahlua.vm.KahluaTable;
@@ -406,6 +407,7 @@ public class GameServer {
         CoopSlave.init();
     }
 
+    @Modified
     public static void main(String[] var0) throws Exception {
         MainThread = Thread.currentThread();
         bServer = true;
@@ -1246,6 +1248,7 @@ public class GameServer {
         }
     }
 
+    @Modified
     private static String handleServerCommand(String var0, UdpConnection var1) {
         if (var0 == null) {
             return null;
@@ -3606,14 +3609,18 @@ public class GameServer {
         BodyDamageSync.instance.serverPacket(var0);
     }
 
+    @Modified
     static void receiveReceiveCommand(ByteBuffer var0, UdpConnection var1, short var2) {
         String var3 = GameWindow.ReadString(var0);
 
         EventManager.invokeEvent("onSendChatCommand", var1, var3);
-        String customResult = CommandsManager.handleCustomCommand(var1, var3);
 
         String var4 = null;
-        var4 = handleClientCommand(var3.substring(1), var1);
+        var4 = CommandsManager.handleCustomCommand(var1, var3);
+
+        if (var4 == null) {
+            var4 = handleClientCommand(var3.substring(1), var1);
+        }
         if (var4 == null) {
             var4 = handleServerCommand(var3.substring(1), var1);
         }
@@ -3622,11 +3629,7 @@ public class GameServer {
             var4 = "Unknown command " + var3;
         }
 
-        if (customResult != null) {
-            if (customResult.isEmpty()) return;
-
-            var4 = customResult;
-        }
+        if (var4.isEmpty()) return;
 
         if (!var3.substring(1).startsWith("roll") && !var3.substring(1).startsWith("card")) {
             ChatServer.getInstance().sendMessageToServerChat(var1, var4);
@@ -5063,6 +5066,7 @@ public class GameServer {
         }
     }
 
+    @Modified
     public static void disconnectPlayer(IsoPlayer var0, UdpConnection var1) {
         EventManager.invokeEvent("onPlayerDisconnect", var0, var1);
         if (var0 != null) {
@@ -5292,6 +5296,7 @@ public class GameServer {
         }
     }
 
+    @Modified
     private static void receivePlayerConnect(ByteBuffer var0, UdpConnection var1, String var2) {
         EventManager.invokeEvent("onPlayerConnect", var0, var1, var2);
 
@@ -6556,6 +6561,7 @@ public class GameServer {
 
     }
 
+    @Modified
     public static void addIncoming(short var0, ByteBuffer var1, UdpConnection var2) {
         EventManager.invokeEvent("onAddIncoming", var0, var1, var2);
 

@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.concurrent.ConcurrentHashMap;
 
+import io.xlorey.FluxLoader.annotations.Modified;
 import io.xlorey.FluxLoader.shared.EventManager;
 import zombie.GameWindow;
 import zombie.characters.Faction;
@@ -158,6 +159,7 @@ public class ChatServer {
         }
     }
 
+    @Modified
     public void processMessageFromPlayerPacket(ByteBuffer var1) {
         int var2 = var1.getInt();
         synchronized(chats) {

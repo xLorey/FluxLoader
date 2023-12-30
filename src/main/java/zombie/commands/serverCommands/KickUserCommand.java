@@ -1,5 +1,6 @@
 package zombie.commands.serverCommands;
 
+import io.xlorey.FluxLoader.annotations.Modified;
 import io.xlorey.FluxLoader.server.api.PlayerUtils;
 import io.xlorey.FluxLoader.shared.EventManager;
 import zombie.characters.IsoPlayer;
@@ -41,6 +42,7 @@ public class KickUserCommand extends CommandBase {
         super(var1, var2, var3, var4);
     }
 
+    @Modified
     protected String Command() {
         String var1 = this.getCommandArg(0);
         if (this.hasOptionalArg(1)) {
@@ -66,6 +68,7 @@ public class KickUserCommand extends CommandBase {
                     }
 
                     IsoPlayer player = PlayerUtils.getPlayerByUdpConnection(var4);
+
                     if (player != null) {
                         EventManager.invokeEvent("onPlayerKick", player, this.reason);
                     }

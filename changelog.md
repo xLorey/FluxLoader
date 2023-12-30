@@ -1,4 +1,5 @@
 # FluxLoader v0.7.0
+- Added a log of all changes to game files
 - The logic for creating logs has been changed, now you can create custom loggers (for individual files)
 - Changed the logic for modifying game files
 - Moved the call to the `onServerShutdown` event to the `quit` command

@@ -2,6 +2,7 @@ package zombie.commands.serverCommands;
 
 import java.sql.SQLException;
 
+import io.xlorey.FluxLoader.annotations.Modified;
 import io.xlorey.FluxLoader.server.api.PlayerUtils;
 import io.xlorey.FluxLoader.shared.EventManager;
 import zombie.characters.IsoPlayer;
@@ -53,6 +54,7 @@ public class BanUserCommand extends CommandBase {
         super(var1, var2, var3, var4);
     }
 
+    @Modified
     protected String Command() throws SQLException {
         String var1 = this.getCommandArg(0);
         if (this.hasOptionalArg(1)) {

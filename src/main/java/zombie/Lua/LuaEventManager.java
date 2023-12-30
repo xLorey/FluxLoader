@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import io.xlorey.FluxLoader.annotations.Modified;
 import io.xlorey.FluxLoader.shared.EventManager;
 import se.krka.kahlua.vm.JavaFunction;
 import se.krka.kahlua.vm.KahluaTable;
@@ -47,6 +48,7 @@ public final class LuaEventManager implements JavaFunction {
         return var1.callbacks.isEmpty() ? null : var1;
     }
 
+    @Modified
     public static void triggerEvent(String var0) {
         EventManager.invokeEvent(var0);
         synchronized(EventMap) {
@@ -57,6 +59,7 @@ public final class LuaEventManager implements JavaFunction {
         }
     }
 
+    @Modified
     public static void triggerEvent(String var0, Object var1) {
         EventManager.invokeEvent(var0, var1);
         synchronized(EventMap) {
@@ -93,6 +96,7 @@ public final class LuaEventManager implements JavaFunction {
         triggerEvent(var0, var1);
     }
 
+    @Modified
     public static void triggerEvent(String var0, Object var1, Object var2) {
         EventManager.invokeEvent(var0, var1, var2);
         synchronized(EventMap) {
@@ -127,6 +131,7 @@ public final class LuaEventManager implements JavaFunction {
         triggerEvent(var0, var1, var2);
     }
 
+    @Modified
     public static void triggerEvent(String var0, Object var1, Object var2, Object var3) {
         EventManager.invokeEvent(var0, var1, var2, var3);
         synchronized(EventMap) {
@@ -163,6 +168,7 @@ public final class LuaEventManager implements JavaFunction {
         triggerEvent(var0, var1, var2, var3);
     }
 
+    @Modified
     public static void triggerEvent(String var0, Object var1, Object var2, Object var3, Object var4) {
         EventManager.invokeEvent(var0, var1, var2, var3, var4);
         synchronized(EventMap) {
@@ -201,6 +207,7 @@ public final class LuaEventManager implements JavaFunction {
         triggerEvent(var0, var1, var2, var3, var4);
     }
 
+    @Modified
     public static void triggerEvent(String var0, Object var1, Object var2, Object var3, Object var4, Object var5) {
         EventManager.invokeEvent(var0, var1, var2, var3, var4, var5);
         synchronized(EventMap) {
@@ -237,6 +244,7 @@ public final class LuaEventManager implements JavaFunction {
         }
     }
 
+    @Modified
     public static void triggerEvent(String var0, Object var1, Object var2, Object var3, Object var4, Object var5, Object var6) {
         EventManager.invokeEvent(var0, var1, var2, var3, var4, var5, var6);
         synchronized(EventMap) {
@@ -275,6 +283,7 @@ public final class LuaEventManager implements JavaFunction {
         }
     }
 
+    @Modified
     public static void triggerEvent(String var0, Object var1, Object var2, Object var3, Object var4, Object var5, Object var6, Object var7) {
         EventManager.invokeEvent(var0, var1, var2, var3, var4, var5, var6, var7);
         synchronized(EventMap) {
@@ -315,6 +324,7 @@ public final class LuaEventManager implements JavaFunction {
         }
     }
 
+    @Modified
     public static void triggerEvent(String var0, Object var1, Object var2, Object var3, Object var4, Object var5, Object var6, Object var7, Object var8) {
         EventManager.invokeEvent(var0, var1, var2, var3, var4, var5, var6, var7, var8);
         synchronized(EventMap) {

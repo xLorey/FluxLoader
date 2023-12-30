@@ -1,5 +1,6 @@
 package zombie.commands.serverCommands;
 
+import io.xlorey.FluxLoader.annotations.Modified;
 import io.xlorey.FluxLoader.shared.EventManager;
 import zombie.commands.CommandBase;
 import zombie.commands.CommandHelp;
@@ -24,6 +25,7 @@ public class QuitCommand extends CommandBase {
         super(var1, var2, var3, var4);
     }
 
+    @Modified
     protected String Command() {
         EventManager.invokeEvent("onServerShutdown");
         DebugLog.Multiplayer.debugln(this.description);
