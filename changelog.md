@@ -1,5 +1,6 @@
 # FluxLoader v0.7.0
 - Added a log of all changes to game files
+- Added a new feature to check for the presence of the Modified annotation in methods of class files, enhancing security and integrity checks.
 - The logic for creating logs has been changed, now you can create custom loggers (for individual files)
 - Changed the logic for modifying game files
 - Moved the call to the `onServerShutdown` event to the `quit` command
