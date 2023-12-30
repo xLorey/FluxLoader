@@ -61,6 +61,32 @@ public class JarTools {
         }
     }
 
+   /**
+     * Retrieving a list of file paths in a given folder inside a JAR archive.
+     * @param jarPath path to the JAR archive.
+     * @param folderPath path to the folder inside the JAR archive.
+     * @return a list of file paths.
+     * @exception IOException on I/O error.
+     */
+    public static ArrayList<String> getFilesInFolder(String jarPath, String folderPath) throws IOException {
+        ArrayList<String> filePaths = new ArrayList<>();
+
+        try (JarFile jarFile = new JarFile(jarPath)) {
+            Enumeration<JarEntry> entries = jarFile.entries();
+
+            while (entries.hasMoreElements()) {
+                JarEntry entry = entries.nextElement();
+                String name = entry.getName();
+
+                if (name.startsWith(folderPath) && !entry.isDirectory()) {
+                    filePaths.add(name);
+                }
+            }
+        }
+
+        return filePaths;
+    }
+
     /**
      * Removing files from a Jar archive in the target directory
      * @param whiteListJarPath whitelist of paths that need to be checked for removal

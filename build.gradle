@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'io.xlorey'
-version = '0.6.2'
+version = '0.7.0'
 
 repositories {
     mavenCentral()
@@ -24,12 +24,15 @@ dependencies {
     /**
      * Zomboid dependencies
      */
-    implementation files('libs/zombie.jar')
-    implementation files('libs/fmod.jar')
-    implementation files('libs/se.jar')
-    implementation files('libs/trove-3.0.3.jar')
-    implementation files('libs/uncommons-maths-1.2.3.jar')
+    compileOnly files('libs/zombie.jar')
+    compileOnly files('libs/fmod.jar')
+    compileOnly files('libs/se.jar')
+    compileOnly files('libs/trove-3.0.3.jar')
+    compileOnly files('libs/uncommons-maths-1.2.3.jar')
     compileOnly files('libs/lwjglx.jar')
+    compileOnly files('libs/joml.jar')
+    compileOnly files('libs/lwjgl-opengl.jar')
+    compileOnly files('libs/lwjgl_util.jar')
 
     /**
      * ImGui
@@ -98,6 +101,7 @@ tasks.register('generateJavaDoc', Javadoc) {
     source = sourceSets.main.java.srcDirs
     classpath = configurations.compileClasspath
     destinationDir = file("docs/javadoc")
+    exclude '**/zombie/**'
 }
 
 /**

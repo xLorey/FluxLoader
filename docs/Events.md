@@ -72,7 +72,7 @@ public void onChatServerMessageHandler(ChatBase chatBase, ChatMessage chatMessag
 Called when the server has successfully initialized, before the main loop
 ```java
 @SubscribeEvent(eventName="onServerInitialize")
-public void onServerInitializeHandler(String[] serverStartupArgs){
+public void onServerInitializeHandler(){
     
 }
 ```

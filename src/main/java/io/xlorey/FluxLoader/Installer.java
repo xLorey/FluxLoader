@@ -1,9 +1,9 @@
 package io.xlorey.FluxLoader;
 
+import io.xlorey.FluxLoader.utils.BackupTools;
 import io.xlorey.FluxLoader.utils.Constants;
 import io.xlorey.FluxLoader.utils.JarTools;
 import io.xlorey.FluxLoader.utils.Logger;
-import io.xlorey.FluxLoader.utils.patch.*;
 import lombok.experimental.UtilityClass;
 
 import java.io.File;
@@ -18,24 +18,6 @@ import java.util.ArrayList;
  */
 @UtilityClass
 public class Installer {
-    /**
-     * Arraylist of injectors that inject code into game files
-     */
-    private static final ArrayList<PatchFile> injectorsList = new ArrayList<>() {
-        {
-            add(new PatchGameWindow());
-            add(new PatchGameServer());
-            add(new PatchLuaEventManager());
-            add(new PatchUIManager());
-            add(new PatchSpriteRenderer());
-            add(new PatchServerMap());
-            add(new PatchChatServer());
-            add(new PatchBanCommand());
-            add(new PatchBanSteamIDCommand());
-            add(new PatchKickCommand());
-        }
-    };
-
     /**
      * Checks for the presence of a game folder.
      * @exception Exception in cases where the installer is not located next to the game folder
@@ -65,18 +47,29 @@ public class Installer {
 
         checkGameFolder();
 
-        for (PatchFile injector: injectorsList) {
-            injector.inject();
-        }
+        ArrayList<String> modifiedFileList = JarTools.getFilesInFolder(getJarPath(), "zombie");
 
-        PatchTools.saveModifiedClasses();
+        Logger.print("Preparing to create backups...");
+
+        for (String modifiedFile : modifiedFileList) {
+            if (modifiedFile.contains("$")) continue;
+
+            modifiedFile = modifiedFile.replace("zombie/", "");
+
+            BackupTools.createBackup(modifiedFile);
+        }
 
         Logger.print("Unpacking dependency files...");
 
         try {
             String jarPath = getJarPath();
             String unpackPath = new File(jarPath).getParent();
+
+            Logger.print("Attempting to extract the core files...");
             JarTools.unpackJar(Constants.WHITELIST_FLUXLOADER_FILES, jarPath, unpackPath);
+
+            Logger.print("Attempting to extract modified game files...");
+            JarTools.unpackJar(modifiedFileList, jarPath, unpackPath);
         } catch (Exception e) {
             Logger.print("Error during installation: " + e.getMessage());
         }
@@ -92,8 +85,16 @@ public class Installer {
 
         checkGameFolder();
 
-        for (PatchFile injector: injectorsList) {
-            injector.rollBackChanges();
+        ArrayList<String> modifiedFileList = JarTools.getFilesInFolder(getJarPath(), "zombie");
+
+        Logger.print("Preparing to restore backups...");
+
+        for (String modifiedFile : modifiedFileList) {
+            if (modifiedFile.contains("$")) continue;
+
+            modifiedFile = modifiedFile.replace("zombie/", "");
+
+            BackupTools.restoreFile(modifiedFile);
         }
 
         Logger.print("Removing dependency files...");
@@ -101,6 +102,7 @@ public class Installer {
         try {
             String jarPath = getJarPath();
             String unpackPath = new File(jarPath).getParent();
+            Logger.print("Attempting to delete core files...");
             JarTools.deleteJarFilesFromDirectory(Constants.WHITELIST_FLUXLOADER_FILES, jarPath, unpackPath);
         } catch (Exception e) {
             Logger.print("Error during uninstallation: " + e.getMessage());

@@ -1,3 +1,6 @@
+# FluxLoader v0.7.0
+- Changed the logic for modifying game files
+
 # FluxLoader v0.6.2
 - Fixed a critical error loading plugins on the server side
 - Fixed error output when calling events

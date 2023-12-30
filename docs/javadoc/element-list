@@ -12,4 +12,3 @@ io.xlorey.FluxLoader.server.api
 io.xlorey.FluxLoader.server.core
 io.xlorey.FluxLoader.shared
 io.xlorey.FluxLoader.utils
-io.xlorey.FluxLoader.utils.patch
