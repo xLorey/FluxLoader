@@ -7,6 +7,7 @@
 - Moved the call to the `onServerShutdown` event to the `quit` command
 - Removed packet blocking logic due to its inoperability
 - Fixed tools for kicking and banning players
+- Fixed critical plugin loading errors
 
 # FluxLoader v0.6.2
 - Fixed a critical error loading plugins on the server side

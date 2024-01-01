@@ -24,6 +24,11 @@ import java.util.jar.JarFile;
 @UtilityClass
 public class PluginManager {
     /**
+     * General plugin loader
+     */
+    private static PluginClassLoader pluginClassLoader;
+
+    /**
      * All loaded information about plugins
      * Key: plugin file
      * Value: information about the plugin
@@ -84,7 +89,6 @@ public class PluginManager {
     public static HashMap<String, Plugin> getLoadedClientPlugins() {
         return clientPluginsRegistry;
     }
-
     /**
      * Retrieves the list of loaded server plugins
      * @return A HashMap containing information about loaded server plugins, where the key is "entryPoint:ID:Version"
@@ -92,6 +96,14 @@ public class PluginManager {
      */
     public static HashMap<String, Plugin> getLoadedServerPlugins() {
         return serverPluginsRegistry;
+    }
+
+    /**
+     * Initializing the class loader
+     */
+    public static void initializePluginClassLoader() {
+        List<URL> urls = new ArrayList<>();
+        pluginClassLoader = new PluginClassLoader(urls.toArray(new URL[0]), PluginManager.class.getClassLoader());
     }
 
     /**
@@ -208,65 +220,34 @@ public class PluginManager {
                 }
             }
 
-            ClassLoader commonClassLoader = PluginManager.class.getClassLoader();
-            try (PluginClassLoader classLoader = new PluginClassLoader(new URL[]{plugin.toURI().toURL()}, commonClassLoader)) {
-                loadEntryPoints(true, clientEntryPoints, clientPluginsRegistry, metadata, classLoader);
-                loadEntryPoints(false, serverEntryPoints, serverPluginsRegistry, metadata, classLoader);
+            initializePluginClassLoader();
 
-                loadRemainingClasses(plugin, classLoader);
+            // Creating a URL for the plugin
+            URL pluginUrl = plugin.toURI().toURL();
+            PluginClassLoader classLoader = new PluginClassLoader(new URL[]{pluginUrl}, pluginClassLoader);
 
-                if (isClient) {
-                    String controlsClassName = metadata.getControlsEntrypoint();
-                    if (controlsClassName != null && !controlsClassName.isEmpty()) {
-                        Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
-                        IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
+            loadEntryPoints(true, clientEntryPoints, clientPluginsRegistry, metadata, classLoader);
+            loadEntryPoints(false, serverEntryPoints, serverPluginsRegistry, metadata, classLoader);
 
-                        pluginControlsRegistry.put(metadata.getId(), controlsInstance);
-                    }
+            if (isClient) {
+                String controlsClassName = metadata.getControlsEntrypoint();
+                if (controlsClassName != null && !controlsClassName.isEmpty()) {
+                    Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
+                    IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
 
-                    String iconPath = metadata.getIcon();
-                    URL iconUrl = classLoader.getResource(iconPath);
-
-                    if (iconUrl != null) {
-                        try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
-                            Texture texture = new Texture(iconPath, bis, true);
-                            pluginIconRegistry.put(metadata.getId(), texture);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                            throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
-                        }
-                    }
+                    pluginControlsRegistry.put(metadata.getId(), controlsInstance);
                 }
-            } catch (Exception e){
-                e.printStackTrace();
-                throw new Exception(String.format("Failed to load '%s'", metadata.getId()));
-            }
-        }
-    }
 
-    /**
-     * Loads any remaining classes from the specified plugin JAR file that have not already been loaded.
-     * <p>This method scans through the JAR file of a plugin and attempts to load each class that has not yet been loaded.
-     * This is particularly useful for ensuring that classes containing static methods or utilities are available
-     * to the plugin at runtime.</p>
-     * @param pluginFile   The plugin JAR file from which to load classes.
-     * @param classLoader  The custom {@link PluginClassLoader} used to load the classes.
-     * @throws IOException If an I/O error occurs while reading the JAR file.
-     */
-    private static void loadRemainingClasses(File pluginFile, PluginClassLoader classLoader) throws IOException {
-        try (JarFile jarFile = new JarFile(pluginFile)) {
-            Enumeration<JarEntry> entries = jarFile.entries();
+                String iconPath = metadata.getIcon();
+                URL iconUrl = classLoader.getResource(iconPath);
 
-            while (entries.hasMoreElements()) {
-                JarEntry entry = entries.nextElement();
-                if (entry.getName().endsWith(".class")) {
-                    String className = entry.getName().replace('/', '.').replace(".class", "");
-                    if (classLoader.findLoaded(className) == null) {
-                        try {
-                            classLoader.loadClass(className);
-                        } catch (ClassNotFoundException e) {
-                            Logger.printLog("Could not load class: " + className);
-                        }
+                if (iconUrl != null) {
+                    try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
+                        Texture texture = new Texture(iconPath, bis, true);
+                        pluginIconRegistry.put(metadata.getId(), texture);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
                     }
                 }
             }
@@ -459,7 +440,7 @@ public class PluginManager {
                             throw new Exception(String.format("Plugin '%s' does not have a dependent plugin '%s' or its version does not meet the requirements",
                                     entry.getValue().getId(),
                                     depId
-                                    ));
+                            ));
                         }
                     }
                 }
