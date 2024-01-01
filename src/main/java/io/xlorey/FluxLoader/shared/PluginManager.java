@@ -486,14 +486,14 @@ public class PluginManager {
 
         File folder = getPluginsDirectory();
 
-        if (!folder.isDirectory()) {
-            throw new IOException("Path is not a directory: " + folder.getPath());
-        }
-
         if (!folder.exists()) {
             if (!folder.mkdir()) {
                 Logger.printLog("Failed to create folder...");
             }
+        }
+
+        if (!folder.isDirectory()) {
+            throw new IOException("Path is not a directory: " + folder.getPath());
         }
     }
 }
