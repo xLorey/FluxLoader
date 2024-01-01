@@ -31,7 +31,7 @@ public class JarTools {
             File jarFileObj = new File(jarFile.getName());
             String jarFileName = jarFileObj.getName();
 
-            Logger.print(String.format("Trying to unpack '%s' archive...", jarFileName));
+            Logger.printSystem(String.format("Trying to unpack '%s' archive...", jarFileName));
 
             Enumeration<JarEntry> entries = jarFile.entries();
 
@@ -57,9 +57,41 @@ public class JarTools {
                 }
             }
 
-            Logger.print(String.format("Unzipping '%s' completed!", jarFileName));
+            Logger.printSystem(String.format("Unzipping '%s' completed!", jarFileName));
         }
     }
+
+   /**
+     * Retrieving a list of file paths in a given folder inside a JAR archive.
+     * @param jarPath path to the JAR archive.
+     * @param folderPath path to the folder inside the JAR archive.
+     * @return a list of file paths.
+     * @exception IOException on I/O error.
+     */
+   public static ArrayList<String> getFilesInFolder(String jarPath, String folderPath) throws IOException {
+       ArrayList<String> filePaths = new ArrayList<>();
+
+       Path folderPathObj = Paths.get(folderPath).normalize();
+
+       try (JarFile jarFile = new JarFile(jarPath)) {
+           Enumeration<JarEntry> entries = jarFile.entries();
+
+           while (entries.hasMoreElements()) {
+               JarEntry entry = entries.nextElement();
+               String name = entry.getName();
+
+               if (!entry.isDirectory()) {
+                   Path entryPath = Paths.get(name).normalize();
+
+                   if (entryPath.startsWith(folderPathObj)) {
+                       filePaths.add(name);
+                   }
+               }
+           }
+       }
+
+       return filePaths;
+   }
 
     /**
      * Removing files from a Jar archive in the target directory
@@ -73,7 +105,7 @@ public class JarTools {
             File jarFileObj = new File(jarFile.getName());
             String jarFileName = jarFileObj.getName();
 
-            Logger.print(String.format("Trying to delete files from '%s' archive...", jarFileName));
+            Logger.printSystem(String.format("Trying to delete files from '%s' archive...", jarFileName));
 
             Enumeration<JarEntry> entries = jarFile.entries();
 
@@ -87,7 +119,7 @@ public class JarTools {
                 }
             }
 
-            Logger.print(String.format("Deleting archive files '%s' completed!", jarFileName));
+            Logger.printSystem(String.format("Deleting archive files '%s' completed!", jarFileName));
         }
     }
 

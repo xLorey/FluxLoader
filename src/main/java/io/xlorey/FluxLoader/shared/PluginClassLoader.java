@@ -28,6 +28,6 @@ public class PluginClassLoader extends URLClassLoader {
      * @return The Class object, or {@code null} if the class has not been loaded.
      */
     public Class<?> findLoaded(String name) {
-        return findLoadedClass(name);
+        return super.findLoadedClass(name);
     }
 }

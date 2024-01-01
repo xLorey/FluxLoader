@@ -115,7 +115,7 @@ public class Metadata {
                     try {
                         return gson.fromJson(jsonBuilder.toString(), Metadata.class);
                     } catch (JsonSyntaxException e) {
-                        Logger.print(String.format("Failed to convert metadata to required format in file '%s'", jarFile.getName()));
+                        Logger.printLog(String.format("Failed to convert metadata to required format in file '%s'", jarFile.getName()));
                         return null;
                     }
                 }

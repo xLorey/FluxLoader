@@ -89,12 +89,12 @@ public class Configuration {
      * After reloading, the updated configuration is available for use.
      */
     public void reload() {
-        Logger.print("Reloading the configuration file: " + configName);
+        Logger.printLog("Reloading the configuration file: " + configName);
 
         save();
         load();
 
-        Logger.print(String.format("Configuration file '%s' has been reloaded.", configName));
+        Logger.printLog(String.format("Configuration file '%s' has been reloaded.", configName));
     }
 
     /**
@@ -156,7 +156,7 @@ public class Configuration {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                Logger.print("An error occurred while creating the configuration file!");
+                Logger.printLog("An error occurred while creating the configuration file!");
             }
         }
     }

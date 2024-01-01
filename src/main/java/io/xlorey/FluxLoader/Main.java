@@ -18,14 +18,14 @@ public class Main {
         Logger.printCredits();
 
         if (args.length != 1) {
-            Logger.print("You specified an invalid number of flags! Use: '--install' or '--uninstall'");
+            Logger.printSystem("You specified an invalid number of flags! Use: '--install' or '--uninstall'");
             return;
         }
 
         switch (args[0]){
             case "--install" -> Installer.install();
             case "--uninstall" -> Installer.uninstall();
-            default -> Logger.print("You specified an unknown flag! Use: '--install' or '--uninstall'");
+            default -> Logger.printSystem("You specified an unknown flag! Use: '--install' or '--uninstall'");
         }
     }
 }

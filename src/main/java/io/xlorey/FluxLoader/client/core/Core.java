@@ -20,7 +20,7 @@ public class Core {
     public static void init() throws Exception {
         Logger.printCredits();
 
-        Logger.print("FluxLoader Core initialization for the client...");
+        Logger.printLog("FluxLoader Core initialization for the client...");
 
         EventManager.subscribe(new EventsHandler());
 

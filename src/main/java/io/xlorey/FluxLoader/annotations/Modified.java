@@ -3,8 +3,8 @@ package io.xlorey.FluxLoader.annotations;
 import java.lang.annotation.*;
 
 /**
- * Annotation - a flag indicating that injection occurred in this file
+ * Information annotation indicating that the method has been modified
  */
 @Target({ElementType.METHOD})
-public @interface Injected {
+public @interface Modified {
 }
