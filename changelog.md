@@ -1,3 +1,6 @@
+# FluxLoader v0.7.1
+- Fixed creation of plugins folder
+
 # FluxLoader v0.7.0
 - Added a log of all changes to game files
 - Added additional JAR manifest attributes
