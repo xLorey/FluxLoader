@@ -68,24 +68,30 @@ public class JarTools {
      * @return a list of file paths.
      * @exception IOException on I/O error.
      */
-    public static ArrayList<String> getFilesInFolder(String jarPath, String folderPath) throws IOException {
-        ArrayList<String> filePaths = new ArrayList<>();
+   public static ArrayList<String> getFilesInFolder(String jarPath, String folderPath) throws IOException {
+       ArrayList<String> filePaths = new ArrayList<>();
 
-        try (JarFile jarFile = new JarFile(jarPath)) {
-            Enumeration<JarEntry> entries = jarFile.entries();
+       Path folderPathObj = Paths.get(folderPath).normalize();
 
-            while (entries.hasMoreElements()) {
-                JarEntry entry = entries.nextElement();
-                String name = entry.getName();
+       try (JarFile jarFile = new JarFile(jarPath)) {
+           Enumeration<JarEntry> entries = jarFile.entries();
 
-                if (name.startsWith(folderPath) && !entry.isDirectory()) {
-                    filePaths.add(name);
-                }
-            }
-        }
+           while (entries.hasMoreElements()) {
+               JarEntry entry = entries.nextElement();
+               String name = entry.getName();
 
-        return filePaths;
-    }
+               if (!entry.isDirectory()) {
+                   Path entryPath = Paths.get(name).normalize();
+
+                   if (entryPath.startsWith(folderPathObj)) {
+                       filePaths.add(name);
+                   }
+               }
+           }
+       }
+
+       return filePaths;
+   }
 
     /**
      * Removing files from a Jar archive in the target directory
