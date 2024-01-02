@@ -9,6 +9,17 @@ repositories {
     mavenCentral()
 }
 
+/**
+ * Collector Variables
+ */
+ext {
+    buildPath = System.getenv('BUILD_DIR') ?: 'build';
+    fileName = "${rootProject.name}-${version}"
+}
+
+/**
+ * Project Dependencies
+ */
 dependencies {
     /**
      * Other dependencies
@@ -50,6 +61,9 @@ dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
+/**
+ * Project testing
+ */
 test {
     useJUnitPlatform()
 }
@@ -70,10 +84,8 @@ processResources {
  * Creating an executable JAR file
  */
 jar {
-    String buildDir = System.getenv('BUILD_DIR') ?: 'build'
-
-    archiveFileName = "${rootProject.name}-${version}.jar"
-    destinationDirectory = file(buildDir)
+    archiveFileName = "${project.ext.fileName}.jar"
+    destinationDirectory = file(project.ext.buildPath)
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 
     manifest {
@@ -116,4 +128,31 @@ tasks.register('generateJavaDoc', Javadoc) {
 tasks.register('buildJar') {
     dependsOn generateJavaDoc
     finalizedBy jar
+}
+
+/**
+ * Packing the jar file and installers into one archive
+ */
+tasks.register("buildRelease", Zip) {
+    dependsOn buildJar
+    dependsOn jar
+
+    archiveBaseName.set("${rootProject.name}")
+    destinationDirectory.set(file("build/"))
+
+    from(project.ext.buildPath) {
+        include "${project.ext.fileName}.jar"
+    }
+
+    from('installer') {
+        into '/'
+        ['**/*.bat', '**/*.sh'].each { pattern ->
+            filesMatching(pattern) {
+                filter {
+                    it.replace('%PROJECT_VERSION%', version)
+                            .replace('%PROJECT_NAME%', rootProject.name)
+                }
+            }
+        }
+    }
 }
