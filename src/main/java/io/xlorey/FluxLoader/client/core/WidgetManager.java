@@ -130,6 +130,7 @@ public class WidgetManager {
         io.getFonts().addFontFromMemoryTTF(loadFont("NotoSansCJKjp-Medium.otf"), 14, fontConfig, glyphRanges); // Japanese glyphs
         io.getFonts().addFontFromMemoryTTF(loadFont("fa-regular-400.ttf"), 14, fontConfig, glyphRanges); // FontAwesome regular
         io.getFonts().addFontFromMemoryTTF(loadFont("fa-solid-900.ttf"), 14, fontConfig, glyphRanges); // FontAwesome solid
+        io.getFonts().addFontFromMemoryTTF(loadFont("fa-brands-400.ttf"), 14, fontConfig, glyphRanges); // FontAwesome brands
 
         // Add custom fonts
         for (Map.Entry<String, FontData> entry : customFontsData.entrySet()) {

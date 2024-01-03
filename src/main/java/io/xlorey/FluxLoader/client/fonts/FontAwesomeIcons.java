@@ -9,10 +9,12 @@ public class FontAwesomeIcons {
      * Minimum code point in FontAwesome icon range.
      */
     public static final short _IconRangeMin = (short) 0xe005;
+
     /**
      * Maximum code point in FontAwesome icon range.
      */
     public static final short _IconRangeMax = (short) 0xf8ff;
+
     /**
      * An array representing the range of code points used for FontAwesome icons.
      * Includes minimum and maximum values, plus a trailing zero to indicate the end of the range.
@@ -20,4011 +22,7292 @@ public class FontAwesomeIcons {
     public static final short[] _IconRange = new short[]{_IconRangeMin, _IconRangeMax, 0};
 
     /**
-     * Icon: Ad
+     * Icon: ACCESSIBLE_ICON
      */
-    public static final String Ad = "\uf641";
+    public static String ACCESSIBLE_ICON = "\uf368";
+
     /**
-     * Icon: AddressBook
+     * Icon: AMERICAN_SIGN_LANGUAGE_INTERPRETING
      */
-    public static final String AddressBook = "\uf2b9";
+    public static String AMERICAN_SIGN_LANGUAGE_INTERPRETING = "\uf2a3";
+
     /**
-     * Icon: AddressCard
+     * Icon: ASSISTIVE_LISTENING_SYSTEMS
      */
-    public static final String AddressCard = "\uf2bb";
+    public static String ASSISTIVE_LISTENING_SYSTEMS = "\uf2a2";
+
     /**
-     * Icon: Adjust
+     * Icon: AUDIO_DESCRIPTION
      */
-    public static final String Adjust = "\uf042";
+    public static String AUDIO_DESCRIPTION = "\uf29e";
+
     /**
-     * Icon: AirFreshener
+     * Icon: BLIND
      */
-    public static final String AirFreshener = "\uf5d0";
+    public static String BLIND = "\uf29d";
+
     /**
-     * Icon: AlignCenter
+     * Icon: BRAILLE
      */
-    public static final String AlignCenter = "\uf037";
+    public static String BRAILLE = "\uf2a1";
+
     /**
-     * Icon: AlignJustify
+     * Icon: CLOSED_CAPTIONING
      */
-    public static final String AlignJustify = "\uf039";
+    public static String CLOSED_CAPTIONING = "\uf20a";
+
     /**
-     * Icon: AlignLeft
+     * Icon: DEAF
      */
-    public static final String AlignLeft = "\uf036";
+    public static String DEAF = "\uf2a4";
+
     /**
-     * Icon: AlignRight
+     * Icon: LOW_VISION
      */
-    public static final String AlignRight = "\uf038";
+    public static String LOW_VISION = "\uf2a8";
+
     /**
-     * Icon: Allergies
+     * Icon: PHONE_VOLUME
      */
-    public static final String Allergies = "\uf461";
+    public static String PHONE_VOLUME = "\uf2a0";
+
     /**
-     * Icon: Ambulance
+     * Icon: QUESTION_CIRCLE
      */
-    public static final String Ambulance = "\uf0f9";
+    public static String QUESTION_CIRCLE = "\uf059";
+
     /**
-     * Icon: AmericanSignLanguageInterpreting
+     * Icon: SIGN_LANGUAGE
      */
-    public static final String AmericanSignLanguageInterpreting = "\uf2a3";
+    public static String SIGN_LANGUAGE = "\uf2a7";
+
     /**
-     * Icon: Anchor
+     * Icon: TTY
      */
-    public static final String Anchor = "\uf13d";
+    public static String TTY = "\uf1e4";
+
     /**
-     * Icon: AngleDoubleDown
+     * Icon: UNIVERSAL_ACCESS
      */
-    public static final String AngleDoubleDown = "\uf103";
+    public static String UNIVERSAL_ACCESS = "\uf29a";
+
     /**
-     * Icon: AngleDoubleLeft
+     * Icon: WHEELCHAIR
      */
-    public static final String AngleDoubleLeft = "\uf100";
+    public static String WHEELCHAIR = "\uf193";
+
     /**
-     * Icon: AngleDoubleRight
+     * Icon: BELL
      */
-    public static final String AngleDoubleRight = "\uf101";
+    public static String BELL = "\uf0f3";
+
     /**
-     * Icon: AngleDoubleUp
+     * Icon: BELL_SLASH
      */
-    public static final String AngleDoubleUp = "\uf102";
+    public static String BELL_SLASH = "\uf1f6";
+
     /**
-     * Icon: AngleDown
+     * Icon: EXCLAMATION
      */
-    public static final String AngleDown = "\uf107";
+    public static String EXCLAMATION = "\uf12a";
+
     /**
-     * Icon: AngleLeft
+     * Icon: EXCLAMATION_CIRCLE
      */
-    public static final String AngleLeft = "\uf104";
+    public static String EXCLAMATION_CIRCLE = "\uf06a";
+
     /**
-     * Icon: AngleRight
+     * Icon: EXCLAMATION_TRIANGLE
      */
-    public static final String AngleRight = "\uf105";
+    public static String EXCLAMATION_TRIANGLE = "\uf071";
+
     /**
-     * Icon: AngleUp
+     * Icon: RADIATION
      */
-    public static final String AngleUp = "\uf106";
+    public static String RADIATION = "\uf7b9";
+
     /**
-     * Icon: Angry
+     * Icon: RADIATION_ALT
      */
-    public static final String Angry = "\uf556";
+    public static String RADIATION_ALT = "\uf7ba";
+
     /**
-     * Icon: Ankh
+     * Icon: SKULL_CROSSBONES
      */
-    public static final String Ankh = "\uf644";
+    public static String SKULL_CROSSBONES = "\uf714";
+
     /**
-     * Icon: AppleAlt
+     * Icon: CAT
      */
-    public static final String AppleAlt = "\uf5d1";
+    public static String CAT = "\uf6be";
+
     /**
-     * Icon: Archive
+     * Icon: CROW
      */
-    public static final String Archive = "\uf187";
+    public static String CROW = "\uf520";
+
     /**
-     * Icon: Archway
+     * Icon: DOG
      */
-    public static final String Archway = "\uf557";
+    public static String DOG = "\uf6d3";
+
     /**
-     * Icon: ArrowAltCircleDown
+     * Icon: DOVE
      */
-    public static final String ArrowAltCircleDown = "\uf358";
+    public static String DOVE = "\uf4ba";
+
     /**
-     * Icon: ArrowAltCircleLeft
+     * Icon: DRAGON
      */
-    public static final String ArrowAltCircleLeft = "\uf359";
+    public static String DRAGON = "\uf6d5";
+
     /**
-     * Icon: ArrowAltCircleRight
+     * Icon: FEATHER
      */
-    public static final String ArrowAltCircleRight = "\uf35a";
+    public static String FEATHER = "\uf52d";
+
     /**
-     * Icon: ArrowAltCircleUp
+     * Icon: FEATHER_ALT
      */
-    public static final String ArrowAltCircleUp = "\uf35b";
+    public static String FEATHER_ALT = "\uf56b";
+
     /**
-     * Icon: ArrowCircleDown
+     * Icon: FISH
      */
-    public static final String ArrowCircleDown = "\uf0ab";
+    public static String FISH = "\uf578";
+
     /**
-     * Icon: ArrowCircleLeft
+     * Icon: FROG
      */
-    public static final String ArrowCircleLeft = "\uf0a8";
+    public static String FROG = "\uf52e";
+
     /**
-     * Icon: ArrowCircleRight
+     * Icon: HIPPO
      */
-    public static final String ArrowCircleRight = "\uf0a9";
+    public static String HIPPO = "\uf6ed";
+
     /**
-     * Icon: ArrowCircleUp
+     * Icon: HORSE
      */
-    public static final String ArrowCircleUp = "\uf0aa";
+    public static String HORSE = "\uf6f0";
+
     /**
-     * Icon: ArrowDown
+     * Icon: HORSE_HEAD
      */
-    public static final String ArrowDown = "\uf063";
+    public static String HORSE_HEAD = "\uf7ab";
+
     /**
-     * Icon: ArrowLeft
+     * Icon: KIWI_BIRD
      */
-    public static final String ArrowLeft = "\uf060";
+    public static String KIWI_BIRD = "\uf535";
+
     /**
-     * Icon: ArrowRight
+     * Icon: OTTER
      */
-    public static final String ArrowRight = "\uf061";
+    public static String OTTER = "\uf700";
+
     /**
-     * Icon: ArrowUp
+     * Icon: PAW
      */
-    public static final String ArrowUp = "\uf062";
+    public static String PAW = "\uf1b0";
+
     /**
-     * Icon: ArrowsAlt
+     * Icon: SPIDER
      */
-    public static final String ArrowsAlt = "\uf0b2";
+    public static String SPIDER = "\uf717";
+
     /**
-     * Icon: ArrowsAltH
+     * Icon: ANGLE_DOUBLE_DOWN
      */
-    public static final String ArrowsAltH = "\uf337";
+    public static String ANGLE_DOUBLE_DOWN = "\uf103";
+
     /**
-     * Icon: ArrowsAltV
+     * Icon: ANGLE_DOUBLE_LEFT
      */
-    public static final String ArrowsAltV = "\uf338";
+    public static String ANGLE_DOUBLE_LEFT = "\uf100";
+
     /**
-     * Icon: AssistiveListeningSystems
+     * Icon: ANGLE_DOUBLE_RIGHT
      */
-    public static final String AssistiveListeningSystems = "\uf2a2";
+    public static String ANGLE_DOUBLE_RIGHT = "\uf101";
+
     /**
-     * Icon: Asterisk
+     * Icon: ANGLE_DOUBLE_UP
      */
-    public static final String Asterisk = "\uf069";
+    public static String ANGLE_DOUBLE_UP = "\uf102";
+
     /**
-     * Icon: At
+     * Icon: ANGLE_DOWN
      */
-    public static final String At = "\uf1fa";
+    public static String ANGLE_DOWN = "\uf107";
+
     /**
-     * Icon: Atlas
+     * Icon: ANGLE_LEFT
      */
-    public static final String Atlas = "\uf558";
+    public static String ANGLE_LEFT = "\uf104";
+
     /**
-     * Icon: Atom
+     * Icon: ANGLE_RIGHT
      */
-    public static final String Atom = "\uf5d2";
+    public static String ANGLE_RIGHT = "\uf105";
+
     /**
-     * Icon: AudioDescription
+     * Icon: ANGLE_UP
      */
-    public static final String AudioDescription = "\uf29e";
+    public static String ANGLE_UP = "\uf106";
+
     /**
-     * Icon: Award
+     * Icon: ARROW_ALT_CIRCLE_DOWN
      */
-    public static final String Award = "\uf559";
+    public static String ARROW_ALT_CIRCLE_DOWN = "\uf358";
+
     /**
-     * Icon: Baby
+     * Icon: ARROW_ALT_CIRCLE_LEFT
      */
-    public static final String Baby = "\uf77c";
+    public static String ARROW_ALT_CIRCLE_LEFT = "\uf359";
+
     /**
-     * Icon: BabyCarriage
+     * Icon: ARROW_ALT_CIRCLE_RIGHT
      */
-    public static final String BabyCarriage = "\uf77d";
+    public static String ARROW_ALT_CIRCLE_RIGHT = "\uf35a";
+
     /**
-     * Icon: Backspace
+     * Icon: ARROW_ALT_CIRCLE_UP
      */
-    public static final String Backspace = "\uf55a";
+    public static String ARROW_ALT_CIRCLE_UP = "\uf35b";
+
     /**
-     * Icon: Backward
+     * Icon: ARROW_CIRCLE_DOWN
      */
-    public static final String Backward = "\uf04a";
+    public static String ARROW_CIRCLE_DOWN = "\uf0ab";
+
     /**
-     * Icon: Bacon
+     * Icon: ARROW_CIRCLE_LEFT
      */
-    public static final String Bacon = "\uf7e5";
+    public static String ARROW_CIRCLE_LEFT = "\uf0a8";
+
     /**
-     * Icon: Bacteria
+     * Icon: ARROW_CIRCLE_RIGHT
      */
-    public static final String Bacteria = "\ue059";
+    public static String ARROW_CIRCLE_RIGHT = "\uf0a9";
+
     /**
-     * Icon: Bacterium
+     * Icon: ARROW_CIRCLE_UP
      */
-    public static final String Bacterium = "\ue05a";
+    public static String ARROW_CIRCLE_UP = "\uf0aa";
+
     /**
-     * Icon: Bahai
+     * Icon: ARROW_DOWN
      */
-    public static final String Bahai = "\uf666";
+    public static String ARROW_DOWN = "\uf063";
+
     /**
-     * Icon: BalanceScale
+     * Icon: ARROW_LEFT
      */
-    public static final String BalanceScale = "\uf24e";
+    public static String ARROW_LEFT = "\uf060";
+
     /**
-     * Icon: BalanceScaleLeft
+     * Icon: ARROW_RIGHT
      */
-    public static final String BalanceScaleLeft = "\uf515";
+    public static String ARROW_RIGHT = "\uf061";
+
     /**
-     * Icon: BalanceScaleRight
+     * Icon: ARROW_UP
      */
-    public static final String BalanceScaleRight = "\uf516";
+    public static String ARROW_UP = "\uf062";
+
     /**
-     * Icon: Ban
+     * Icon: ARROWS_ALT
      */
-    public static final String Ban = "\uf05e";
+    public static String ARROWS_ALT = "\uf0b2";
+
     /**
-     * Icon: BandAid
+     * Icon: ARROWS_ALT_H
      */
-    public static final String BandAid = "\uf462";
+    public static String ARROWS_ALT_H = "\uf337";
+
     /**
-     * Icon: Barcode
+     * Icon: ARROWS_ALT_V
      */
-    public static final String Barcode = "\uf02a";
+    public static String ARROWS_ALT_V = "\uf338";
+
     /**
-     * Icon: Bars
+     * Icon: CARET_DOWN
      */
-    public static final String Bars = "\uf0c9";
+    public static String CARET_DOWN = "\uf0d7";
+
     /**
-     * Icon: BaseballBall
+     * Icon: CARET_LEFT
      */
-    public static final String BaseballBall = "\uf433";
+    public static String CARET_LEFT = "\uf0d9";
+
     /**
-     * Icon: BasketballBall
+     * Icon: CARET_RIGHT
      */
-    public static final String BasketballBall = "\uf434";
+    public static String CARET_RIGHT = "\uf0da";
+
     /**
-     * Icon: Bath
+     * Icon: CARET_SQUARE_DOWN
      */
-    public static final String Bath = "\uf2cd";
+    public static String CARET_SQUARE_DOWN = "\uf150";
+
     /**
-     * Icon: BatteryEmpty
+     * Icon: CARET_SQUARE_LEFT
      */
-    public static final String BatteryEmpty = "\uf244";
+    public static String CARET_SQUARE_LEFT = "\uf191";
+
     /**
-     * Icon: BatteryFull
+     * Icon: CARET_SQUARE_RIGHT
      */
-    public static final String BatteryFull = "\uf240";
+    public static String CARET_SQUARE_RIGHT = "\uf152";
+
     /**
-     * Icon: BatteryHalf
+     * Icon: CARET_SQUARE_UP
      */
-    public static final String BatteryHalf = "\uf242";
+    public static String CARET_SQUARE_UP = "\uf151";
+
     /**
-     * Icon: BatteryQuarter
+     * Icon: CARET_UP
      */
-    public static final String BatteryQuarter = "\uf243";
+    public static String CARET_UP = "\uf0d8";
+
     /**
-     * Icon: BatteryThreeQuarters
+     * Icon: CART_ARROW_DOWN
      */
-    public static final String BatteryThreeQuarters = "\uf241";
+    public static String CART_ARROW_DOWN = "\uf218";
+
     /**
-     * Icon: Bed
+     * Icon: CHART_LINE
      */
-    public static final String Bed = "\uf236";
+    public static String CHART_LINE = "\uf201";
+
     /**
-     * Icon: Beer
+     * Icon: CHEVRON_CIRCLE_DOWN
      */
-    public static final String Beer = "\uf0fc";
+    public static String CHEVRON_CIRCLE_DOWN = "\uf13a";
+
     /**
-     * Icon: Bell
+     * Icon: CHEVRON_CIRCLE_LEFT
      */
-    public static final String Bell = "\uf0f3";
+    public static String CHEVRON_CIRCLE_LEFT = "\uf137";
+
     /**
-     * Icon: BellSlash
+     * Icon: CHEVRON_CIRCLE_RIGHT
      */
-    public static final String BellSlash = "\uf1f6";
+    public static String CHEVRON_CIRCLE_RIGHT = "\uf138";
+
     /**
-     * Icon: BezierCurve
+     * Icon: CHEVRON_CIRCLE_UP
      */
-    public static final String BezierCurve = "\uf55b";
+    public static String CHEVRON_CIRCLE_UP = "\uf139";
+
     /**
-     * Icon: Bible
+     * Icon: CHEVRON_DOWN
      */
-    public static final String Bible = "\uf647";
+    public static String CHEVRON_DOWN = "\uf078";
+
     /**
-     * Icon: Bicycle
+     * Icon: CHEVRON_LEFT
      */
-    public static final String Bicycle = "\uf206";
+    public static String CHEVRON_LEFT = "\uf053";
+
     /**
-     * Icon: Biking
+     * Icon: CHEVRON_RIGHT
      */
-    public static final String Biking = "\uf84a";
+    public static String CHEVRON_RIGHT = "\uf054";
+
     /**
-     * Icon: Binoculars
+     * Icon: CHEVRON_UP
      */
-    public static final String Binoculars = "\uf1e5";
+    public static String CHEVRON_UP = "\uf077";
+
     /**
-     * Icon: Biohazard
+     * Icon: CLOUD_DOWNLOAD_ALT
      */
-    public static final String Biohazard = "\uf780";
+    public static String CLOUD_DOWNLOAD_ALT = "\uf381";
+
     /**
-     * Icon: BirthdayCake
+     * Icon: CLOUD_UPLOAD_ALT
      */
-    public static final String BirthdayCake = "\uf1fd";
+    public static String CLOUD_UPLOAD_ALT = "\uf382";
+
     /**
-     * Icon: Blender
+     * Icon: COMPRESS_ALT
      */
-    public static final String Blender = "\uf517";
+    public static String COMPRESS_ALT = "\uf422";
+
     /**
-     * Icon: BlenderPhone
+     * Icon: COMPRESS_ARROWS_ALT
      */
-    public static final String BlenderPhone = "\uf6b6";
+    public static String COMPRESS_ARROWS_ALT = "\uf78c";
+
     /**
-     * Icon: Blind
+     * Icon: DOWNLOAD
      */
-    public static final String Blind = "\uf29d";
+    public static String DOWNLOAD = "\uf019";
+
     /**
-     * Icon: Blog
+     * Icon: EXCHANGE_ALT
      */
-    public static final String Blog = "\uf781";
+    public static String EXCHANGE_ALT = "\uf362";
+
     /**
-     * Icon: Bold
+     * Icon: EXPAND_ALT
      */
-    public static final String Bold = "\uf032";
+    public static String EXPAND_ALT = "\uf424";
+
     /**
-     * Icon: Bolt
+     * Icon: EXPAND_ARROWS_ALT
      */
-    public static final String Bolt = "\uf0e7";
+    public static String EXPAND_ARROWS_ALT = "\uf31e";
+
     /**
-     * Icon: Bomb
+     * Icon: EXTERNAL_LINK_ALT
      */
-    public static final String Bomb = "\uf1e2";
+    public static String EXTERNAL_LINK_ALT = "\uf35d";
+
     /**
-     * Icon: Bone
+     * Icon: EXTERNAL_LINK_SQUARE_ALT
      */
-    public static final String Bone = "\uf5d7";
+    public static String EXTERNAL_LINK_SQUARE_ALT = "\uf360";
+
     /**
-     * Icon: Bong
+     * Icon: HAND_POINT_DOWN
      */
-    public static final String Bong = "\uf55c";
+    public static String HAND_POINT_DOWN = "\uf0a7";
+
     /**
-     * Icon: Book
+     * Icon: HAND_POINT_LEFT
      */
-    public static final String Book = "\uf02d";
+    public static String HAND_POINT_LEFT = "\uf0a5";
+
     /**
-     * Icon: BookDead
+     * Icon: HAND_POINT_RIGHT
      */
-    public static final String BookDead = "\uf6b7";
+    public static String HAND_POINT_RIGHT = "\uf0a4";
+
     /**
-     * Icon: BookMedical
+     * Icon: HAND_POINT_UP
      */
-    public static final String BookMedical = "\uf7e6";
+    public static String HAND_POINT_UP = "\uf0a6";
+
     /**
-     * Icon: BookOpen
+     * Icon: HAND_POINTER
      */
-    public static final String BookOpen = "\uf518";
+    public static String HAND_POINTER = "\uf25a";
+
     /**
-     * Icon: BookReader
+     * Icon: HISTORY
      */
-    public static final String BookReader = "\uf5da";
+    public static String HISTORY = "\uf1da";
+
     /**
-     * Icon: Bookmark
+     * Icon: LEVEL_DOWN_ALT
      */
-    public static final String Bookmark = "\uf02e";
+    public static String LEVEL_DOWN_ALT = "\uf3be";
+
     /**
-     * Icon: BorderAll
+     * Icon: LEVEL_UP_ALT
      */
-    public static final String BorderAll = "\uf84c";
+    public static String LEVEL_UP_ALT = "\uf3bf";
+
     /**
-     * Icon: BorderNone
+     * Icon: LOCATION_ARROW
      */
-    public static final String BorderNone = "\uf850";
+    public static String LOCATION_ARROW = "\uf124";
+
     /**
-     * Icon: BorderStyle
+     * Icon: LONG_ARROW_ALT_DOWN
      */
-    public static final String BorderStyle = "\uf853";
+    public static String LONG_ARROW_ALT_DOWN = "\uf309";
+
     /**
-     * Icon: BowlingBall
+     * Icon: LONG_ARROW_ALT_LEFT
      */
-    public static final String BowlingBall = "\uf436";
+    public static String LONG_ARROW_ALT_LEFT = "\uf30a";
+
     /**
-     * Icon: Box
+     * Icon: LONG_ARROW_ALT_RIGHT
      */
-    public static final String Box = "\uf466";
+    public static String LONG_ARROW_ALT_RIGHT = "\uf30b";
+
     /**
-     * Icon: BoxOpen
+     * Icon: LONG_ARROW_ALT_UP
      */
-    public static final String BoxOpen = "\uf49e";
+    public static String LONG_ARROW_ALT_UP = "\uf30c";
+
     /**
-     * Icon: BoxTissue
+     * Icon: MOUSE_POINTER
      */
-    public static final String BoxTissue = "\ue05b";
+    public static String MOUSE_POINTER = "\uf245";
+
     /**
-     * Icon: Boxes
+     * Icon: PLAY
      */
-    public static final String Boxes = "\uf468";
+    public static String PLAY = "\uf04b";
+
     /**
-     * Icon: Braille
+     * Icon: RANDOM
      */
-    public static final String Braille = "\uf2a1";
+    public static String RANDOM = "\uf074";
+
     /**
-     * Icon: Brain
+     * Icon: RECYCLE
      */
-    public static final String Brain = "\uf5dc";
+    public static String RECYCLE = "\uf1b8";
+
     /**
-     * Icon: BreadSlice
+     * Icon: REDO
      */
-    public static final String BreadSlice = "\uf7ec";
+    public static String REDO = "\uf01e";
+
     /**
-     * Icon: Briefcase
+     * Icon: REDO_ALT
      */
-    public static final String Briefcase = "\uf0b1";
+    public static String REDO_ALT = "\uf2f9";
+
     /**
-     * Icon: BriefcaseMedical
+     * Icon: REPLY
      */
-    public static final String BriefcaseMedical = "\uf469";
+    public static String REPLY = "\uf3e5";
+
     /**
-     * Icon: BroadcastTower
+     * Icon: REPLY_ALL
      */
-    public static final String BroadcastTower = "\uf519";
+    public static String REPLY_ALL = "\uf122";
+
     /**
-     * Icon: Broom
+     * Icon: RETWEET
      */
-    public static final String Broom = "\uf51a";
+    public static String RETWEET = "\uf079";
+
     /**
-     * Icon: Brush
+     * Icon: SHARE
      */
-    public static final String Brush = "\uf55d";
+    public static String SHARE = "\uf064";
+
     /**
-     * Icon: Bug
+     * Icon: SHARE_SQUARE
      */
-    public static final String Bug = "\uf188";
+    public static String SHARE_SQUARE = "\uf14d";
+
     /**
-     * Icon: Building
+     * Icon: SIGN_IN_ALT
      */
-    public static final String Building = "\uf1ad";
+    public static String SIGN_IN_ALT = "\uf2f6";
+
     /**
-     * Icon: Bullhorn
+     * Icon: SIGN_OUT_ALT
      */
-    public static final String Bullhorn = "\uf0a1";
+    public static String SIGN_OUT_ALT = "\uf2f5";
+
     /**
-     * Icon: Bullseye
+     * Icon: SORT
      */
-    public static final String Bullseye = "\uf140";
+    public static String SORT = "\uf0dc";
+
     /**
-     * Icon: Burn
+     * Icon: SORT_ALPHA_DOWN
      */
-    public static final String Burn = "\uf46a";
+    public static String SORT_ALPHA_DOWN = "\uf15d";
+
     /**
-     * Icon: Bus
+     * Icon: SORT_ALPHA_DOWN_ALT
      */
-    public static final String Bus = "\uf207";
+    public static String SORT_ALPHA_DOWN_ALT = "\uf881";
+
     /**
-     * Icon: BusAlt
+     * Icon: SORT_ALPHA_UP
      */
-    public static final String BusAlt = "\uf55e";
+    public static String SORT_ALPHA_UP = "\uf15e";
+
     /**
-     * Icon: BusinessTime
+     * Icon: SORT_ALPHA_UP_ALT
      */
-    public static final String BusinessTime = "\uf64a";
+    public static String SORT_ALPHA_UP_ALT = "\uf882";
+
     /**
-     * Icon: Calculator
+     * Icon: SORT_AMOUNT_DOWN
      */
-    public static final String Calculator = "\uf1ec";
+    public static String SORT_AMOUNT_DOWN = "\uf160";
+
     /**
-     * Icon: Calendar
+     * Icon: SORT_AMOUNT_DOWN_ALT
      */
-    public static final String Calendar = "\uf133";
+    public static String SORT_AMOUNT_DOWN_ALT = "\uf884";
+
     /**
-     * Icon: CalendarAlt
+     * Icon: SORT_AMOUNT_UP
      */
-    public static final String CalendarAlt = "\uf073";
+    public static String SORT_AMOUNT_UP = "\uf161";
+
     /**
-     * Icon: CalendarCheck
+     * Icon: SORT_AMOUNT_UP_ALT
      */
-    public static final String CalendarCheck = "\uf274";
+    public static String SORT_AMOUNT_UP_ALT = "\uf885";
+
     /**
-     * Icon: CalendarDay
+     * Icon: SORT_DOWN
      */
-    public static final String CalendarDay = "\uf783";
+    public static String SORT_DOWN = "\uf0dd";
+
     /**
-     * Icon: CalendarMinus
+     * Icon: SORT_NUMERIC_DOWN
      */
-    public static final String CalendarMinus = "\uf272";
+    public static String SORT_NUMERIC_DOWN = "\uf162";
+
     /**
-     * Icon: CalendarPlus
+     * Icon: SORT_NUMERIC_DOWN_ALT
      */
-    public static final String CalendarPlus = "\uf271";
+    public static String SORT_NUMERIC_DOWN_ALT = "\uf886";
+
     /**
-     * Icon: CalendarTimes
+     * Icon: SORT_NUMERIC_UP
      */
-    public static final String CalendarTimes = "\uf273";
+    public static String SORT_NUMERIC_UP = "\uf163";
+
     /**
-     * Icon: CalendarWeek
+     * Icon: SORT_NUMERIC_UP_ALT
      */
-    public static final String CalendarWeek = "\uf784";
+    public static String SORT_NUMERIC_UP_ALT = "\uf887";
+
     /**
-     * Icon: Camera
+     * Icon: SORT_UP
      */
-    public static final String Camera = "\uf030";
+    public static String SORT_UP = "\uf0de";
+
     /**
-     * Icon: CameraRetro
+     * Icon: SYNC
      */
-    public static final String CameraRetro = "\uf083";
+    public static String SYNC = "\uf021";
+
     /**
-     * Icon: Campground
+     * Icon: SYNC_ALT
      */
-    public static final String Campground = "\uf6bb";
+    public static String SYNC_ALT = "\uf2f1";
+
     /**
-     * Icon: CandyCane
+     * Icon: TEXT_HEIGHT
      */
-    public static final String CandyCane = "\uf786";
+    public static String TEXT_HEIGHT = "\uf034";
+
     /**
-     * Icon: Cannabis
+     * Icon: TEXT_WIDTH
      */
-    public static final String Cannabis = "\uf55f";
+    public static String TEXT_WIDTH = "\uf035";
+
     /**
-     * Icon: Capsules
+     * Icon: UNDO
      */
-    public static final String Capsules = "\uf46b";
+    public static String UNDO = "\uf0e2";
+
     /**
-     * Icon: Car
+     * Icon: UNDO_ALT
      */
-    public static final String Car = "\uf1b9";
+    public static String UNDO_ALT = "\uf2ea";
+
     /**
-     * Icon: CarAlt
+     * Icon: UPLOAD
      */
-    public static final String CarAlt = "\uf5de";
+    public static String UPLOAD = "\uf093";
+
     /**
-     * Icon: CarBattery
+     * Icon: BACKWARD
      */
-    public static final String CarBattery = "\uf5df";
+    public static String BACKWARD = "\uf04a";
+
     /**
-     * Icon: CarCrash
+     * Icon: BROADCAST_TOWER
      */
-    public static final String CarCrash = "\uf5e1";
+    public static String BROADCAST_TOWER = "\uf519";
+
     /**
-     * Icon: CarSide
+     * Icon: CIRCLE
      */
-    public static final String CarSide = "\uf5e4";
+    public static String CIRCLE = "\uf111";
+
     /**
-     * Icon: Caravan
+     * Icon: COMPRESS
      */
-    public static final String Caravan = "\uf8ff";
+    public static String COMPRESS = "\uf066";
+
     /**
-     * Icon: CaretDown
+     * Icon: EJECT
      */
-    public static final String CaretDown = "\uf0d7";
+    public static String EJECT = "\uf052";
+
     /**
-     * Icon: CaretLeft
+     * Icon: EXPAND
      */
-    public static final String CaretLeft = "\uf0d9";
+    public static String EXPAND = "\uf065";
+
     /**
-     * Icon: CaretRight
+     * Icon: FAST_BACKWARD
      */
-    public static final String CaretRight = "\uf0da";
+    public static String FAST_BACKWARD = "\uf049";
+
     /**
-     * Icon: CaretSquareDown
+     * Icon: FAST_FORWARD
      */
-    public static final String CaretSquareDown = "\uf150";
+    public static String FAST_FORWARD = "\uf050";
+
     /**
-     * Icon: CaretSquareLeft
+     * Icon: FILE_AUDIO
      */
-    public static final String CaretSquareLeft = "\uf191";
+    public static String FILE_AUDIO = "\uf1c7";
+
     /**
-     * Icon: CaretSquareRight
+     * Icon: FILE_VIDEO
      */
-    public static final String CaretSquareRight = "\uf152";
+    public static String FILE_VIDEO = "\uf1c8";
+
     /**
-     * Icon: CaretSquareUp
+     * Icon: FILM
      */
-    public static final String CaretSquareUp = "\uf151";
+    public static String FILM = "\uf008";
+
     /**
-     * Icon: CaretUp
+     * Icon: FORWARD
      */
-    public static final String CaretUp = "\uf0d8";
+    public static String FORWARD = "\uf04e";
+
     /**
-     * Icon: Carrot
+     * Icon: HEADPHONES
      */
-    public static final String Carrot = "\uf787";
+    public static String HEADPHONES = "\uf025";
+
     /**
-     * Icon: CartArrowDown
+     * Icon: MICROPHONE
      */
-    public static final String CartArrowDown = "\uf218";
+    public static String MICROPHONE = "\uf130";
+
     /**
-     * Icon: CartPlus
+     * Icon: MICROPHONE_ALT
      */
-    public static final String CartPlus = "\uf217";
+    public static String MICROPHONE_ALT = "\uf3c9";
+
     /**
-     * Icon: CashRegister
+     * Icon: MICROPHONE_ALT_SLASH
      */
-    public static final String CashRegister = "\uf788";
+    public static String MICROPHONE_ALT_SLASH = "\uf539";
+
     /**
-     * Icon: Cat
+     * Icon: MICROPHONE_SLASH
      */
-    public static final String Cat = "\uf6be";
+    public static String MICROPHONE_SLASH = "\uf131";
+
     /**
-     * Icon: Certificate
+     * Icon: MUSIC
      */
-    public static final String Certificate = "\uf0a3";
+    public static String MUSIC = "\uf001";
+
     /**
-     * Icon: Chair
+     * Icon: PAUSE
      */
-    public static final String Chair = "\uf6c0";
+    public static String PAUSE = "\uf04c";
+
     /**
-     * Icon: Chalkboard
+     * Icon: PAUSE_CIRCLE
      */
-    public static final String Chalkboard = "\uf51b";
+    public static String PAUSE_CIRCLE = "\uf28b";
+
     /**
-     * Icon: ChalkboardTeacher
+     * Icon: PHOTO_VIDEO
      */
-    public static final String ChalkboardTeacher = "\uf51c";
+    public static String PHOTO_VIDEO = "\uf87c";
+
     /**
-     * Icon: ChargingStation
+     * Icon: PLAY_CIRCLE
      */
-    public static final String ChargingStation = "\uf5e7";
+    public static String PLAY_CIRCLE = "\uf144";
+
     /**
-     * Icon: ChartArea
+     * Icon: PODCAST
      */
-    public static final String ChartArea = "\uf1fe";
+    public static String PODCAST = "\uf2ce";
+
     /**
-     * Icon: ChartBar
+     * Icon: RSS
      */
-    public static final String ChartBar = "\uf080";
+    public static String RSS = "\uf09e";
+
     /**
-     * Icon: ChartLine
+     * Icon: RSS_SQUARE
      */
-    public static final String ChartLine = "\uf201";
+    public static String RSS_SQUARE = "\uf143";
+
     /**
-     * Icon: ChartPie
+     * Icon: STEP_BACKWARD
      */
-    public static final String ChartPie = "\uf200";
+    public static String STEP_BACKWARD = "\uf048";
+
     /**
-     * Icon: Check
+     * Icon: STEP_FORWARD
      */
-    public static final String Check = "\uf00c";
+    public static String STEP_FORWARD = "\uf051";
+
     /**
-     * Icon: CheckCircle
+     * Icon: STOP
      */
-    public static final String CheckCircle = "\uf058";
+    public static String STOP = "\uf04d";
+
     /**
-     * Icon: CheckDouble
+     * Icon: STOP_CIRCLE
      */
-    public static final String CheckDouble = "\uf560";
+    public static String STOP_CIRCLE = "\uf28d";
+
     /**
-     * Icon: CheckSquare
+     * Icon: TV
      */
-    public static final String CheckSquare = "\uf14a";
+    public static String TV = "\uf26c";
+
     /**
-     * Icon: Cheese
+     * Icon: VIDEO
      */
-    public static final String Cheese = "\uf7ef";
+    public static String VIDEO = "\uf03d";
+
     /**
-     * Icon: Chess
+     * Icon: VOLUME_DOWN
      */
-    public static final String Chess = "\uf439";
+    public static String VOLUME_DOWN = "\uf027";
+
     /**
-     * Icon: ChessBishop
+     * Icon: VOLUME_MUTE
      */
-    public static final String ChessBishop = "\uf43a";
+    public static String VOLUME_MUTE = "\uf6a9";
+
     /**
-     * Icon: ChessBoard
+     * Icon: VOLUME_OFF
      */
-    public static final String ChessBoard = "\uf43c";
+    public static String VOLUME_OFF = "\uf026";
+
     /**
-     * Icon: ChessKing
+     * Icon: VOLUME_UP
      */
-    public static final String ChessKing = "\uf43f";
+    public static String VOLUME_UP = "\uf028";
+
     /**
-     * Icon: ChessKnight
+     * Icon: YOUTUBE
      */
-    public static final String ChessKnight = "\uf441";
+    public static String YOUTUBE = "\uf167";
+
     /**
-     * Icon: ChessPawn
+     * Icon: AIR_FRESHENER
      */
-    public static final String ChessPawn = "\uf443";
+    public static String AIR_FRESHENER = "\uf5d0";
+
     /**
-     * Icon: ChessQueen
+     * Icon: AMBULANCE
      */
-    public static final String ChessQueen = "\uf445";
+    public static String AMBULANCE = "\uf0f9";
+
     /**
-     * Icon: ChessRook
+     * Icon: BUS
      */
-    public static final String ChessRook = "\uf447";
+    public static String BUS = "\uf207";
+
     /**
-     * Icon: ChevronCircleDown
+     * Icon: BUS_ALT
      */
-    public static final String ChevronCircleDown = "\uf13a";
+    public static String BUS_ALT = "\uf55e";
+
     /**
-     * Icon: ChevronCircleLeft
+     * Icon: CAR
      */
-    public static final String ChevronCircleLeft = "\uf137";
+    public static String CAR = "\uf1b9";
+
     /**
-     * Icon: ChevronCircleRight
+     * Icon: CAR_ALT
      */
-    public static final String ChevronCircleRight = "\uf138";
+    public static String CAR_ALT = "\uf5de";
+
     /**
-     * Icon: ChevronCircleUp
+     * Icon: CAR_BATTERY
      */
-    public static final String ChevronCircleUp = "\uf139";
+    public static String CAR_BATTERY = "\uf5df";
+
     /**
-     * Icon: ChevronDown
+     * Icon: CAR_CRASH
      */
-    public static final String ChevronDown = "\uf078";
+    public static String CAR_CRASH = "\uf5e1";
+
     /**
-     * Icon: ChevronLeft
+     * Icon: CAR_SIDE
      */
-    public static final String ChevronLeft = "\uf053";
+    public static String CAR_SIDE = "\uf5e4";
+
     /**
-     * Icon: ChevronRight
+     * Icon: CARAVAN
      */
-    public static final String ChevronRight = "\uf054";
+    public static String CARAVAN = "\uf8ff";
+
     /**
-     * Icon: ChevronUp
+     * Icon: CHARGING_STATION
      */
-    public static final String ChevronUp = "\uf077";
+    public static String CHARGING_STATION = "\uf5e7";
+
     /**
-     * Icon: Child
+     * Icon: GAS_PUMP
      */
-    public static final String Child = "\uf1ae";
+    public static String GAS_PUMP = "\uf52f";
+
     /**
-     * Icon: Church
+     * Icon: MOTORCYCLE
      */
-    public static final String Church = "\uf51d";
+    public static String MOTORCYCLE = "\uf21c";
+
     /**
-     * Icon: Circle
+     * Icon: OIL_CAN
      */
-    public static final String Circle = "\uf111";
+    public static String OIL_CAN = "\uf613";
+
     /**
-     * Icon: CircleNotch
+     * Icon: SHUTTLE_VAN
      */
-    public static final String CircleNotch = "\uf1ce";
+    public static String SHUTTLE_VAN = "\uf5b6";
+
     /**
-     * Icon: City
+     * Icon: TACHOMETER_ALT
      */
-    public static final String City = "\uf64f";
+    public static String TACHOMETER_ALT = "\uf3fd";
+
     /**
-     * Icon: ClinicMedical
+     * Icon: TAXI
      */
-    public static final String ClinicMedical = "\uf7f2";
+    public static String TAXI = "\uf1ba";
+
     /**
-     * Icon: Clipboard
+     * Icon: TRAILER
      */
-    public static final String Clipboard = "\uf328";
+    public static String TRAILER = "\ue041";
+
     /**
-     * Icon: ClipboardCheck
+     * Icon: TRUCK
      */
-    public static final String ClipboardCheck = "\uf46c";
+    public static String TRUCK = "\uf0d1";
+
     /**
-     * Icon: ClipboardList
+     * Icon: TRUCK_MONSTER
      */
-    public static final String ClipboardList = "\uf46d";
+    public static String TRUCK_MONSTER = "\uf63b";
+
     /**
-     * Icon: Clock
+     * Icon: TRUCK_PICKUP
      */
-    public static final String Clock = "\uf017";
+    public static String TRUCK_PICKUP = "\uf63c";
+
     /**
-     * Icon: Clone
+     * Icon: APPLE_ALT
      */
-    public static final String Clone = "\uf24d";
+    public static String APPLE_ALT = "\uf5d1";
+
     /**
-     * Icon: ClosedCaptioning
+     * Icon: CAMPGROUND
      */
-    public static final String ClosedCaptioning = "\uf20a";
+    public static String CAMPGROUND = "\uf6bb";
+
     /**
-     * Icon: Cloud
+     * Icon: CLOUD_SUN
      */
-    public static final String Cloud = "\uf0c2";
+    public static String CLOUD_SUN = "\uf6c4";
+
     /**
-     * Icon: CloudDownloadAlt
+     * Icon: DRUMSTICK_BITE
      */
-    public static final String CloudDownloadAlt = "\uf381";
+    public static String DRUMSTICK_BITE = "\uf6d7";
+
     /**
-     * Icon: CloudMeatball
+     * Icon: FOOTBALL_BALL
      */
-    public static final String CloudMeatball = "\uf73b";
+    public static String FOOTBALL_BALL = "\uf44e";
+
     /**
-     * Icon: CloudMoon
+     * Icon: HIKING
      */
-    public static final String CloudMoon = "\uf6c3";
+    public static String HIKING = "\uf6ec";
+
     /**
-     * Icon: CloudMoonRain
+     * Icon: MOUNTAIN
      */
-    public static final String CloudMoonRain = "\uf73c";
+    public static String MOUNTAIN = "\uf6fc";
+
     /**
-     * Icon: CloudRain
+     * Icon: TRACTOR
      */
-    public static final String CloudRain = "\uf73d";
+    public static String TRACTOR = "\uf722";
+
     /**
-     * Icon: CloudShowersHeavy
+     * Icon: TREE
      */
-    public static final String CloudShowersHeavy = "\uf740";
+    public static String TREE = "\uf1bb";
+
     /**
-     * Icon: CloudSun
+     * Icon: WIND
      */
-    public static final String CloudSun = "\uf6c4";
+    public static String WIND = "\uf72e";
+
     /**
-     * Icon: CloudSunRain
+     * Icon: WINE_BOTTLE
      */
-    public static final String CloudSunRain = "\uf743";
+    public static String WINE_BOTTLE = "\uf72f";
+
     /**
-     * Icon: CloudUploadAlt
+     * Icon: BEER
      */
-    public static final String CloudUploadAlt = "\uf382";
+    public static String BEER = "\uf0fc";
+
     /**
-     * Icon: Cocktail
+     * Icon: BLENDER
      */
-    public static final String Cocktail = "\uf561";
+    public static String BLENDER = "\uf517";
+
     /**
-     * Icon: Code
+     * Icon: COCKTAIL
      */
-    public static final String Code = "\uf121";
+    public static String COCKTAIL = "\uf561";
+
     /**
-     * Icon: CodeBranch
+     * Icon: COFFEE
      */
-    public static final String CodeBranch = "\uf126";
+    public static String COFFEE = "\uf0f4";
+
     /**
-     * Icon: Coffee
+     * Icon: FLASK
      */
-    public static final String Coffee = "\uf0f4";
+    public static String FLASK = "\uf0c3";
+
     /**
-     * Icon: Cog
+     * Icon: GLASS_CHEERS
      */
-    public static final String Cog = "\uf013";
+    public static String GLASS_CHEERS = "\uf79f";
+
     /**
-     * Icon: Cogs
+     * Icon: GLASS_MARTINI
      */
-    public static final String Cogs = "\uf085";
+    public static String GLASS_MARTINI = "\uf000";
+
     /**
-     * Icon: Coins
+     * Icon: GLASS_MARTINI_ALT
      */
-    public static final String Coins = "\uf51e";
+    public static String GLASS_MARTINI_ALT = "\uf57b";
+
     /**
-     * Icon: Columns
+     * Icon: GLASS_WHISKEY
      */
-    public static final String Columns = "\uf0db";
+    public static String GLASS_WHISKEY = "\uf7a0";
+
     /**
-     * Icon: Comment
+     * Icon: MUG_HOT
      */
-    public static final String Comment = "\uf075";
+    public static String MUG_HOT = "\uf7b6";
+
     /**
-     * Icon: CommentAlt
+     * Icon: WINE_GLASS
      */
-    public static final String CommentAlt = "\uf27a";
+    public static String WINE_GLASS = "\uf4e3";
+
     /**
-     * Icon: CommentDollar
+     * Icon: WINE_GLASS_ALT
      */
-    public static final String CommentDollar = "\uf651";
+    public static String WINE_GLASS_ALT = "\uf5ce";
+
     /**
-     * Icon: CommentDots
+     * Icon: ARCHWAY
      */
-    public static final String CommentDots = "\uf4ad";
+    public static String ARCHWAY = "\uf557";
+
     /**
-     * Icon: CommentMedical
+     * Icon: BUILDING
      */
-    public static final String CommentMedical = "\uf7f5";
+    public static String BUILDING = "\uf1ad";
+
     /**
-     * Icon: CommentSlash
+     * Icon: CHURCH
      */
-    public static final String CommentSlash = "\uf4b3";
+    public static String CHURCH = "\uf51d";
+
     /**
-     * Icon: Comments
+     * Icon: CITY
      */
-    public static final String Comments = "\uf086";
+    public static String CITY = "\uf64f";
+
     /**
-     * Icon: CommentsDollar
+     * Icon: CLINIC_MEDICAL
      */
-    public static final String CommentsDollar = "\uf653";
+    public static String CLINIC_MEDICAL = "\uf7f2";
+
     /**
-     * Icon: CompactDisc
+     * Icon: DUNGEON
      */
-    public static final String CompactDisc = "\uf51f";
+    public static String DUNGEON = "\uf6d9";
+
     /**
-     * Icon: Compass
+     * Icon: GOPURAM
      */
-    public static final String Compass = "\uf14e";
+    public static String GOPURAM = "\uf664";
+
     /**
-     * Icon: Compress
+     * Icon: HOME
      */
-    public static final String Compress = "\uf066";
+    public static String HOME = "\uf015";
+
     /**
-     * Icon: CompressAlt
+     * Icon: HOSPITAL
      */
-    public static final String CompressAlt = "\uf422";
+    public static String HOSPITAL = "\uf0f8";
+
     /**
-     * Icon: CompressArrowsAlt
+     * Icon: HOSPITAL_ALT
      */
-    public static final String CompressArrowsAlt = "\uf78c";
+    public static String HOSPITAL_ALT = "\uf47d";
+
     /**
-     * Icon: ConciergeBell
+     * Icon: HOSPITAL_USER
      */
-    public static final String ConciergeBell = "\uf562";
+    public static String HOSPITAL_USER = "\uf80d";
+
     /**
-     * Icon: Cookie
+     * Icon: HOTEL
      */
-    public static final String Cookie = "\uf563";
+    public static String HOTEL = "\uf594";
+
     /**
-     * Icon: CookieBite
+     * Icon: HOUSE_DAMAGE
      */
-    public static final String CookieBite = "\uf564";
+    public static String HOUSE_DAMAGE = "\uf6f1";
+
     /**
-     * Icon: Copy
+     * Icon: IGLOO
      */
-    public static final String Copy = "\uf0c5";
+    public static String IGLOO = "\uf7ae";
+
     /**
-     * Icon: Copyright
+     * Icon: INDUSTRY
      */
-    public static final String Copyright = "\uf1f9";
+    public static String INDUSTRY = "\uf275";
+
     /**
-     * Icon: Couch
+     * Icon: KAABA
      */
-    public static final String Couch = "\uf4b8";
+    public static String KAABA = "\uf66b";
+
     /**
-     * Icon: CreditCard
+     * Icon: LANDMARK
      */
-    public static final String CreditCard = "\uf09d";
+    public static String LANDMARK = "\uf66f";
+
     /**
-     * Icon: Crop
+     * Icon: MONUMENT
      */
-    public static final String Crop = "\uf125";
+    public static String MONUMENT = "\uf5a6";
+
     /**
-     * Icon: CropAlt
+     * Icon: MOSQUE
      */
-    public static final String CropAlt = "\uf565";
+    public static String MOSQUE = "\uf678";
+
     /**
-     * Icon: Cross
+     * Icon: PLACE_OF_WORSHIP
      */
-    public static final String Cross = "\uf654";
+    public static String PLACE_OF_WORSHIP = "\uf67f";
+
     /**
-     * Icon: Crosshairs
+     * Icon: SCHOOL
      */
-    public static final String Crosshairs = "\uf05b";
+    public static String SCHOOL = "\uf549";
+
     /**
-     * Icon: Crow
+     * Icon: STORE
      */
-    public static final String Crow = "\uf520";
+    public static String STORE = "\uf54e";
+
     /**
-     * Icon: Crown
+     * Icon: STORE_ALT
      */
-    public static final String Crown = "\uf521";
+    public static String STORE_ALT = "\uf54f";
+
     /**
-     * Icon: Crutch
+     * Icon: SYNAGOGUE
      */
-    public static final String Crutch = "\uf7f7";
+    public static String SYNAGOGUE = "\uf69b";
+
     /**
-     * Icon: Cube
+     * Icon: TORII_GATE
      */
-    public static final String Cube = "\uf1b2";
+    public static String TORII_GATE = "\uf6a1";
+
     /**
-     * Icon: Cubes
+     * Icon: UNIVERSITY
      */
-    public static final String Cubes = "\uf1b3";
+    public static String UNIVERSITY = "\uf19c";
+
     /**
-     * Icon: Cut
+     * Icon: VIHARA
      */
-    public static final String Cut = "\uf0c4";
+    public static String VIHARA = "\uf6a7";
+
     /**
-     * Icon: Database
+     * Icon: WAREHOUSE
      */
-    public static final String Database = "\uf1c0";
+    public static String WAREHOUSE = "\uf494";
+
     /**
-     * Icon: Deaf
+     * Icon: ADDRESS_BOOK
      */
-    public static final String Deaf = "\uf2a4";
+    public static String ADDRESS_BOOK = "\uf2b9";
+
     /**
-     * Icon: Democrat
+     * Icon: ADDRESS_CARD
      */
-    public static final String Democrat = "\uf747";
+    public static String ADDRESS_CARD = "\uf2bb";
+
     /**
-     * Icon: Desktop
+     * Icon: ARCHIVE
      */
-    public static final String Desktop = "\uf108";
+    public static String ARCHIVE = "\uf187";
+
     /**
-     * Icon: Dharmachakra
+     * Icon: BALANCE_SCALE
      */
-    public static final String Dharmachakra = "\uf655";
+    public static String BALANCE_SCALE = "\uf24e";
+
     /**
-     * Icon: Diagnoses
+     * Icon: BALANCE_SCALE_LEFT
      */
-    public static final String Diagnoses = "\uf470";
+    public static String BALANCE_SCALE_LEFT = "\uf515";
+
     /**
-     * Icon: Dice
+     * Icon: BALANCE_SCALE_RIGHT
      */
-    public static final String Dice = "\uf522";
+    public static String BALANCE_SCALE_RIGHT = "\uf516";
+
     /**
-     * Icon: DiceD20
+     * Icon: BIRTHDAY_CAKE
      */
-    public static final String DiceD20 = "\uf6cf";
+    public static String BIRTHDAY_CAKE = "\uf1fd";
+
     /**
-     * Icon: DiceD6
+     * Icon: BOOK
      */
-    public static final String DiceD6 = "\uf6d1";
+    public static String BOOK = "\uf02d";
+
     /**
-     * Icon: DiceFive
+     * Icon: BRIEFCASE
      */
-    public static final String DiceFive = "\uf523";
+    public static String BRIEFCASE = "\uf0b1";
+
     /**
-     * Icon: DiceFour
+     * Icon: BULLHORN
      */
-    public static final String DiceFour = "\uf524";
+    public static String BULLHORN = "\uf0a1";
+
     /**
-     * Icon: DiceOne
+     * Icon: BULLSEYE
      */
-    public static final String DiceOne = "\uf525";
+    public static String BULLSEYE = "\uf140";
+
     /**
-     * Icon: DiceSix
+     * Icon: BUSINESS_TIME
      */
-    public static final String DiceSix = "\uf526";
+    public static String BUSINESS_TIME = "\uf64a";
+
     /**
-     * Icon: DiceThree
+     * Icon: CALCULATOR
      */
-    public static final String DiceThree = "\uf527";
+    public static String CALCULATOR = "\uf1ec";
+
     /**
-     * Icon: DiceTwo
+     * Icon: CALENDAR
      */
-    public static final String DiceTwo = "\uf528";
+    public static String CALENDAR = "\uf133";
+
     /**
-     * Icon: DigitalTachograph
+     * Icon: CALENDAR_ALT
      */
-    public static final String DigitalTachograph = "\uf566";
+    public static String CALENDAR_ALT = "\uf073";
+
     /**
-     * Icon: Directions
+     * Icon: CERTIFICATE
      */
-    public static final String Directions = "\uf5eb";
+    public static String CERTIFICATE = "\uf0a3";
+
     /**
-     * Icon: Disease
+     * Icon: CHART_AREA
      */
-    public static final String Disease = "\uf7fa";
+    public static String CHART_AREA = "\uf1fe";
+
     /**
-     * Icon: Divide
+     * Icon: CHART_BAR
      */
-    public static final String Divide = "\uf529";
+    public static String CHART_BAR = "\uf080";
+
     /**
-     * Icon: Dizzy
+     * Icon: CHART_PIE
      */
-    public static final String Dizzy = "\uf567";
+    public static String CHART_PIE = "\uf200";
+
     /**
-     * Icon: Dna
+     * Icon: CLIPBOARD
      */
-    public static final String Dna = "\uf471";
+    public static String CLIPBOARD = "\uf328";
+
     /**
-     * Icon: Dog
+     * Icon: COLUMNS
      */
-    public static final String Dog = "\uf6d3";
+    public static String COLUMNS = "\uf0db";
+
     /**
-     * Icon: DollarSign
+     * Icon: COMPASS
      */
-    public static final String DollarSign = "\uf155";
+    public static String COMPASS = "\uf14e";
+
     /**
-     * Icon: Dolly
+     * Icon: COPY
      */
-    public static final String Dolly = "\uf472";
+    public static String COPY = "\uf0c5";
+
     /**
-     * Icon: DollyFlatbed
+     * Icon: COPYRIGHT
      */
-    public static final String DollyFlatbed = "\uf474";
+    public static String COPYRIGHT = "\uf1f9";
+
     /**
-     * Icon: Donate
+     * Icon: CUT
      */
-    public static final String Donate = "\uf4b9";
+    public static String CUT = "\uf0c4";
+
     /**
-     * Icon: DoorClosed
+     * Icon: EDIT
      */
-    public static final String DoorClosed = "\uf52a";
+    public static String EDIT = "\uf044";
+
     /**
-     * Icon: DoorOpen
+     * Icon: ENVELOPE
      */
-    public static final String DoorOpen = "\uf52b";
+    public static String ENVELOPE = "\uf0e0";
+
     /**
-     * Icon: DotCircle
+     * Icon: ENVELOPE_OPEN
      */
-    public static final String DotCircle = "\uf192";
+    public static String ENVELOPE_OPEN = "\uf2b6";
+
     /**
-     * Icon: Dove
+     * Icon: ENVELOPE_SQUARE
      */
-    public static final String Dove = "\uf4ba";
+    public static String ENVELOPE_SQUARE = "\uf199";
+
     /**
-     * Icon: Download
+     * Icon: ERASER
      */
-    public static final String Download = "\uf019";
+    public static String ERASER = "\uf12d";
+
     /**
-     * Icon: DraftingCompass
+     * Icon: FAX
      */
-    public static final String DraftingCompass = "\uf568";
+    public static String FAX = "\uf1ac";
+
     /**
-     * Icon: Dragon
+     * Icon: FILE
      */
-    public static final String Dragon = "\uf6d5";
+    public static String FILE = "\uf15b";
+
     /**
-     * Icon: DrawPolygon
+     * Icon: FILE_ALT
      */
-    public static final String DrawPolygon = "\uf5ee";
+    public static String FILE_ALT = "\uf15c";
+
     /**
-     * Icon: Drum
+     * Icon: FOLDER
      */
-    public static final String Drum = "\uf569";
+    public static String FOLDER = "\uf07b";
+
     /**
-     * Icon: DrumSteelpan
+     * Icon: FOLDER_MINUS
      */
-    public static final String DrumSteelpan = "\uf56a";
+    public static String FOLDER_MINUS = "\uf65d";
+
     /**
-     * Icon: DrumstickBite
+     * Icon: FOLDER_OPEN
      */
-    public static final String DrumstickBite = "\uf6d7";
+    public static String FOLDER_OPEN = "\uf07c";
+
     /**
-     * Icon: Dumbbell
+     * Icon: FOLDER_PLUS
      */
-    public static final String Dumbbell = "\uf44b";
+    public static String FOLDER_PLUS = "\uf65e";
+
     /**
-     * Icon: Dumpster
+     * Icon: GLASSES
      */
-    public static final String Dumpster = "\uf793";
+    public static String GLASSES = "\uf530";
+
     /**
-     * Icon: DumpsterFire
+     * Icon: GLOBE
      */
-    public static final String DumpsterFire = "\uf794";
+    public static String GLOBE = "\uf0ac";
+
     /**
-     * Icon: Dungeon
+     * Icon: HIGHLIGHTER
      */
-    public static final String Dungeon = "\uf6d9";
+    public static String HIGHLIGHTER = "\uf591";
+
     /**
-     * Icon: Edit
+     * Icon: LAPTOP_HOUSE
      */
-    public static final String Edit = "\uf044";
+    public static String LAPTOP_HOUSE = "\ue066";
+
     /**
-     * Icon: Egg
+     * Icon: MARKER
      */
-    public static final String Egg = "\uf7fb";
+    public static String MARKER = "\uf5a1";
+
     /**
-     * Icon: Eject
+     * Icon: PAPERCLIP
      */
-    public static final String Eject = "\uf052";
+    public static String PAPERCLIP = "\uf0c6";
+
     /**
-     * Icon: EllipsisH
+     * Icon: PASTE
      */
-    public static final String EllipsisH = "\uf141";
+    public static String PASTE = "\uf0ea";
+
     /**
-     * Icon: EllipsisV
+     * Icon: PEN
      */
-    public static final String EllipsisV = "\uf142";
+    public static String PEN = "\uf304";
+
     /**
-     * Icon: Envelope
+     * Icon: PEN_ALT
      */
-    public static final String Envelope = "\uf0e0";
+    public static String PEN_ALT = "\uf305";
+
     /**
-     * Icon: EnvelopeOpen
+     * Icon: PEN_FANCY
      */
-    public static final String EnvelopeOpen = "\uf2b6";
+    public static String PEN_FANCY = "\uf5ac";
+
     /**
-     * Icon: EnvelopeOpenText
+     * Icon: PEN_NIB
      */
-    public static final String EnvelopeOpenText = "\uf658";
+    public static String PEN_NIB = "\uf5ad";
+
     /**
-     * Icon: EnvelopeSquare
+     * Icon: PEN_SQUARE
      */
-    public static final String EnvelopeSquare = "\uf199";
+    public static String PEN_SQUARE = "\uf14b";
+
     /**
-     * Icon: Equals
+     * Icon: PENCIL_ALT
      */
-    public static final String Equals = "\uf52c";
+    public static String PENCIL_ALT = "\uf303";
+
     /**
-     * Icon: Eraser
+     * Icon: PERCENT
      */
-    public static final String Eraser = "\uf12d";
+    public static String PERCENT = "\uf295";
+
     /**
-     * Icon: Ethernet
+     * Icon: PHONE
      */
-    public static final String Ethernet = "\uf796";
+    public static String PHONE = "\uf095";
+
     /**
-     * Icon: EuroSign
+     * Icon: PHONE_ALT
      */
-    public static final String EuroSign = "\uf153";
+    public static String PHONE_ALT = "\uf879";
+
     /**
-     * Icon: ExchangeAlt
+     * Icon: PHONE_SLASH
      */
-    public static final String ExchangeAlt = "\uf362";
+    public static String PHONE_SLASH = "\uf3dd";
+
     /**
-     * Icon: Exclamation
+     * Icon: PHONE_SQUARE
      */
-    public static final String Exclamation = "\uf12a";
+    public static String PHONE_SQUARE = "\uf098";
+
     /**
-     * Icon: ExclamationCircle
+     * Icon: PHONE_SQUARE_ALT
      */
-    public static final String ExclamationCircle = "\uf06a";
+    public static String PHONE_SQUARE_ALT = "\uf87b";
+
     /**
-     * Icon: ExclamationTriangle
+     * Icon: PRINT
      */
-    public static final String ExclamationTriangle = "\uf071";
+    public static String PRINT = "\uf02f";
+
     /**
-     * Icon: Expand
+     * Icon: PROJECT_DIAGRAM
      */
-    public static final String Expand = "\uf065";
+    public static String PROJECT_DIAGRAM = "\uf542";
+
     /**
-     * Icon: ExpandAlt
+     * Icon: REGISTERED
      */
-    public static final String ExpandAlt = "\uf424";
+    public static String REGISTERED = "\uf25d";
+
     /**
-     * Icon: ExpandArrowsAlt
+     * Icon: SAVE
      */
-    public static final String ExpandArrowsAlt = "\uf31e";
+    public static String SAVE = "\uf0c7";
+
     /**
-     * Icon: ExternalLinkAlt
+     * Icon: SITEMAP
      */
-    public static final String ExternalLinkAlt = "\uf35d";
+    public static String SITEMAP = "\uf0e8";
+
     /**
-     * Icon: ExternalLinkSquareAlt
+     * Icon: SOCKS
      */
-    public static final String ExternalLinkSquareAlt = "\uf360";
+    public static String SOCKS = "\uf696";
+
     /**
-     * Icon: Eye
+     * Icon: STICKY_NOTE
      */
-    public static final String Eye = "\uf06e";
+    public static String STICKY_NOTE = "\uf249";
+
     /**
-     * Icon: EyeDropper
+     * Icon: STREAM
      */
-    public static final String EyeDropper = "\uf1fb";
+    public static String STREAM = "\uf550";
+
     /**
-     * Icon: EyeSlash
+     * Icon: TABLE
      */
-    public static final String EyeSlash = "\uf070";
+    public static String TABLE = "\uf0ce";
+
     /**
-     * Icon: Fan
+     * Icon: TAG
      */
-    public static final String Fan = "\uf863";
+    public static String TAG = "\uf02b";
+
     /**
-     * Icon: FastBackward
+     * Icon: TAGS
      */
-    public static final String FastBackward = "\uf049";
+    public static String TAGS = "\uf02c";
+
     /**
-     * Icon: FastForward
+     * Icon: TASKS
      */
-    public static final String FastForward = "\uf050";
+    public static String TASKS = "\uf0ae";
+
     /**
-     * Icon: Faucet
+     * Icon: THUMBTACK
      */
-    public static final String Faucet = "\ue005";
+    public static String THUMBTACK = "\uf08d";
+
     /**
-     * Icon: Fax
+     * Icon: TRADEMARK
      */
-    public static final String Fax = "\uf1ac";
+    public static String TRADEMARK = "\uf25c";
+
     /**
-     * Icon: Feather
+     * Icon: WALLET
      */
-    public static final String Feather = "\uf52d";
+    public static String WALLET = "\uf555";
+
     /**
-     * Icon: FeatherAlt
+     * Icon: BINOCULARS
      */
-    public static final String FeatherAlt = "\uf56b";
+    public static String BINOCULARS = "\uf1e5";
+
     /**
-     * Icon: Female
+     * Icon: FAUCET
      */
-    public static final String Female = "\uf182";
+    public static String FAUCET = "\ue005";
+
     /**
-     * Icon: FighterJet
+     * Icon: FIRE
      */
-    public static final String FighterJet = "\uf0fb";
+    public static String FIRE = "\uf06d";
+
     /**
-     * Icon: File
+     * Icon: FIRE_ALT
      */
-    public static final String File = "\uf15b";
+    public static String FIRE_ALT = "\uf7e4";
+
     /**
-     * Icon: FileAlt
+     * Icon: FIRST_AID
      */
-    public static final String FileAlt = "\uf15c";
+    public static String FIRST_AID = "\uf479";
+
     /**
-     * Icon: FileArchive
+     * Icon: MAP
      */
-    public static final String FileArchive = "\uf1c6";
+    public static String MAP = "\uf279";
+
     /**
-     * Icon: FileAudio
+     * Icon: MAP_MARKED
      */
-    public static final String FileAudio = "\uf1c7";
+    public static String MAP_MARKED = "\uf59f";
+
     /**
-     * Icon: FileCode
+     * Icon: MAP_MARKED_ALT
      */
-    public static final String FileCode = "\uf1c9";
+    public static String MAP_MARKED_ALT = "\uf5a0";
+
     /**
-     * Icon: FileContract
+     * Icon: MAP_SIGNS
      */
-    public static final String FileContract = "\uf56c";
+    public static String MAP_SIGNS = "\uf277";
+
     /**
-     * Icon: FileCsv
+     * Icon: ROUTE
      */
-    public static final String FileCsv = "\uf6dd";
+    public static String ROUTE = "\uf4d7";
+
     /**
-     * Icon: FileDownload
+     * Icon: TOILET_PAPER
      */
-    public static final String FileDownload = "\uf56d";
+    public static String TOILET_PAPER = "\uf71e";
+
     /**
-     * Icon: FileExcel
+     * Icon: DOLLAR_SIGN
      */
-    public static final String FileExcel = "\uf1c3";
+    public static String DOLLAR_SIGN = "\uf155";
+
     /**
-     * Icon: FileExport
+     * Icon: DONATE
      */
-    public static final String FileExport = "\uf56e";
+    public static String DONATE = "\uf4b9";
+
     /**
-     * Icon: FileImage
+     * Icon: GIFT
      */
-    public static final String FileImage = "\uf1c5";
+    public static String GIFT = "\uf06b";
+
     /**
-     * Icon: FileImport
+     * Icon: HAND_HOLDING_HEART
      */
-    public static final String FileImport = "\uf56f";
+    public static String HAND_HOLDING_HEART = "\uf4be";
+
     /**
-     * Icon: FileInvoice
+     * Icon: HAND_HOLDING_USD
      */
-    public static final String FileInvoice = "\uf570";
+    public static String HAND_HOLDING_USD = "\uf4c0";
+
     /**
-     * Icon: FileInvoiceDollar
+     * Icon: HAND_HOLDING_WATER
      */
-    public static final String FileInvoiceDollar = "\uf571";
+    public static String HAND_HOLDING_WATER = "\uf4c1";
+
     /**
-     * Icon: FileMedical
+     * Icon: HANDS_HELPING
      */
-    public static final String FileMedical = "\uf477";
+    public static String HANDS_HELPING = "\uf4c4";
+
     /**
-     * Icon: FileMedicalAlt
+     * Icon: HANDSHAKE
      */
-    public static final String FileMedicalAlt = "\uf478";
+    public static String HANDSHAKE = "\uf2b5";
+
     /**
-     * Icon: FilePdf
+     * Icon: HEART
      */
-    public static final String FilePdf = "\uf1c1";
+    public static String HEART = "\uf004";
+
     /**
-     * Icon: FilePowerpoint
+     * Icon: LEAF
      */
-    public static final String FilePowerpoint = "\uf1c4";
+    public static String LEAF = "\uf06c";
+
     /**
-     * Icon: FilePrescription
+     * Icon: PARACHUTE_BOX
      */
-    public static final String FilePrescription = "\uf572";
+    public static String PARACHUTE_BOX = "\uf4cd";
+
     /**
-     * Icon: FileSignature
+     * Icon: PIGGY_BANK
      */
-    public static final String FileSignature = "\uf573";
+    public static String PIGGY_BANK = "\uf4d3";
+
     /**
-     * Icon: FileUpload
+     * Icon: RIBBON
      */
-    public static final String FileUpload = "\uf574";
+    public static String RIBBON = "\uf4d6";
+
     /**
-     * Icon: FileVideo
+     * Icon: SEEDLING
      */
-    public static final String FileVideo = "\uf1c8";
+    public static String SEEDLING = "\uf4d8";
+
     /**
-     * Icon: FileWord
+     * Icon: COMMENT
      */
-    public static final String FileWord = "\uf1c2";
+    public static String COMMENT = "\uf075";
+
     /**
-     * Icon: Fill
+     * Icon: COMMENT_ALT
      */
-    public static final String Fill = "\uf575";
+    public static String COMMENT_ALT = "\uf27a";
+
     /**
-     * Icon: FillDrip
+     * Icon: COMMENT_DOTS
      */
-    public static final String FillDrip = "\uf576";
+    public static String COMMENT_DOTS = "\uf4ad";
+
     /**
-     * Icon: Film
+     * Icon: COMMENT_MEDICAL
      */
-    public static final String Film = "\uf008";
+    public static String COMMENT_MEDICAL = "\uf7f5";
+
     /**
-     * Icon: Filter
+     * Icon: COMMENT_SLASH
      */
-    public static final String Filter = "\uf0b0";
+    public static String COMMENT_SLASH = "\uf4b3";
+
     /**
-     * Icon: Fingerprint
+     * Icon: COMMENTS
      */
-    public static final String Fingerprint = "\uf577";
+    public static String COMMENTS = "\uf086";
+
     /**
-     * Icon: Fire
+     * Icon: FROWN
      */
-    public static final String Fire = "\uf06d";
+    public static String FROWN = "\uf119";
+
     /**
-     * Icon: FireAlt
+     * Icon: ICONS
      */
-    public static final String FireAlt = "\uf7e4";
+    public static String ICONS = "\uf86d";
+
     /**
-     * Icon: FireExtinguisher
+     * Icon: MEH
      */
-    public static final String FireExtinguisher = "\uf134";
+    public static String MEH = "\uf11a";
+
     /**
-     * Icon: FirstAid
+     * Icon: POO
      */
-    public static final String FirstAid = "\uf479";
+    public static String POO = "\uf2fe";
+
     /**
-     * Icon: Fish
+     * Icon: QUOTE_LEFT
      */
-    public static final String Fish = "\uf578";
+    public static String QUOTE_LEFT = "\uf10d";
+
     /**
-     * Icon: FistRaised
+     * Icon: QUOTE_RIGHT
      */
-    public static final String FistRaised = "\uf6de";
+    public static String QUOTE_RIGHT = "\uf10e";
+
     /**
-     * Icon: Flag
+     * Icon: SMILE
      */
-    public static final String Flag = "\uf024";
+    public static String SMILE = "\uf118";
+
     /**
-     * Icon: FlagCheckered
+     * Icon: SMS
      */
-    public static final String FlagCheckered = "\uf11e";
+    public static String SMS = "\uf7cd";
+
     /**
-     * Icon: FlagUsa
+     * Icon: VIDEO_SLASH
      */
-    public static final String FlagUsa = "\uf74d";
+    public static String VIDEO_SLASH = "\uf4e2";
+
     /**
-     * Icon: Flask
+     * Icon: CHESS
      */
-    public static final String Flask = "\uf0c3";
+    public static String CHESS = "\uf439";
+
     /**
-     * Icon: Flushed
+     * Icon: CHESS_BISHOP
      */
-    public static final String Flushed = "\uf579";
+    public static String CHESS_BISHOP = "\uf43a";
+
     /**
-     * Icon: Folder
+     * Icon: CHESS_BOARD
      */
-    public static final String Folder = "\uf07b";
+    public static String CHESS_BOARD = "\uf43c";
+
     /**
-     * Icon: FolderMinus
+     * Icon: CHESS_KING
      */
-    public static final String FolderMinus = "\uf65d";
+    public static String CHESS_KING = "\uf43f";
+
     /**
-     * Icon: FolderOpen
+     * Icon: CHESS_KNIGHT
      */
-    public static final String FolderOpen = "\uf07c";
+    public static String CHESS_KNIGHT = "\uf441";
+
     /**
-     * Icon: FolderPlus
+     * Icon: CHESS_PAWN
      */
-    public static final String FolderPlus = "\uf65e";
+    public static String CHESS_PAWN = "\uf443";
+
     /**
-     * Icon: Font
+     * Icon: CHESS_QUEEN
      */
-    public static final String Font = "\uf031";
+    public static String CHESS_QUEEN = "\uf445";
+
     /**
-     * Icon: FontAwesomeLogoFull
+     * Icon: CHESS_ROOK
      */
-    public static final String FontAwesomeLogoFull = "\uf4e6";
+    public static String CHESS_ROOK = "\uf447";
+
     /**
-     * Icon: FootballBall
+     * Icon: SQUARE_FULL
      */
-    public static final String FootballBall = "\uf44e";
+    public static String SQUARE_FULL = "\uf45c";
+
     /**
-     * Icon: Forward
+     * Icon: BABY
      */
-    public static final String Forward = "\uf04e";
+    public static String BABY = "\uf77c";
+
     /**
-     * Icon: Frog
+     * Icon: BABY_CARRIAGE
      */
-    public static final String Frog = "\uf52e";
+    public static String BABY_CARRIAGE = "\uf77d";
+
     /**
-     * Icon: Frown
+     * Icon: BATH
      */
-    public static final String Frown = "\uf119";
+    public static String BATH = "\uf2cd";
+
     /**
-     * Icon: FrownOpen
+     * Icon: BIKING
      */
-    public static final String FrownOpen = "\uf57a";
+    public static String BIKING = "\uf84a";
+
     /**
-     * Icon: FunnelDollar
+     * Icon: COOKIE
      */
-    public static final String FunnelDollar = "\uf662";
+    public static String COOKIE = "\uf563";
+
     /**
-     * Icon: Futbol
+     * Icon: COOKIE_BITE
      */
-    public static final String Futbol = "\uf1e3";
+    public static String COOKIE_BITE = "\uf564";
+
     /**
-     * Icon: Gamepad
+     * Icon: GAMEPAD
      */
-    public static final String Gamepad = "\uf11b";
+    public static String GAMEPAD = "\uf11b";
+
     /**
-     * Icon: GasPump
+     * Icon: ICE_CREAM
      */
-    public static final String GasPump = "\uf52f";
+    public static String ICE_CREAM = "\uf810";
+
     /**
-     * Icon: Gavel
+     * Icon: MITTEN
      */
-    public static final String Gavel = "\uf0e3";
+    public static String MITTEN = "\uf7b5";
+
     /**
-     * Icon: Gem
+     * Icon: ROBOT
      */
-    public static final String Gem = "\uf3a5";
+    public static String ROBOT = "\uf544";
+
     /**
-     * Icon: Genderless
+     * Icon: SHAPES
      */
-    public static final String Genderless = "\uf22d";
+    public static String SHAPES = "\uf61f";
+
     /**
-     * Icon: Ghost
+     * Icon: SNOWMAN
      */
-    public static final String Ghost = "\uf6e2";
+    public static String SNOWMAN = "\uf7d0";
+
     /**
-     * Icon: Gift
+     * Icon: GRADUATION_CAP
      */
-    public static final String Gift = "\uf06b";
+    public static String GRADUATION_CAP = "\uf19d";
+
     /**
-     * Icon: Gifts
+     * Icon: HAT_COWBOY
      */
-    public static final String Gifts = "\uf79c";
+    public static String HAT_COWBOY = "\uf8c0";
+
     /**
-     * Icon: GlassCheers
+     * Icon: HAT_COWBOY_SIDE
      */
-    public static final String GlassCheers = "\uf79f";
+    public static String HAT_COWBOY_SIDE = "\uf8c1";
+
     /**
-     * Icon: GlassMartini
+     * Icon: HAT_WIZARD
      */
-    public static final String GlassMartini = "\uf000";
+    public static String HAT_WIZARD = "\uf6e8";
+
     /**
-     * Icon: GlassMartiniAlt
+     * Icon: SHOE_PRINTS
      */
-    public static final String GlassMartiniAlt = "\uf57b";
+    public static String SHOE_PRINTS = "\uf54b";
+
     /**
-     * Icon: GlassWhiskey
+     * Icon: TSHIRT
      */
-    public static final String GlassWhiskey = "\uf7a0";
+    public static String TSHIRT = "\uf553";
+
     /**
-     * Icon: Glasses
+     * Icon: USER_TIE
      */
-    public static final String Glasses = "\uf530";
+    public static String USER_TIE = "\uf508";
+
     /**
-     * Icon: Globe
+     * Icon: BARCODE
      */
-    public static final String Globe = "\uf0ac";
+    public static String BARCODE = "\uf02a";
+
     /**
-     * Icon: GlobeAfrica
+     * Icon: BUG
      */
-    public static final String GlobeAfrica = "\uf57c";
+    public static String BUG = "\uf188";
+
     /**
-     * Icon: GlobeAmericas
+     * Icon: CODE
      */
-    public static final String GlobeAmericas = "\uf57d";
+    public static String CODE = "\uf121";
+
     /**
-     * Icon: GlobeAsia
+     * Icon: CODE_BRANCH
      */
-    public static final String GlobeAsia = "\uf57e";
+    public static String CODE_BRANCH = "\uf126";
+
     /**
-     * Icon: GlobeEurope
+     * Icon: FILE_CODE
      */
-    public static final String GlobeEurope = "\uf7a2";
+    public static String FILE_CODE = "\uf1c9";
+
     /**
-     * Icon: GolfBall
+     * Icon: FILTER
      */
-    public static final String GolfBall = "\uf450";
+    public static String FILTER = "\uf0b0";
+
     /**
-     * Icon: Gopuram
+     * Icon: FIRE_EXTINGUISHER
      */
-    public static final String Gopuram = "\uf664";
+    public static String FIRE_EXTINGUISHER = "\uf134";
+
     /**
-     * Icon: GraduationCap
+     * Icon: KEYBOARD
      */
-    public static final String GraduationCap = "\uf19d";
+    public static String KEYBOARD = "\uf11c";
+
     /**
-     * Icon: GreaterThan
+     * Icon: LAPTOP_CODE
      */
-    public static final String GreaterThan = "\uf531";
+    public static String LAPTOP_CODE = "\uf5fc";
+
     /**
-     * Icon: GreaterThanEqual
+     * Icon: MICROCHIP
      */
-    public static final String GreaterThanEqual = "\uf532";
+    public static String MICROCHIP = "\uf2db";
+
     /**
-     * Icon: Grimace
+     * Icon: QRCODE
      */
-    public static final String Grimace = "\uf57f";
+    public static String QRCODE = "\uf029";
+
     /**
-     * Icon: Grin
+     * Icon: SHIELD_ALT
      */
-    public static final String Grin = "\uf580";
+    public static String SHIELD_ALT = "\uf3ed";
+
     /**
-     * Icon: GrinAlt
+     * Icon: TERMINAL
      */
-    public static final String GrinAlt = "\uf581";
+    public static String TERMINAL = "\uf120";
+
     /**
-     * Icon: GrinBeam
+     * Icon: USER_SECRET
      */
-    public static final String GrinBeam = "\uf582";
+    public static String USER_SECRET = "\uf21b";
+
     /**
-     * Icon: GrinBeamSweat
+     * Icon: WINDOW_CLOSE
      */
-    public static final String GrinBeamSweat = "\uf583";
+    public static String WINDOW_CLOSE = "\uf410";
+
     /**
-     * Icon: GrinHearts
+     * Icon: WINDOW_MAXIMIZE
      */
-    public static final String GrinHearts = "\uf584";
+    public static String WINDOW_MAXIMIZE = "\uf2d0";
+
     /**
-     * Icon: GrinSquint
+     * Icon: WINDOW_MINIMIZE
      */
-    public static final String GrinSquint = "\uf585";
+    public static String WINDOW_MINIMIZE = "\uf2d1";
+
     /**
-     * Icon: GrinSquintTears
+     * Icon: WINDOW_RESTORE
      */
-    public static final String GrinSquintTears = "\uf586";
+    public static String WINDOW_RESTORE = "\uf2d2";
+
     /**
-     * Icon: GrinStars
+     * Icon: AT
      */
-    public static final String GrinStars = "\uf587";
+    public static String AT = "\uf1fa";
+
     /**
-     * Icon: GrinTears
+     * Icon: BLUETOOTH
      */
-    public static final String GrinTears = "\uf588";
+    public static String BLUETOOTH = "\uf293";
+
     /**
-     * Icon: GrinTongue
+     * Icon: BLUETOOTH_B
      */
-    public static final String GrinTongue = "\uf589";
+    public static String BLUETOOTH_B = "\uf294";
+
     /**
-     * Icon: GrinTongueSquint
+     * Icon: CHALKBOARD
      */
-    public static final String GrinTongueSquint = "\uf58a";
+    public static String CHALKBOARD = "\uf51b";
+
     /**
-     * Icon: GrinTongueWink
+     * Icon: INBOX
      */
-    public static final String GrinTongueWink = "\uf58b";
+    public static String INBOX = "\uf01c";
+
     /**
-     * Icon: GrinWink
+     * Icon: LANGUAGE
      */
-    public static final String GrinWink = "\uf58c";
+    public static String LANGUAGE = "\uf1ab";
+
     /**
-     * Icon: GripHorizontal
+     * Icon: MOBILE
      */
-    public static final String GripHorizontal = "\uf58d";
+    public static String MOBILE = "\uf10b";
+
     /**
-     * Icon: GripLines
+     * Icon: MOBILE_ALT
      */
-    public static final String GripLines = "\uf7a4";
+    public static String MOBILE_ALT = "\uf3cd";
+
     /**
-     * Icon: GripLinesVertical
+     * Icon: PAPER_PLANE
      */
-    public static final String GripLinesVertical = "\uf7a5";
+    public static String PAPER_PLANE = "\uf1d8";
+
     /**
-     * Icon: GripVertical
+     * Icon: VOICEMAIL
      */
-    public static final String GripVertical = "\uf58e";
+    public static String VOICEMAIL = "\uf897";
+
     /**
-     * Icon: Guitar
+     * Icon: WIFI
      */
-    public static final String Guitar = "\uf7a6";
+    public static String WIFI = "\uf1eb";
+
     /**
-     * Icon: HSquare
+     * Icon: COMPACT_DISC
      */
-    public static final String HSquare = "\uf0fd";
+    public static String COMPACT_DISC = "\uf51f";
+
     /**
-     * Icon: Hamburger
+     * Icon: DATABASE
      */
-    public static final String Hamburger = "\uf805";
+    public static String DATABASE = "\uf1c0";
+
     /**
-     * Icon: Hammer
+     * Icon: DESKTOP
      */
-    public static final String Hammer = "\uf6e3";
+    public static String DESKTOP = "\uf108";
+
     /**
-     * Icon: Hamsa
+     * Icon: ETHERNET
      */
-    public static final String Hamsa = "\uf665";
+    public static String ETHERNET = "\uf796";
+
     /**
-     * Icon: HandHolding
+     * Icon: HDD
      */
-    public static final String HandHolding = "\uf4bd";
+    public static String HDD = "\uf0a0";
+
     /**
-     * Icon: HandHoldingHeart
+     * Icon: LAPTOP
      */
-    public static final String HandHoldingHeart = "\uf4be";
+    public static String LAPTOP = "\uf109";
+
     /**
-     * Icon: HandHoldingMedical
+     * Icon: MEMORY
      */
-    public static final String HandHoldingMedical = "\ue05c";
+    public static String MEMORY = "\uf538";
+
     /**
-     * Icon: HandHoldingUsd
+     * Icon: MOUSE
      */
-    public static final String HandHoldingUsd = "\uf4c0";
+    public static String MOUSE = "\uf8cc";
+
     /**
-     * Icon: HandHoldingWater
+     * Icon: PLUG
      */
-    public static final String HandHoldingWater = "\uf4c1";
+    public static String PLUG = "\uf1e6";
+
     /**
-     * Icon: HandLizard
+     * Icon: POWER_OFF
      */
-    public static final String HandLizard = "\uf258";
+    public static String POWER_OFF = "\uf011";
+
     /**
-     * Icon: HandMiddleFinger
+     * Icon: SATELLITE
      */
-    public static final String HandMiddleFinger = "\uf806";
+    public static String SATELLITE = "\uf7bf";
+
     /**
-     * Icon: HandPaper
+     * Icon: SATELLITE_DISH
      */
-    public static final String HandPaper = "\uf256";
+    public static String SATELLITE_DISH = "\uf7c0";
+
     /**
-     * Icon: HandPeace
+     * Icon: SD_CARD
      */
-    public static final String HandPeace = "\uf25b";
+    public static String SD_CARD = "\uf7c2";
+
     /**
-     * Icon: HandPointDown
+     * Icon: SERVER
      */
-    public static final String HandPointDown = "\uf0a7";
+    public static String SERVER = "\uf233";
+
     /**
-     * Icon: HandPointLeft
+     * Icon: SIM_CARD
      */
-    public static final String HandPointLeft = "\uf0a5";
+    public static String SIM_CARD = "\uf7c4";
+
     /**
-     * Icon: HandPointRight
+     * Icon: TABLET
      */
-    public static final String HandPointRight = "\uf0a4";
+    public static String TABLET = "\uf10a";
+
     /**
-     * Icon: HandPointUp
+     * Icon: TABLET_ALT
      */
-    public static final String HandPointUp = "\uf0a6";
+    public static String TABLET_ALT = "\uf3fa";
+
     /**
-     * Icon: HandPointer
+     * Icon: BRUSH
      */
-    public static final String HandPointer = "\uf25a";
+    public static String BRUSH = "\uf55d";
+
     /**
-     * Icon: HandRock
+     * Icon: DRAFTING_COMPASS
      */
-    public static final String HandRock = "\uf255";
+    public static String DRAFTING_COMPASS = "\uf568";
+
     /**
-     * Icon: HandScissors
+     * Icon: DUMPSTER
      */
-    public static final String HandScissors = "\uf257";
+    public static String DUMPSTER = "\uf793";
+
     /**
-     * Icon: HandSparkles
+     * Icon: HAMMER
      */
-    public static final String HandSparkles = "\ue05d";
+    public static String HAMMER = "\uf6e3";
+
     /**
-     * Icon: HandSpock
+     * Icon: HARD_HAT
      */
-    public static final String HandSpock = "\uf259";
+    public static String HARD_HAT = "\uf807";
+
     /**
-     * Icon: Hands
+     * Icon: PAINT_ROLLER
      */
-    public static final String Hands = "\uf4c2";
+    public static String PAINT_ROLLER = "\uf5aa";
+
     /**
-     * Icon: HandsHelping
+     * Icon: PENCIL_RULER
      */
-    public static final String HandsHelping = "\uf4c4";
+    public static String PENCIL_RULER = "\uf5ae";
+
     /**
-     * Icon: HandsWash
+     * Icon: RULER
      */
-    public static final String HandsWash = "\ue05e";
+    public static String RULER = "\uf545";
+
     /**
-     * Icon: Handshake
+     * Icon: RULER_COMBINED
      */
-    public static final String Handshake = "\uf2b5";
+    public static String RULER_COMBINED = "\uf546";
+
     /**
-     * Icon: HandshakeAltSlash
+     * Icon: RULER_HORIZONTAL
      */
-    public static final String HandshakeAltSlash = "\ue05f";
+    public static String RULER_HORIZONTAL = "\uf547";
+
     /**
-     * Icon: HandshakeSlash
+     * Icon: RULER_VERTICAL
      */
-    public static final String HandshakeSlash = "\ue060";
+    public static String RULER_VERTICAL = "\uf548";
+
     /**
-     * Icon: Hanukiah
+     * Icon: SCREWDRIVER
      */
-    public static final String Hanukiah = "\uf6e6";
+    public static String SCREWDRIVER = "\uf54a";
+
     /**
-     * Icon: HardHat
+     * Icon: TOOLBOX
      */
-    public static final String HardHat = "\uf807";
+    public static String TOOLBOX = "\uf552";
+
     /**
-     * Icon: Hashtag
+     * Icon: TOOLS
      */
-    public static final String Hashtag = "\uf292";
+    public static String TOOLS = "\uf7d9";
+
     /**
-     * Icon: HatCowboy
+     * Icon: WRENCH
      */
-    public static final String HatCowboy = "\uf8c0";
+    public static String WRENCH = "\uf0ad";
+
     /**
-     * Icon: HatCowboySide
+     * Icon: BITCOIN
      */
-    public static final String HatCowboySide = "\uf8c1";
+    public static String BITCOIN = "\uf379";
+
     /**
-     * Icon: HatWizard
+     * Icon: BTC
      */
-    public static final String HatWizard = "\uf6e8";
+    public static String BTC = "\uf15a";
+
     /**
-     * Icon: Hdd
+     * Icon: ETHEREUM
      */
-    public static final String Hdd = "\uf0a0";
+    public static String ETHEREUM = "\uf42e";
+
     /**
-     * Icon: HeadSideCough
+     * Icon: EURO_SIGN
      */
-    public static final String HeadSideCough = "\ue061";
+    public static String EURO_SIGN = "\uf153";
+
     /**
-     * Icon: HeadSideCoughSlash
+     * Icon: GG
      */
-    public static final String HeadSideCoughSlash = "\ue062";
+    public static String GG = "\uf260";
+
     /**
-     * Icon: HeadSideMask
+     * Icon: GG_CIRCLE
      */
-    public static final String HeadSideMask = "\ue063";
+    public static String GG_CIRCLE = "\uf261";
+
     /**
-     * Icon: HeadSideVirus
+     * Icon: HRYVNIA
      */
-    public static final String HeadSideVirus = "\ue064";
+    public static String HRYVNIA = "\uf6f2";
+
     /**
-     * Icon: Heading
+     * Icon: LIRA_SIGN
      */
-    public static final String Heading = "\uf1dc";
+    public static String LIRA_SIGN = "\uf195";
+
     /**
-     * Icon: Headphones
+     * Icon: MONEY_BILL
      */
-    public static final String Headphones = "\uf025";
+    public static String MONEY_BILL = "\uf0d6";
+
     /**
-     * Icon: HeadphonesAlt
+     * Icon: MONEY_BILL_ALT
      */
-    public static final String HeadphonesAlt = "\uf58f";
+    public static String MONEY_BILL_ALT = "\uf3d1";
+
     /**
-     * Icon: Headset
+     * Icon: MONEY_BILL_WAVE
      */
-    public static final String Headset = "\uf590";
+    public static String MONEY_BILL_WAVE = "\uf53a";
+
     /**
-     * Icon: Heart
+     * Icon: MONEY_BILL_WAVE_ALT
      */
-    public static final String Heart = "\uf004";
+    public static String MONEY_BILL_WAVE_ALT = "\uf53b";
+
     /**
-     * Icon: HeartBroken
+     * Icon: MONEY_CHECK
      */
-    public static final String HeartBroken = "\uf7a9";
+    public static String MONEY_CHECK = "\uf53c";
+
     /**
-     * Icon: Heartbeat
+     * Icon: MONEY_CHECK_ALT
      */
-    public static final String Heartbeat = "\uf21e";
+    public static String MONEY_CHECK_ALT = "\uf53d";
+
     /**
-     * Icon: Helicopter
+     * Icon: POUND_SIGN
      */
-    public static final String Helicopter = "\uf533";
+    public static String POUND_SIGN = "\uf154";
+
     /**
-     * Icon: Highlighter
+     * Icon: RUBLE_SIGN
      */
-    public static final String Highlighter = "\uf591";
+    public static String RUBLE_SIGN = "\uf158";
+
     /**
-     * Icon: Hiking
+     * Icon: RUPEE_SIGN
      */
-    public static final String Hiking = "\uf6ec";
+    public static String RUPEE_SIGN = "\uf156";
+
     /**
-     * Icon: Hippo
+     * Icon: SHEKEL_SIGN
      */
-    public static final String Hippo = "\uf6ed";
+    public static String SHEKEL_SIGN = "\uf20b";
+
     /**
-     * Icon: History
+     * Icon: TENGE
      */
-    public static final String History = "\uf1da";
+    public static String TENGE = "\uf7d7";
+
     /**
-     * Icon: HockeyPuck
+     * Icon: WON_SIGN
      */
-    public static final String HockeyPuck = "\uf453";
+    public static String WON_SIGN = "\uf159";
+
     /**
-     * Icon: HollyBerry
+     * Icon: YEN_SIGN
      */
-    public static final String HollyBerry = "\uf7aa";
+    public static String YEN_SIGN = "\uf157";
+
     /**
-     * Icon: Home
+     * Icon: CALENDAR_CHECK
      */
-    public static final String Home = "\uf015";
+    public static String CALENDAR_CHECK = "\uf274";
+
     /**
-     * Icon: Horse
+     * Icon: CALENDAR_MINUS
      */
-    public static final String Horse = "\uf6f0";
+    public static String CALENDAR_MINUS = "\uf272";
+
     /**
-     * Icon: HorseHead
+     * Icon: CALENDAR_PLUS
      */
-    public static final String HorseHead = "\uf7ab";
+    public static String CALENDAR_PLUS = "\uf271";
+
     /**
-     * Icon: Hospital
+     * Icon: CALENDAR_TIMES
      */
-    public static final String Hospital = "\uf0f8";
+    public static String CALENDAR_TIMES = "\uf273";
+
     /**
-     * Icon: HospitalAlt
+     * Icon: CLOCK
      */
-    public static final String HospitalAlt = "\uf47d";
+    public static String CLOCK = "\uf017";
+
     /**
-     * Icon: HospitalSymbol
+     * Icon: HOURGLASS
      */
-    public static final String HospitalSymbol = "\uf47e";
+    public static String HOURGLASS = "\uf254";
+
     /**
-     * Icon: HospitalUser
+     * Icon: HOURGLASS_END
      */
-    public static final String HospitalUser = "\uf80d";
+    public static String HOURGLASS_END = "\uf253";
+
     /**
-     * Icon: HotTub
+     * Icon: HOURGLASS_HALF
      */
-    public static final String HotTub = "\uf593";
+    public static String HOURGLASS_HALF = "\uf252";
+
     /**
-     * Icon: Hotdog
+     * Icon: HOURGLASS_START
      */
-    public static final String Hotdog = "\uf80f";
+    public static String HOURGLASS_START = "\uf251";
+
     /**
-     * Icon: Hotel
+     * Icon: STOPWATCH
      */
-    public static final String Hotel = "\uf594";
+    public static String STOPWATCH = "\uf2f2";
+
     /**
-     * Icon: Hourglass
+     * Icon: ADJUST
      */
-    public static final String Hourglass = "\uf254";
+    public static String ADJUST = "\uf042";
+
     /**
-     * Icon: HourglassEnd
+     * Icon: BEZIER_CURVE
      */
-    public static final String HourglassEnd = "\uf253";
+    public static String BEZIER_CURVE = "\uf55b";
+
     /**
-     * Icon: HourglassHalf
+     * Icon: CLONE
      */
-    public static final String HourglassHalf = "\uf252";
+    public static String CLONE = "\uf24d";
+
     /**
-     * Icon: HourglassStart
+     * Icon: CROP
      */
-    public static final String HourglassStart = "\uf251";
+    public static String CROP = "\uf125";
+
     /**
-     * Icon: HouseDamage
+     * Icon: CROP_ALT
      */
-    public static final String HouseDamage = "\uf6f1";
+    public static String CROP_ALT = "\uf565";
+
     /**
-     * Icon: HouseUser
+     * Icon: CROSSHAIRS
      */
-    public static final String HouseUser = "\ue065";
+    public static String CROSSHAIRS = "\uf05b";
+
     /**
-     * Icon: Hryvnia
+     * Icon: DRAW_POLYGON
      */
-    public static final String Hryvnia = "\uf6f2";
+    public static String DRAW_POLYGON = "\uf5ee";
+
     /**
-     * Icon: ICursor
+     * Icon: EYE
      */
-    public static final String ICursor = "\uf246";
+    public static String EYE = "\uf06e";
+
     /**
-     * Icon: IceCream
+     * Icon: EYE_DROPPER
      */
-    public static final String IceCream = "\uf810";
+    public static String EYE_DROPPER = "\uf1fb";
+
     /**
-     * Icon: Icicles
+     * Icon: EYE_SLASH
      */
-    public static final String Icicles = "\uf7ad";
+    public static String EYE_SLASH = "\uf070";
+
     /**
-     * Icon: Icons
+     * Icon: FILL
      */
-    public static final String Icons = "\uf86d";
+    public static String FILL = "\uf575";
+
     /**
-     * Icon: IdBadge
+     * Icon: FILL_DRIP
      */
-    public static final String IdBadge = "\uf2c1";
+    public static String FILL_DRIP = "\uf576";
+
     /**
-     * Icon: IdCard
+     * Icon: LAYER_GROUP
      */
-    public static final String IdCard = "\uf2c2";
+    public static String LAYER_GROUP = "\uf5fd";
+
     /**
-     * Icon: IdCardAlt
+     * Icon: MAGIC
      */
-    public static final String IdCardAlt = "\uf47f";
+    public static String MAGIC = "\uf0d0";
+
     /**
-     * Icon: Igloo
+     * Icon: OBJECT_GROUP
      */
-    public static final String Igloo = "\uf7ae";
+    public static String OBJECT_GROUP = "\uf247";
+
     /**
-     * Icon: Image
+     * Icon: OBJECT_UNGROUP
      */
-    public static final String Image = "\uf03e";
+    public static String OBJECT_UNGROUP = "\uf248";
+
     /**
-     * Icon: Images
+     * Icon: PAINT_BRUSH
      */
-    public static final String Images = "\uf302";
+    public static String PAINT_BRUSH = "\uf1fc";
+
     /**
-     * Icon: Inbox
+     * Icon: PALETTE
      */
-    public static final String Inbox = "\uf01c";
+    public static String PALETTE = "\uf53f";
+
     /**
-     * Icon: Indent
+     * Icon: SPLOTCH
      */
-    public static final String Indent = "\uf03c";
+    public static String SPLOTCH = "\uf5bc";
+
     /**
-     * Icon: Industry
+     * Icon: SPRAY_CAN
      */
-    public static final String Industry = "\uf275";
+    public static String SPRAY_CAN = "\uf5bd";
+
     /**
-     * Icon: Infinity
+     * Icon: STAMP
      */
-    public static final String Infinity = "\uf534";
+    public static String STAMP = "\uf5bf";
+
     /**
-     * Icon: Info
+     * Icon: SWATCHBOOK
      */
-    public static final String Info = "\uf129";
+    public static String SWATCHBOOK = "\uf5c3";
+
     /**
-     * Icon: InfoCircle
+     * Icon: TINT
      */
-    public static final String InfoCircle = "\uf05a";
+    public static String TINT = "\uf043";
+
     /**
-     * Icon: Italic
+     * Icon: TINT_SLASH
      */
-    public static final String Italic = "\uf033";
+    public static String TINT_SLASH = "\uf5c7";
+
     /**
-     * Icon: Jedi
+     * Icon: VECTOR_SQUARE
      */
-    public static final String Jedi = "\uf669";
+    public static String VECTOR_SQUARE = "\uf5cb";
+
     /**
-     * Icon: Joint
+     * Icon: ALIGN_CENTER
      */
-    public static final String Joint = "\uf595";
+    public static String ALIGN_CENTER = "\uf037";
+
     /**
-     * Icon: JournalWhills
+     * Icon: ALIGN_JUSTIFY
      */
-    public static final String JournalWhills = "\uf66a";
+    public static String ALIGN_JUSTIFY = "\uf039";
+
     /**
-     * Icon: Kaaba
+     * Icon: ALIGN_LEFT
      */
-    public static final String Kaaba = "\uf66b";
+    public static String ALIGN_LEFT = "\uf036";
+
     /**
-     * Icon: Key
+     * Icon: ALIGN_RIGHT
      */
-    public static final String Key = "\uf084";
+    public static String ALIGN_RIGHT = "\uf038";
+
     /**
-     * Icon: Keyboard
+     * Icon: BOLD
      */
-    public static final String Keyboard = "\uf11c";
+    public static String BOLD = "\uf032";
+
     /**
-     * Icon: Khanda
+     * Icon: BORDER_ALL
      */
-    public static final String Khanda = "\uf66d";
+    public static String BORDER_ALL = "\uf84c";
+
     /**
-     * Icon: Kiss
+     * Icon: BORDER_NONE
      */
-    public static final String Kiss = "\uf596";
+    public static String BORDER_NONE = "\uf850";
+
     /**
-     * Icon: KissBeam
+     * Icon: BORDER_STYLE
      */
-    public static final String KissBeam = "\uf597";
+    public static String BORDER_STYLE = "\uf853";
+
     /**
-     * Icon: KissWinkHeart
+     * Icon: FONT
      */
-    public static final String KissWinkHeart = "\uf598";
+    public static String FONT = "\uf031";
+
     /**
-     * Icon: KiwiBird
+     * Icon: HEADING
      */
-    public static final String KiwiBird = "\uf535";
+    public static String HEADING = "\uf1dc";
+
     /**
-     * Icon: Landmark
+     * Icon: I_CURSOR
      */
-    public static final String Landmark = "\uf66f";
+    public static String I_CURSOR = "\uf246";
+
     /**
-     * Icon: Language
+     * Icon: INDENT
      */
-    public static final String Language = "\uf1ab";
+    public static String INDENT = "\uf03c";
+
     /**
-     * Icon: Laptop
+     * Icon: ITALIC
      */
-    public static final String Laptop = "\uf109";
+    public static String ITALIC = "\uf033";
+
     /**
-     * Icon: LaptopCode
+     * Icon: LINK
      */
-    public static final String LaptopCode = "\uf5fc";
+    public static String LINK = "\uf0c1";
+
     /**
-     * Icon: LaptopHouse
+     * Icon: LIST
      */
-    public static final String LaptopHouse = "\ue066";
+    public static String LIST = "\uf03a";
+
     /**
-     * Icon: LaptopMedical
+     * Icon: LIST_ALT
      */
-    public static final String LaptopMedical = "\uf812";
+    public static String LIST_ALT = "\uf022";
+
     /**
-     * Icon: Laugh
+     * Icon: LIST_OL
      */
-    public static final String Laugh = "\uf599";
+    public static String LIST_OL = "\uf0cb";
+
     /**
-     * Icon: LaughBeam
+     * Icon: LIST_UL
      */
-    public static final String LaughBeam = "\uf59a";
+    public static String LIST_UL = "\uf0ca";
+
     /**
-     * Icon: LaughSquint
+     * Icon: OUTDENT
      */
-    public static final String LaughSquint = "\uf59b";
+    public static String OUTDENT = "\uf03b";
+
     /**
-     * Icon: LaughWink
+     * Icon: PARAGRAPH
      */
-    public static final String LaughWink = "\uf59c";
+    public static String PARAGRAPH = "\uf1dd";
+
     /**
-     * Icon: LayerGroup
+     * Icon: REMOVE_FORMAT
      */
-    public static final String LayerGroup = "\uf5fd";
+    public static String REMOVE_FORMAT = "\uf87d";
+
     /**
-     * Icon: Leaf
+     * Icon: SPELL_CHECK
      */
-    public static final String Leaf = "\uf06c";
+    public static String SPELL_CHECK = "\uf891";
+
     /**
-     * Icon: Lemon
+     * Icon: STRIKETHROUGH
      */
-    public static final String Lemon = "\uf094";
+    public static String STRIKETHROUGH = "\uf0cc";
+
     /**
-     * Icon: LessThan
+     * Icon: SUBSCRIPT
      */
-    public static final String LessThan = "\uf536";
+    public static String SUBSCRIPT = "\uf12c";
+
     /**
-     * Icon: LessThanEqual
+     * Icon: SUPERSCRIPT
      */
-    public static final String LessThanEqual = "\uf537";
+    public static String SUPERSCRIPT = "\uf12b";
+
     /**
-     * Icon: LevelDownAlt
+     * Icon: TH
      */
-    public static final String LevelDownAlt = "\uf3be";
+    public static String TH = "\uf00a";
+
     /**
-     * Icon: LevelUpAlt
+     * Icon: TH_LARGE
      */
-    public static final String LevelUpAlt = "\uf3bf";
+    public static String TH_LARGE = "\uf009";
+
     /**
-     * Icon: LifeRing
+     * Icon: TH_LIST
      */
-    public static final String LifeRing = "\uf1cd";
+    public static String TH_LIST = "\uf00b";
+
     /**
-     * Icon: Lightbulb
+     * Icon: TRASH
      */
-    public static final String Lightbulb = "\uf0eb";
+    public static String TRASH = "\uf1f8";
+
     /**
-     * Icon: Link
+     * Icon: TRASH_ALT
      */
-    public static final String Link = "\uf0c1";
+    public static String TRASH_ALT = "\uf2ed";
+
     /**
-     * Icon: LiraSign
+     * Icon: TRASH_RESTORE
      */
-    public static final String LiraSign = "\uf195";
+    public static String TRASH_RESTORE = "\uf829";
+
     /**
-     * Icon: List
+     * Icon: TRASH_RESTORE_ALT
      */
-    public static final String List = "\uf03a";
+    public static String TRASH_RESTORE_ALT = "\uf82a";
+
     /**
-     * Icon: ListAlt
+     * Icon: UNDERLINE
      */
-    public static final String ListAlt = "\uf022";
+    public static String UNDERLINE = "\uf0cd";
+
     /**
-     * Icon: ListOl
+     * Icon: UNLINK
      */
-    public static final String ListOl = "\uf0cb";
+    public static String UNLINK = "\uf127";
+
     /**
-     * Icon: ListUl
+     * Icon: ATOM
      */
-    public static final String ListUl = "\uf0ca";
+    public static String ATOM = "\uf5d2";
+
     /**
-     * Icon: LocationArrow
+     * Icon: AWARD
      */
-    public static final String LocationArrow = "\uf124";
+    public static String AWARD = "\uf559";
+
     /**
-     * Icon: Lock
+     * Icon: BOOK_OPEN
      */
-    public static final String Lock = "\uf023";
+    public static String BOOK_OPEN = "\uf518";
+
     /**
-     * Icon: LockOpen
+     * Icon: BOOK_READER
      */
-    public static final String LockOpen = "\uf3c1";
+    public static String BOOK_READER = "\uf5da";
+
     /**
-     * Icon: LongArrowAltDown
+     * Icon: CHALKBOARD_TEACHER
      */
-    public static final String LongArrowAltDown = "\uf309";
+    public static String CHALKBOARD_TEACHER = "\uf51c";
+
     /**
-     * Icon: LongArrowAltLeft
+     * Icon: MICROSCOPE
      */
-    public static final String LongArrowAltLeft = "\uf30a";
+    public static String MICROSCOPE = "\uf610";
+
     /**
-     * Icon: LongArrowAltRight
+     * Icon: THEATER_MASKS
      */
-    public static final String LongArrowAltRight = "\uf30b";
+    public static String THEATER_MASKS = "\uf630";
+
     /**
-     * Icon: LongArrowAltUp
+     * Icon: USER_GRADUATE
      */
-    public static final String LongArrowAltUp = "\uf30c";
+    public static String USER_GRADUATE = "\uf501";
+
     /**
-     * Icon: LowVision
+     * Icon: ANGRY
      */
-    public static final String LowVision = "\uf2a8";
+    public static String ANGRY = "\uf556";
+
     /**
-     * Icon: LuggageCart
+     * Icon: DIZZY
      */
-    public static final String LuggageCart = "\uf59d";
+    public static String DIZZY = "\uf567";
+
     /**
-     * Icon: Lungs
+     * Icon: FLUSHED
      */
-    public static final String Lungs = "\uf604";
+    public static String FLUSHED = "\uf579";
+
     /**
-     * Icon: LungsVirus
+     * Icon: FROWN_OPEN
      */
-    public static final String LungsVirus = "\ue067";
+    public static String FROWN_OPEN = "\uf57a";
+
     /**
-     * Icon: Magic
+     * Icon: GRIMACE
      */
-    public static final String Magic = "\uf0d0";
+    public static String GRIMACE = "\uf57f";
+
     /**
-     * Icon: Magnet
+     * Icon: GRIN
      */
-    public static final String Magnet = "\uf076";
+    public static String GRIN = "\uf580";
+
     /**
-     * Icon: MailBulk
+     * Icon: GRIN_ALT
      */
-    public static final String MailBulk = "\uf674";
+    public static String GRIN_ALT = "\uf581";
+
     /**
-     * Icon: Male
+     * Icon: GRIN_BEAM
      */
-    public static final String Male = "\uf183";
+    public static String GRIN_BEAM = "\uf582";
+
     /**
-     * Icon: Map
+     * Icon: GRIN_BEAM_SWEAT
      */
-    public static final String Map = "\uf279";
+    public static String GRIN_BEAM_SWEAT = "\uf583";
+
     /**
-     * Icon: MapMarked
+     * Icon: GRIN_HEARTS
      */
-    public static final String MapMarked = "\uf59f";
+    public static String GRIN_HEARTS = "\uf584";
+
     /**
-     * Icon: MapMarkedAlt
+     * Icon: GRIN_SQUINT
      */
-    public static final String MapMarkedAlt = "\uf5a0";
+    public static String GRIN_SQUINT = "\uf585";
+
     /**
-     * Icon: MapMarker
+     * Icon: GRIN_SQUINT_TEARS
      */
-    public static final String MapMarker = "\uf041";
+    public static String GRIN_SQUINT_TEARS = "\uf586";
+
     /**
-     * Icon: MapMarkerAlt
+     * Icon: GRIN_STARS
      */
-    public static final String MapMarkerAlt = "\uf3c5";
+    public static String GRIN_STARS = "\uf587";
+
     /**
-     * Icon: MapPin
+     * Icon: GRIN_TEARS
      */
-    public static final String MapPin = "\uf276";
+    public static String GRIN_TEARS = "\uf588";
+
     /**
-     * Icon: MapSigns
+     * Icon: GRIN_TONGUE
      */
-    public static final String MapSigns = "\uf277";
+    public static String GRIN_TONGUE = "\uf589";
+
     /**
-     * Icon: Marker
+     * Icon: GRIN_TONGUE_SQUINT
      */
-    public static final String Marker = "\uf5a1";
+    public static String GRIN_TONGUE_SQUINT = "\uf58a";
+
     /**
-     * Icon: Mars
+     * Icon: GRIN_TONGUE_WINK
      */
-    public static final String Mars = "\uf222";
+    public static String GRIN_TONGUE_WINK = "\uf58b";
+
     /**
-     * Icon: MarsDouble
+     * Icon: GRIN_WINK
      */
-    public static final String MarsDouble = "\uf227";
+    public static String GRIN_WINK = "\uf58c";
+
     /**
-     * Icon: MarsStroke
+     * Icon: KISS
      */
-    public static final String MarsStroke = "\uf229";
+    public static String KISS = "\uf596";
+
     /**
-     * Icon: MarsStrokeH
+     * Icon: KISS_BEAM
      */
-    public static final String MarsStrokeH = "\uf22b";
+    public static String KISS_BEAM = "\uf597";
+
     /**
-     * Icon: MarsStrokeV
+     * Icon: KISS_WINK_HEART
      */
-    public static final String MarsStrokeV = "\uf22a";
+    public static String KISS_WINK_HEART = "\uf598";
+
     /**
-     * Icon: Mask
+     * Icon: LAUGH
      */
-    public static final String Mask = "\uf6fa";
+    public static String LAUGH = "\uf599";
+
     /**
-     * Icon: Medal
+     * Icon: LAUGH_BEAM
      */
-    public static final String Medal = "\uf5a2";
+    public static String LAUGH_BEAM = "\uf59a";
+
     /**
-     * Icon: Medkit
+     * Icon: LAUGH_SQUINT
      */
-    public static final String Medkit = "\uf0fa";
+    public static String LAUGH_SQUINT = "\uf59b";
+
     /**
-     * Icon: Meh
+     * Icon: LAUGH_WINK
      */
-    public static final String Meh = "\uf11a";
+    public static String LAUGH_WINK = "\uf59c";
+
     /**
-     * Icon: MehBlank
+     * Icon: MEH_BLANK
      */
-    public static final String MehBlank = "\uf5a4";
+    public static String MEH_BLANK = "\uf5a4";
+
     /**
-     * Icon: MehRollingEyes
+     * Icon: MEH_ROLLING_EYES
      */
-    public static final String MehRollingEyes = "\uf5a5";
+    public static String MEH_ROLLING_EYES = "\uf5a5";
+
     /**
-     * Icon: Memory
+     * Icon: SAD_CRY
      */
-    public static final String Memory = "\uf538";
+    public static String SAD_CRY = "\uf5b3";
+
     /**
-     * Icon: Menorah
+     * Icon: SAD_TEAR
      */
-    public static final String Menorah = "\uf676";
+    public static String SAD_TEAR = "\uf5b4";
+
     /**
-     * Icon: Mercury
+     * Icon: SMILE_BEAM
      */
-    public static final String Mercury = "\uf223";
+    public static String SMILE_BEAM = "\uf5b8";
+
     /**
-     * Icon: Meteor
+     * Icon: SMILE_WINK
      */
-    public static final String Meteor = "\uf753";
+    public static String SMILE_WINK = "\uf4da";
+
     /**
-     * Icon: Microchip
+     * Icon: SURPRISE
      */
-    public static final String Microchip = "\uf2db";
+    public static String SURPRISE = "\uf5c2";
+
     /**
-     * Icon: Microphone
+     * Icon: TIRED
      */
-    public static final String Microphone = "\uf130";
+    public static String TIRED = "\uf5c8";
+
     /**
-     * Icon: MicrophoneAlt
+     * Icon: BATTERY_EMPTY
      */
-    public static final String MicrophoneAlt = "\uf3c9";
+    public static String BATTERY_EMPTY = "\uf244";
+
     /**
-     * Icon: MicrophoneAltSlash
+     * Icon: BATTERY_FULL
      */
-    public static final String MicrophoneAltSlash = "\uf539";
+    public static String BATTERY_FULL = "\uf240";
+
     /**
-     * Icon: MicrophoneSlash
+     * Icon: BATTERY_HALF
      */
-    public static final String MicrophoneSlash = "\uf131";
+    public static String BATTERY_HALF = "\uf242";
+
     /**
-     * Icon: Microscope
+     * Icon: BATTERY_QUARTER
      */
-    public static final String Microscope = "\uf610";
+    public static String BATTERY_QUARTER = "\uf243";
+
     /**
-     * Icon: Minus
+     * Icon: BATTERY_THREE_QUARTERS
      */
-    public static final String Minus = "\uf068";
+    public static String BATTERY_THREE_QUARTERS = "\uf241";
+
     /**
-     * Icon: MinusCircle
+     * Icon: BURN
      */
-    public static final String MinusCircle = "\uf056";
+    public static String BURN = "\uf46a";
+
     /**
-     * Icon: MinusSquare
+     * Icon: FAN
      */
-    public static final String MinusSquare = "\uf146";
+    public static String FAN = "\uf863";
+
     /**
-     * Icon: Mitten
+     * Icon: LIGHTBULB
      */
-    public static final String Mitten = "\uf7b5";
+    public static String LIGHTBULB = "\uf0eb";
+
     /**
-     * Icon: Mobile
+     * Icon: POOP
      */
-    public static final String Mobile = "\uf10b";
+    public static String POOP = "\uf619";
+
     /**
-     * Icon: MobileAlt
+     * Icon: SOLAR_PANEL
      */
-    public static final String MobileAlt = "\uf3cd";
+    public static String SOLAR_PANEL = "\uf5ba";
+
     /**
-     * Icon: MoneyBill
+     * Icon: SUN
      */
-    public static final String MoneyBill = "\uf0d6";
+    public static String SUN = "\uf185";
+
     /**
-     * Icon: MoneyBillAlt
+     * Icon: WATER
      */
-    public static final String MoneyBillAlt = "\uf3d1";
+    public static String WATER = "\uf773";
+
     /**
-     * Icon: MoneyBillWave
+     * Icon: FILE_ARCHIVE
      */
-    public static final String MoneyBillWave = "\uf53a";
+    public static String FILE_ARCHIVE = "\uf1c6";
+
     /**
-     * Icon: MoneyBillWaveAlt
+     * Icon: FILE_EXCEL
      */
-    public static final String MoneyBillWaveAlt = "\uf53b";
+    public static String FILE_EXCEL = "\uf1c3";
+
     /**
-     * Icon: MoneyCheck
+     * Icon: FILE_IMAGE
      */
-    public static final String MoneyCheck = "\uf53c";
+    public static String FILE_IMAGE = "\uf1c5";
+
     /**
-     * Icon: MoneyCheckAlt
+     * Icon: FILE_PDF
      */
-    public static final String MoneyCheckAlt = "\uf53d";
+    public static String FILE_PDF = "\uf1c1";
+
     /**
-     * Icon: Monument
+     * Icon: FILE_POWERPOINT
      */
-    public static final String Monument = "\uf5a6";
+    public static String FILE_POWERPOINT = "\uf1c4";
+
     /**
-     * Icon: Moon
+     * Icon: FILE_WORD
      */
-    public static final String Moon = "\uf186";
+    public static String FILE_WORD = "\uf1c2";
+
     /**
-     * Icon: MortarPestle
+     * Icon: CASH_REGISTER
      */
-    public static final String MortarPestle = "\uf5a7";
+    public static String CASH_REGISTER = "\uf788";
+
     /**
-     * Icon: Mosque
+     * Icon: COINS
      */
-    public static final String Mosque = "\uf678";
+    public static String COINS = "\uf51e";
+
     /**
-     * Icon: Motorcycle
+     * Icon: COMMENT_DOLLAR
      */
-    public static final String Motorcycle = "\uf21c";
+    public static String COMMENT_DOLLAR = "\uf651";
+
     /**
-     * Icon: Mountain
+     * Icon: COMMENTS_DOLLAR
      */
-    public static final String Mountain = "\uf6fc";
+    public static String COMMENTS_DOLLAR = "\uf653";
+
     /**
-     * Icon: Mouse
+     * Icon: CREDIT_CARD
      */
-    public static final String Mouse = "\uf8cc";
+    public static String CREDIT_CARD = "\uf09d";
+
     /**
-     * Icon: MousePointer
+     * Icon: FILE_INVOICE
      */
-    public static final String MousePointer = "\uf245";
+    public static String FILE_INVOICE = "\uf570";
+
     /**
-     * Icon: MugHot
+     * Icon: FILE_INVOICE_DOLLAR
      */
-    public static final String MugHot = "\uf7b6";
+    public static String FILE_INVOICE_DOLLAR = "\uf571";
+
     /**
-     * Icon: Music
+     * Icon: PERCENTAGE
      */
-    public static final String Music = "\uf001";
+    public static String PERCENTAGE = "\uf541";
+
     /**
-     * Icon: NetworkWired
+     * Icon: RECEIPT
      */
-    public static final String NetworkWired = "\uf6ff";
+    public static String RECEIPT = "\uf543";
+
     /**
-     * Icon: Neuter
+     * Icon: BICYCLE
      */
-    public static final String Neuter = "\uf22c";
+    public static String BICYCLE = "\uf206";
+
     /**
-     * Icon: Newspaper
+     * Icon: HEARTBEAT
      */
-    public static final String Newspaper = "\uf1ea";
+    public static String HEARTBEAT = "\uf21e";
+
     /**
-     * Icon: NotEqual
+     * Icon: RUNNING
      */
-    public static final String NotEqual = "\uf53e";
+    public static String RUNNING = "\uf70c";
+
     /**
-     * Icon: NotesMedical
+     * Icon: SKATING
      */
-    public static final String NotesMedical = "\uf481";
+    public static String SKATING = "\uf7c5";
+
     /**
-     * Icon: ObjectGroup
+     * Icon: SKIING
      */
-    public static final String ObjectGroup = "\uf247";
+    public static String SKIING = "\uf7c9";
+
     /**
-     * Icon: ObjectUngroup
+     * Icon: SKIING_NORDIC
      */
-    public static final String ObjectUngroup = "\uf248";
+    public static String SKIING_NORDIC = "\uf7ca";
+
     /**
-     * Icon: OilCan
+     * Icon: SNOWBOARDING
      */
-    public static final String OilCan = "\uf613";
+    public static String SNOWBOARDING = "\uf7ce";
+
     /**
-     * Icon: Om
+     * Icon: SPA
      */
-    public static final String Om = "\uf679";
+    public static String SPA = "\uf5bb";
+
     /**
-     * Icon: Otter
+     * Icon: SWIMMER
      */
-    public static final String Otter = "\uf700";
+    public static String SWIMMER = "\uf5c4";
+
     /**
-     * Icon: Outdent
+     * Icon: WALKING
      */
-    public static final String Outdent = "\uf03b";
+    public static String WALKING = "\uf554";
+
     /**
-     * Icon: Pager
+     * Icon: BACON
      */
-    public static final String Pager = "\uf815";
+    public static String BACON = "\uf7e5";
+
     /**
-     * Icon: PaintBrush
+     * Icon: BONE
      */
-    public static final String PaintBrush = "\uf1fc";
+    public static String BONE = "\uf5d7";
+
     /**
-     * Icon: PaintRoller
+     * Icon: BREAD_SLICE
      */
-    public static final String PaintRoller = "\uf5aa";
+    public static String BREAD_SLICE = "\uf7ec";
+
     /**
-     * Icon: Palette
+     * Icon: CANDY_CANE
      */
-    public static final String Palette = "\uf53f";
+    public static String CANDY_CANE = "\uf786";
+
     /**
-     * Icon: Pallet
+     * Icon: CARROT
      */
-    public static final String Pallet = "\uf482";
+    public static String CARROT = "\uf787";
+
     /**
-     * Icon: PaperPlane
+     * Icon: CHEESE
      */
-    public static final String PaperPlane = "\uf1d8";
+    public static String CHEESE = "\uf7ef";
+
     /**
-     * Icon: Paperclip
+     * Icon: CLOUD_MEATBALL
      */
-    public static final String Paperclip = "\uf0c6";
+    public static String CLOUD_MEATBALL = "\uf73b";
+
     /**
-     * Icon: ParachuteBox
+     * Icon: EGG
      */
-    public static final String ParachuteBox = "\uf4cd";
+    public static String EGG = "\uf7fb";
+
     /**
-     * Icon: Paragraph
+     * Icon: HAMBURGER
      */
-    public static final String Paragraph = "\uf1dd";
+    public static String HAMBURGER = "\uf805";
+
     /**
-     * Icon: Parking
+     * Icon: HOTDOG
      */
-    public static final String Parking = "\uf540";
+    public static String HOTDOG = "\uf80f";
+
     /**
-     * Icon: Passport
+     * Icon: LEMON
      */
-    public static final String Passport = "\uf5ab";
+    public static String LEMON = "\uf094";
+
     /**
-     * Icon: Pastafarianism
+     * Icon: PEPPER_HOT
      */
-    public static final String Pastafarianism = "\uf67b";
+    public static String PEPPER_HOT = "\uf816";
+
     /**
-     * Icon: Paste
+     * Icon: PIZZA_SLICE
      */
-    public static final String Paste = "\uf0ea";
+    public static String PIZZA_SLICE = "\uf818";
+
     /**
-     * Icon: Pause
+     * Icon: STROOPWAFEL
      */
-    public static final String Pause = "\uf04c";
+    public static String STROOPWAFEL = "\uf551";
+
     /**
-     * Icon: PauseCircle
+     * Icon: DICE
      */
-    public static final String PauseCircle = "\uf28b";
+    public static String DICE = "\uf522";
+
     /**
-     * Icon: Paw
+     * Icon: DICE_D20
      */
-    public static final String Paw = "\uf1b0";
+    public static String DICE_D20 = "\uf6cf";
+
     /**
-     * Icon: Peace
+     * Icon: DICE_D6
      */
-    public static final String Peace = "\uf67c";
+    public static String DICE_D6 = "\uf6d1";
+
     /**
-     * Icon: Pen
+     * Icon: DICE_FIVE
      */
-    public static final String Pen = "\uf304";
+    public static String DICE_FIVE = "\uf523";
+
     /**
-     * Icon: PenAlt
+     * Icon: DICE_FOUR
      */
-    public static final String PenAlt = "\uf305";
+    public static String DICE_FOUR = "\uf524";
+
     /**
-     * Icon: PenFancy
+     * Icon: DICE_ONE
      */
-    public static final String PenFancy = "\uf5ac";
+    public static String DICE_ONE = "\uf525";
+
     /**
-     * Icon: PenNib
+     * Icon: DICE_SIX
      */
-    public static final String PenNib = "\uf5ad";
+    public static String DICE_SIX = "\uf526";
+
     /**
-     * Icon: PenSquare
+     * Icon: DICE_THREE
      */
-    public static final String PenSquare = "\uf14b";
+    public static String DICE_THREE = "\uf527";
+
     /**
-     * Icon: PencilAlt
+     * Icon: DICE_TWO
      */
-    public static final String PencilAlt = "\uf303";
+    public static String DICE_TWO = "\uf528";
+
     /**
-     * Icon: PencilRuler
+     * Icon: GHOST
      */
-    public static final String PencilRuler = "\uf5ae";
+    public static String GHOST = "\uf6e2";
+
     /**
-     * Icon: PeopleArrows
+     * Icon: HEADSET
      */
-    public static final String PeopleArrows = "\ue068";
+    public static String HEADSET = "\uf590";
+
     /**
-     * Icon: PeopleCarry
+     * Icon: PLAYSTATION
      */
-    public static final String PeopleCarry = "\uf4ce";
+    public static String PLAYSTATION = "\uf3df";
+
     /**
-     * Icon: PepperHot
+     * Icon: PUZZLE_PIECE
      */
-    public static final String PepperHot = "\uf816";
+    public static String PUZZLE_PIECE = "\uf12e";
+
     /**
-     * Icon: Percent
+     * Icon: STEAM
      */
-    public static final String Percent = "\uf295";
+    public static String STEAM = "\uf1b6";
+
     /**
-     * Icon: Percentage
+     * Icon: STEAM_SQUARE
      */
-    public static final String Percentage = "\uf541";
+    public static String STEAM_SQUARE = "\uf1b7";
+
     /**
-     * Icon: PersonBooth
+     * Icon: STEAM_SYMBOL
      */
-    public static final String PersonBooth = "\uf756";
+    public static String STEAM_SYMBOL = "\uf3f6";
+
     /**
-     * Icon: Phone
+     * Icon: TWITCH
      */
-    public static final String Phone = "\uf095";
+    public static String TWITCH = "\uf1e8";
+
     /**
-     * Icon: PhoneAlt
+     * Icon: XBOX
      */
-    public static final String PhoneAlt = "\uf879";
+    public static String XBOX = "\uf412";
+
     /**
-     * Icon: PhoneSlash
+     * Icon: ACQUISITIONS_INCORPORATED
      */
-    public static final String PhoneSlash = "\uf3dd";
+    public static String ACQUISITIONS_INCORPORATED = "\uf6af";
+
     /**
-     * Icon: PhoneSquare
+     * Icon: BOOK_DEAD
      */
-    public static final String PhoneSquare = "\uf098";
+    public static String BOOK_DEAD = "\uf6b7";
+
     /**
-     * Icon: PhoneSquareAlt
+     * Icon: CRITICAL_ROLE
      */
-    public static final String PhoneSquareAlt = "\uf87b";
+    public static String CRITICAL_ROLE = "\uf6c9";
+
     /**
-     * Icon: PhoneVolume
+     * Icon: D_AND_D
      */
-    public static final String PhoneVolume = "\uf2a0";
+    public static String D_AND_D = "\uf38d";
+
     /**
-     * Icon: PhotoVideo
+     * Icon: D_AND_D_BEYOND
      */
-    public static final String PhotoVideo = "\uf87c";
+    public static String D_AND_D_BEYOND = "\uf6ca";
+
     /**
-     * Icon: PiggyBank
+     * Icon: FANTASY_FLIGHT_GAMES
      */
-    public static final String PiggyBank = "\uf4d3";
+    public static String FANTASY_FLIGHT_GAMES = "\uf6dc";
+
     /**
-     * Icon: Pills
+     * Icon: FIST_RAISED
      */
-    public static final String Pills = "\uf484";
+    public static String FIST_RAISED = "\uf6de";
+
     /**
-     * Icon: PizzaSlice
+     * Icon: PENNY_ARCADE
      */
-    public static final String PizzaSlice = "\uf818";
+    public static String PENNY_ARCADE = "\uf704";
+
     /**
-     * Icon: PlaceOfWorship
+     * Icon: RING
      */
-    public static final String PlaceOfWorship = "\uf67f";
+    public static String RING = "\uf70b";
+
     /**
-     * Icon: Plane
+     * Icon: SCROLL
      */
-    public static final String Plane = "\uf072";
+    public static String SCROLL = "\uf70e";
+
     /**
-     * Icon: PlaneArrival
+     * Icon: WIZARDS_OF_THE_COAST
      */
-    public static final String PlaneArrival = "\uf5af";
+    public static String WIZARDS_OF_THE_COAST = "\uf730";
+
     /**
-     * Icon: PlaneDeparture
+     * Icon: GENDERLESS
      */
-    public static final String PlaneDeparture = "\uf5b0";
+    public static String GENDERLESS = "\uf22d";
+
     /**
-     * Icon: PlaneSlash
+     * Icon: MARS
      */
-    public static final String PlaneSlash = "\ue069";
+    public static String MARS = "\uf222";
+
     /**
-     * Icon: Play
+     * Icon: MARS_DOUBLE
      */
-    public static final String Play = "\uf04b";
+    public static String MARS_DOUBLE = "\uf227";
+
     /**
-     * Icon: PlayCircle
+     * Icon: MARS_STROKE
      */
-    public static final String PlayCircle = "\uf144";
+    public static String MARS_STROKE = "\uf229";
+
     /**
-     * Icon: Plug
+     * Icon: MARS_STROKE_H
      */
-    public static final String Plug = "\uf1e6";
+    public static String MARS_STROKE_H = "\uf22b";
+
     /**
-     * Icon: Plus
+     * Icon: MARS_STROKE_V
      */
-    public static final String Plus = "\uf067";
+    public static String MARS_STROKE_V = "\uf22a";
+
     /**
-     * Icon: PlusCircle
+     * Icon: MERCURY
      */
-    public static final String PlusCircle = "\uf055";
+    public static String MERCURY = "\uf223";
+
     /**
-     * Icon: PlusSquare
+     * Icon: NEUTER
      */
-    public static final String PlusSquare = "\uf0fe";
+    public static String NEUTER = "\uf22c";
+
     /**
-     * Icon: Podcast
+     * Icon: TRANSGENDER
      */
-    public static final String Podcast = "\uf2ce";
+    public static String TRANSGENDER = "\uf224";
+
     /**
-     * Icon: Poll
+     * Icon: TRANSGENDER_ALT
      */
-    public static final String Poll = "\uf681";
+    public static String TRANSGENDER_ALT = "\uf225";
+
     /**
-     * Icon: PollH
+     * Icon: VENUS
      */
-    public static final String PollH = "\uf682";
+    public static String VENUS = "\uf221";
+
     /**
-     * Icon: Poo
+     * Icon: VENUS_DOUBLE
      */
-    public static final String Poo = "\uf2fe";
+    public static String VENUS_DOUBLE = "\uf226";
+
     /**
-     * Icon: PooStorm
+     * Icon: VENUS_MARS
      */
-    public static final String PooStorm = "\uf75a";
+    public static String VENUS_MARS = "\uf228";
+
     /**
-     * Icon: Poop
+     * Icon: BROOM
      */
-    public static final String Poop = "\uf619";
+    public static String BROOM = "\uf51a";
+
     /**
-     * Icon: Portrait
+     * Icon: CLOUD_MOON
      */
-    public static final String Portrait = "\uf3e0";
+    public static String CLOUD_MOON = "\uf6c3";
+
     /**
-     * Icon: PoundSign
+     * Icon: MASK
      */
-    public static final String PoundSign = "\uf154";
+    public static String MASK = "\uf6fa";
+
     /**
-     * Icon: PowerOff
+     * Icon: ALLERGIES
      */
-    public static final String PowerOff = "\uf011";
+    public static String ALLERGIES = "\uf461";
+
     /**
-     * Icon: Pray
+     * Icon: HAND_HOLDING
      */
-    public static final String Pray = "\uf683";
+    public static String HAND_HOLDING = "\uf4bd";
+
     /**
-     * Icon: PrayingHands
+     * Icon: HAND_HOLDING_MEDICAL
      */
-    public static final String PrayingHands = "\uf684";
+    public static String HAND_HOLDING_MEDICAL = "\ue05c";
+
     /**
-     * Icon: Prescription
+     * Icon: HAND_LIZARD
      */
-    public static final String Prescription = "\uf5b1";
+    public static String HAND_LIZARD = "\uf258";
+
     /**
-     * Icon: PrescriptionBottle
+     * Icon: HAND_MIDDLE_FINGER
      */
-    public static final String PrescriptionBottle = "\uf485";
+    public static String HAND_MIDDLE_FINGER = "\uf806";
+
     /**
-     * Icon: PrescriptionBottleAlt
+     * Icon: HAND_PAPER
      */
-    public static final String PrescriptionBottleAlt = "\uf486";
+    public static String HAND_PAPER = "\uf256";
+
     /**
-     * Icon: Print
+     * Icon: HAND_PEACE
      */
-    public static final String Print = "\uf02f";
+    public static String HAND_PEACE = "\uf25b";
+
     /**
-     * Icon: Procedures
+     * Icon: HAND_ROCK
      */
-    public static final String Procedures = "\uf487";
+    public static String HAND_ROCK = "\uf255";
+
     /**
-     * Icon: ProjectDiagram
+     * Icon: HAND_SCISSORS
      */
-    public static final String ProjectDiagram = "\uf542";
+    public static String HAND_SCISSORS = "\uf257";
+
     /**
-     * Icon: PumpMedical
+     * Icon: HAND_SPARKLES
      */
-    public static final String PumpMedical = "\ue06a";
+    public static String HAND_SPARKLES = "\ue05d";
+
     /**
-     * Icon: PumpSoap
+     * Icon: HAND_SPOCK
      */
-    public static final String PumpSoap = "\ue06b";
+    public static String HAND_SPOCK = "\uf259";
+
     /**
-     * Icon: PuzzlePiece
+     * Icon: HANDS
      */
-    public static final String PuzzlePiece = "\uf12e";
+    public static String HANDS = "\uf4c2";
+
     /**
-     * Icon: Qrcode
+     * Icon: HANDS_WASH
      */
-    public static final String Qrcode = "\uf029";
+    public static String HANDS_WASH = "\ue05e";
+
     /**
-     * Icon: Question
+     * Icon: HANDSHAKE_ALT_SLASH
      */
-    public static final String Question = "\uf128";
+    public static String HANDSHAKE_ALT_SLASH = "\ue05f";
+
     /**
-     * Icon: QuestionCircle
+     * Icon: HANDSHAKE_SLASH
      */
-    public static final String QuestionCircle = "\uf059";
+    public static String HANDSHAKE_SLASH = "\ue060";
+
     /**
-     * Icon: Quidditch
+     * Icon: PRAYING_HANDS
      */
-    public static final String Quidditch = "\uf458";
+    public static String PRAYING_HANDS = "\uf684";
+
     /**
-     * Icon: QuoteLeft
+     * Icon: THUMBS_DOWN
      */
-    public static final String QuoteLeft = "\uf10d";
+    public static String THUMBS_DOWN = "\uf165";
+
     /**
-     * Icon: QuoteRight
+     * Icon: THUMBS_UP
      */
-    public static final String QuoteRight = "\uf10e";
+    public static String THUMBS_UP = "\uf164";
+
     /**
-     * Icon: Quran
+     * Icon: H_SQUARE
      */
-    public static final String Quran = "\uf687";
+    public static String H_SQUARE = "\uf0fd";
+
     /**
-     * Icon: Radiation
+     * Icon: MEDKIT
      */
-    public static final String Radiation = "\uf7b9";
+    public static String MEDKIT = "\uf0fa";
+
     /**
-     * Icon: RadiationAlt
+     * Icon: PLUS_SQUARE
      */
-    public static final String RadiationAlt = "\uf7ba";
+    public static String PLUS_SQUARE = "\uf0fe";
+
     /**
-     * Icon: Rainbow
+     * Icon: PRESCRIPTION
      */
-    public static final String Rainbow = "\uf75b";
+    public static String PRESCRIPTION = "\uf5b1";
+
     /**
-     * Icon: Random
+     * Icon: STETHOSCOPE
      */
-    public static final String Random = "\uf074";
+    public static String STETHOSCOPE = "\uf0f1";
+
     /**
-     * Icon: Receipt
+     * Icon: USER_MD
      */
-    public static final String Receipt = "\uf543";
+    public static String USER_MD = "\uf0f0";
+
     /**
-     * Icon: RecordVinyl
+     * Icon: GIFTS
      */
-    public static final String RecordVinyl = "\uf8d9";
+    public static String GIFTS = "\uf79c";
+
     /**
-     * Icon: Recycle
+     * Icon: HOLLY_BERRY
      */
-    public static final String Recycle = "\uf1b8";
+    public static String HOLLY_BERRY = "\uf7aa";
+
     /**
-     * Icon: Redo
+     * Icon: SLEIGH
      */
-    public static final String Redo = "\uf01e";
+    public static String SLEIGH = "\uf7cc";
+
     /**
-     * Icon: RedoAlt
+     * Icon: BED
      */
-    public static final String RedoAlt = "\uf2f9";
+    public static String BED = "\uf236";
+
     /**
-     * Icon: Registered
+     * Icon: CONCIERGE_BELL
      */
-    public static final String Registered = "\uf25d";
+    public static String CONCIERGE_BELL = "\uf562";
+
     /**
-     * Icon: RemoveFormat
+     * Icon: DOOR_CLOSED
      */
-    public static final String RemoveFormat = "\uf87d";
+    public static String DOOR_CLOSED = "\uf52a";
+
     /**
-     * Icon: Reply
+     * Icon: DOOR_OPEN
      */
-    public static final String Reply = "\uf3e5";
+    public static String DOOR_OPEN = "\uf52b";
+
     /**
-     * Icon: ReplyAll
+     * Icon: DUMBBELL
      */
-    public static final String ReplyAll = "\uf122";
+    public static String DUMBBELL = "\uf44b";
+
     /**
-     * Icon: Republican
+     * Icon: HOT_TUB
      */
-    public static final String Republican = "\uf75e";
+    public static String HOT_TUB = "\uf593";
+
     /**
-     * Icon: Restroom
+     * Icon: INFINITY
      */
-    public static final String Restroom = "\uf7bd";
+    public static String INFINITY = "\uf534";
+
     /**
-     * Icon: Retweet
+     * Icon: KEY
      */
-    public static final String Retweet = "\uf079";
+    public static String KEY = "\uf084";
+
     /**
-     * Icon: Ribbon
+     * Icon: LUGGAGE_CART
      */
-    public static final String Ribbon = "\uf4d6";
+    public static String LUGGAGE_CART = "\uf59d";
+
     /**
-     * Icon: Ring
+     * Icon: SHOWER
      */
-    public static final String Ring = "\uf70b";
+    public static String SHOWER = "\uf2cc";
+
     /**
-     * Icon: Road
+     * Icon: SMOKING
      */
-    public static final String Road = "\uf018";
+    public static String SMOKING = "\uf48d";
+
     /**
-     * Icon: Robot
+     * Icon: SMOKING_BAN
      */
-    public static final String Robot = "\uf544";
+    public static String SMOKING_BAN = "\uf54d";
+
     /**
-     * Icon: Rocket
+     * Icon: SNOWFLAKE
      */
-    public static final String Rocket = "\uf135";
+    public static String SNOWFLAKE = "\uf2dc";
+
     /**
-     * Icon: Route
+     * Icon: SUITCASE
      */
-    public static final String Route = "\uf4d7";
+    public static String SUITCASE = "\uf0f2";
+
     /**
-     * Icon: Rss
+     * Icon: SUITCASE_ROLLING
      */
-    public static final String Rss = "\uf09e";
+    public static String SUITCASE_ROLLING = "\uf5c1";
+
     /**
-     * Icon: RssSquare
+     * Icon: SWIMMING_POOL
      */
-    public static final String RssSquare = "\uf143";
+    public static String SWIMMING_POOL = "\uf5c5";
+
     /**
-     * Icon: RubleSign
+     * Icon: UMBRELLA_BEACH
      */
-    public static final String RubleSign = "\uf158";
+    public static String UMBRELLA_BEACH = "\uf5ca";
+
     /**
-     * Icon: Ruler
+     * Icon: UTENSILS
      */
-    public static final String Ruler = "\uf545";
+    public static String UTENSILS = "\uf2e7";
+
     /**
-     * Icon: RulerCombined
+     * Icon: BOX_TISSUE
      */
-    public static final String RulerCombined = "\uf546";
+    public static String BOX_TISSUE = "\ue05b";
+
     /**
-     * Icon: RulerHorizontal
+     * Icon: CHAIR
      */
-    public static final String RulerHorizontal = "\uf547";
+    public static String CHAIR = "\uf6c0";
+
     /**
-     * Icon: RulerVertical
+     * Icon: COUCH
      */
-    public static final String RulerVertical = "\uf548";
+    public static String COUCH = "\uf4b8";
+
     /**
-     * Icon: Running
+     * Icon: HOUSE_USER
      */
-    public static final String Running = "\uf70c";
+    public static String HOUSE_USER = "\ue065";
+
     /**
-     * Icon: RupeeSign
+     * Icon: PUMP_SOAP
      */
-    public static final String RupeeSign = "\uf156";
+    public static String PUMP_SOAP = "\ue06b";
+
     /**
-     * Icon: SadCry
+     * Icon: SINK
      */
-    public static final String SadCry = "\uf5b3";
+    public static String SINK = "\ue06d";
+
     /**
-     * Icon: SadTear
+     * Icon: SOAP
      */
-    public static final String SadTear = "\uf5b4";
+    public static String SOAP = "\ue06e";
+
     /**
-     * Icon: Satellite
+     * Icon: TOILET_PAPER_SLASH
      */
-    public static final String Satellite = "\uf7bf";
+    public static String TOILET_PAPER_SLASH = "\ue072";
+
     /**
-     * Icon: SatelliteDish
+     * Icon: BOLT
      */
-    public static final String SatelliteDish = "\uf7c0";
+    public static String BOLT = "\uf0e7";
+
     /**
-     * Icon: Save
+     * Icon: CAMERA
      */
-    public static final String Save = "\uf0c7";
+    public static String CAMERA = "\uf030";
+
     /**
-     * Icon: School
+     * Icon: CAMERA_RETRO
      */
-    public static final String School = "\uf549";
+    public static String CAMERA_RETRO = "\uf083";
+
     /**
-     * Icon: Screwdriver
+     * Icon: ID_BADGE
      */
-    public static final String Screwdriver = "\uf54a";
+    public static String ID_BADGE = "\uf2c1";
+
     /**
-     * Icon: Scroll
+     * Icon: ID_CARD
      */
-    public static final String Scroll = "\uf70e";
+    public static String ID_CARD = "\uf2c2";
+
     /**
-     * Icon: SdCard
+     * Icon: IMAGE
      */
-    public static final String SdCard = "\uf7c2";
+    public static String IMAGE = "\uf03e";
+
     /**
-     * Icon: Search
+     * Icon: IMAGES
      */
-    public static final String Search = "\uf002";
+    public static String IMAGES = "\uf302";
+
     /**
-     * Icon: SearchDollar
+     * Icon: PORTRAIT
      */
-    public static final String SearchDollar = "\uf688";
+    public static String PORTRAIT = "\uf3e0";
+
     /**
-     * Icon: SearchLocation
+     * Icon: SLIDERS_H
      */
-    public static final String SearchLocation = "\uf689";
+    public static String SLIDERS_H = "\uf1de";
+
     /**
-     * Icon: SearchMinus
+     * Icon: UNSPLASH
      */
-    public static final String SearchMinus = "\uf010";
+    public static String UNSPLASH = "\ue07c";
+
     /**
-     * Icon: SearchPlus
+     * Icon: BAN
      */
-    public static final String SearchPlus = "\uf00e";
+    public static String BAN = "\uf05e";
+
     /**
-     * Icon: Seedling
+     * Icon: BARS
      */
-    public static final String Seedling = "\uf4d8";
+    public static String BARS = "\uf0c9";
+
     /**
-     * Icon: Server
+     * Icon: BLOG
      */
-    public static final String Server = "\uf233";
+    public static String BLOG = "\uf781";
+
     /**
-     * Icon: Shapes
+     * Icon: CHECK
      */
-    public static final String Shapes = "\uf61f";
+    public static String CHECK = "\uf00c";
+
     /**
-     * Icon: Share
+     * Icon: CHECK_CIRCLE
      */
-    public static final String Share = "\uf064";
+    public static String CHECK_CIRCLE = "\uf058";
+
     /**
-     * Icon: ShareAlt
+     * Icon: CHECK_DOUBLE
      */
-    public static final String ShareAlt = "\uf1e0";
+    public static String CHECK_DOUBLE = "\uf560";
+
     /**
-     * Icon: ShareAltSquare
+     * Icon: CHECK_SQUARE
      */
-    public static final String ShareAltSquare = "\uf1e1";
+    public static String CHECK_SQUARE = "\uf14a";
+
     /**
-     * Icon: ShareSquare
+     * Icon: CLOUD
      */
-    public static final String ShareSquare = "\uf14d";
+    public static String CLOUD = "\uf0c2";
+
     /**
-     * Icon: ShekelSign
+     * Icon: COG
      */
-    public static final String ShekelSign = "\uf20b";
+    public static String COG = "\uf013";
+
     /**
-     * Icon: ShieldAlt
+     * Icon: COGS
      */
-    public static final String ShieldAlt = "\uf3ed";
+    public static String COGS = "\uf085";
+
     /**
-     * Icon: ShieldVirus
+     * Icon: DOT_CIRCLE
      */
-    public static final String ShieldVirus = "\ue06c";
+    public static String DOT_CIRCLE = "\uf192";
+
     /**
-     * Icon: Ship
+     * Icon: ELLIPSIS_H
      */
-    public static final String Ship = "\uf21a";
+    public static String ELLIPSIS_H = "\uf141";
+
     /**
-     * Icon: ShippingFast
+     * Icon: ELLIPSIS_V
      */
-    public static final String ShippingFast = "\uf48b";
+    public static String ELLIPSIS_V = "\uf142";
+
     /**
-     * Icon: ShoePrints
+     * Icon: FILE_DOWNLOAD
      */
-    public static final String ShoePrints = "\uf54b";
+    public static String FILE_DOWNLOAD = "\uf56d";
+
     /**
-     * Icon: ShoppingBag
+     * Icon: FILE_EXPORT
      */
-    public static final String ShoppingBag = "\uf290";
+    public static String FILE_EXPORT = "\uf56e";
+
     /**
-     * Icon: ShoppingBasket
+     * Icon: FILE_IMPORT
      */
-    public static final String ShoppingBasket = "\uf291";
+    public static String FILE_IMPORT = "\uf56f";
+
     /**
-     * Icon: ShoppingCart
+     * Icon: FILE_UPLOAD
      */
-    public static final String ShoppingCart = "\uf07a";
+    public static String FILE_UPLOAD = "\uf574";
+
     /**
-     * Icon: Shower
+     * Icon: FINGERPRINT
      */
-    public static final String Shower = "\uf2cc";
+    public static String FINGERPRINT = "\uf577";
+
     /**
-     * Icon: ShuttleVan
+     * Icon: FLAG
      */
-    public static final String ShuttleVan = "\uf5b6";
+    public static String FLAG = "\uf024";
+
     /**
-     * Icon: Sign
+     * Icon: FLAG_CHECKERED
      */
-    public static final String Sign = "\uf4d9";
+    public static String FLAG_CHECKERED = "\uf11e";
+
     /**
-     * Icon: SignInAlt
+     * Icon: GRIP_HORIZONTAL
      */
-    public static final String SignInAlt = "\uf2f6";
+    public static String GRIP_HORIZONTAL = "\uf58d";
+
     /**
-     * Icon: SignLanguage
+     * Icon: GRIP_LINES
      */
-    public static final String SignLanguage = "\uf2a7";
+    public static String GRIP_LINES = "\uf7a4";
+
     /**
-     * Icon: SignOutAlt
+     * Icon: GRIP_LINES_VERTICAL
      */
-    public static final String SignOutAlt = "\uf2f5";
+    public static String GRIP_LINES_VERTICAL = "\uf7a5";
+
     /**
-     * Icon: Signal
+     * Icon: GRIP_VERTICAL
      */
-    public static final String Signal = "\uf012";
+    public static String GRIP_VERTICAL = "\uf58e";
+
     /**
-     * Icon: Signature
+     * Icon: HASHTAG
      */
-    public static final String Signature = "\uf5b7";
+    public static String HASHTAG = "\uf292";
+
     /**
-     * Icon: SimCard
+     * Icon: INFO
      */
-    public static final String SimCard = "\uf7c4";
+    public static String INFO = "\uf129";
+
     /**
-     * Icon: Sink
+     * Icon: INFO_CIRCLE
      */
-    public static final String Sink = "\ue06d";
+    public static String INFO_CIRCLE = "\uf05a";
+
     /**
-     * Icon: Sitemap
+     * Icon: MEDAL
      */
-    public static final String Sitemap = "\uf0e8";
+    public static String MEDAL = "\uf5a2";
+
     /**
-     * Icon: Skating
+     * Icon: MINUS
      */
-    public static final String Skating = "\uf7c5";
+    public static String MINUS = "\uf068";
+
     /**
-     * Icon: Skiing
+     * Icon: MINUS_CIRCLE
      */
-    public static final String Skiing = "\uf7c9";
+    public static String MINUS_CIRCLE = "\uf056";
+
     /**
-     * Icon: SkiingNordic
+     * Icon: MINUS_SQUARE
      */
-    public static final String SkiingNordic = "\uf7ca";
+    public static String MINUS_SQUARE = "\uf146";
+
     /**
-     * Icon: Skull
+     * Icon: PLUS
      */
-    public static final String Skull = "\uf54c";
+    public static String PLUS = "\uf067";
+
     /**
-     * Icon: SkullCrossbones
+     * Icon: PLUS_CIRCLE
      */
-    public static final String SkullCrossbones = "\uf714";
+    public static String PLUS_CIRCLE = "\uf055";
+
     /**
-     * Icon: Slash
+     * Icon: QUESTION
      */
-    public static final String Slash = "\uf715";
+    public static String QUESTION = "\uf128";
+
     /**
-     * Icon: Sleigh
+     * Icon: SEARCH
      */
-    public static final String Sleigh = "\uf7cc";
+    public static String SEARCH = "\uf002";
+
     /**
-     * Icon: SlidersH
+     * Icon: SEARCH_MINUS
      */
-    public static final String SlidersH = "\uf1de";
+    public static String SEARCH_MINUS = "\uf010";
+
     /**
-     * Icon: Smile
+     * Icon: SEARCH_PLUS
      */
-    public static final String Smile = "\uf118";
+    public static String SEARCH_PLUS = "\uf00e";
+
     /**
-     * Icon: SmileBeam
+     * Icon: SHARE_ALT
      */
-    public static final String SmileBeam = "\uf5b8";
+    public static String SHARE_ALT = "\uf1e0";
+
     /**
-     * Icon: SmileWink
+     * Icon: SHARE_ALT_SQUARE
      */
-    public static final String SmileWink = "\uf4da";
+    public static String SHARE_ALT_SQUARE = "\uf1e1";
+
     /**
-     * Icon: Smog
+     * Icon: SIGNAL
      */
-    public static final String Smog = "\uf75f";
+    public static String SIGNAL = "\uf012";
+
     /**
-     * Icon: Smoking
+     * Icon: STAR
      */
-    public static final String Smoking = "\uf48d";
+    public static String STAR = "\uf005";
+
     /**
-     * Icon: SmokingBan
+     * Icon: STAR_HALF
      */
-    public static final String SmokingBan = "\uf54d";
+    public static String STAR_HALF = "\uf089";
+
     /**
-     * Icon: Sms
+     * Icon: TIMES
      */
-    public static final String Sms = "\uf7cd";
+    public static String TIMES = "\uf00d";
+
     /**
-     * Icon: Snowboarding
+     * Icon: TIMES_CIRCLE
      */
-    public static final String Snowboarding = "\uf7ce";
+    public static String TIMES_CIRCLE = "\uf057";
+
     /**
-     * Icon: Snowflake
+     * Icon: TOGGLE_OFF
      */
-    public static final String Snowflake = "\uf2dc";
+    public static String TOGGLE_OFF = "\uf204";
+
     /**
-     * Icon: Snowman
+     * Icon: TOGGLE_ON
      */
-    public static final String Snowman = "\uf7d0";
+    public static String TOGGLE_ON = "\uf205";
+
     /**
-     * Icon: Snowplow
+     * Icon: TROPHY
      */
-    public static final String Snowplow = "\uf7d2";
+    public static String TROPHY = "\uf091";
+
     /**
-     * Icon: Soap
+     * Icon: USER
      */
-    public static final String Soap = "\ue06e";
+    public static String USER = "\uf007";
+
     /**
-     * Icon: Socks
+     * Icon: USER_ALT
      */
-    public static final String Socks = "\uf696";
+    public static String USER_ALT = "\uf406";
+
     /**
-     * Icon: SolarPanel
+     * Icon: USER_CIRCLE
      */
-    public static final String SolarPanel = "\uf5ba";
+    public static String USER_CIRCLE = "\uf2bd";
+
     /**
-     * Icon: Sort
+     * Icon: BOX
      */
-    public static final String Sort = "\uf0dc";
+    public static String BOX = "\uf466";
+
     /**
-     * Icon: SortAlphaDown
+     * Icon: BOXES
      */
-    public static final String SortAlphaDown = "\uf15d";
+    public static String BOXES = "\uf468";
+
     /**
-     * Icon: SortAlphaDownAlt
+     * Icon: CLIPBOARD_CHECK
      */
-    public static final String SortAlphaDownAlt = "\uf881";
+    public static String CLIPBOARD_CHECK = "\uf46c";
+
     /**
-     * Icon: SortAlphaUp
+     * Icon: CLIPBOARD_LIST
      */
-    public static final String SortAlphaUp = "\uf15e";
+    public static String CLIPBOARD_LIST = "\uf46d";
+
     /**
-     * Icon: SortAlphaUpAlt
+     * Icon: DOLLY
      */
-    public static final String SortAlphaUpAlt = "\uf882";
+    public static String DOLLY = "\uf472";
+
     /**
-     * Icon: SortAmountDown
+     * Icon: DOLLY_FLATBED
      */
-    public static final String SortAmountDown = "\uf160";
+    public static String DOLLY_FLATBED = "\uf474";
+
     /**
-     * Icon: SortAmountDownAlt
+     * Icon: PALLET
      */
-    public static final String SortAmountDownAlt = "\uf884";
+    public static String PALLET = "\uf482";
+
     /**
-     * Icon: SortAmountUp
+     * Icon: SHIPPING_FAST
      */
-    public static final String SortAmountUp = "\uf161";
+    public static String SHIPPING_FAST = "\uf48b";
+
     /**
-     * Icon: SortAmountUpAlt
+     * Icon: ANCHOR
      */
-    public static final String SortAmountUpAlt = "\uf885";
+    public static String ANCHOR = "\uf13d";
+
     /**
-     * Icon: SortDown
+     * Icon: BOMB
      */
-    public static final String SortDown = "\uf0dd";
+    public static String BOMB = "\uf1e2";
+
     /**
-     * Icon: SortNumericDown
+     * Icon: BOOKMARK
      */
-    public static final String SortNumericDown = "\uf162";
+    public static String BOOKMARK = "\uf02e";
+
     /**
-     * Icon: SortNumericDownAlt
+     * Icon: DIRECTIONS
      */
-    public static final String SortNumericDownAlt = "\uf886";
+    public static String DIRECTIONS = "\uf5eb";
+
     /**
-     * Icon: SortNumericUp
+     * Icon: FIGHTER_JET
      */
-    public static final String SortNumericUp = "\uf163";
+    public static String FIGHTER_JET = "\uf0fb";
+
     /**
-     * Icon: SortNumericUpAlt
+     * Icon: GAVEL
      */
-    public static final String SortNumericUpAlt = "\uf887";
+    public static String GAVEL = "\uf0e3";
+
     /**
-     * Icon: SortUp
+     * Icon: HELICOPTER
      */
-    public static final String SortUp = "\uf0de";
+    public static String HELICOPTER = "\uf533";
+
     /**
-     * Icon: Spa
+     * Icon: LIFE_RING
      */
-    public static final String Spa = "\uf5bb";
+    public static String LIFE_RING = "\uf1cd";
+
     /**
-     * Icon: SpaceShuttle
+     * Icon: MAGNET
      */
-    public static final String SpaceShuttle = "\uf197";
+    public static String MAGNET = "\uf076";
+
     /**
-     * Icon: SpellCheck
+     * Icon: MALE
      */
-    public static final String SpellCheck = "\uf891";
+    public static String MALE = "\uf183";
+
     /**
-     * Icon: Spider
+     * Icon: MAP_MARKER
      */
-    public static final String Spider = "\uf717";
+    public static String MAP_MARKER = "\uf041";
+
     /**
-     * Icon: Spinner
+     * Icon: MAP_MARKER_ALT
      */
-    public static final String Spinner = "\uf110";
+    public static String MAP_MARKER_ALT = "\uf3c5";
+
     /**
-     * Icon: Splotch
+     * Icon: MAP_PIN
      */
-    public static final String Splotch = "\uf5bc";
+    public static String MAP_PIN = "\uf276";
+
     /**
-     * Icon: SprayCan
+     * Icon: NEWSPAPER
      */
-    public static final String SprayCan = "\uf5bd";
+    public static String NEWSPAPER = "\uf1ea";
+
     /**
-     * Icon: Square
+     * Icon: PARKING
      */
-    public static final String Square = "\uf0c8";
+    public static String PARKING = "\uf540";
+
     /**
-     * Icon: SquareFull
+     * Icon: PLANE
      */
-    public static final String SquareFull = "\uf45c";
+    public static String PLANE = "\uf072";
+
     /**
-     * Icon: SquareRootAlt
+     * Icon: RESTROOM
      */
-    public static final String SquareRootAlt = "\uf698";
+    public static String RESTROOM = "\uf7bd";
+
     /**
-     * Icon: Stamp
+     * Icon: ROAD
      */
-    public static final String Stamp = "\uf5bf";
+    public static String ROAD = "\uf018";
+
     /**
-     * Icon: Star
+     * Icon: ROCKET
      */
-    public static final String Star = "\uf005";
+    public static String ROCKET = "\uf135";
+
     /**
-     * Icon: StarAndCrescent
+     * Icon: SHIP
      */
-    public static final String StarAndCrescent = "\uf699";
+    public static String SHIP = "\uf21a";
+
     /**
-     * Icon: StarHalf
+     * Icon: SHOPPING_BAG
      */
-    public static final String StarHalf = "\uf089";
+    public static String SHOPPING_BAG = "\uf290";
+
     /**
-     * Icon: StarHalfAlt
+     * Icon: SHOPPING_BASKET
      */
-    public static final String StarHalfAlt = "\uf5c0";
+    public static String SHOPPING_BASKET = "\uf291";
+
     /**
-     * Icon: StarOfDavid
+     * Icon: SHOPPING_CART
      */
-    public static final String StarOfDavid = "\uf69a";
+    public static String SHOPPING_CART = "\uf07a";
+
     /**
-     * Icon: StarOfLife
+     * Icon: SNOWPLOW
      */
-    public static final String StarOfLife = "\uf621";
+    public static String SNOWPLOW = "\uf7d2";
+
     /**
-     * Icon: StepBackward
+     * Icon: STREET_VIEW
      */
-    public static final String StepBackward = "\uf048";
+    public static String STREET_VIEW = "\uf21d";
+
     /**
-     * Icon: StepForward
+     * Icon: SUBWAY
      */
-    public static final String StepForward = "\uf051";
+    public static String SUBWAY = "\uf239";
+
     /**
-     * Icon: Stethoscope
+     * Icon: TICKET_ALT
      */
-    public static final String Stethoscope = "\uf0f1";
+    public static String TICKET_ALT = "\uf3ff";
+
     /**
-     * Icon: StickyNote
+     * Icon: TRAFFIC_LIGHT
      */
-    public static final String StickyNote = "\uf249";
+    public static String TRAFFIC_LIGHT = "\uf637";
+
     /**
-     * Icon: Stop
+     * Icon: TRAIN
      */
-    public static final String Stop = "\uf04d";
+    public static String TRAIN = "\uf238";
+
     /**
-     * Icon: StopCircle
+     * Icon: TRAM
      */
-    public static final String StopCircle = "\uf28d";
+    public static String TRAM = "\uf7da";
+
     /**
-     * Icon: Stopwatch
+     * Icon: UMBRELLA
      */
-    public static final String Stopwatch = "\uf2f2";
+    public static String UMBRELLA = "\uf0e9";
+
     /**
-     * Icon: Stopwatch20
+     * Icon: UTENSIL_SPOON
      */
-    public static final String Stopwatch20 = "\ue06f";
+    public static String UTENSIL_SPOON = "\uf2e5";
+
     /**
-     * Icon: Store
+     * Icon: VEST
      */
-    public static final String Store = "\uf54e";
+    public static String VEST = "\ue085";
+
     /**
-     * Icon: StoreAlt
+     * Icon: VEST_PATCHES
      */
-    public static final String StoreAlt = "\uf54f";
+    public static String VEST_PATCHES = "\ue086";
+
     /**
-     * Icon: StoreAltSlash
+     * Icon: DHARMACHAKRA
      */
-    public static final String StoreAltSlash = "\ue070";
+    public static String DHARMACHAKRA = "\uf655";
+
     /**
-     * Icon: StoreSlash
+     * Icon: AD
      */
-    public static final String StoreSlash = "\ue071";
+    public static String AD = "\uf641";
+
     /**
-     * Icon: Stream
+     * Icon: ENVELOPE_OPEN_TEXT
      */
-    public static final String Stream = "\uf550";
+    public static String ENVELOPE_OPEN_TEXT = "\uf658";
+
     /**
-     * Icon: StreetView
+     * Icon: FUNNEL_DOLLAR
      */
-    public static final String StreetView = "\uf21d";
+    public static String FUNNEL_DOLLAR = "\uf662";
+
     /**
-     * Icon: Strikethrough
+     * Icon: MAIL_BULK
      */
-    public static final String Strikethrough = "\uf0cc";
+    public static String MAIL_BULK = "\uf674";
+
     /**
-     * Icon: Stroopwafel
+     * Icon: POLL
      */
-    public static final String Stroopwafel = "\uf551";
+    public static String POLL = "\uf681";
+
     /**
-     * Icon: Subscript
+     * Icon: POLL_H
      */
-    public static final String Subscript = "\uf12c";
+    public static String POLL_H = "\uf682";
+
     /**
-     * Icon: Subway
+     * Icon: SEARCH_DOLLAR
      */
-    public static final String Subway = "\uf239";
+    public static String SEARCH_DOLLAR = "\uf688";
+
     /**
-     * Icon: Suitcase
+     * Icon: SEARCH_LOCATION
      */
-    public static final String Suitcase = "\uf0f2";
+    public static String SEARCH_LOCATION = "\uf689";
+
     /**
-     * Icon: SuitcaseRolling
+     * Icon: DIVIDE
      */
-    public static final String SuitcaseRolling = "\uf5c1";
+    public static String DIVIDE = "\uf529";
+
     /**
-     * Icon: Sun
+     * Icon: EQUALS
      */
-    public static final String Sun = "\uf185";
+    public static String EQUALS = "\uf52c";
+
     /**
-     * Icon: Superscript
+     * Icon: GREATER_THAN
      */
-    public static final String Superscript = "\uf12b";
+    public static String GREATER_THAN = "\uf531";
+
     /**
-     * Icon: Surprise
+     * Icon: GREATER_THAN_EQUAL
      */
-    public static final String Surprise = "\uf5c2";
+    public static String GREATER_THAN_EQUAL = "\uf532";
+
     /**
-     * Icon: Swatchbook
+     * Icon: LESS_THAN
      */
-    public static final String Swatchbook = "\uf5c3";
+    public static String LESS_THAN = "\uf536";
+
     /**
-     * Icon: Swimmer
+     * Icon: LESS_THAN_EQUAL
      */
-    public static final String Swimmer = "\uf5c4";
+    public static String LESS_THAN_EQUAL = "\uf537";
+
     /**
-     * Icon: SwimmingPool
+     * Icon: NOT_EQUAL
      */
-    public static final String SwimmingPool = "\uf5c5";
+    public static String NOT_EQUAL = "\uf53e";
+
     /**
-     * Icon: Synagogue
+     * Icon: SQUARE_ROOT_ALT
      */
-    public static final String Synagogue = "\uf69b";
+    public static String SQUARE_ROOT_ALT = "\uf698";
+
     /**
-     * Icon: Sync
+     * Icon: WAVE_SQUARE
      */
-    public static final String Sync = "\uf021";
+    public static String WAVE_SQUARE = "\uf83e";
+
     /**
-     * Icon: SyncAlt
+     * Icon: BACTERIA
      */
-    public static final String SyncAlt = "\uf2f1";
+    public static String BACTERIA = "\ue059";
+
     /**
-     * Icon: Syringe
+     * Icon: BACTERIUM
      */
-    public static final String Syringe = "\uf48e";
+    public static String BACTERIUM = "\ue05a";
+
     /**
-     * Icon: Table
+     * Icon: BAND_AID
      */
-    public static final String Table = "\uf0ce";
+    public static String BAND_AID = "\uf462";
+
     /**
-     * Icon: TableTennis
+     * Icon: BIOHAZARD
      */
-    public static final String TableTennis = "\uf45d";
+    public static String BIOHAZARD = "\uf780";
+
     /**
-     * Icon: Tablet
+     * Icon: BONG
      */
-    public static final String Tablet = "\uf10a";
+    public static String BONG = "\uf55c";
+
     /**
-     * Icon: TabletAlt
+     * Icon: BOOK_MEDICAL
      */
-    public static final String TabletAlt = "\uf3fa";
+    public static String BOOK_MEDICAL = "\uf7e6";
+
     /**
-     * Icon: Tablets
+     * Icon: BRAIN
      */
-    public static final String Tablets = "\uf490";
+    public static String BRAIN = "\uf5dc";
+
     /**
-     * Icon: TachometerAlt
+     * Icon: BRIEFCASE_MEDICAL
      */
-    public static final String TachometerAlt = "\uf3fd";
+    public static String BRIEFCASE_MEDICAL = "\uf469";
+
     /**
-     * Icon: Tag
+     * Icon: CANNABIS
      */
-    public static final String Tag = "\uf02b";
+    public static String CANNABIS = "\uf55f";
+
     /**
-     * Icon: Tags
+     * Icon: CAPSULES
      */
-    public static final String Tags = "\uf02c";
+    public static String CAPSULES = "\uf46b";
+
     /**
-     * Icon: Tape
+     * Icon: CRUTCH
      */
-    public static final String Tape = "\uf4db";
+    public static String CRUTCH = "\uf7f7";
+
     /**
-     * Icon: Tasks
+     * Icon: DIAGNOSES
      */
-    public static final String Tasks = "\uf0ae";
+    public static String DIAGNOSES = "\uf470";
+
     /**
-     * Icon: Taxi
+     * Icon: DISEASE
      */
-    public static final String Taxi = "\uf1ba";
+    public static String DISEASE = "\uf7fa";
+
     /**
-     * Icon: Teeth
+     * Icon: DNA
      */
-    public static final String Teeth = "\uf62e";
+    public static String DNA = "\uf471";
+
     /**
-     * Icon: TeethOpen
+     * Icon: FILE_MEDICAL
      */
-    public static final String TeethOpen = "\uf62f";
+    public static String FILE_MEDICAL = "\uf477";
+
     /**
-     * Icon: TemperatureHigh
+     * Icon: FILE_MEDICAL_ALT
      */
-    public static final String TemperatureHigh = "\uf769";
+    public static String FILE_MEDICAL_ALT = "\uf478";
+
     /**
-     * Icon: TemperatureLow
+     * Icon: FILE_PRESCRIPTION
      */
-    public static final String TemperatureLow = "\uf76b";
+    public static String FILE_PRESCRIPTION = "\uf572";
+
     /**
-     * Icon: Tenge
+     * Icon: HEAD_SIDE_COUGH
      */
-    public static final String Tenge = "\uf7d7";
+    public static String HEAD_SIDE_COUGH = "\ue061";
+
     /**
-     * Icon: Terminal
+     * Icon: HEAD_SIDE_COUGH_SLASH
      */
-    public static final String Terminal = "\uf120";
+    public static String HEAD_SIDE_COUGH_SLASH = "\ue062";
+
     /**
-     * Icon: TextHeight
+     * Icon: HEAD_SIDE_MASK
      */
-    public static final String TextHeight = "\uf034";
+    public static String HEAD_SIDE_MASK = "\ue063";
+
     /**
-     * Icon: TextWidth
+     * Icon: HEAD_SIDE_VIRUS
      */
-    public static final String TextWidth = "\uf035";
+    public static String HEAD_SIDE_VIRUS = "\ue064";
+
     /**
-     * Icon: Th
+     * Icon: HOSPITAL_SYMBOL
      */
-    public static final String Th = "\uf00a";
+    public static String HOSPITAL_SYMBOL = "\uf47e";
+
     /**
-     * Icon: ThLarge
+     * Icon: ID_CARD_ALT
      */
-    public static final String ThLarge = "\uf009";
+    public static String ID_CARD_ALT = "\uf47f";
+
     /**
-     * Icon: ThList
+     * Icon: JOINT
      */
-    public static final String ThList = "\uf00b";
+    public static String JOINT = "\uf595";
+
     /**
-     * Icon: TheaterMasks
+     * Icon: LAPTOP_MEDICAL
      */
-    public static final String TheaterMasks = "\uf630";
+    public static String LAPTOP_MEDICAL = "\uf812";
+
     /**
-     * Icon: Thermometer
+     * Icon: LUNGS
      */
-    public static final String Thermometer = "\uf491";
+    public static String LUNGS = "\uf604";
+
     /**
-     * Icon: ThermometerEmpty
+     * Icon: LUNGS_VIRUS
      */
-    public static final String ThermometerEmpty = "\uf2cb";
+    public static String LUNGS_VIRUS = "\ue067";
+
     /**
-     * Icon: ThermometerFull
+     * Icon: MORTAR_PESTLE
      */
-    public static final String ThermometerFull = "\uf2c7";
+    public static String MORTAR_PESTLE = "\uf5a7";
+
     /**
-     * Icon: ThermometerHalf
+     * Icon: NOTES_MEDICAL
      */
-    public static final String ThermometerHalf = "\uf2c9";
+    public static String NOTES_MEDICAL = "\uf481";
+
     /**
-     * Icon: ThermometerQuarter
+     * Icon: PAGER
      */
-    public static final String ThermometerQuarter = "\uf2ca";
+    public static String PAGER = "\uf815";
+
     /**
-     * Icon: ThermometerThreeQuarters
+     * Icon: PILLS
      */
-    public static final String ThermometerThreeQuarters = "\uf2c8";
+    public static String PILLS = "\uf484";
+
     /**
-     * Icon: ThumbsDown
+     * Icon: PRESCRIPTION_BOTTLE
      */
-    public static final String ThumbsDown = "\uf165";
+    public static String PRESCRIPTION_BOTTLE = "\uf485";
+
     /**
-     * Icon: ThumbsUp
+     * Icon: PRESCRIPTION_BOTTLE_ALT
      */
-    public static final String ThumbsUp = "\uf164";
+    public static String PRESCRIPTION_BOTTLE_ALT = "\uf486";
+
     /**
-     * Icon: Thumbtack
+     * Icon: PROCEDURES
      */
-    public static final String Thumbtack = "\uf08d";
+    public static String PROCEDURES = "\uf487";
+
     /**
-     * Icon: TicketAlt
+     * Icon: PUMP_MEDICAL
      */
-    public static final String TicketAlt = "\uf3ff";
+    public static String PUMP_MEDICAL = "\ue06a";
+
     /**
-     * Icon: Times
+     * Icon: SHIELD_VIRUS
      */
-    public static final String Times = "\uf00d";
+    public static String SHIELD_VIRUS = "\ue06c";
+
     /**
-     * Icon: TimesCircle
+     * Icon: STAR_OF_LIFE
      */
-    public static final String TimesCircle = "\uf057";
+    public static String STAR_OF_LIFE = "\uf621";
+
     /**
-     * Icon: Tint
+     * Icon: SYRINGE
      */
-    public static final String Tint = "\uf043";
+    public static String SYRINGE = "\uf48e";
+
     /**
-     * Icon: TintSlash
+     * Icon: TABLETS
      */
-    public static final String TintSlash = "\uf5c7";
+    public static String TABLETS = "\uf490";
+
     /**
-     * Icon: Tired
+     * Icon: TEETH
      */
-    public static final String Tired = "\uf5c8";
+    public static String TEETH = "\uf62e";
+
     /**
-     * Icon: ToggleOff
+     * Icon: TEETH_OPEN
      */
-    public static final String ToggleOff = "\uf204";
+    public static String TEETH_OPEN = "\uf62f";
+
     /**
-     * Icon: ToggleOn
+     * Icon: THERMOMETER
      */
-    public static final String ToggleOn = "\uf205";
+    public static String THERMOMETER = "\uf491";
+
     /**
-     * Icon: Toilet
+     * Icon: TOOTH
      */
-    public static final String Toilet = "\uf7d8";
+    public static String TOOTH = "\uf5c9";
+
     /**
-     * Icon: ToiletPaper
+     * Icon: USER_NURSE
      */
-    public static final String ToiletPaper = "\uf71e";
+    public static String USER_NURSE = "\uf82f";
+
     /**
-     * Icon: ToiletPaperSlash
+     * Icon: VIAL
      */
-    public static final String ToiletPaperSlash = "\ue072";
+    public static String VIAL = "\uf492";
+
     /**
-     * Icon: Toolbox
+     * Icon: VIALS
      */
-    public static final String Toolbox = "\uf552";
+    public static String VIALS = "\uf493";
+
     /**
-     * Icon: Tools
+     * Icon: VIRUS
      */
-    public static final String Tools = "\uf7d9";
+    public static String VIRUS = "\ue074";
+
     /**
-     * Icon: Tooth
+     * Icon: VIRUS_SLASH
      */
-    public static final String Tooth = "\uf5c9";
+    public static String VIRUS_SLASH = "\ue075";
+
     /**
-     * Icon: Torah
+     * Icon: VIRUSES
      */
-    public static final String Torah = "\uf6a0";
+    public static String VIRUSES = "\ue076";
+
     /**
-     * Icon: ToriiGate
+     * Icon: WEIGHT
      */
-    public static final String ToriiGate = "\uf6a1";
+    public static String WEIGHT = "\uf496";
+
     /**
-     * Icon: Tractor
+     * Icon: X_RAY
      */
-    public static final String Tractor = "\uf722";
+    public static String X_RAY = "\uf497";
+
     /**
-     * Icon: Trademark
+     * Icon: BOX_OPEN
      */
-    public static final String Trademark = "\uf25c";
+    public static String BOX_OPEN = "\uf49e";
+
     /**
-     * Icon: TrafficLight
+     * Icon: PEOPLE_CARRY
      */
-    public static final String TrafficLight = "\uf637";
+    public static String PEOPLE_CARRY = "\uf4ce";
+
     /**
-     * Icon: Trailer
+     * Icon: SIGN
      */
-    public static final String Trailer = "\ue041";
+    public static String SIGN = "\uf4d9";
+
     /**
-     * Icon: Train
+     * Icon: TAPE
      */
-    public static final String Train = "\uf238";
+    public static String TAPE = "\uf4db";
+
     /**
-     * Icon: Tram
+     * Icon: TRUCK_LOADING
      */
-    public static final String Tram = "\uf7da";
+    public static String TRUCK_LOADING = "\uf4de";
+
     /**
-     * Icon: Transgender
+     * Icon: TRUCK_MOVING
      */
-    public static final String Transgender = "\uf224";
+    public static String TRUCK_MOVING = "\uf4df";
+
     /**
-     * Icon: TransgenderAlt
+     * Icon: DRUM
      */
-    public static final String TransgenderAlt = "\uf225";
+    public static String DRUM = "\uf569";
+
     /**
-     * Icon: Trash
+     * Icon: DRUM_STEELPAN
      */
-    public static final String Trash = "\uf1f8";
+    public static String DRUM_STEELPAN = "\uf56a";
+
     /**
-     * Icon: TrashAlt
+     * Icon: GUITAR
      */
-    public static final String TrashAlt = "\uf2ed";
+    public static String GUITAR = "\uf7a6";
+
     /**
-     * Icon: TrashRestore
+     * Icon: HEADPHONES_ALT
      */
-    public static final String TrashRestore = "\uf829";
+    public static String HEADPHONES_ALT = "\uf58f";
+
     /**
-     * Icon: TrashRestoreAlt
+     * Icon: NAPSTER
      */
-    public static final String TrashRestoreAlt = "\uf82a";
+    public static String NAPSTER = "\uf3d2";
+
     /**
-     * Icon: Tree
+     * Icon: RECORD_VINYL
      */
-    public static final String Tree = "\uf1bb";
+    public static String RECORD_VINYL = "\uf8d9";
+
     /**
-     * Icon: Trophy
+     * Icon: SOUNDCLOUD
      */
-    public static final String Trophy = "\uf091";
+    public static String SOUNDCLOUD = "\uf1be";
+
     /**
-     * Icon: Truck
+     * Icon: SPOTIFY
      */
-    public static final String Truck = "\uf0d1";
+    public static String SPOTIFY = "\uf1bc";
+
     /**
-     * Icon: TruckLoading
+     * Icon: CUBE
      */
-    public static final String TruckLoading = "\uf4de";
+    public static String CUBE = "\uf1b2";
+
     /**
-     * Icon: TruckMonster
+     * Icon: CUBES
      */
-    public static final String TruckMonster = "\uf63b";
+    public static String CUBES = "\uf1b3";
+
     /**
-     * Icon: TruckMoving
+     * Icon: DIGITAL_TACHOGRAPH
      */
-    public static final String TruckMoving = "\uf4df";
+    public static String DIGITAL_TACHOGRAPH = "\uf566";
+
     /**
-     * Icon: TruckPickup
+     * Icon: FUTBOL
      */
-    public static final String TruckPickup = "\uf63c";
+    public static String FUTBOL = "\uf1e3";
+
     /**
-     * Icon: Tshirt
+     * Icon: GEM
      */
-    public static final String Tshirt = "\uf553";
+    public static String GEM = "\uf3a5";
+
     /**
-     * Icon: Tty
+     * Icon: HEART_BROKEN
      */
-    public static final String Tty = "\uf1e4";
+    public static String HEART_BROKEN = "\uf7a9";
+
     /**
-     * Icon: Tv
+     * Icon: LOCK
      */
-    public static final String Tv = "\uf26c";
+    public static String LOCK = "\uf023";
+
     /**
-     * Icon: Umbrella
+     * Icon: LOCK_OPEN
      */
-    public static final String Umbrella = "\uf0e9";
+    public static String LOCK_OPEN = "\uf3c1";
+
     /**
-     * Icon: UmbrellaBeach
+     * Icon: MOON
      */
-    public static final String UmbrellaBeach = "\uf5ca";
+    public static String MOON = "\uf186";
+
     /**
-     * Icon: Underline
+     * Icon: SPACE_SHUTTLE
      */
-    public static final String Underline = "\uf0cd";
+    public static String SPACE_SHUTTLE = "\uf197";
+
     /**
-     * Icon: Undo
+     * Icon: TOILET
      */
-    public static final String Undo = "\uf0e2";
+    public static String TOILET = "\uf7d8";
+
     /**
-     * Icon: UndoAlt
+     * Icon: UNLOCK
      */
-    public static final String UndoAlt = "\uf2ea";
+    public static String UNLOCK = "\uf09c";
+
     /**
-     * Icon: UniversalAccess
+     * Icon: UNLOCK_ALT
      */
-    public static final String UniversalAccess = "\uf29a";
+    public static String UNLOCK_ALT = "\uf13e";
+
     /**
-     * Icon: University
+     * Icon: ALIPAY
      */
-    public static final String University = "\uf19c";
+    public static String ALIPAY = "\uf642";
+
     /**
-     * Icon: Unlink
+     * Icon: AMAZON_PAY
      */
-    public static final String Unlink = "\uf127";
+    public static String AMAZON_PAY = "\uf42c";
+
     /**
-     * Icon: Unlock
+     * Icon: APPLE_PAY
      */
-    public static final String Unlock = "\uf09c";
+    public static String APPLE_PAY = "\uf415";
+
     /**
-     * Icon: UnlockAlt
+     * Icon: CART_PLUS
      */
-    public static final String UnlockAlt = "\uf13e";
+    public static String CART_PLUS = "\uf217";
+
     /**
-     * Icon: Upload
+     * Icon: CC_AMAZON_PAY
      */
-    public static final String Upload = "\uf093";
+    public static String CC_AMAZON_PAY = "\uf42d";
+
     /**
-     * Icon: User
+     * Icon: CC_AMEX
      */
-    public static final String User = "\uf007";
+    public static String CC_AMEX = "\uf1f3";
+
     /**
-     * Icon: UserAlt
+     * Icon: CC_APPLE_PAY
      */
-    public static final String UserAlt = "\uf406";
+    public static String CC_APPLE_PAY = "\uf416";
+
     /**
-     * Icon: UserAltSlash
+     * Icon: CC_DINERS_CLUB
      */
-    public static final String UserAltSlash = "\uf4fa";
+    public static String CC_DINERS_CLUB = "\uf24c";
+
     /**
-     * Icon: UserAstronaut
+     * Icon: CC_DISCOVER
      */
-    public static final String UserAstronaut = "\uf4fb";
+    public static String CC_DISCOVER = "\uf1f2";
+
     /**
-     * Icon: UserCheck
+     * Icon: CC_JCB
      */
-    public static final String UserCheck = "\uf4fc";
+    public static String CC_JCB = "\uf24b";
+
     /**
-     * Icon: UserCircle
+     * Icon: CC_MASTERCARD
      */
-    public static final String UserCircle = "\uf2bd";
+    public static String CC_MASTERCARD = "\uf1f1";
+
     /**
-     * Icon: UserClock
+     * Icon: CC_PAYPAL
      */
-    public static final String UserClock = "\uf4fd";
+    public static String CC_PAYPAL = "\uf1f4";
+
     /**
-     * Icon: UserCog
+     * Icon: CC_STRIPE
      */
-    public static final String UserCog = "\uf4fe";
+    public static String CC_STRIPE = "\uf1f5";
+
     /**
-     * Icon: UserEdit
+     * Icon: CC_VISA
      */
-    public static final String UserEdit = "\uf4ff";
+    public static String CC_VISA = "\uf1f0";
+
     /**
-     * Icon: UserFriends
+     * Icon: GOOGLE_PAY
      */
-    public static final String UserFriends = "\uf500";
+    public static String GOOGLE_PAY = "\ue079";
+
     /**
-     * Icon: UserGraduate
+     * Icon: GOOGLE_WALLET
      */
-    public static final String UserGraduate = "\uf501";
+    public static String GOOGLE_WALLET = "\uf1ee";
+
     /**
-     * Icon: UserInjured
+     * Icon: PAYPAL
      */
-    public static final String UserInjured = "\uf728";
+    public static String PAYPAL = "\uf1ed";
+
     /**
-     * Icon: UserLock
+     * Icon: STRIPE
      */
-    public static final String UserLock = "\uf502";
+    public static String STRIPE = "\uf429";
+
     /**
-     * Icon: UserMd
+     * Icon: STRIPE_S
      */
-    public static final String UserMd = "\uf0f0";
+    public static String STRIPE_S = "\uf42a";
+
     /**
-     * Icon: UserMinus
+     * Icon: DEMOCRAT
      */
-    public static final String UserMinus = "\uf503";
+    public static String DEMOCRAT = "\uf747";
+
     /**
-     * Icon: UserNinja
+     * Icon: FLAG_USA
      */
-    public static final String UserNinja = "\uf504";
+    public static String FLAG_USA = "\uf74d";
+
     /**
-     * Icon: UserNurse
+     * Icon: PERSON_BOOTH
      */
-    public static final String UserNurse = "\uf82f";
+    public static String PERSON_BOOTH = "\uf756";
+
     /**
-     * Icon: UserPlus
+     * Icon: REPUBLICAN
      */
-    public static final String UserPlus = "\uf234";
+    public static String REPUBLICAN = "\uf75e";
+
     /**
-     * Icon: UserSecret
+     * Icon: VOTE_YEA
      */
-    public static final String UserSecret = "\uf21b";
+    public static String VOTE_YEA = "\uf772";
+
     /**
-     * Icon: UserShield
+     * Icon: ANKH
      */
-    public static final String UserShield = "\uf505";
+    public static String ANKH = "\uf644";
+
     /**
-     * Icon: UserSlash
+     * Icon: BAHAI
      */
-    public static final String UserSlash = "\uf506";
+    public static String BAHAI = "\uf666";
+
     /**
-     * Icon: UserTag
+     * Icon: BIBLE
      */
-    public static final String UserTag = "\uf507";
+    public static String BIBLE = "\uf647";
+
     /**
-     * Icon: UserTie
+     * Icon: CROSS
      */
-    public static final String UserTie = "\uf508";
+    public static String CROSS = "\uf654";
+
     /**
-     * Icon: UserTimes
+     * Icon: HAMSA
      */
-    public static final String UserTimes = "\uf235";
+    public static String HAMSA = "\uf665";
+
     /**
-     * Icon: Users
+     * Icon: HANUKIAH
      */
-    public static final String Users = "\uf0c0";
+    public static String HANUKIAH = "\uf6e6";
+
     /**
-     * Icon: UsersCog
+     * Icon: JEDI
      */
-    public static final String UsersCog = "\uf509";
+    public static String JEDI = "\uf669";
+
     /**
-     * Icon: UsersSlash
+     * Icon: JOURNAL_WHILLS
      */
-    public static final String UsersSlash = "\ue073";
+    public static String JOURNAL_WHILLS = "\uf66a";
+
     /**
-     * Icon: UtensilSpoon
+     * Icon: KHANDA
      */
-    public static final String UtensilSpoon = "\uf2e5";
+    public static String KHANDA = "\uf66d";
+
     /**
-     * Icon: Utensils
+     * Icon: MENORAH
      */
-    public static final String Utensils = "\uf2e7";
+    public static String MENORAH = "\uf676";
+
     /**
-     * Icon: VectorSquare
+     * Icon: OM
      */
-    public static final String VectorSquare = "\uf5cb";
+    public static String OM = "\uf679";
+
     /**
-     * Icon: Venus
+     * Icon: PASTAFARIANISM
      */
-    public static final String Venus = "\uf221";
+    public static String PASTAFARIANISM = "\uf67b";
+
     /**
-     * Icon: VenusDouble
+     * Icon: PEACE
      */
-    public static final String VenusDouble = "\uf226";
+    public static String PEACE = "\uf67c";
+
     /**
-     * Icon: VenusMars
+     * Icon: PRAY
      */
-    public static final String VenusMars = "\uf228";
+    public static String PRAY = "\uf683";
+
     /**
-     * Icon: Vest
+     * Icon: QURAN
      */
-    public static final String Vest = "\ue085";
+    public static String QURAN = "\uf687";
+
     /**
-     * Icon: VestPatches
+     * Icon: STAR_AND_CRESCENT
      */
-    public static final String VestPatches = "\ue086";
+    public static String STAR_AND_CRESCENT = "\uf699";
+
     /**
-     * Icon: Vial
+     * Icon: STAR_OF_DAVID
      */
-    public static final String Vial = "\uf492";
+    public static String STAR_OF_DAVID = "\uf69a";
+
     /**
-     * Icon: Vials
+     * Icon: TORAH
      */
-    public static final String Vials = "\uf493";
+    public static String TORAH = "\uf6a0";
+
     /**
-     * Icon: Video
+     * Icon: YIN_YANG
      */
-    public static final String Video = "\uf03d";
+    public static String YIN_YANG = "\uf6ad";
+
     /**
-     * Icon: VideoSlash
+     * Icon: TEMPERATURE_HIGH
      */
-    public static final String VideoSlash = "\uf4e2";
+    public static String TEMPERATURE_HIGH = "\uf769";
+
     /**
-     * Icon: Vihara
+     * Icon: TEMPERATURE_LOW
      */
-    public static final String Vihara = "\uf6a7";
+    public static String TEMPERATURE_LOW = "\uf76b";
+
     /**
-     * Icon: Virus
+     * Icon: GALACTIC_REPUBLIC
      */
-    public static final String Virus = "\ue074";
+    public static String GALACTIC_REPUBLIC = "\uf50c";
+
     /**
-     * Icon: VirusSlash
+     * Icon: GALACTIC_SENATE
      */
-    public static final String VirusSlash = "\ue075";
+    public static String GALACTIC_SENATE = "\uf50d";
+
     /**
-     * Icon: Viruses
+     * Icon: JEDI_ORDER
      */
-    public static final String Viruses = "\ue076";
+    public static String JEDI_ORDER = "\uf50e";
+
     /**
-     * Icon: Voicemail
+     * Icon: METEOR
      */
-    public static final String Voicemail = "\uf897";
+    public static String METEOR = "\uf753";
+
     /**
-     * Icon: VolleyballBall
+     * Icon: OLD_REPUBLIC
      */
-    public static final String VolleyballBall = "\uf45f";
+    public static String OLD_REPUBLIC = "\uf510";
+
     /**
-     * Icon: VolumeDown
+     * Icon: USER_ASTRONAUT
      */
-    public static final String VolumeDown = "\uf027";
+    public static String USER_ASTRONAUT = "\uf4fb";
+
     /**
-     * Icon: VolumeMute
+     * Icon: FILE_CONTRACT
      */
-    public static final String VolumeMute = "\uf6a9";
+    public static String FILE_CONTRACT = "\uf56c";
+
     /**
-     * Icon: VolumeOff
+     * Icon: FILE_SIGNATURE
      */
-    public static final String VolumeOff = "\uf026";
+    public static String FILE_SIGNATURE = "\uf573";
+
     /**
-     * Icon: VolumeUp
+     * Icon: PASSPORT
      */
-    public static final String VolumeUp = "\uf028";
+    public static String PASSPORT = "\uf5ab";
+
     /**
-     * Icon: VoteYea
+     * Icon: USER_LOCK
      */
-    public static final String VoteYea = "\uf772";
+    public static String USER_LOCK = "\uf502";
+
     /**
-     * Icon: VrCardboard
+     * Icon: USER_SHIELD
      */
-    public static final String VrCardboard = "\uf729";
+    public static String USER_SHIELD = "\uf505";
+
     /**
-     * Icon: Walking
+     * Icon: SQUARE
      */
-    public static final String Walking = "\uf554";
+    public static String SQUARE = "\uf0c8";
+
     /**
-     * Icon: Wallet
+     * Icon: STORE_ALT_SLASH
      */
-    public static final String Wallet = "\uf555";
+    public static String STORE_ALT_SLASH = "\ue070";
+
     /**
-     * Icon: Warehouse
+     * Icon: STORE_SLASH
      */
-    public static final String Warehouse = "\uf494";
+    public static String STORE_SLASH = "\ue071";
+
     /**
-     * Icon: Water
+     * Icon: USER_FRIENDS
      */
-    public static final String Water = "\uf773";
+    public static String USER_FRIENDS = "\uf500";
+
     /**
-     * Icon: WaveSquare
+     * Icon: USER_PLUS
      */
-    public static final String WaveSquare = "\uf83e";
+    public static String USER_PLUS = "\uf234";
+
     /**
-     * Icon: Weight
+     * Icon: USERS
      */
-    public static final String Weight = "\uf496";
+    public static String USERS = "\uf0c0";
+
     /**
-     * Icon: WeightHanging
+     * Icon: ASTERISK
      */
-    public static final String WeightHanging = "\uf5cd";
+    public static String ASTERISK = "\uf069";
+
     /**
-     * Icon: Wheelchair
+     * Icon: CIRCLE_NOTCH
      */
-    public static final String Wheelchair = "\uf193";
+    public static String CIRCLE_NOTCH = "\uf1ce";
+
     /**
-     * Icon: Wifi
+     * Icon: SLASH
      */
-    public static final String Wifi = "\uf1eb";
+    public static String SLASH = "\uf715";
+
     /**
-     * Icon: Wind
+     * Icon: SPINNER
      */
-    public static final String Wind = "\uf72e";
+    public static String SPINNER = "\uf110";
+
     /**
-     * Icon: WindowClose
+     * Icon: BASEBALL_BALL
      */
-    public static final String WindowClose = "\uf410";
+    public static String BASEBALL_BALL = "\uf433";
+
     /**
-     * Icon: WindowMaximize
+     * Icon: BASKETBALL_BALL
      */
-    public static final String WindowMaximize = "\uf2d0";
+    public static String BASKETBALL_BALL = "\uf434";
+
     /**
-     * Icon: WindowMinimize
+     * Icon: BOWLING_BALL
      */
-    public static final String WindowMinimize = "\uf2d1";
+    public static String BOWLING_BALL = "\uf436";
+
     /**
-     * Icon: WindowRestore
+     * Icon: GOLF_BALL
      */
-    public static final String WindowRestore = "\uf2d2";
+    public static String GOLF_BALL = "\uf450";
+
     /**
-     * Icon: WineBottle
+     * Icon: HOCKEY_PUCK
      */
-    public static final String WineBottle = "\uf72f";
+    public static String HOCKEY_PUCK = "\uf453";
+
     /**
-     * Icon: WineGlass
+     * Icon: QUIDDITCH
      */
-    public static final String WineGlass = "\uf4e3";
+    public static String QUIDDITCH = "\uf458";
+
     /**
-     * Icon: WineGlassAlt
+     * Icon: TABLE_TENNIS
      */
-    public static final String WineGlassAlt = "\uf5ce";
+    public static String TABLE_TENNIS = "\uf45d";
+
     /**
-     * Icon: WonSign
+     * Icon: VOLLEYBALL_BALL
      */
-    public static final String WonSign = "\uf159";
+    public static String VOLLEYBALL_BALL = "\uf45f";
+
     /**
-     * Icon: Wrench
+     * Icon: CLOUD_SUN_RAIN
      */
-    public static final String Wrench = "\uf0ad";
+    public static String CLOUD_SUN_RAIN = "\uf743";
+
     /**
-     * Icon: XRay
+     * Icon: RAINBOW
      */
-    public static final String XRay = "\uf497";
+    public static String RAINBOW = "\uf75b";
+
     /**
-     * Icon: YenSign
+     * Icon: CALENDAR_DAY
      */
-    public static final String YenSign = "\uf157";
+    public static String CALENDAR_DAY = "\uf783";
+
     /**
-     * Icon: YinYang
+     * Icon: CALENDAR_WEEK
      */
-    public static final String YinYang = "\uf6ad";
+    public static String CALENDAR_WEEK = "\uf784";
+
+    /**
+     * Icon: STAR_HALF_ALT
+     */
+    public static String STAR_HALF_ALT = "\uf5c0";
+
+    /**
+     * Icon: THERMOMETER_EMPTY
+     */
+    public static String THERMOMETER_EMPTY = "\uf2cb";
+
+    /**
+     * Icon: THERMOMETER_FULL
+     */
+    public static String THERMOMETER_FULL = "\uf2c7";
+
+    /**
+     * Icon: THERMOMETER_HALF
+     */
+    public static String THERMOMETER_HALF = "\uf2c9";
+
+    /**
+     * Icon: THERMOMETER_QUARTER
+     */
+    public static String THERMOMETER_QUARTER = "\uf2ca";
+
+    /**
+     * Icon: THERMOMETER_THREE_QUARTERS
+     */
+    public static String THERMOMETER_THREE_QUARTERS = "\uf2c8";
+
+    /**
+     * Icon: USER_ALT_SLASH
+     */
+    public static String USER_ALT_SLASH = "\uf4fa";
+
+    /**
+     * Icon: USER_SLASH
+     */
+    public static String USER_SLASH = "\uf506";
+
+    /**
+     * Icon: ATLAS
+     */
+    public static String ATLAS = "\uf558";
+
+    /**
+     * Icon: GLOBE_AFRICA
+     */
+    public static String GLOBE_AFRICA = "\uf57c";
+
+    /**
+     * Icon: GLOBE_AMERICAS
+     */
+    public static String GLOBE_AMERICAS = "\uf57d";
+
+    /**
+     * Icon: GLOBE_ASIA
+     */
+    public static String GLOBE_ASIA = "\uf57e";
+
+    /**
+     * Icon: GLOBE_EUROPE
+     */
+    public static String GLOBE_EUROPE = "\uf7a2";
+
+    /**
+     * Icon: PLANE_ARRIVAL
+     */
+    public static String PLANE_ARRIVAL = "\uf5af";
+
+    /**
+     * Icon: PLANE_DEPARTURE
+     */
+    public static String PLANE_DEPARTURE = "\uf5b0";
+
+    /**
+     * Icon: CHILD
+     */
+    public static String CHILD = "\uf1ae";
+
+    /**
+     * Icon: FEMALE
+     */
+    public static String FEMALE = "\uf182";
+
+    /**
+     * Icon: PEOPLE_ARROWS
+     */
+    public static String PEOPLE_ARROWS = "\ue068";
+
+    /**
+     * Icon: USER_CHECK
+     */
+    public static String USER_CHECK = "\uf4fc";
+
+    /**
+     * Icon: USER_CLOCK
+     */
+    public static String USER_CLOCK = "\uf4fd";
+
+    /**
+     * Icon: USER_COG
+     */
+    public static String USER_COG = "\uf4fe";
+
+    /**
+     * Icon: USER_EDIT
+     */
+    public static String USER_EDIT = "\uf4ff";
+
+    /**
+     * Icon: USER_INJURED
+     */
+    public static String USER_INJURED = "\uf728";
+
+    /**
+     * Icon: USER_MINUS
+     */
+    public static String USER_MINUS = "\uf503";
+
+    /**
+     * Icon: USER_NINJA
+     */
+    public static String USER_NINJA = "\uf504";
+
+    /**
+     * Icon: USER_TAG
+     */
+    public static String USER_TAG = "\uf507";
+
+    /**
+     * Icon: USER_TIMES
+     */
+    public static String USER_TIMES = "\uf235";
+
+    /**
+     * Icon: USERS_COG
+     */
+    public static String USERS_COG = "\uf509";
+
+    /**
+     * Icon: USERS_SLASH
+     */
+    public static String USERS_SLASH = "\ue073";
+
+    /**
+     * Icon: CLOUD_MOON_RAIN
+     */
+    public static String CLOUD_MOON_RAIN = "\uf73c";
+
+    /**
+     * Icon: CLOUD_RAIN
+     */
+    public static String CLOUD_RAIN = "\uf73d";
+
+    /**
+     * Icon: CLOUD_SHOWERS_HEAVY
+     */
+    public static String CLOUD_SHOWERS_HEAVY = "\uf740";
+
+    /**
+     * Icon: POO_STORM
+     */
+    public static String POO_STORM = "\uf75a";
+
+    /**
+     * Icon: SMOG
+     */
+    public static String SMOG = "\uf75f";
+
+    /**
+     * Icon: ICICLES
+     */
+    public static String ICICLES = "\uf7ad";
+
+/**
+ * Icon: 500PX
+ */
+    public static String FIVE_HUNDRED_PIXELS = "\uf26e";
+
+    /**
+     * Icon: ACCUSOFT
+     */
+    public static String ACCUSOFT = "\uf369";
+
+    /**
+     * Icon: ADN
+     */
+    public static String ADN = "\uf170";
+
+    /**
+     * Icon: ADVERSAL
+     */
+    public static String ADVERSAL = "\uf36a";
+
+    /**
+     * Icon: AFFILIATETHEME
+     */
+    public static String AFFILIATETHEME = "\uf36b";
+
+    /**
+     * Icon: AIRBNB
+     */
+    public static String AIRBNB = "\uf834";
+
+    /**
+     * Icon: ALGOLIA
+     */
+    public static String ALGOLIA = "\uf36c";
+
+    /**
+     * Icon: AMAZON
+     */
+    public static String AMAZON = "\uf270";
+
+    /**
+     * Icon: AMILIA
+     */
+    public static String AMILIA = "\uf36d";
+
+    /**
+     * Icon: ANDROID
+     */
+    public static String ANDROID = "\uf17b";
+
+    /**
+     * Icon: ANGELLIST
+     */
+    public static String ANGELLIST = "\uf209";
+
+    /**
+     * Icon: ANGRYCREATIVE
+     */
+    public static String ANGRYCREATIVE = "\uf36e";
+
+    /**
+     * Icon: ANGULAR
+     */
+    public static String ANGULAR = "\uf420";
+
+    /**
+     * Icon: APP_STORE
+     */
+    public static String APP_STORE = "\uf36f";
+
+    /**
+     * Icon: APP_STORE_IOS
+     */
+    public static String APP_STORE_IOS = "\uf370";
+
+    /**
+     * Icon: APPER
+     */
+    public static String APPER = "\uf371";
+
+    /**
+     * Icon: APPLE
+     */
+    public static String APPLE = "\uf179";
+
+    /**
+     * Icon: ARTSTATION
+     */
+    public static String ARTSTATION = "\uf77a";
+
+    /**
+     * Icon: ASYMMETRIK
+     */
+    public static String ASYMMETRIK = "\uf372";
+
+    /**
+     * Icon: ATLASSIAN
+     */
+    public static String ATLASSIAN = "\uf77b";
+
+    /**
+     * Icon: AUDIBLE
+     */
+    public static String AUDIBLE = "\uf373";
+
+    /**
+     * Icon: AUTOPREFIXER
+     */
+    public static String AUTOPREFIXER = "\uf41c";
+
+    /**
+     * Icon: AVIANEX
+     */
+    public static String AVIANEX = "\uf374";
+
+    /**
+     * Icon: AVIATO
+     */
+    public static String AVIATO = "\uf421";
+
+    /**
+     * Icon: AWS
+     */
+    public static String AWS = "\uf375";
+
+    /**
+     * Icon: BACKSPACE
+     */
+    public static String BACKSPACE = "\uf55a";
+
+    /**
+     * Icon: BANDCAMP
+     */
+    public static String BANDCAMP = "\uf2d5";
+
+    /**
+     * Icon: BATTLE_NET
+     */
+    public static String BATTLE_NET = "\uf835";
+
+    /**
+     * Icon: BEHANCE
+     */
+    public static String BEHANCE = "\uf1b4";
+
+    /**
+     * Icon: BEHANCE_SQUARE
+     */
+    public static String BEHANCE_SQUARE = "\uf1b5";
+
+    /**
+     * Icon: BIMOBJECT
+     */
+    public static String BIMOBJECT = "\uf378";
+
+    /**
+     * Icon: BITBUCKET
+     */
+    public static String BITBUCKET = "\uf171";
+
+    /**
+     * Icon: BITY
+     */
+    public static String BITY = "\uf37a";
+
+    /**
+     * Icon: BLACK_TIE
+     */
+    public static String BLACK_TIE = "\uf27e";
+
+    /**
+     * Icon: BLACKBERRY
+     */
+    public static String BLACKBERRY = "\uf37b";
+
+    /**
+     * Icon: BLENDER_PHONE
+     */
+    public static String BLENDER_PHONE = "\uf6b6";
+
+    /**
+     * Icon: BLOGGER
+     */
+    public static String BLOGGER = "\uf37c";
+
+    /**
+     * Icon: BLOGGER_B
+     */
+    public static String BLOGGER_B = "\uf37d";
+
+    /**
+     * Icon: BOOTSTRAP
+     */
+    public static String BOOTSTRAP = "\uf836";
+
+    /**
+     * Icon: BUFFER
+     */
+    public static String BUFFER = "\uf837";
+
+    /**
+     * Icon: BUROMOBELEXPERTE
+     */
+    public static String BUROMOBELEXPERTE = "\uf37f";
+
+    /**
+     * Icon: BUY_N_LARGE
+     */
+    public static String BUY_N_LARGE = "\uf8a6";
+
+    /**
+     * Icon: BUYSELLADS
+     */
+    public static String BUYSELLADS = "\uf20d";
+
+    /**
+     * Icon: CANADIAN_MAPLE_LEAF
+     */
+    public static String CANADIAN_MAPLE_LEAF = "\uf785";
+
+    /**
+     * Icon: CENTERCODE
+     */
+    public static String CENTERCODE = "\uf380";
+
+    /**
+     * Icon: CENTOS
+     */
+    public static String CENTOS = "\uf789";
+
+    /**
+     * Icon: CHROME
+     */
+    public static String CHROME = "\uf268";
+
+    /**
+     * Icon: CHROMECAST
+     */
+    public static String CHROMECAST = "\uf838";
+
+    /**
+     * Icon: CLOUDFLARE
+     */
+    public static String CLOUDFLARE = "\ue07d";
+
+    /**
+     * Icon: CLOUDSCALE
+     */
+    public static String CLOUDSCALE = "\uf383";
+
+    /**
+     * Icon: CLOUDSMITH
+     */
+    public static String CLOUDSMITH = "\uf384";
+
+    /**
+     * Icon: CLOUDVERSIFY
+     */
+    public static String CLOUDVERSIFY = "\uf385";
+
+    /**
+     * Icon: CODEPEN
+     */
+    public static String CODEPEN = "\uf1cb";
+
+    /**
+     * Icon: CODIEPIE
+     */
+    public static String CODIEPIE = "\uf284";
+
+    /**
+     * Icon: CONFLUENCE
+     */
+    public static String CONFLUENCE = "\uf78d";
+
+    /**
+     * Icon: CONNECTDEVELOP
+     */
+    public static String CONNECTDEVELOP = "\uf20e";
+
+    /**
+     * Icon: CONTAO
+     */
+    public static String CONTAO = "\uf26d";
+
+    /**
+     * Icon: COTTON_BUREAU
+     */
+    public static String COTTON_BUREAU = "\uf89e";
+
+    /**
+     * Icon: CPANEL
+     */
+    public static String CPANEL = "\uf388";
+
+    /**
+     * Icon: CREATIVE_COMMONS
+     */
+    public static String CREATIVE_COMMONS = "\uf25e";
+
+    /**
+     * Icon: CREATIVE_COMMONS_BY
+     */
+    public static String CREATIVE_COMMONS_BY = "\uf4e7";
+
+    /**
+     * Icon: CREATIVE_COMMONS_NC
+     */
+    public static String CREATIVE_COMMONS_NC = "\uf4e8";
+
+    /**
+     * Icon: CREATIVE_COMMONS_NC_EU
+     */
+    public static String CREATIVE_COMMONS_NC_EU = "\uf4e9";
+
+    /**
+     * Icon: CREATIVE_COMMONS_NC_JP
+     */
+    public static String CREATIVE_COMMONS_NC_JP = "\uf4ea";
+
+    /**
+     * Icon: CREATIVE_COMMONS_ND
+     */
+    public static String CREATIVE_COMMONS_ND = "\uf4eb";
+
+    /**
+     * Icon: CREATIVE_COMMONS_PD
+     */
+    public static String CREATIVE_COMMONS_PD = "\uf4ec";
+
+    /**
+     * Icon: CREATIVE_COMMONS_PD_ALT
+     */
+    public static String CREATIVE_COMMONS_PD_ALT = "\uf4ed";
+
+    /**
+     * Icon: CREATIVE_COMMONS_REMIX
+     */
+    public static String CREATIVE_COMMONS_REMIX = "\uf4ee";
+
+    /**
+     * Icon: CREATIVE_COMMONS_SA
+     */
+    public static String CREATIVE_COMMONS_SA = "\uf4ef";
+
+    /**
+     * Icon: CREATIVE_COMMONS_SAMPLING
+     */
+    public static String CREATIVE_COMMONS_SAMPLING = "\uf4f0";
+
+    /**
+     * Icon: CREATIVE_COMMONS_SAMPLING_PLUS
+     */
+    public static String CREATIVE_COMMONS_SAMPLING_PLUS = "\uf4f1";
+
+    /**
+     * Icon: CREATIVE_COMMONS_SHARE
+     */
+    public static String CREATIVE_COMMONS_SHARE = "\uf4f2";
+
+    /**
+     * Icon: CREATIVE_COMMONS_ZERO
+     */
+    public static String CREATIVE_COMMONS_ZERO = "\uf4f3";
+
+    /**
+     * Icon: CROWN
+     */
+    public static String CROWN = "\uf521";
+
+    /**
+     * Icon: CSS3
+     */
+    public static String CSS3 = "\uf13c";
+
+    /**
+     * Icon: CSS3_ALT
+     */
+    public static String CSS3_ALT = "\uf38b";
+
+    /**
+     * Icon: CUTTLEFISH
+     */
+    public static String CUTTLEFISH = "\uf38c";
+
+    /**
+     * Icon: DAILYMOTION
+     */
+    public static String DAILYMOTION = "\ue052";
+
+    /**
+     * Icon: DASHCUBE
+     */
+    public static String DASHCUBE = "\uf210";
+
+    /**
+     * Icon: DEEZER
+     */
+    public static String DEEZER = "\ue077";
+
+    /**
+     * Icon: DELICIOUS
+     */
+    public static String DELICIOUS = "\uf1a5";
+
+    /**
+     * Icon: DEPLOYDOG
+     */
+    public static String DEPLOYDOG = "\uf38e";
+
+    /**
+     * Icon: DESKPRO
+     */
+    public static String DESKPRO = "\uf38f";
+
+    /**
+     * Icon: DEV
+     */
+    public static String DEV = "\uf6cc";
+
+    /**
+     * Icon: DEVIANTART
+     */
+    public static String DEVIANTART = "\uf1bd";
+
+    /**
+     * Icon: DHL
+     */
+    public static String DHL = "\uf790";
+
+    /**
+     * Icon: DIASPORA
+     */
+    public static String DIASPORA = "\uf791";
+
+    /**
+     * Icon: DIGG
+     */
+    public static String DIGG = "\uf1a6";
+
+    /**
+     * Icon: DIGITAL_OCEAN
+     */
+    public static String DIGITAL_OCEAN = "\uf391";
+
+    /**
+     * Icon: DISCORD
+     */
+    public static String DISCORD = "\uf392";
+
+    /**
+     * Icon: DISCOURSE
+     */
+    public static String DISCOURSE = "\uf393";
+
+    /**
+     * Icon: DOCHUB
+     */
+    public static String DOCHUB = "\uf394";
+
+    /**
+     * Icon: DOCKER
+     */
+    public static String DOCKER = "\uf395";
+
+    /**
+     * Icon: DRAFT2DIGITAL
+     */
+    public static String DRAFT2DIGITAL = "\uf396";
+
+    /**
+     * Icon: DRIBBBLE
+     */
+    public static String DRIBBBLE = "\uf17d";
+
+    /**
+     * Icon: DRIBBBLE_SQUARE
+     */
+    public static String DRIBBBLE_SQUARE = "\uf397";
+
+    /**
+     * Icon: DROPBOX
+     */
+    public static String DROPBOX = "\uf16b";
+
+    /**
+     * Icon: DRUPAL
+     */
+    public static String DRUPAL = "\uf1a9";
+
+    /**
+     * Icon: DUMPSTER_FIRE
+     */
+    public static String DUMPSTER_FIRE = "\uf794";
+
+    /**
+     * Icon: DYALOG
+     */
+    public static String DYALOG = "\uf399";
+
+    /**
+     * Icon: EARLYBIRDS
+     */
+    public static String EARLYBIRDS = "\uf39a";
+
+    /**
+     * Icon: EBAY
+     */
+    public static String EBAY = "\uf4f4";
+
+    /**
+     * Icon: EDGE
+     */
+    public static String EDGE = "\uf282";
+
+    /**
+     * Icon: EDGE_LEGACY
+     */
+    public static String EDGE_LEGACY = "\ue078";
+
+    /**
+     * Icon: ELEMENTOR
+     */
+    public static String ELEMENTOR = "\uf430";
+
+    /**
+     * Icon: ELLO
+     */
+    public static String ELLO = "\uf5f1";
+
+    /**
+     * Icon: EMBER
+     */
+    public static String EMBER = "\uf423";
+
+    /**
+     * Icon: EMPIRE
+     */
+    public static String EMPIRE = "\uf1d1";
+
+    /**
+     * Icon: ENVIRA
+     */
+    public static String ENVIRA = "\uf299";
+
+    /**
+     * Icon: ERLANG
+     */
+    public static String ERLANG = "\uf39d";
+
+    /**
+     * Icon: ETSY
+     */
+    public static String ETSY = "\uf2d7";
+
+    /**
+     * Icon: EVERNOTE
+     */
+    public static String EVERNOTE = "\uf839";
+
+    /**
+     * Icon: EXPEDITEDSSL
+     */
+    public static String EXPEDITEDSSL = "\uf23e";
+
+    /**
+     * Icon: FACEBOOK
+     */
+    public static String FACEBOOK = "\uf09a";
+
+    /**
+     * Icon: FACEBOOK_F
+     */
+    public static String FACEBOOK_F = "\uf39e";
+
+    /**
+     * Icon: FACEBOOK_MESSENGER
+     */
+    public static String FACEBOOK_MESSENGER = "\uf39f";
+
+    /**
+     * Icon: FACEBOOK_SQUARE
+     */
+    public static String FACEBOOK_SQUARE = "\uf082";
+
+    /**
+     * Icon: FEDEX
+     */
+    public static String FEDEX = "\uf797";
+
+    /**
+     * Icon: FEDORA
+     */
+    public static String FEDORA = "\uf798";
+
+    /**
+     * Icon: FIGMA
+     */
+    public static String FIGMA = "\uf799";
+
+    /**
+     * Icon: FILE_CSV
+     */
+    public static String FILE_CSV = "\uf6dd";
+
+    /**
+     * Icon: FIREFOX
+     */
+    public static String FIREFOX = "\uf269";
+
+    /**
+     * Icon: FIREFOX_BROWSER
+     */
+    public static String FIREFOX_BROWSER = "\ue007";
+
+    /**
+     * Icon: FIRST_ORDER
+     */
+    public static String FIRST_ORDER = "\uf2b0";
+
+    /**
+     * Icon: FIRST_ORDER_ALT
+     */
+    public static String FIRST_ORDER_ALT = "\uf50a";
+
+    /**
+     * Icon: FIRSTDRAFT
+     */
+    public static String FIRSTDRAFT = "\uf3a1";
+
+    /**
+     * Icon: FLICKR
+     */
+    public static String FLICKR = "\uf16e";
+
+    /**
+     * Icon: FLIPBOARD
+     */
+    public static String FLIPBOARD = "\uf44d";
+
+    /**
+     * Icon: FLY
+     */
+    public static String FLY = "\uf417";
+
+    /**
+     * Icon: FONT_AWESOME
+     */
+    public static String FONT_AWESOME = "\uf2b4";
+
+    /**
+     * Icon: FONT_AWESOME_ALT
+     */
+    public static String FONT_AWESOME_ALT = "\uf35c";
+
+    /**
+     * Icon: FONT_AWESOME_FLAG
+     */
+    public static String FONT_AWESOME_FLAG = "\uf425";
+
+    /**
+     * Icon: FONT_AWESOME_LOGO_FULL
+     */
+    public static String FONT_AWESOME_LOGO_FULL = "\uf4e6";
+
+    /**
+     * Icon: FONTICONS
+     */
+    public static String FONTICONS = "\uf280";
+
+    /**
+     * Icon: FONTICONS_FI
+     */
+    public static String FONTICONS_FI = "\uf3a2";
+
+    /**
+     * Icon: FORT_AWESOME
+     */
+    public static String FORT_AWESOME = "\uf286";
+
+    /**
+     * Icon: FORT_AWESOME_ALT
+     */
+    public static String FORT_AWESOME_ALT = "\uf3a3";
+
+    /**
+     * Icon: FORUMBEE
+     */
+    public static String FORUMBEE = "\uf211";
+
+    /**
+     * Icon: FOURSQUARE
+     */
+    public static String FOURSQUARE = "\uf180";
+
+    /**
+     * Icon: FREE_CODE_CAMP
+     */
+    public static String FREE_CODE_CAMP = "\uf2c5";
+
+    /**
+     * Icon: FREEBSD
+     */
+    public static String FREEBSD = "\uf3a4";
+
+    /**
+     * Icon: FULCRUM
+     */
+    public static String FULCRUM = "\uf50b";
+
+    /**
+     * Icon: GET_POCKET
+     */
+    public static String GET_POCKET = "\uf265";
+
+    /**
+     * Icon: GIT
+     */
+    public static String GIT = "\uf1d3";
+
+    /**
+     * Icon: GIT_ALT
+     */
+    public static String GIT_ALT = "\uf841";
+
+    /**
+     * Icon: GIT_SQUARE
+     */
+    public static String GIT_SQUARE = "\uf1d2";
+
+    /**
+     * Icon: GITHUB
+     */
+    public static String GITHUB = "\uf09b";
+
+    /**
+     * Icon: GITHUB_ALT
+     */
+    public static String GITHUB_ALT = "\uf113";
+
+    /**
+     * Icon: GITHUB_SQUARE
+     */
+    public static String GITHUB_SQUARE = "\uf092";
+
+    /**
+     * Icon: GITKRAKEN
+     */
+    public static String GITKRAKEN = "\uf3a6";
+
+    /**
+     * Icon: GITLAB
+     */
+    public static String GITLAB = "\uf296";
+
+    /**
+     * Icon: GITTER
+     */
+    public static String GITTER = "\uf426";
+
+    /**
+     * Icon: GLIDE
+     */
+    public static String GLIDE = "\uf2a5";
+
+    /**
+     * Icon: GLIDE_G
+     */
+    public static String GLIDE_G = "\uf2a6";
+
+    /**
+     * Icon: GOFORE
+     */
+    public static String GOFORE = "\uf3a7";
+
+    /**
+     * Icon: GOODREADS
+     */
+    public static String GOODREADS = "\uf3a8";
+
+    /**
+     * Icon: GOODREADS_G
+     */
+    public static String GOODREADS_G = "\uf3a9";
+
+    /**
+     * Icon: GOOGLE
+     */
+    public static String GOOGLE = "\uf1a0";
+
+    /**
+     * Icon: GOOGLE_DRIVE
+     */
+    public static String GOOGLE_DRIVE = "\uf3aa";
+
+    /**
+     * Icon: GOOGLE_PLAY
+     */
+    public static String GOOGLE_PLAY = "\uf3ab";
+
+    /**
+     * Icon: GOOGLE_PLUS
+     */
+    public static String GOOGLE_PLUS = "\uf2b3";
+
+    /**
+     * Icon: GOOGLE_PLUS_G
+     */
+    public static String GOOGLE_PLUS_G = "\uf0d5";
+
+    /**
+     * Icon: GOOGLE_PLUS_SQUARE
+     */
+    public static String GOOGLE_PLUS_SQUARE = "\uf0d4";
+
+    /**
+     * Icon: GRATIPAY
+     */
+    public static String GRATIPAY = "\uf184";
+
+    /**
+     * Icon: GRAV
+     */
+    public static String GRAV = "\uf2d6";
+
+    /**
+     * Icon: GRIPFIRE
+     */
+    public static String GRIPFIRE = "\uf3ac";
+
+    /**
+     * Icon: GRUNT
+     */
+    public static String GRUNT = "\uf3ad";
+
+    /**
+     * Icon: GUILDED
+     */
+    public static String GUILDED = "\ue07e";
+
+    /**
+     * Icon: GULP
+     */
+    public static String GULP = "\uf3ae";
+
+    /**
+     * Icon: HACKER_NEWS
+     */
+    public static String HACKER_NEWS = "\uf1d4";
+
+    /**
+     * Icon: HACKER_NEWS_SQUARE
+     */
+    public static String HACKER_NEWS_SQUARE = "\uf3af";
+
+    /**
+     * Icon: HACKERRANK
+     */
+    public static String HACKERRANK = "\uf5f7";
+
+    /**
+     * Icon: HIPS
+     */
+    public static String HIPS = "\uf452";
+
+    /**
+     * Icon: HIRE_A_HELPER
+     */
+    public static String HIRE_A_HELPER = "\uf3b0";
+
+    /**
+     * Icon: HIVE
+     */
+    public static String HIVE = "\ue07f";
+
+    /**
+     * Icon: HOOLI
+     */
+    public static String HOOLI = "\uf427";
+
+    /**
+     * Icon: HORNBILL
+     */
+    public static String HORNBILL = "\uf592";
+
+    /**
+     * Icon: HOTJAR
+     */
+    public static String HOTJAR = "\uf3b1";
+
+    /**
+     * Icon: HOUZZ
+     */
+    public static String HOUZZ = "\uf27c";
+
+    /**
+     * Icon: HTML5
+     */
+    public static String HTML5 = "\uf13b";
+
+    /**
+     * Icon: HUBSPOT
+     */
+    public static String HUBSPOT = "\uf3b2";
+
+    /**
+     * Icon: IDEAL
+     */
+    public static String IDEAL = "\ue013";
+
+    /**
+     * Icon: IMDB
+     */
+    public static String IMDB = "\uf2d8";
+
+    /**
+     * Icon: INNOSOFT
+     */
+    public static String INNOSOFT = "\ue080";
+
+    /**
+     * Icon: INSTAGRAM
+     */
+    public static String INSTAGRAM = "\uf16d";
+
+    /**
+     * Icon: INSTAGRAM_SQUARE
+     */
+    public static String INSTAGRAM_SQUARE = "\ue055";
+
+    /**
+     * Icon: INSTALOD
+     */
+    public static String INSTALOD = "\ue081";
+
+    /**
+     * Icon: INTERCOM
+     */
+    public static String INTERCOM = "\uf7af";
+
+    /**
+     * Icon: INTERNET_EXPLORER
+     */
+    public static String INTERNET_EXPLORER = "\uf26b";
+
+    /**
+     * Icon: INVISION
+     */
+    public static String INVISION = "\uf7b0";
+
+    /**
+     * Icon: IOXHOST
+     */
+    public static String IOXHOST = "\uf208";
+
+    /**
+     * Icon: ITCH_IO
+     */
+    public static String ITCH_IO = "\uf83a";
+
+    /**
+     * Icon: ITUNES
+     */
+    public static String ITUNES = "\uf3b4";
+
+    /**
+     * Icon: ITUNES_NOTE
+     */
+    public static String ITUNES_NOTE = "\uf3b5";
+
+    /**
+     * Icon: JAVA
+     */
+    public static String JAVA = "\uf4e4";
+
+    /**
+     * Icon: JENKINS
+     */
+    public static String JENKINS = "\uf3b6";
+
+    /**
+     * Icon: JIRA
+     */
+    public static String JIRA = "\uf7b1";
+
+    /**
+     * Icon: JOGET
+     */
+    public static String JOGET = "\uf3b7";
+
+    /**
+     * Icon: JOOMLA
+     */
+    public static String JOOMLA = "\uf1aa";
+
+    /**
+     * Icon: JS
+     */
+    public static String JS = "\uf3b8";
+
+    /**
+     * Icon: JS_SQUARE
+     */
+    public static String JS_SQUARE = "\uf3b9";
+
+    /**
+     * Icon: JSFIDDLE
+     */
+    public static String JSFIDDLE = "\uf1cc";
+
+    /**
+     * Icon: KAGGLE
+     */
+    public static String KAGGLE = "\uf5fa";
+
+    /**
+     * Icon: KEYBASE
+     */
+    public static String KEYBASE = "\uf4f5";
+
+    /**
+     * Icon: KEYCDN
+     */
+    public static String KEYCDN = "\uf3ba";
+
+    /**
+     * Icon: KICKSTARTER
+     */
+    public static String KICKSTARTER = "\uf3bb";
+
+    /**
+     * Icon: KICKSTARTER_K
+     */
+    public static String KICKSTARTER_K = "\uf3bc";
+
+    /**
+     * Icon: KORVUE
+     */
+    public static String KORVUE = "\uf42f";
+
+    /**
+     * Icon: LARAVEL
+     */
+    public static String LARAVEL = "\uf3bd";
+
+    /**
+     * Icon: LASTFM
+     */
+    public static String LASTFM = "\uf202";
+
+    /**
+     * Icon: LASTFM_SQUARE
+     */
+    public static String LASTFM_SQUARE = "\uf203";
+
+    /**
+     * Icon: LEANPUB
+     */
+    public static String LEANPUB = "\uf212";
+
+    /**
+     * Icon: LESS
+     */
+    public static String LESS = "\uf41d";
+
+    /**
+     * Icon: LINE
+     */
+    public static String LINE = "\uf3c0";
+
+    /**
+     * Icon: LINKEDIN
+     */
+    public static String LINKEDIN = "\uf08c";
+
+    /**
+     * Icon: LINKEDIN_IN
+     */
+    public static String LINKEDIN_IN = "\uf0e1";
+
+    /**
+     * Icon: LINODE
+     */
+    public static String LINODE = "\uf2b8";
+
+    /**
+     * Icon: LINUX
+     */
+    public static String LINUX = "\uf17c";
+
+    /**
+     * Icon: LYFT
+     */
+    public static String LYFT = "\uf3c3";
+
+    /**
+     * Icon: MAGENTO
+     */
+    public static String MAGENTO = "\uf3c4";
+
+    /**
+     * Icon: MAILCHIMP
+     */
+    public static String MAILCHIMP = "\uf59e";
+
+    /**
+     * Icon: MANDALORIAN
+     */
+    public static String MANDALORIAN = "\uf50f";
+
+    /**
+     * Icon: MARKDOWN
+     */
+    public static String MARKDOWN = "\uf60f";
+
+    /**
+     * Icon: MASTODON
+     */
+    public static String MASTODON = "\uf4f6";
+
+    /**
+     * Icon: MAXCDN
+     */
+    public static String MAXCDN = "\uf136";
+
+    /**
+     * Icon: MDB
+     */
+    public static String MDB = "\uf8ca";
+
+    /**
+     * Icon: MEDAPPS
+     */
+    public static String MEDAPPS = "\uf3c6";
+
+    /**
+     * Icon: MEDIUM
+     */
+    public static String MEDIUM = "\uf23a";
+
+    /**
+     * Icon: MEDIUM_M
+     */
+    public static String MEDIUM_M = "\uf3c7";
+
+    /**
+     * Icon: MEDRT
+     */
+    public static String MEDRT = "\uf3c8";
+
+    /**
+     * Icon: MEETUP
+     */
+    public static String MEETUP = "\uf2e0";
+
+    /**
+     * Icon: MEGAPORT
+     */
+    public static String MEGAPORT = "\uf5a3";
+
+    /**
+     * Icon: MENDELEY
+     */
+    public static String MENDELEY = "\uf7b3";
+
+    /**
+     * Icon: MICROBLOG
+     */
+    public static String MICROBLOG = "\ue01a";
+
+    /**
+     * Icon: MICROSOFT
+     */
+    public static String MICROSOFT = "\uf3ca";
+
+    /**
+     * Icon: MIX
+     */
+    public static String MIX = "\uf3cb";
+
+    /**
+     * Icon: MIXCLOUD
+     */
+    public static String MIXCLOUD = "\uf289";
+
+    /**
+     * Icon: MIXER
+     */
+    public static String MIXER = "\ue056";
+
+    /**
+     * Icon: MIZUNI
+     */
+    public static String MIZUNI = "\uf3cc";
+
+    /**
+     * Icon: MODX
+     */
+    public static String MODX = "\uf285";
+
+    /**
+     * Icon: MONERO
+     */
+    public static String MONERO = "\uf3d0";
+
+    /**
+     * Icon: NEOS
+     */
+    public static String NEOS = "\uf612";
+
+    /**
+     * Icon: NETWORK_WIRED
+     */
+    public static String NETWORK_WIRED = "\uf6ff";
+
+    /**
+     * Icon: NIMBLR
+     */
+    public static String NIMBLR = "\uf5a8";
+
+    /**
+     * Icon: NODE
+     */
+    public static String NODE = "\uf419";
+
+    /**
+     * Icon: NODE_JS
+     */
+    public static String NODE_JS = "\uf3d3";
+
+    /**
+     * Icon: NPM
+     */
+    public static String NPM = "\uf3d4";
+
+    /**
+     * Icon: NS8
+     */
+    public static String NS8 = "\uf3d5";
+
+    /**
+     * Icon: NUTRITIONIX
+     */
+    public static String NUTRITIONIX = "\uf3d6";
+
+    /**
+     * Icon: OCTOPUS_DEPLOY
+     */
+    public static String OCTOPUS_DEPLOY = "\ue082";
+
+    /**
+     * Icon: ODNOKLASSNIKI
+     */
+    public static String ODNOKLASSNIKI = "\uf263";
+
+    /**
+     * Icon: ODNOKLASSNIKI_SQUARE
+     */
+    public static String ODNOKLASSNIKI_SQUARE = "\uf264";
+
+    /**
+     * Icon: OPENCART
+     */
+    public static String OPENCART = "\uf23d";
+
+    /**
+     * Icon: OPENID
+     */
+    public static String OPENID = "\uf19b";
+
+    /**
+     * Icon: OPERA
+     */
+    public static String OPERA = "\uf26a";
+
+    /**
+     * Icon: OPTIN_MONSTER
+     */
+    public static String OPTIN_MONSTER = "\uf23c";
+
+    /**
+     * Icon: ORCID
+     */
+    public static String ORCID = "\uf8d2";
+
+    /**
+     * Icon: OSI
+     */
+    public static String OSI = "\uf41a";
+
+    /**
+     * Icon: PAGE4
+     */
+    public static String PAGE4 = "\uf3d7";
+
+    /**
+     * Icon: PAGELINES
+     */
+    public static String PAGELINES = "\uf18c";
+
+    /**
+     * Icon: PALFED
+     */
+    public static String PALFED = "\uf3d8";
+
+    /**
+     * Icon: PATREON
+     */
+    public static String PATREON = "\uf3d9";
+
+    /**
+     * Icon: PERBYTE
+     */
+    public static String PERBYTE = "\ue083";
+
+    /**
+     * Icon: PERISCOPE
+     */
+    public static String PERISCOPE = "\uf3da";
+
+    /**
+     * Icon: PHABRICATOR
+     */
+    public static String PHABRICATOR = "\uf3db";
+
+    /**
+     * Icon: PHOENIX_FRAMEWORK
+     */
+    public static String PHOENIX_FRAMEWORK = "\uf3dc";
+
+    /**
+     * Icon: PHOENIX_SQUADRON
+     */
+    public static String PHOENIX_SQUADRON = "\uf511";
+
+    /**
+     * Icon: PHP
+     */
+    public static String PHP = "\uf457";
+
+    /**
+     * Icon: PIED_PIPER
+     */
+    public static String PIED_PIPER = "\uf2ae";
+
+    /**
+     * Icon: PIED_PIPER_ALT
+     */
+    public static String PIED_PIPER_ALT = "\uf1a8";
+
+    /**
+     * Icon: PIED_PIPER_HAT
+     */
+    public static String PIED_PIPER_HAT = "\uf4e5";
+
+    /**
+     * Icon: PIED_PIPER_PP
+     */
+    public static String PIED_PIPER_PP = "\uf1a7";
+
+    /**
+     * Icon: PIED_PIPER_SQUARE
+     */
+    public static String PIED_PIPER_SQUARE = "\ue01e";
+
+    /**
+     * Icon: PINTEREST
+     */
+    public static String PINTEREST = "\uf0d2";
+
+    /**
+     * Icon: PINTEREST_P
+     */
+    public static String PINTEREST_P = "\uf231";
+
+    /**
+     * Icon: PINTEREST_SQUARE
+     */
+    public static String PINTEREST_SQUARE = "\uf0d3";
+
+    /**
+     * Icon: PLANE_SLASH
+     */
+    public static String PLANE_SLASH = "\ue069";
+
+    /**
+     * Icon: PRODUCT_HUNT
+     */
+    public static String PRODUCT_HUNT = "\uf288";
+
+    /**
+     * Icon: PUSHED
+     */
+    public static String PUSHED = "\uf3e1";
+
+    /**
+     * Icon: PYTHON
+     */
+    public static String PYTHON = "\uf3e2";
+
+    /**
+     * Icon: QQ
+     */
+    public static String QQ = "\uf1d6";
+
+    /**
+     * Icon: QUINSCAPE
+     */
+    public static String QUINSCAPE = "\uf459";
+
+    /**
+     * Icon: QUORA
+     */
+    public static String QUORA = "\uf2c4";
+
+    /**
+     * Icon: R_PROJECT
+     */
+    public static String R_PROJECT = "\uf4f7";
+
+    /**
+     * Icon: RASPBERRY_PI
+     */
+    public static String RASPBERRY_PI = "\uf7bb";
+
+    /**
+     * Icon: RAVELRY
+     */
+    public static String RAVELRY = "\uf2d9";
+
+    /**
+     * Icon: REACT
+     */
+    public static String REACT = "\uf41b";
+
+    /**
+     * Icon: REACTEUROPE
+     */
+    public static String REACTEUROPE = "\uf75d";
+
+    /**
+     * Icon: README
+     */
+    public static String README = "\uf4d5";
+
+    /**
+     * Icon: REBEL
+     */
+    public static String REBEL = "\uf1d0";
+
+    /**
+     * Icon: RED_RIVER
+     */
+    public static String RED_RIVER = "\uf3e3";
+
+    /**
+     * Icon: REDDIT
+     */
+    public static String REDDIT = "\uf1a1";
+
+    /**
+     * Icon: REDDIT_ALIEN
+     */
+    public static String REDDIT_ALIEN = "\uf281";
+
+    /**
+     * Icon: REDDIT_SQUARE
+     */
+    public static String REDDIT_SQUARE = "\uf1a2";
+
+    /**
+     * Icon: REDHAT
+     */
+    public static String REDHAT = "\uf7bc";
+
+    /**
+     * Icon: RENREN
+     */
+    public static String RENREN = "\uf18b";
+
+    /**
+     * Icon: REPLYD
+     */
+    public static String REPLYD = "\uf3e6";
+
+    /**
+     * Icon: RESEARCHGATE
+     */
+    public static String RESEARCHGATE = "\uf4f8";
+
+    /**
+     * Icon: RESOLVING
+     */
+    public static String RESOLVING = "\uf3e7";
+
+    /**
+     * Icon: REV
+     */
+    public static String REV = "\uf5b2";
+
+    /**
+     * Icon: ROCKETCHAT
+     */
+    public static String ROCKETCHAT = "\uf3e8";
+
+    /**
+     * Icon: ROCKRMS
+     */
+    public static String ROCKRMS = "\uf3e9";
+
+    /**
+     * Icon: RUST
+     */
+    public static String RUST = "\ue07a";
+
+    /**
+     * Icon: SAFARI
+     */
+    public static String SAFARI = "\uf267";
+
+    /**
+     * Icon: SALESFORCE
+     */
+    public static String SALESFORCE = "\uf83b";
+
+    /**
+     * Icon: SASS
+     */
+    public static String SASS = "\uf41e";
+
+    /**
+     * Icon: SCHLIX
+     */
+    public static String SCHLIX = "\uf3ea";
+
+    /**
+     * Icon: SCRIBD
+     */
+    public static String SCRIBD = "\uf28a";
+
+    /**
+     * Icon: SEARCHENGIN
+     */
+    public static String SEARCHENGIN = "\uf3eb";
+
+    /**
+     * Icon: SELLCAST
+     */
+    public static String SELLCAST = "\uf2da";
+
+    /**
+     * Icon: SELLSY
+     */
+    public static String SELLSY = "\uf213";
+
+    /**
+     * Icon: SERVICESTACK
+     */
+    public static String SERVICESTACK = "\uf3ec";
+
+    /**
+     * Icon: SHIRTSINBULK
+     */
+    public static String SHIRTSINBULK = "\uf214";
+
+    /**
+     * Icon: SHOPIFY
+     */
+    public static String SHOPIFY = "\ue057";
+
+    /**
+     * Icon: SHOPWARE
+     */
+    public static String SHOPWARE = "\uf5b5";
+
+    /**
+     * Icon: SIGNATURE
+     */
+    public static String SIGNATURE = "\uf5b7";
+
+    /**
+     * Icon: SIMPLYBUILT
+     */
+    public static String SIMPLYBUILT = "\uf215";
+
+    /**
+     * Icon: SISTRIX
+     */
+    public static String SISTRIX = "\uf3ee";
+
+    /**
+     * Icon: SITH
+     */
+    public static String SITH = "\uf512";
+
+    /**
+     * Icon: SKETCH
+     */
+    public static String SKETCH = "\uf7c6";
+
+    /**
+     * Icon: SKULL
+     */
+    public static String SKULL = "\uf54c";
+
+    /**
+     * Icon: SKYATLAS
+     */
+    public static String SKYATLAS = "\uf216";
+
+    /**
+     * Icon: SKYPE
+     */
+    public static String SKYPE = "\uf17e";
+
+    /**
+     * Icon: SLACK
+     */
+    public static String SLACK = "\uf198";
+
+    /**
+     * Icon: SLACK_HASH
+     */
+    public static String SLACK_HASH = "\uf3ef";
+
+    /**
+     * Icon: SLIDESHARE
+     */
+    public static String SLIDESHARE = "\uf1e7";
+
+    /**
+     * Icon: SNAPCHAT
+     */
+    public static String SNAPCHAT = "\uf2ab";
+
+    /**
+     * Icon: SNAPCHAT_GHOST
+     */
+    public static String SNAPCHAT_GHOST = "\uf2ac";
+
+    /**
+     * Icon: SNAPCHAT_SQUARE
+     */
+    public static String SNAPCHAT_SQUARE = "\uf2ad";
+
+    /**
+     * Icon: SOURCETREE
+     */
+    public static String SOURCETREE = "\uf7d3";
+
+    /**
+     * Icon: SPEAKAP
+     */
+    public static String SPEAKAP = "\uf3f3";
+
+    /**
+     * Icon: SPEAKER_DECK
+     */
+    public static String SPEAKER_DECK = "\uf83c";
+
+    /**
+     * Icon: SQUARESPACE
+     */
+    public static String SQUARESPACE = "\uf5be";
+
+    /**
+     * Icon: STACK_EXCHANGE
+     */
+    public static String STACK_EXCHANGE = "\uf18d";
+
+    /**
+     * Icon: STACK_OVERFLOW
+     */
+    public static String STACK_OVERFLOW = "\uf16c";
+
+    /**
+     * Icon: STACKPATH
+     */
+    public static String STACKPATH = "\uf842";
+
+    /**
+     * Icon: STAYLINKED
+     */
+    public static String STAYLINKED = "\uf3f5";
+
+    /**
+     * Icon: STICKER_MULE
+     */
+    public static String STICKER_MULE = "\uf3f7";
+
+    /**
+     * Icon: STOPWATCH_20
+     */
+    public static String STOPWATCH_20 = "\ue06f";
+
+    /**
+     * Icon: STRAVA
+     */
+    public static String STRAVA = "\uf428";
+
+    /**
+     * Icon: STUDIOVINARI
+     */
+    public static String STUDIOVINARI = "\uf3f8";
+
+    /**
+     * Icon: STUMBLEUPON
+     */
+    public static String STUMBLEUPON = "\uf1a4";
+
+    /**
+     * Icon: STUMBLEUPON_CIRCLE
+     */
+    public static String STUMBLEUPON_CIRCLE = "\uf1a3";
+
+    /**
+     * Icon: SUPERPOWERS
+     */
+    public static String SUPERPOWERS = "\uf2dd";
+
+    /**
+     * Icon: SUPPLE
+     */
+    public static String SUPPLE = "\uf3f9";
+
+    /**
+     * Icon: SUSE
+     */
+    public static String SUSE = "\uf7d6";
+
+    /**
+     * Icon: SWIFT
+     */
+    public static String SWIFT = "\uf8e1";
+
+    /**
+     * Icon: SYMFONY
+     */
+    public static String SYMFONY = "\uf83d";
+
+    /**
+     * Icon: TEAMSPEAK
+     */
+    public static String TEAMSPEAK = "\uf4f9";
+
+    /**
+     * Icon: TELEGRAM
+     */
+    public static String TELEGRAM = "\uf2c6";
+
+    /**
+     * Icon: TELEGRAM_PLANE
+     */
+    public static String TELEGRAM_PLANE = "\uf3fe";
+
+    /**
+     * Icon: TENCENT_WEIBO
+     */
+    public static String TENCENT_WEIBO = "\uf1d5";
+
+    /**
+     * Icon: THE_RED_YETI
+     */
+    public static String THE_RED_YETI = "\uf69d";
+
+    /**
+     * Icon: THEMECO
+     */
+    public static String THEMECO = "\uf5c6";
+
+    /**
+     * Icon: THEMEISLE
+     */
+    public static String THEMEISLE = "\uf2b2";
+
+    /**
+     * Icon: THINK_PEAKS
+     */
+    public static String THINK_PEAKS = "\uf731";
+
+    /**
+     * Icon: TIKTOK
+     */
+    public static String TIKTOK = "\ue07b";
+
+    /**
+     * Icon: TRADE_FEDERATION
+     */
+    public static String TRADE_FEDERATION = "\uf513";
+
+    /**
+     * Icon: TRELLO
+     */
+    public static String TRELLO = "\uf181";
+
+    /**
+     * Icon: TUMBLR
+     */
+    public static String TUMBLR = "\uf173";
+
+    /**
+     * Icon: TUMBLR_SQUARE
+     */
+    public static String TUMBLR_SQUARE = "\uf174";
+
+    /**
+     * Icon: TWITTER
+     */
+    public static String TWITTER = "\uf099";
+
+    /**
+     * Icon: TWITTER_SQUARE
+     */
+    public static String TWITTER_SQUARE = "\uf081";
+
+    /**
+     * Icon: TYPO3
+     */
+    public static String TYPO3 = "\uf42b";
+
+    /**
+     * Icon: UBER
+     */
+    public static String UBER = "\uf402";
+
+    /**
+     * Icon: UBUNTU
+     */
+    public static String UBUNTU = "\uf7df";
+
+    /**
+     * Icon: UIKIT
+     */
+    public static String UIKIT = "\uf403";
+
+    /**
+     * Icon: UMBRACO
+     */
+    public static String UMBRACO = "\uf8e8";
+
+    /**
+     * Icon: UNCHARTED
+     */
+    public static String UNCHARTED = "\ue084";
+
+    /**
+     * Icon: UNIREGISTRY
+     */
+    public static String UNIREGISTRY = "\uf404";
+
+    /**
+     * Icon: UNITY
+     */
+    public static String UNITY = "\ue049";
+
+    /**
+     * Icon: UNTAPPD
+     */
+    public static String UNTAPPD = "\uf405";
+
+    /**
+     * Icon: UPS
+     */
+    public static String UPS = "\uf7e0";
+
+    /**
+     * Icon: USB
+     */
+    public static String USB = "\uf287";
+
+    /**
+     * Icon: USPS
+     */
+    public static String USPS = "\uf7e1";
+
+    /**
+     * Icon: USSUNNAH
+     */
+    public static String USSUNNAH = "\uf407";
+
+    /**
+     * Icon: VAADIN
+     */
+    public static String VAADIN = "\uf408";
+
+    /**
+     * Icon: VIACOIN
+     */
+    public static String VIACOIN = "\uf237";
+
+    /**
+     * Icon: VIADEO
+     */
+    public static String VIADEO = "\uf2a9";
+
+    /**
+     * Icon: VIADEO_SQUARE
+     */
+    public static String VIADEO_SQUARE = "\uf2aa";
+
+    /**
+     * Icon: VIBER
+     */
+    public static String VIBER = "\uf409";
+
+    /**
+     * Icon: VIMEO
+     */
+    public static String VIMEO = "\uf40a";
+
+    /**
+     * Icon: VIMEO_SQUARE
+     */
+    public static String VIMEO_SQUARE = "\uf194";
+
+    /**
+     * Icon: VIMEO_V
+     */
+    public static String VIMEO_V = "\uf27d";
+
+    /**
+     * Icon: VINE
+     */
+    public static String VINE = "\uf1ca";
+
+    /**
+     * Icon: VK
+     */
+    public static String VK = "\uf189";
+
+    /**
+     * Icon: VNV
+     */
+    public static String VNV = "\uf40b";
+
+    /**
+     * Icon: VR_CARDBOARD
+     */
+    public static String VR_CARDBOARD = "\uf729";
+
+    /**
+     * Icon: VUEJS
+     */
+    public static String VUEJS = "\uf41f";
+
+    /**
+     * Icon: WATCHMAN_MONITORING
+     */
+    public static String WATCHMAN_MONITORING = "\ue087";
+
+    /**
+     * Icon: WAZE
+     */
+    public static String WAZE = "\uf83f";
+
+    /**
+     * Icon: WEEBLY
+     */
+    public static String WEEBLY = "\uf5cc";
+
+    /**
+     * Icon: WEIBO
+     */
+    public static String WEIBO = "\uf18a";
+
+    /**
+     * Icon: WEIGHT_HANGING
+     */
+    public static String WEIGHT_HANGING = "\uf5cd";
+
+    /**
+     * Icon: WEIXIN
+     */
+    public static String WEIXIN = "\uf1d7";
+
+    /**
+     * Icon: WHATSAPP
+     */
+    public static String WHATSAPP = "\uf232";
+
+    /**
+     * Icon: WHATSAPP_SQUARE
+     */
+    public static String WHATSAPP_SQUARE = "\uf40c";
+
+    /**
+     * Icon: WHMCS
+     */
+    public static String WHMCS = "\uf40d";
+
+    /**
+     * Icon: WIKIPEDIA_W
+     */
+    public static String WIKIPEDIA_W = "\uf266";
+
+    /**
+     * Icon: WINDOWS
+     */
+    public static String WINDOWS = "\uf17a";
+
+    /**
+     * Icon: WIX
+     */
+    public static String WIX = "\uf5cf";
+
+    /**
+     * Icon: WODU
+     */
+    public static String WODU = "\ue088";
+
+    /**
+     * Icon: WOLF_PACK_BATTALION
+     */
+    public static String WOLF_PACK_BATTALION = "\uf514";
+
+    /**
+     * Icon: WORDPRESS
+     */
+    public static String WORDPRESS = "\uf19a";
+
+    /**
+     * Icon: WORDPRESS_SIMPLE
+     */
+    public static String WORDPRESS_SIMPLE = "\uf411";
+
+    /**
+     * Icon: WPBEGINNER
+     */
+    public static String WPBEGINNER = "\uf297";
+
+    /**
+     * Icon: WPEXPLORER
+     */
+    public static String WPEXPLORER = "\uf2de";
+
+    /**
+     * Icon: WPFORMS
+     */
+    public static String WPFORMS = "\uf298";
+
+    /**
+     * Icon: WPRESSR
+     */
+    public static String WPRESSR = "\uf3e4";
+
+    /**
+     * Icon: XING
+     */
+    public static String XING = "\uf168";
+
+    /**
+     * Icon: XING_SQUARE
+     */
+    public static String XING_SQUARE = "\uf169";
+
+    /**
+     * Icon: Y_COMBINATOR
+     */
+    public static String Y_COMBINATOR = "\uf23b";
+
+    /**
+     * Icon: YAHOO
+     */
+    public static String YAHOO = "\uf19e";
+
+    /**
+     * Icon: YAMMER
+     */
+    public static String YAMMER = "\uf840";
+
+    /**
+     * Icon: YANDEX
+     */
+    public static String YANDEX = "\uf413";
+
+    /**
+     * Icon: YANDEX_INTERNATIONAL
+     */
+    public static String YANDEX_INTERNATIONAL = "\uf414";
+
+    /**
+     * Icon: YARN
+     */
+    public static String YARN = "\uf7e3";
+
+    /**
+     * Icon: YELP
+     */
+    public static String YELP = "\uf1e9";
+
+    /**
+     * Icon: YOAST
+     */
+    public static String YOAST = "\uf2b1";
+
+    /**
+     * Icon: YOUTUBE_SQUARE
+     */
+    public static String YOUTUBE_SQUARE = "\uf431";
+
+    /**
+     * Icon: ZHIHU
+     */
+    public static String ZHIHU = "\uf63f";
 }
