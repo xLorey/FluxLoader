@@ -1,3 +1,6 @@
+# FluxLoader v0.8.0
+- Added missing `Configuration` data types
+
 # FluxLoader v0.7.1
 - Fixed creation of plugins folder
 
