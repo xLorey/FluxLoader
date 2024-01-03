@@ -123,19 +123,31 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#captureMouse()" class="member-name-link">captureMouse</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#addCustomFont(java.net.URL,java.lang.String,float)" class="member-name-link">addCustomFont</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URL.html" title="class or interface in java.net" class="external-link">URL</a>&nbsp;path,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;fontName,
+ float&nbsp;size)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Change mouse capture state for ImGui widgets.</div>
+<div class="block">Loads and adds a font to ImGui from the resource specified by path.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawCredits()" class="member-name-link">drawCredits</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#captureMouse()" class="member-name-link">captureMouse</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">FluxLoader credits rendering update</div>
+<div class="block">Change mouse capture state for ImGui widgets.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawImGui()" class="member-name-link">drawImGui</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawCredits()" class="member-name-link">drawCredits</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">FluxLoader credits rendering update</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawImGui()" class="member-name-link">drawImGui</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Handling drawing of ImGui elements</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static imgui.ImFont</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getCustomFont(java.lang.String)" class="member-name-link">getCustomFont</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;fontName)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Gets a custom font by its name.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#init()" class="member-name-link">init</a>()</code></div>
@@ -233,6 +245,36 @@ loadScripts(document, 'script');</script>
 <h3>init</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">init</span>()</div>
 <div class="block">Initializing the UI Manager</div>
+</section>
+</li>
+<li>
+<section class="detail" id="getCustomFont(java.lang.String)">
+<h3>getCustomFont</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">imgui.ImFont</span>&nbsp;<span class="element-name">getCustomFont</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;fontName)</span></div>
+<div class="block">Gets a custom font by its name.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>fontName</code> - The name of the font to get.</dd>
+<dt>Returns:</dt>
+<dd>An ImFont object representing the custom font, or null,
+ if a font with the specified name is not found.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="addCustomFont(java.net.URL,java.lang.String,float)">
+<h3>addCustomFont</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addCustomFont</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URL.html" title="class or interface in java.net" class="external-link">URL</a>&nbsp;path,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;fontName,
+ float&nbsp;size)</span></div>
+<div class="block">Loads and adds a font to ImGui from the resource specified by path.
+ This method is intended for use with fonts embedded in the application JAR file.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>path</code> - Path to the font resource in the JAR file.</dd>
+<dd><code>fontName</code> - Font name (Its ID)</dd>
+<dd><code>size</code> - Font size.</dd>
+</dl>
 </section>
 </li>
 <li>
