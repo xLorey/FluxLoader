@@ -121,8 +121,8 @@ public class Configuration {
     public void save() {
         DumperOptions options = new DumperOptions();
         options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
-        options.setDefaultScalarStyle(DumperOptions.ScalarStyle.DOUBLE_QUOTED);
         options.setProcessComments(true);
+
         Yaml yaml = new Yaml(options);
 
         try (FileWriter writer = new FileWriter(configPath)) {
