@@ -18,8 +18,89 @@ public class TextTools {
      * @param b blue component of the text color, value from 0.0 to 1.0
      * @param a alpha component of the text color, value from 0.0 to 1.0
      */
-    public static void drawText(String text, UIFont font, int posX, int posY, float r, float g, float b, float a) {
+    public static void drawText(String text, UIFont font, float posX, float posY, float r, float g, float b, float a) {
         TextManager.instance.DrawString(font, posX, posY, text, r, g, b, a);
+    }
+
+    /**
+     * Draws text with a shadow.
+     * @param text The text to draw.
+     * @param font The font for the text.
+     * @param x X coordinate of the text.
+     * @param y Y coordinate of the text.
+     * @param r The red component of the text color.
+     * @param g The green component of the text color.
+     * @param b The blue component of the text color.
+     * @param a The alpha channel (transparency) of the text.
+     * @param shadowThickness The thickness of the shadow.
+     */
+    public static void drawTextWithShadow(String text, UIFont font, float x, float y, float r, float g, float b, float a, float shadowThickness) {
+        drawText(text, font, x + shadowThickness, y + shadowThickness, 0.0f, 0.0f, 0.0f, a);
+        drawText(text, font, x, y, r, g, b, a);
+    }
+
+    /**
+     * Draws text centered without a shadow.
+     * @param text The text to draw.
+     * @param font The font for the text.
+     * @param x X coordinate of the text center.
+     * @param y Y coordinate of the text center.
+     * @param r The red component of the text color.
+     * @param g The green component of the text color.
+     * @param b The blue component of the text color.
+     * @param a The alpha channel (transparency) of the text.
+     */
+    public static void drawTextCenter(String text, UIFont font, float x, float y, float r, float g, float b, float a) {
+        TextManager.instance.DrawStringCentre(font, x, y, text, r, g, b, a);
+    }
+
+    /**
+     * Draws text centered with a shadow and the specified thickness.
+     * @param text The text to draw.
+     * @param font The font for the text.
+     * @param x X coordinate of the text center.
+     * @param y Y coordinate of the text center.
+     * @param r The red component of the text color.
+     * @param g The green component of the text color.
+     * @param b The blue component of the text color.
+     * @param a The alpha channel (transparency) of the text.
+     * @param thickness The thickness of the text shadow.
+     */
+    public static void drawTextCenterWithShadow(String text, UIFont font, float x, float y, float r, float g, float b, float a, float thickness) {
+        drawTextCenter(text, font, x + thickness, y + thickness, 0.0f, 0.0f, 0.0f, a);
+        drawTextCenter(text, font, x, y, r, g, b, a);
+    }
+
+    /**
+     * Draws text on the right without a shadow.
+     * @param text The text to draw.
+     * @param font The font for the text.
+     * @param x X coordinate of the text center.
+     * @param y Y coordinate of the text center.
+     * @param r The red component of the text color.
+     * @param g The green component of the text color.
+     * @param b The blue component of the text color.
+     * @param a The alpha channel (transparency) of the text.
+     */
+    public static void drawTextRight(String text, UIFont font, float x, float y, float r, float g, float b, float a) {
+        TextManager.instance.DrawStringRight(font, x, y, text, r, g, b, a);
+    }
+
+    /**
+     * Draws text on the right with a shadow.
+     * @param text The text to draw.
+     * @param font The font for the text.
+     * @param x X coordinate of the right edge of the text.
+     * @param y Y coordinate of the right edge of the text.
+     * @param r The red component of the text color.
+     * @param g The green component of the text color.
+     * @param b The blue component of the text color.
+     * @param a The alpha channel (transparency) of the text.
+     * @param shadowThickness The thickness of the shadow.
+     */
+    public static void drawTextRightWithShadow(String text, UIFont font, float x, float y, float r, float g, float b, float a, float shadowThickness) {
+        drawTextRight(text, font, x + shadowThickness, y + shadowThickness, 0.0f, 0.0f, 0.0f, a);
+        drawTextRight(text, font, x, y, r, g, b, a);
     }
 
     /**

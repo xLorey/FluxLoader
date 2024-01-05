@@ -106,10 +106,10 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawText(java.lang.String,zombie.ui.UIFont,int,int,float,float,float,float)" class="member-name-link">drawText</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawText(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float)" class="member-name-link">drawText</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  zombie.ui.UIFont&nbsp;font,
- int&nbsp;posX,
- int&nbsp;posY,
+ float&nbsp;posX,
+ float&nbsp;posY,
  float&nbsp;r,
  float&nbsp;g,
  float&nbsp;b,
@@ -117,21 +117,84 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Drawing colored text at specified coordinates</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getFontHeight(zombie.ui.UIFont)" class="member-name-link">getFontHeight</a><wbr>(zombie.ui.UIFont&nbsp;font)</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawTextCenter(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float)" class="member-name-link">drawTextCenter</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ float&nbsp;x,
+ float&nbsp;y,
+ float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b,
+ float&nbsp;a)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Getting line height from a given font</div>
+<div class="block">Draws text centered without a shadow.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawTextCenterWithShadow(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float,float)" class="member-name-link">drawTextCenterWithShadow</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ float&nbsp;x,
+ float&nbsp;y,
+ float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b,
+ float&nbsp;a,
+ float&nbsp;thickness)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Draws text centered with a shadow and the specified thickness.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawTextRight(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float)" class="member-name-link">drawTextRight</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ float&nbsp;x,
+ float&nbsp;y,
+ float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b,
+ float&nbsp;a)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Draws text on the right without a shadow.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawTextRightWithShadow(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float,float)" class="member-name-link">drawTextRightWithShadow</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ float&nbsp;x,
+ float&nbsp;y,
+ float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b,
+ float&nbsp;a,
+ float&nbsp;shadowThickness)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Draws text on the right with a shadow.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawTextWithShadow(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float,float)" class="member-name-link">drawTextWithShadow</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ float&nbsp;x,
+ float&nbsp;y,
+ float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b,
+ float&nbsp;a,
+ float&nbsp;shadowThickness)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Draws text with a shadow.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getTextHeight(java.lang.String,zombie.ui.UIFont)" class="member-name-link">getTextHeight</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
- zombie.ui.UIFont&nbsp;font)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getFontHeight(zombie.ui.UIFont)" class="member-name-link">getFontHeight</a><wbr>(zombie.ui.UIFont&nbsp;font)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Returns the height of the given text in the specified font</div>
+<div class="block">Getting line height from a given font</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getTextWidth(java.lang.String,zombie.ui.UIFont)" class="member-name-link">getTextWidth</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getTextHeight(java.lang.String,zombie.ui.UIFont)" class="member-name-link">getTextHeight</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  zombie.ui.UIFont&nbsp;font)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Returns the height of the given text in the specified font</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getTextWidth(java.lang.String,zombie.ui.UIFont)" class="member-name-link">getTextWidth</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Returns the width of the given text in the specified font</div>
 </div>
 </div>
@@ -166,12 +229,12 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="drawText(java.lang.String,zombie.ui.UIFont,int,int,float,float,float,float)">
+<section class="detail" id="drawText(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float)">
 <h3>drawText</h3>
 <div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">drawText</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  zombie.ui.UIFont&nbsp;font,
- int&nbsp;posX,
- int&nbsp;posY,
+ float&nbsp;posX,
+ float&nbsp;posY,
  float&nbsp;r,
  float&nbsp;g,
  float&nbsp;b,
@@ -187,6 +250,137 @@ loadScripts(document, 'script');</script>
 <dd><code>g</code> - green component of the text color, value from 0.0 to 1.0</dd>
 <dd><code>b</code> - blue component of the text color, value from 0.0 to 1.0</dd>
 <dd><code>a</code> - alpha component of the text color, value from 0.0 to 1.0</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="drawTextWithShadow(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float,float)">
+<h3>drawTextWithShadow</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">drawTextWithShadow</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ float&nbsp;x,
+ float&nbsp;y,
+ float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b,
+ float&nbsp;a,
+ float&nbsp;shadowThickness)</span></div>
+<div class="block">Draws text with a shadow.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>text</code> - The text to draw.</dd>
+<dd><code>font</code> - The font for the text.</dd>
+<dd><code>x</code> - X coordinate of the text.</dd>
+<dd><code>y</code> - Y coordinate of the text.</dd>
+<dd><code>r</code> - The red component of the text color.</dd>
+<dd><code>g</code> - The green component of the text color.</dd>
+<dd><code>b</code> - The blue component of the text color.</dd>
+<dd><code>a</code> - The alpha channel (transparency) of the text.</dd>
+<dd><code>shadowThickness</code> - The thickness of the shadow.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="drawTextCenter(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float)">
+<h3>drawTextCenter</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">drawTextCenter</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ float&nbsp;x,
+ float&nbsp;y,
+ float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b,
+ float&nbsp;a)</span></div>
+<div class="block">Draws text centered without a shadow.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>text</code> - The text to draw.</dd>
+<dd><code>font</code> - The font for the text.</dd>
+<dd><code>x</code> - X coordinate of the text center.</dd>
+<dd><code>y</code> - Y coordinate of the text center.</dd>
+<dd><code>r</code> - The red component of the text color.</dd>
+<dd><code>g</code> - The green component of the text color.</dd>
+<dd><code>b</code> - The blue component of the text color.</dd>
+<dd><code>a</code> - The alpha channel (transparency) of the text.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="drawTextCenterWithShadow(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float,float)">
+<h3>drawTextCenterWithShadow</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">drawTextCenterWithShadow</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ float&nbsp;x,
+ float&nbsp;y,
+ float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b,
+ float&nbsp;a,
+ float&nbsp;thickness)</span></div>
+<div class="block">Draws text centered with a shadow and the specified thickness.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>text</code> - The text to draw.</dd>
+<dd><code>font</code> - The font for the text.</dd>
+<dd><code>x</code> - X coordinate of the text center.</dd>
+<dd><code>y</code> - Y coordinate of the text center.</dd>
+<dd><code>r</code> - The red component of the text color.</dd>
+<dd><code>g</code> - The green component of the text color.</dd>
+<dd><code>b</code> - The blue component of the text color.</dd>
+<dd><code>a</code> - The alpha channel (transparency) of the text.</dd>
+<dd><code>thickness</code> - The thickness of the text shadow.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="drawTextRight(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float)">
+<h3>drawTextRight</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">drawTextRight</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ float&nbsp;x,
+ float&nbsp;y,
+ float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b,
+ float&nbsp;a)</span></div>
+<div class="block">Draws text on the right without a shadow.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>text</code> - The text to draw.</dd>
+<dd><code>font</code> - The font for the text.</dd>
+<dd><code>x</code> - X coordinate of the text center.</dd>
+<dd><code>y</code> - Y coordinate of the text center.</dd>
+<dd><code>r</code> - The red component of the text color.</dd>
+<dd><code>g</code> - The green component of the text color.</dd>
+<dd><code>b</code> - The blue component of the text color.</dd>
+<dd><code>a</code> - The alpha channel (transparency) of the text.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="drawTextRightWithShadow(java.lang.String,zombie.ui.UIFont,float,float,float,float,float,float,float)">
+<h3>drawTextRightWithShadow</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">drawTextRightWithShadow</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ float&nbsp;x,
+ float&nbsp;y,
+ float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b,
+ float&nbsp;a,
+ float&nbsp;shadowThickness)</span></div>
+<div class="block">Draws text on the right with a shadow.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>text</code> - The text to draw.</dd>
+<dd><code>font</code> - The font for the text.</dd>
+<dd><code>x</code> - X coordinate of the right edge of the text.</dd>
+<dd><code>y</code> - Y coordinate of the right edge of the text.</dd>
+<dd><code>r</code> - The red component of the text color.</dd>
+<dd><code>g</code> - The green component of the text color.</dd>
+<dd><code>b</code> - The blue component of the text color.</dd>
+<dd><code>a</code> - The alpha channel (transparency) of the text.</dd>
+<dd><code>shadowThickness</code> - The thickness of the shadow.</dd>
 </dl>
 </section>
 </li>
