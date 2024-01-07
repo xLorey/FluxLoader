@@ -2,6 +2,7 @@
 - Added missing `Configuration` data types
 - Added new fonts for `ImGui` and the ability to load custom ones
 - Added tools for text, objects and rendering
+- Added a method to the `Plugin` class to get the config folder inside the folder with all plugins (`./plugins/{pluginName}/...`)
 
 # FluxLoader v0.7.1
 - Fixed creation of plugins folder

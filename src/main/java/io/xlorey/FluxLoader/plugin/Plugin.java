@@ -67,6 +67,15 @@ public class Plugin implements IPlugin {
     }
 
     /**
+     * Returns a File object representing the configuration directory for this plugin.
+     * The directory path is normalized to prevent problems with various file systems.
+     * @return A File object pointing to the normalized path to the plugin configuration directory.
+     */
+    public File getConfigFolder() {
+        return getMetadata().getConfigFolder();
+    }
+
+    /**
      * Returns the absolute path to the configuration file with the specified name.
      * The path is based on the plugin configuration folder and the specified configuration file name.
      * @param configName The name of the configuration file. This can simply be a file name (for example, "config.yml")
