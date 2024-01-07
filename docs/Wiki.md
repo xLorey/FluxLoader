@@ -7,7 +7,8 @@ Flux Loader provides many more features than it might seem at first glance. You 
 We also highly recommend that you familiarize yourself with these resources, they will greatly help you understand the logic of the game:
 -   [Project Zomboid Java Doc](https://zomboid-javadoc.com/)
 -   [Project Zomboid Events](https://pzwiki.net/wiki/Lua_Events)
--   [Flux Loader Custom Events](./Events.md)
+-   [Item storage](./items/items.md)
+-   [Flux Loader Java Doc](https://xlorey.github.io/FluxLoader/)
 -   [Flux Loader Java Doc](https://xlorey.github.io/FluxLoader/)
 
 # Content
