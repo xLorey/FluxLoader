@@ -40,7 +40,7 @@ Our tools already have:
 # Installation
 To install this project, you need to do the following:
 1) Download the latest version from the [releases page](https://github.com/xLorey/FluxLoader/releases)
-2) Transfer the downloaded Jar archive to the folder with the game (or server).
+2) Transfer the downloaded Jar archive to the game folder (for the server, place it in the `java` subfolder).
 3) Open the terminal (Windows command prompt) in the folder where the downloaded Jar file is located. Or enter the following command
 ```bash
 cd /D "{path}"
@@ -52,7 +52,9 @@ cd /D "{path}"
 ``{path}`` - is your path to the jar file folder
 
 > [!TIP]
-> For example, "C:\Program Files (x86)\Steam\steamapps\common\ProjectZomboid"
+> For example, the path for the client: `C:\Program Files (x86)\Steam\steamapps\common\ProjectZomboid`
+> 
+> for the server: `C:\Program Files (x86)\Steam\steamapps\common\Project Zomboid Dedicated Server\java`
 
 5) Enter the installation command in the context of the folder with the downloaded jar file:
 ```bash
