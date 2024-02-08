@@ -1,11 +1,15 @@
-package io.xlorey.FluxLoader.server.api;
+package io.xlorey.fluxloader.server.api;
 
 import lombok.experimental.UtilityClass;
 import zombie.core.raknet.UdpConnection;
 import zombie.network.chat.ChatServer;
 
 /**
- * A set of tools for server management
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 08.02.2024
+ * Description: A set of tools for server management
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @UtilityClass
 public class ServerUtils {

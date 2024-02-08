@@ -1,9 +1,8 @@
-package io.xlorey.FluxLoader.plugin;
+package io.xlorey.fluxloader.plugin;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import io.xlorey.FluxLoader.shared.PluginManager;
-import io.xlorey.FluxLoader.utils.Logger;
+import io.xlorey.fluxloader.utils.Logger;
 import lombok.Data;
 
 import java.io.*;
@@ -15,7 +14,11 @@ import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
 
 /**
- * The Metadata class represents plugin data loaded from the metadata.json file.
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 07.02.2024
+ * Description: The Metadata class represents plugin data loaded from the metadata.json file.
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @Data
 public class Metadata {
@@ -23,6 +26,11 @@ public class Metadata {
      * Tool for working with JSON files
      */
     private static final Gson gson = new Gson();
+
+    /**
+     * Metadata form version
+     */
+    private int metadataRevision;
 
     /**
      * Plugin name
@@ -115,7 +123,7 @@ public class Metadata {
                     try {
                         return gson.fromJson(jsonBuilder.toString(), Metadata.class);
                     } catch (JsonSyntaxException e) {
-                        Logger.printLog(String.format("Failed to convert metadata to required format in file '%s'", jarFile.getName()));
+                        Logger.print(String.format("Failed to convert metadata to required format in file '%s'", jarFile.getName()));
                         return null;
                     }
                 }

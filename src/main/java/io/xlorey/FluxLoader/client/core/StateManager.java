@@ -1,7 +1,7 @@
-package io.xlorey.FluxLoader.client.core;
+package io.xlorey.fluxloader.client.core;
 
-import io.xlorey.FluxLoader.client.states.FluxLogoState;
-import io.xlorey.FluxLoader.utils.Logger;
+import io.xlorey.fluxloader.client.states.FluxLogoState;
+import io.xlorey.fluxloader.utils.Logger;
 import zombie.GameWindow;
 import zombie.gameStates.GameState;
 import zombie.gameStates.TISLogoState;
@@ -9,7 +9,11 @@ import zombie.gameStates.TISLogoState;
 import java.util.List;
 
 /**
- * Game state manager
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 07.02.2024
+ * Description: Game state manager
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 public class StateManager {
     /**
@@ -24,7 +28,7 @@ public class StateManager {
             GameWindow.states.LoopToState = 2;
         }
         else {
-            Logger.printLog(String.format(
+            Logger.print(String.format(
                     "Unexpected GameState found at index 0 (%s) expected %s",
                     tisLogoState.getClass().getName(), TISLogoState.class.getName()));
         }
@@ -34,7 +38,7 @@ public class StateManager {
      * Initializing
      */
     public static void init() {
-        Logger.printLog("Initializing the state manager...");
+        Logger.print("Initializing the state manager...");
 
         initLogoState();
     }

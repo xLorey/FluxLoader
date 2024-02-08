@@ -3,12 +3,23 @@ plugins {
 }
 
 group = 'io.xlorey'
-version = '0.7.1'
+version = '0.8.0'
 
 repositories {
     mavenCentral()
 }
 
+/**
+ * Collector Variables
+ */
+ext {
+    buildPath = System.getenv('BUILD_DIR') ?: 'build';
+    fileName = "${rootProject.name}-${version}"
+}
+
+/**
+ * Project Dependencies
+ */
 dependencies {
     /**
      * Other dependencies
@@ -16,10 +27,10 @@ dependencies {
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
 
-    implementation 'org.ow2.asm:asm:9.6'
-    implementation 'org.ow2.asm:asm-tree:9.6'
-    implementation 'com.google.code.gson:gson:2.10.1'
+//    implementation 'net.bytebuddy:byte-buddy:1.14.11'
+    implementation 'org.javassist:javassist:3.30.2-GA'
     implementation 'org.yaml:snakeyaml:2.2'
+    implementation 'com.google.code.gson:gson:2.10.1'
 
     /**
      * Zomboid dependencies
@@ -37,19 +48,22 @@ dependencies {
     /**
      * ImGui
      */
-    implementation "io.github.spair:imgui-java-binding:1.86.11"
-    implementation "io.github.spair:imgui-java-lwjgl3:1.86.11"
-    implementation "io.github.spair:imgui-java-natives-windows:1.86.11"
-    implementation "io.github.spair:imgui-java-natives-macos:1.86.11"
-    implementation "io.github.spair:imgui-java-natives-linux:1.86.11"
+//    implementation "io.github.spair:imgui-java-binding:1.86.11"
+//    implementation "io.github.spair:imgui-java-lwjgl3:1.86.11"
+//    implementation "io.github.spair:imgui-java-natives-windows:1.86.11"
+//    implementation "io.github.spair:imgui-java-natives-macos:1.86.11"
+//    implementation "io.github.spair:imgui-java-natives-linux:1.86.11"
 
     /**
      * Test dependencies
      */
-    testImplementation platform('org.junit:junit-bom:5.10.1')
+    testImplementation platform('org.junit:junit-bom:5.10.2')
     testImplementation 'org.junit.jupiter:junit-jupiter'
 }
 
+/**
+ * Project testing
+ */
 test {
     useJUnitPlatform()
 }
@@ -70,15 +84,13 @@ processResources {
  * Creating an executable JAR file
  */
 jar {
-    String buildDir = System.getenv('BUILD_DIR') ?: 'build'
-
-    archiveFileName = "${rootProject.name}-${version}.jar"
-    destinationDirectory = file(buildDir)
+    archiveFileName = "${project.ext.fileName}.jar"
+    destinationDirectory = file(project.ext.buildPath)
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
 
     manifest {
         attributes(
-                'Main-Class': 'io.xlorey.FluxLoader.Main',
+                'Main-Class': 'io.xlorey.fluxloader.Main',
                 'Implementation-Title': 'FluxLoader',
                 'Implementation-Version': version,
                 'Implementation-Vendor': 'io.xlorey',
@@ -87,6 +99,7 @@ jar {
                 'Specification-Vendor': 'io.xlorey'
         )
     }
+
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
@@ -107,7 +120,8 @@ tasks.register('generateJavaDoc', Javadoc) {
     source = sourceSets.main.java.srcDirs
     classpath = configurations.compileClasspath
     destinationDir = file("docs/javadoc")
-    exclude '**/zombie/**'
+
+    options.addStringOption('Xdoclint:none', '-quiet')
 }
 
 /**
@@ -116,4 +130,31 @@ tasks.register('generateJavaDoc', Javadoc) {
 tasks.register('buildJar') {
     dependsOn generateJavaDoc
     finalizedBy jar
+}
+
+/**
+ * Packing the jar file and installers into one archive
+ */
+tasks.register("buildRelease", Zip) {
+    dependsOn buildJar
+    dependsOn jar
+
+    archiveBaseName.set("${rootProject.name}")
+    destinationDirectory.set(file("build/"))
+
+    from(project.ext.buildPath) {
+        include "${project.ext.fileName}.jar"
+    }
+
+    from('installer') {
+        into '/'
+        ['**/*.bat', '**/*.sh'].each { pattern ->
+            filesMatching(pattern) {
+                filter {
+                    it.replace('%PROJECT_VERSION%', version)
+                            .replace('%PROJECT_NAME%', rootProject.name)
+                }
+            }
+        }
+    }
 }

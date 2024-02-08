@@ -1,7 +1,7 @@
-package io.xlorey.FluxLoader.plugin;
+package io.xlorey.fluxloader.plugin;
 
-import io.xlorey.FluxLoader.interfaces.IPlugin;
-import io.xlorey.FluxLoader.utils.Logger;
+import io.xlorey.fluxloader.interfaces.IPlugin;
+import io.xlorey.fluxloader.utils.Logger;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +11,11 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Base class of all plugins
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 07.02.2024
+ * Description: Base class of all plugins
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 public class Plugin implements IPlugin {
     /**
@@ -67,6 +71,15 @@ public class Plugin implements IPlugin {
     }
 
     /**
+     * Returns a File object representing the configuration directory for this plugin.
+     * The directory path is normalized to prevent problems with various file systems.
+     * @return A File object pointing to the normalized path to the plugin configuration directory.
+     */
+    public File getConfigFolder() {
+        return getMetadata().getConfigFolder();
+    }
+
+    /**
      * Returns the absolute path to the configuration file with the specified name.
      * The path is based on the plugin configuration folder and the specified configuration file name.
      * @param configName The name of the configuration file. This can simply be a file name (for example, "config.yml")
@@ -106,7 +119,7 @@ public class Plugin implements IPlugin {
             try (InputStream in = getClass().getClassLoader().getResourceAsStream("config.yml");
                  FileOutputStream out = new FileOutputStream(defaultConfig)) {
                 if (in == null) {
-                    Logger.printLog(String.format("Could not find 'config.yml' in JAR resources for plugin '%s'",
+                    Logger.print(String.format("Could not find 'config.yml' in JAR resources for plugin '%s'",
                             getMetadata().getId()));
                     config = null;
                     return;

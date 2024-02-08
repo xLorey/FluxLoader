@@ -1,7 +1,11 @@
-package io.xlorey.FluxLoader.enums;
+package io.xlorey.fluxloader.enums;
 
 /**
- * Enumerates the scopes where a command can be executed.
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 08.02.2024
+ * Description: Enumerates the scopes where a command can be executed.
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 public enum CommandScope {
     /**
@@ -19,4 +23,3 @@ public enum CommandScope {
      */
     BOTH;
 }
-

@@ -1,9 +1,16 @@
-package io.xlorey.FluxLoader.annotations;
+package io.xlorey.fluxloader.annotations;
 
-import java.lang.annotation.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * An annotation that provides the text to be output to chat when the command is used
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 08.02.2024
+ * Description: An annotation that provides the text to be output to chat when the command is used
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})

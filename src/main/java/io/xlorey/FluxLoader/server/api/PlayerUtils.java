@@ -1,7 +1,7 @@
-package io.xlorey.FluxLoader.server.api;
+package io.xlorey.fluxloader.server.api;
 
-import io.xlorey.FluxLoader.shared.EventManager;
-import io.xlorey.FluxLoader.utils.Logger;
+import io.xlorey.fluxloader.shared.EventManager;
+import io.xlorey.fluxloader.utils.Logger;
 import lombok.experimental.UtilityClass;
 import zombie.characters.IsoPlayer;
 import zombie.core.raknet.UdpConnection;
@@ -13,7 +13,11 @@ import zombie.network.Userlog;
 import java.sql.SQLException;
 
 /**
- * A set of tools for player management, monitoring and analysis
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 08.02.2024
+ * Description: A set of tools for player management, monitoring and analysis
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @UtilityClass
 public class PlayerUtils {
@@ -110,7 +114,7 @@ public class PlayerUtils {
 
         String logMessage = String.format("Player `%s` (IP: %s | SteamID: %s) was kicked from this server for the following reason: `%s`",
                 player.getDisplayName(), playerConnection.ip, player.getSteamID(), reason);
-        Logger.printLog(logMessage);
+        Logger.print(logMessage);
     }
 
     /**
@@ -143,7 +147,7 @@ public class PlayerUtils {
 
         String logMessage = String.format("Player `%s` (IP: %s | SteamID: %s) was banned from this server for the following reason: `%s`",
                 player.getDisplayName(), playerConnection.ip, player.getSteamID(), reason);
-        Logger.printLog(logMessage);
+        Logger.print(logMessage);
     }
 
     /**
@@ -157,7 +161,7 @@ public class PlayerUtils {
             ServerWorldDatabase.instance.banSteamID(steamID, reason, true);
         } catch (SQLException e) {
             String errorMessage = String.format("Error while ban SteamID: '%s', error: %s", steamID, e);
-            Logger.printLog(errorMessage);
+            Logger.print(errorMessage);
         }
     }
 
@@ -172,7 +176,7 @@ public class PlayerUtils {
             ServerWorldDatabase.instance.banIp(playerConnection.ip, player.getUsername(), reason, true);
         } catch (SQLException e) {
             String errorMessage = String.format("Error while ban IP: '%s', error: %s", playerConnection.ip, e);
-            Logger.printLog(errorMessage);
+            Logger.print(errorMessage);
         }
     }
 
@@ -185,7 +189,7 @@ public class PlayerUtils {
             ServerWorldDatabase.instance.banUser(player.getUsername(), true);
         } catch (SQLException e) {
             String errorMessage = String.format("Error while ban user: '%s', error: %s", player.getUsername(), e);
-            Logger.printLog(errorMessage);
+            Logger.print(errorMessage);
         }
     }
 }

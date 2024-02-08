@@ -1,11 +1,17 @@
-package io.xlorey.FluxLoader.client.core;
+package io.xlorey.fluxloader.client.core;
 
-import io.xlorey.FluxLoader.shared.EventManager;
-import io.xlorey.FluxLoader.shared.PluginManager;
-import io.xlorey.FluxLoader.utils.Logger;
+import io.xlorey.fluxloader.client.handlers.OnInitWorldHandler;
+import io.xlorey.fluxloader.client.handlers.OnMainMenuEnterHandler;
+import io.xlorey.fluxloader.plugin.PluginManager;
+import io.xlorey.fluxloader.shared.EventManager;
+import io.xlorey.fluxloader.utils.Logger;
 
 /**
- * FluxLoader Core
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 07.02.2024
+ * Description: Flux Loader client core
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 public class Core {
     /**
@@ -20,12 +26,12 @@ public class Core {
     public static void init() throws Exception {
         Logger.printCredits();
 
-        Logger.printLog("FluxLoader Core initialization for the client...");
+        Logger.print("FluxLoader Core initialization for the client...");
 
-        EventManager.subscribe(new EventsHandler());
+        // Logic for enabling and disabling plugins
+        EventManager.subscribe(new OnInitWorldHandler());
+        EventManager.subscribe(new OnMainMenuEnterHandler());
 
         PluginManager.loadPlugins(true);
-
-        WidgetManager.init();
     }
 }

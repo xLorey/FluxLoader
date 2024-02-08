@@ -1,6 +1,6 @@
-package io.xlorey.FluxLoader.plugin;
+package io.xlorey.fluxloader.plugin;
 
-import io.xlorey.FluxLoader.utils.Logger;
+import io.xlorey.fluxloader.utils.Logger;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
@@ -8,7 +8,11 @@ import java.io.*;
 import java.util.*;
 
 /**
- * A set of tools for creating plugin configuration files
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 07.02.2024
+ * Description: A set of tools for creating plugin configuration files
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 public class Configuration {
     /**
@@ -83,18 +87,32 @@ public class Configuration {
     }
 
     /**
+     * Creates or loads a configuration file.
+     * If the file does not exist, it will be created using the create() method.
+     * After checking for the existence of the file (or creating it), the download occurs
+     * configurations using the load() method.
+     */
+    public void createOrLoadConfig() {
+        if (!isExists()) {
+            create();
+        }
+
+        load();
+    }
+
+    /**
      * Reloads the configuration file.
      * This method saves the current configuration to the file, then reloads the configuration
      * from the file, effectively refreshing the configuration in memory.
      * After reloading, the updated configuration is available for use.
      */
     public void reload() {
-        Logger.printLog("Reloading the configuration file: " + configName);
+        Logger.print("Reloading the configuration file: " + configName);
 
         save();
         load();
 
-        Logger.printLog(String.format("Configuration file '%s' has been reloaded.", configName));
+        Logger.print(String.format("Configuration file '%s' has been reloaded.", configName));
     }
 
     /**
@@ -107,6 +125,8 @@ public class Configuration {
     public void save() {
         DumperOptions options = new DumperOptions();
         options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+        options.setProcessComments(true);
+
         Yaml yaml = new Yaml(options);
 
         try (FileWriter writer = new FileWriter(configPath)) {
@@ -156,7 +176,7 @@ public class Configuration {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                Logger.printLog("An error occurred while creating the configuration file!");
+                Logger.print("An error occurred while creating the configuration file!");
             }
         }
     }
@@ -234,11 +254,71 @@ public class Configuration {
     }
 
     /**
+     * Gets the Long value for the specified configuration key.
+     * Returns 0L if the value is not found or is not a number.
+     * @param key Configuration key.
+     * @return A Long value for the key, or 0L if the key is not found or the value is not a number.
+     */
+    public long getLong(String key) {
+        Object value = getConfigValue(key);
+        return value instanceof Number ? ((Number) value).longValue() : 0L;
+    }
+
+    /**
+     * Gets the Short value for the specified configuration key.
+     * Returns 0 if the value is not found or is not a number.
+     * @param key Configuration key.
+     * @return A Short value for the key, or 0 if the key is not found or the value is not a number.
+     */
+    public short getShort(String key) {
+        Object value = getConfigValue(key);
+        return value instanceof Number ? ((Number) value).shortValue() : 0;
+    }
+
+    /**
+     * Gets a Byte value for the specified configuration key.
+     * Returns 0 if the value is not found or is not a number.
+     * @param key Configuration key.
+     * @return A Byte value for the key, or 0 if the key is not found or the value is not a number.
+     */
+    public byte getByte(String key) {
+        Object value = getConfigValue(key);
+        return value instanceof Number ? ((Number) value).byteValue() : 0;
+    }
+
+    /**
      * Sets the integer value for the specified configuration key.
      * @param key Configuration key.
      * @param value Integer value to set.
      */
     public void setInt(String key, int value) {
+        setConfigValue(key, value);
+    }
+
+    /**
+     * Sets a Long value for the specified configuration key.
+     * @param key Configuration key.
+     * @param value The Long value to set.
+     */
+    public void setLong(String key, long value) {
+        setConfigValue(key, value);
+    }
+
+    /**
+     * Sets the value of type Short to the specified configuration key.
+     * @param key Configuration key.
+     * @param value The Short value to set.
+     */
+    public void setShort(String key, short value) {
+        setConfigValue(key, value);
+    }
+
+    /**
+     * Sets a Byte value for the specified configuration key.
+     * @param key Configuration key.
+     * @param value The Byte value to set.
+     */
+    public void setByte(String key, byte value) {
         setConfigValue(key, value);
     }
 
@@ -283,6 +363,26 @@ public class Configuration {
     }
 
     /**
+     * Gets the float value for the specified configuration key.
+     * Returns 0.0f if the value is not found or is not a number.
+     * @param key Configuration key.
+     * @return The float value for the key, or 0.0f if the key is not found or the value is not a number.
+     */
+    public float getFloat(String key) {
+        Object value = getConfigValue(key);
+        return value instanceof Number ? ((Number) value).floatValue() : 0.0f;
+    }
+
+    /**
+     * Sets the float value for the specified configuration key.
+     * @param key Configuration key.
+     * @param value The floating point value to set.
+     */
+    public void setFloat(String key, float value) {
+        setConfigValue(key, value);
+    }
+
+    /**
      * Retrieves a List of objects for the specified configuration key.
      * Returns an empty list if the value is not found or is not a list.
      * @param key Configuration key.
@@ -320,6 +420,26 @@ public class Configuration {
      * @param value The string value to set to the specified key.
      */
     public void setString(String key, String value) {
+        setConfigValue(key, value);
+    }
+
+    /**
+     * Gets the character value (char) for the specified configuration key.
+     * Returns '\u0000' (null character) if the value is not found or is not a character.
+     * @param key Configuration key.
+     * @return The character value for the key, or '\u0000' if the key is not found or the value is not a character.
+     */
+    public char getChar(String key) {
+        Object value = getConfigValue(key);
+        return (value instanceof Character) ? (Character) value : '\u0000';
+    }
+
+    /**
+     * Sets the character value (char) for the specified configuration key.
+     * @param key Configuration key.
+     * @param value The character value to set.
+     */
+    public void setChar(String key, char value) {
         setConfigValue(key, value);
     }
 

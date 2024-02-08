@@ -1,9 +1,13 @@
-package io.xlorey.FluxLoader.enums;
+package io.xlorey.fluxloader.enums;
 
 import lombok.Getter;
 
 /**
- * Enumerates various access levels with priorities for comparison.
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 08.02.2024
+ * Description: Enumerates various access levels with priorities for comparison.
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @Getter
 public enum AccessLevel {

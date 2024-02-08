@@ -1,5 +1,4 @@
-package io.xlorey.FluxLoader.utils;
-
+package io.xlorey.fluxloader.utils;
 
 import lombok.experimental.UtilityClass;
 
@@ -9,7 +8,11 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 /**
- * Set of main fluxloader constants
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 07.02.2024
+ * Description: Set of main fluxloader constants
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @UtilityClass
 public class Constants {
@@ -19,34 +22,21 @@ public class Constants {
         public static final String PLUGINS_FOLDER_NAME = "plugins";
 
         /**
-         * Path to compiled game files
+         * Metadata form version
          */
-        public static final String PATH_TO_GAME_CLASS_FOLDER = "zombie";
+        public static final int PLUGINS_METADATA_REVISION = 1;
 
         /**
          * Path to the FluxLoader logo
          */
-        public static final String PATH_FLUXLOADER_LOGO = "io/xlorey/FluxLoader/media/FluxLoader-Logo.png";
+        public static final String PATH_FLUXLOADER_LOGO = "io/xlorey/fluxloader/media/FluxLoader-Logo.png";
 
         /**
          * Path to project files
          */
         public static final ArrayList<String> WHITELIST_FLUXLOADER_FILES = new ArrayList<>() {{
                 add("io/");
-                add("imgui/");
-                add("com/google/");
-                add("org/yaml/");
         }};
-
-        /**
-         * Project version
-         */
-        public static final String FLUX_VERSION;
-
-        /**
-         * Project name
-         */
-        public static final String FLUX_NAME;
 
         /**
          * Link to project github
@@ -58,12 +48,22 @@ public class Constants {
          */
         public static final String DISCORD_LINK = "https://discord.gg/BwSuTdEGJ4";
 
+        /**
+         * Project version
+         */
+        public static final String FLUX_VERSION;
+
+        /**
+         * Project name
+         */
+        public static final String FLUX_NAME;
+
         /*
           Initializing data and configuration file
          */
         static {
                 Properties properties = new Properties();
-                try (InputStream input = Constants.class.getClassLoader().getResourceAsStream("io/xlorey/FluxLoader/config/fluxloader.properties")) {
+                try (InputStream input = Constants.class.getClassLoader().getResourceAsStream("io/xlorey/fluxloader/config/fluxloader.properties")) {
                         if (input == null) {
                                 throw new IOException("Configuration file not found");
                         }

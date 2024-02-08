@@ -1,14 +1,14 @@
-package io.xlorey.FluxLoader.server.core;
+package io.xlorey.fluxloader.server.core;
 
-import io.xlorey.FluxLoader.annotations.CommandChatReturn;
-import io.xlorey.FluxLoader.annotations.CommandExecutionScope;
-import io.xlorey.FluxLoader.annotations.CommandName;
-import io.xlorey.FluxLoader.annotations.CommandAccessLevel;
-import io.xlorey.FluxLoader.enums.AccessLevel;
-import io.xlorey.FluxLoader.enums.CommandScope;
-import io.xlorey.FluxLoader.interfaces.ICommand;
-import io.xlorey.FluxLoader.server.api.PlayerUtils;
-import io.xlorey.FluxLoader.utils.Logger;
+import io.xlorey.fluxloader.annotations.CommandAccessLevel;
+import io.xlorey.fluxloader.annotations.CommandChatReturn;
+import io.xlorey.fluxloader.annotations.CommandExecutionScope;
+import io.xlorey.fluxloader.annotations.CommandName;
+import io.xlorey.fluxloader.enums.AccessLevel;
+import io.xlorey.fluxloader.enums.CommandScope;
+import io.xlorey.fluxloader.interfaces.ICommand;
+import io.xlorey.fluxloader.server.api.PlayerUtils;
+import io.xlorey.fluxloader.utils.Logger;
 import lombok.experimental.UtilityClass;
 import zombie.characters.IsoPlayer;
 import zombie.core.raknet.UdpConnection;
@@ -17,7 +17,11 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 /**
- * A set of tools for handling custom commands
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 08.02.2024
+ * Description: A set of tools for handling custom commands
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @UtilityClass
 public class CommandsManager {
@@ -73,7 +77,7 @@ public class CommandsManager {
         if (commandsMap.containsKey(commandName)) {
             throw new Exception(String.format("The '%s' command is already registered in the system!", commandName));
         }
-        Logger.printLog(String.format("Added new custom command: '%s'", commandName));
+        Logger.print(String.format("Added new custom command: '%s'", commandName));
 
         commandsMap.put(commandName, command);
     }
@@ -143,7 +147,7 @@ public class CommandsManager {
 
         String[] commandArgsToInvoke = Arrays.copyOfRange(commandArgs, 1, commandArgs.length);
         String playerName = playerConnection == null ? "Console" : playerConnection.username;
-        Logger.printLog(String.format("Player '%s' called command '%s' with arguments: '%s'", playerName, commandArgs[0], Arrays.toString(commandArgsToInvoke)));
+        Logger.print(String.format("Player '%s' called command '%s' with arguments: '%s'", playerName, commandArgs[0], Arrays.toString(commandArgsToInvoke)));
         command.onInvoke(playerConnection, commandArgsToInvoke);
 
         CommandChatReturn chatReturnAnnotation = command.getClass().getAnnotation(CommandChatReturn.class);

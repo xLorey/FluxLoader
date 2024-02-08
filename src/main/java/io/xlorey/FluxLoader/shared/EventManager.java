@@ -1,189 +1,110 @@
-package io.xlorey.FluxLoader.shared;
+package io.xlorey.fluxloader.shared;
 
-import io.xlorey.FluxLoader.annotations.SubscribeEvent;
-import io.xlorey.FluxLoader.annotations.SubscribeSingleEvent;
-import io.xlorey.FluxLoader.utils.Logger;
+import io.xlorey.fluxloader.events.Event;
+import io.xlorey.fluxloader.utils.Logger;
 import lombok.experimental.UtilityClass;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * Event calling and subscription system
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 07.02.2024
+ * Description: Manages event subscriptions and their raising.
+ *              Allows objects to register themselves as listeners for specific events and raise those events dynamically.
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @UtilityClass
 public class EventManager {
-    /**
-     * Event Listeners
-     */
-    private static final ArrayList<Object> listeners = new ArrayList<>();
+    private static final Map<String, List<Event>> listeners = new HashMap<>();
 
     /**
-     * Subscribing a listener class to events
-     * @param listener - Object listener
+     * Registers a listener object for a specific event.
+     * @param listener Event listener. Must have a handleEvent method with a signature corresponding to the event.
      */
-    public static void subscribe(Object listener) {
-        if (!isUniqueSingleEvents(listener)) {
-            return;
-        }
-
-        listeners.add(listener);
+    public static void subscribe(Event listener) {
+        String eventName = listener.getEventName();
+        listeners.computeIfAbsent(eventName.toLowerCase(), k -> new ArrayList<>()).add(listener);
     }
 
     /**
-     * Returns a set of unique event names marked with the SubscribeSingleEvent annotation.
-     * found in the methods of the specified listener object.
-     *
-     * @param listener A listener object whose methods search for event names.
-     * @return Set of unique event names.
+     * Raises an event by its name, passing arguments to listeners registered for that event.
+     * The method dynamically looks up and calls the handleEvent method on each event listener, passing the specified arguments.
+     * If an error occurs during a call, it is logged and the process continues for the remaining listeners.
+     * @param eventName The name of the event to raise. The event name is case insensitive.
+     * @param args Arguments to be passed to the event listener's handleEvent method. The type and number of arguments must match the expected parameters of the handleEvent method.
      */
-    private static HashSet<String> getSingleEventNames(Object listener) {
-        HashSet<String> eventNames = new HashSet<>();
-        for (Method method : listener.getClass().getDeclaredMethods()) {
-            if (method.isAnnotationPresent(SubscribeSingleEvent.class)) {
-                SubscribeSingleEvent annotation = method.getAnnotation(SubscribeSingleEvent.class);
-                eventNames.add(annotation.eventName());
+    public void invokeEvent(String eventName, Object... args) {
+        List<Event> eventListeners = listeners.get(eventName.toLowerCase());
+
+        if (eventListeners == null) return;
+
+        for (Event listener : eventListeners) {
+            try {
+                invokeHandleEvent(listener, args);
+            } catch (Exception e) {
+                Logger.print(String.format("An error occurred while trying to call method '%s' in listener '%s'!",
+                        eventName,
+                        listener.getClass()));
+                e.printStackTrace();
             }
         }
-        return eventNames;
     }
 
-    /**
-     * Checks whether the listener object contains methods with the same event names,
-     * marked with the SubscribeSingleEvent annotation, which are already registered in the system.
-     *
-     * @param newListener The listener object to test.
-     * @return true if there are no conflicting event names in the new listener, false otherwise.
+   /**
+     * Calls the handleEvent method on all registered event listeners.
+     * Each listener's handleEvent method must be compatible with the arguments passed.
+     * @param listener The event listener to be called.
+     * @param args Arguments passed to the listener's handleEvent method.
+     * @throws NoSuchMethodException if a handleEvent method with matching arguments is not found.
      */
-    private static boolean isUniqueSingleEvents(Object newListener) {
-        HashSet<String> newListenerEvents = getSingleEventNames(newListener);
+    private static void invokeHandleEvent(Event listener, Object[] args) throws NoSuchMethodException {
+        Method[] methods = listener.getClass().getMethods();
 
-        for (Object registeredListener : listeners) {
-            HashSet<String> registeredListenerEvents = getSingleEventNames(registeredListener);
-            for (String eventName : newListenerEvents) {
-                if (registeredListenerEvents.contains(eventName)) {
-                    Logger.printLog(String.format("Error subscribing class to events! Duplicate single event '%s' detected in '%s'! Skipping...",
-                            eventName,
-                            newListener.getClass().getName()));
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Calls a method marked with the SubscribeSingleEvent annotation that matches the given event name.
-     * The method must be compatible with the arguments provided. Returns the result of a method call.
-     *
-     * @param eventName The name of the event to raise.
-     * @return The result of calling the event method. Returns null if no matching method is found.
-     */
-    public static Object invokeSingleEventAndReturn(String eventName) {
-        return invokeSingleEventAndReturn(eventName, (Object[]) null);
-    }
-
-    /**
-     * Calls a method marked with the SubscribeSingleEvent annotation that matches the given event name.
-     * The method must be compatible with the arguments provided. Returns the result of a method call.
-     *
-     * @param eventName The name of the event to raise.
-     * @param args Arguments passed to the event method.
-     * @return The result of calling the event method. Returns null if no matching method is found.
-     */
-    public static Object invokeSingleEventAndReturn(String eventName, Object... args) {
-        for (Object listener : listeners) {
-            for (Method method : listener.getClass().getDeclaredMethods()) {
-                if (method.isAnnotationPresent(SubscribeSingleEvent.class)) {
-                    SubscribeSingleEvent annotation = method.getAnnotation(SubscribeSingleEvent.class);
-                    if (annotation.eventName().equals(eventName) && isMethodCompatible(method, eventName, args)) {
-                        try {
-                            method.setAccessible(true);
-                            return method.invoke(listener, args);
-                        } catch (InvocationTargetException e) {
-                            Throwable cause = e.getCause();
-                            String className = listener.getClass().getName();
-                            String methodName = method.getName();
-                            Logger.printLog(String.format("Error invoking single event '%s' method '%s' in class '%s': %s", eventName, methodName, className, Arrays.toString(cause.getStackTrace())));
-                        } catch (IllegalAccessException e) {
-                            Logger.printLog(String.format("Illegal access when invoking single event '%s' in class '%s': %s", eventName, listener.getClass().getName(), Arrays.toString(e.getStackTrace())));
-                        }
+        for (Method method : methods) {
+            if (isCompatibleMethod(method, args)) {
+                try {
+                    method.invoke(listener, args);
+                } catch (Exception e) {
+                    StringBuilder argTypes = new StringBuilder();
+                    for (Object arg : args) {
+                        argTypes.append(arg.getClass().getSimpleName()).append(", ");
                     }
-                }
-            }
-        }
-        return null;
-    }
-
-    /**
-     * Send an event to all listeners
-     * @param eventName event name
-     */
-    public static void invokeEvent(String eventName) {
-        invokeEvent(eventName, (Object[])null);
-    }
-
-    /**
-     * Send an event to all listeners
-     * @param eventName event name
-     * @param args event arguments
-     */
-    public static void invokeEvent(String eventName, Object... args) {
-        for (Object listener : listeners) {
-            for (Method method : listener.getClass().getDeclaredMethods()) {
-                if (method.isAnnotationPresent(SubscribeEvent.class)) {
-                    SubscribeEvent annotation = method.getAnnotation(SubscribeEvent.class);
-                    if (annotation.eventName().equals(eventName) && isMethodCompatible(method, eventName, args)) {
-                        try {
-                            method.setAccessible(true);
-                            method.invoke(listener, args);
-                        } catch (InvocationTargetException e) {
-                            Throwable cause = e.getCause();
-                            String className = listener.getClass().getName();
-                            String methodName = method.getName();
-                            Logger.printLog(String.format("Error invoking event '%s' method '%s' in class '%s': %s", eventName, methodName, className, Arrays.toString(cause.getStackTrace())));
-                        } catch (IllegalAccessException e) {
-                            Logger.printLog(String.format("Illegal access when invoking event '%s' in class '%s': %s", eventName, listener.getClass().getName(), Arrays.toString(e.getStackTrace())));
-                        }
+                    if (!argTypes.isEmpty()) {
+                        argTypes = new StringBuilder(argTypes.substring(0, argTypes.length() - 2));
                     }
+
+                    throw new RuntimeException(String.format("Failed to invoke 'handleEvent' on %s with arguments [%s]. Error: %s",
+                            listener.getClass().getName(), argTypes, e.getCause().getMessage()), e);
                 }
+                return;
             }
         }
+
+        throw new NoSuchMethodException("Compatible 'handleEvent' method not found for event  '" + listener.getEventName() + "'");
     }
 
     /**
-     * Checking the called method to ensure that the arguments and their types match correctly
-     * @param method called method
-     * @param eventName event name
-     * @param args event arguments
-     * @return true - check passed, false - check failed
+     * Checks whether the method meets the requirements to be called.
+     * The method must be named "handleEvent" and have parameter types compatible with the arguments passed.
+     * @param method Method to check.
+     * @param args Arguments to be passed to the method.
+     * @return true if the method meets the requirements to be called.
      */
-    private static boolean isMethodCompatible(Method method, String eventName, Object[] args) {
-        if (args == null || args.length == 0) {
-            return method.getParameterCount() == 0;
-        }
-
-        if (method.getParameterCount() != args.length) {
-            Logger.printLog(String.format("Number of arguments mismatch when calling event '%s' in method '%s' (class '%s')",
-                    eventName, method.getName(), method.getDeclaringClass().getSimpleName()));
+    private static boolean isCompatibleMethod(Method method, Object[] args) {
+        if (!method.getName().equals("handleEvent") || method.getParameterTypes().length != args.length) {
             return false;
         }
 
-        Class<?>[] parameterTypes = method.getParameterTypes();
-        for (int i = 0; i < parameterTypes.length; i++) {
-            if (!parameterTypes[i].isInstance(args[i])) {
-                String expectedTypeName = parameterTypes[i].getName();
-                String receivedTypeName = args[i] == null ? "null" : args[i].getClass().getName();
-
-                Logger.printLog(String.format("Mismatch of passed and received argument types when calling event '%s' in method '%s' (class '%s'). Expected '%s', but got '%s'",
-                        eventName, method.getName(), method.getDeclaringClass().getSimpleName(), expectedTypeName, receivedTypeName));
+        for (int i = 0; i < method.getParameterTypes().length; i++) {
+            if (!method.getParameterTypes()[i].isAssignableFrom(args[i].getClass())) {
                 return false;
             }
         }
-
         return true;
     }
 }

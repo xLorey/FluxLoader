@@ -1,6 +1,6 @@
-package io.xlorey.FluxLoader.client.states;
+package io.xlorey.fluxloader.client.states;
 
-import io.xlorey.FluxLoader.utils.Constants;
+import io.xlorey.fluxloader.utils.Constants;
 import zombie.GameTime;
 import zombie.core.Core;
 import zombie.core.SpriteRenderer;
@@ -12,7 +12,11 @@ import zombie.input.Mouse;
 import zombie.ui.UIManager;
 
 /**
- * New state when starting the game - showing the bootloader logo
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 07.02.2024
+ * Description: New state when starting the game - showing the bootloader logo
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 public class FluxLogoState extends GameState {
 

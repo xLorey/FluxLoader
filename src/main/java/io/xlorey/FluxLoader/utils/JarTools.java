@@ -1,4 +1,4 @@
-package io.xlorey.FluxLoader.utils;
+package io.xlorey.fluxloader.utils;
 
 import lombok.experimental.UtilityClass;
 
@@ -15,7 +15,11 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 /**
- * A set of tools for working with Jar archives
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 07.02.2024
+ * Description: A set of tools for working with Jar archives
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @UtilityClass
 public class JarTools {
@@ -31,7 +35,7 @@ public class JarTools {
             File jarFileObj = new File(jarFile.getName());
             String jarFileName = jarFileObj.getName();
 
-            Logger.printSystem(String.format("Trying to unpack '%s' archive...", jarFileName));
+            Logger.print(String.format("Trying to unpack '%s' archive...", jarFileName));
 
             Enumeration<JarEntry> entries = jarFile.entries();
 
@@ -57,7 +61,7 @@ public class JarTools {
                 }
             }
 
-            Logger.printSystem(String.format("Unzipping '%s' completed!", jarFileName));
+            Logger.print(String.format("Unzipping '%s' completed!", jarFileName));
         }
     }
 
@@ -68,7 +72,7 @@ public class JarTools {
      * @return a list of file paths.
      * @exception IOException on I/O error.
      */
-   public static ArrayList<String> getFilesInFolder(String jarPath, String folderPath) throws IOException {
+   public static ArrayList<String> getFilesInJarFolder(String jarPath, String folderPath) throws IOException {
        ArrayList<String> filePaths = new ArrayList<>();
 
        Path folderPathObj = Paths.get(folderPath).normalize();
@@ -105,7 +109,7 @@ public class JarTools {
             File jarFileObj = new File(jarFile.getName());
             String jarFileName = jarFileObj.getName();
 
-            Logger.printSystem(String.format("Trying to delete files from '%s' archive...", jarFileName));
+            Logger.print(String.format("Trying to delete files from '%s' archive...", jarFileName));
 
             Enumeration<JarEntry> entries = jarFile.entries();
 
@@ -119,7 +123,7 @@ public class JarTools {
                 }
             }
 
-            Logger.printSystem(String.format("Deleting archive files '%s' completed!", jarFileName));
+            Logger.print(String.format("Deleting archive files '%s' completed!", jarFileName));
         }
     }
 

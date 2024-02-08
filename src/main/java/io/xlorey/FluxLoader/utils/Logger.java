@@ -1,16 +1,16 @@
-package io.xlorey.FluxLoader.utils;
+package io.xlorey.fluxloader.utils;
 
 import lombok.experimental.UtilityClass;
-import zombie.core.logger.LoggerManager;
-import zombie.core.logger.ZLogger;
-import zombie.debug.DebugLog;
-import zombie.network.GameServer;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * A set of tools to simplify logging
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 07.02.2024
+ * Description: A set of tools to simplify logging
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @UtilityClass
 public class Logger {
@@ -18,28 +18,10 @@ public class Logger {
      * Outputting a message to the console installer
      * @param text message
      */
-    public static void printSystem(String text) {
+    public static void print(String text) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         String time = LocalDateTime.now().format(formatter);
-        System.out.println(String.format("<%s> [%s]: %s", time, Constants.FLUX_NAME, text));
-    }
-
-    /**
-     * Outputting a message to the console/logs
-     * @param text message
-     */
-    public static void printLog(String text) {
-        ZLogger fluxLogger = LoggerManager.getLogger(GameServer.bServer ? "FluxLog-server" : "FluxLog-client");
-        fluxLogger.write(text, "FluxLogger");
-    }
-
-    /**
-     * Outputting a message to the console/logs
-     * @param logger custom logger
-     * @param text message
-     */
-    public static void printLog(ZLogger logger, String text) {
-        logger.write(text);
+        System.out.println(String.format("<%s> | %s", time, text));
     }
 
     /**

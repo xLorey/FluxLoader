@@ -1,16 +1,18 @@
-package io.xlorey.FluxLoader.utils;
+package io.xlorey.fluxloader.utils;
 
 import lombok.experimental.UtilityClass;
 
 /**
- * Version checking toolkit
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 07.02.2024
+ * Description: Version checking toolkit
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @UtilityClass
 public class VersionChecker {
-
     /**
      * Checks whether a version meets a given condition.
-     *
      * @param versionCondition Version condition, for example, ">=41.78.16".
      * @param currentVersion The current version for comparison, for example, "41.78.16".
      * @return true if the current version matches the condition.
@@ -32,7 +34,6 @@ public class VersionChecker {
 
     /**
      * Extracts the comparison operator from a version condition.
-     *
      * @param condition The version condition string, e.g., ">=41.78.16".
      * @return The extracted ComparisonOperator.
      */
@@ -62,7 +63,6 @@ public class VersionChecker {
 
     /**
      * Compares two version strings.
-     *
      * @param versionOne Version 1.
      * @param versionTwo Version 2.
      * @return 0, if v1 == v2; value < 0 if v1 < v2; value > 0 if v1 > v2.

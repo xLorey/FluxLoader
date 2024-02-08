@@ -1,11 +1,18 @@
-package io.xlorey.FluxLoader.annotations;
+package io.xlorey.fluxloader.annotations;
 
-import io.xlorey.FluxLoader.enums.CommandScope;
+import io.xlorey.fluxloader.enums.CommandScope;
 
-import java.lang.annotation.*;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
 
 /**
- * An annotation to specify the scope where a command can be executed.
+ * Author: Deknil
+ * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ * Date: 08.02.2024
+ * Description: An annotation to specify the scope where a command can be executed.
+ * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE})
