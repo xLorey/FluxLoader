@@ -1,6 +1,7 @@
 io.xlorey.fluxloader
 io.xlorey.fluxloader.annotations
 io.xlorey.fluxloader.client.core
+io.xlorey.fluxloader.client.handlers
 io.xlorey.fluxloader.client.states
 io.xlorey.fluxloader.enums
 io.xlorey.fluxloader.events
