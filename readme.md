@@ -52,9 +52,7 @@ cd /D "{path}"
 ``{path}`` - is your path to the jar file folder
 
 > [!TIP]
-> For example, the path for the client: `C:\Program Files (x86)\Steam\steamapps\common\ProjectZomboid`
->
-> for the server: `C:\Program Files (x86)\Steam\steamapps\common\Project Zomboid Dedicated Server\java`
+> For example, the path for client and server: `C:\Program Files (x86)\Steam\steamapps\common\ProjectZomboid`
 
 5) Enter the installation command in the context of the folder with the downloaded jar file:
 ```bash
