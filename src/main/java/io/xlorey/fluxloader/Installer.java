@@ -37,6 +37,8 @@ public class Installer {
         add(new PatchQuitCommand("zombie.commands.serverCommands.QuitCommand"));
         add(new PatchChatServer("zombie.network.chat.ChatServer"));
         add(new PatchGameServer("zombie.network.GameServer"));
+        add(new PatchSpriteRenderer("zombie.core.SpriteRenderer"));
+        add(new PatchUIManager("zombie.ui.UIManager"));
     }};
 
     /**

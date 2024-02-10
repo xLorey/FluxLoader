@@ -11,14 +11,6 @@ if not exist "%JAR_FILE%" (
     echo [%PROJECT_NAME%]: File '%JAR_FILE%' found.
 )
 
-echo [%PROJECT_NAME%]: Checking for 'zombie' folder...
-if not exist "zombie\" (
-    echo [%PROJECT_NAME%]: Error - 'zombie' folder not found. Please unzip the contents of the archive into the game folder.
-    goto end
-) else (
-    echo [%PROJECT_NAME%]: 'zombie' folder found.
-)
-
 echo [%PROJECT_NAME%]: Starting %JAR_FILE%...
 echo.
 

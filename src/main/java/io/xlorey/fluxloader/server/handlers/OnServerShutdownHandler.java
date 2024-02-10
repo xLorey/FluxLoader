@@ -2,6 +2,7 @@ package io.xlorey.fluxloader.server.handlers;
 
 import io.xlorey.fluxloader.events.OnServerShutdown;
 import io.xlorey.fluxloader.plugin.PluginManager;
+import io.xlorey.fluxloader.plugin.PluginRegistry;
 
 /**
  * Author: Deknil
@@ -13,6 +14,6 @@ import io.xlorey.fluxloader.plugin.PluginManager;
 public class OnServerShutdownHandler extends OnServerShutdown {
     @Override
     public void handleEvent() {
-        PluginManager.terminatePlugins(PluginManager.getLoadedServerPlugins());
+        PluginManager.terminatePlugins(PluginRegistry.getLoadedServerPlugins());
     }
 }

@@ -11,14 +11,6 @@ else
     echo "[%PROJECT_NAME%]: File '${JAR_FILE}' found."
 fi
 
-echo "[%PROJECT_NAME%]: Checking for 'zombie' folder..."
-if [ ! -d "zombie" ]; then
-    echo "[%PROJECT_NAME%]: Error - 'zombie' folder not found. Please unzip the contents of the archive into the game folder."
-    exit 1
-else
-    echo "[%PROJECT_NAME%]: 'zombie' folder found."
-fi
-
 echo "[%PROJECT_NAME%]: Starting ${JAR_FILE}..."
 java -jar ./${JAR_FILE} --install
 

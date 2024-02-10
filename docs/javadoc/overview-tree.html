@@ -52,9 +52,12 @@ loadScripts(document, 'script');</script>
 <ul class="horizontal">
 <li><a href="io/xlorey/fluxloader/package-tree.html">io.xlorey.fluxloader</a>, </li>
 <li><a href="io/xlorey/fluxloader/annotations/package-tree.html">io.xlorey.fluxloader.annotations</a>, </li>
+<li><a href="io/xlorey/fluxloader/client/api/package-tree.html">io.xlorey.fluxloader.client.api</a>, </li>
 <li><a href="io/xlorey/fluxloader/client/core/package-tree.html">io.xlorey.fluxloader.client.core</a>, </li>
 <li><a href="io/xlorey/fluxloader/client/handlers/package-tree.html">io.xlorey.fluxloader.client.handlers</a>, </li>
 <li><a href="io/xlorey/fluxloader/client/states/package-tree.html">io.xlorey.fluxloader.client.states</a>, </li>
+<li><a href="io/xlorey/fluxloader/client/ui/package-tree.html">io.xlorey.fluxloader.client.ui</a>, </li>
+<li><a href="io/xlorey/fluxloader/client/ui/pluginMenu/package-tree.html">io.xlorey.fluxloader.client.ui.pluginMenu</a>, </li>
 <li><a href="io/xlorey/fluxloader/enums/package-tree.html">io.xlorey.fluxloader.enums</a>, </li>
 <li><a href="io/xlorey/fluxloader/events/package-tree.html">io.xlorey.fluxloader.events</a>, </li>
 <li><a href="io/xlorey/fluxloader/interfaces/package-tree.html">io.xlorey.fluxloader.interfaces</a>, </li>
@@ -62,6 +65,7 @@ loadScripts(document, 'script');</script>
 <li><a href="io/xlorey/fluxloader/plugin/package-tree.html">io.xlorey.fluxloader.plugin</a>, </li>
 <li><a href="io/xlorey/fluxloader/server/api/package-tree.html">io.xlorey.fluxloader.server.api</a>, </li>
 <li><a href="io/xlorey/fluxloader/server/core/package-tree.html">io.xlorey.fluxloader.server.core</a>, </li>
+<li><a href="io/xlorey/fluxloader/server/handlers/package-tree.html">io.xlorey.fluxloader.server.handlers</a>, </li>
 <li><a href="io/xlorey/fluxloader/shared/package-tree.html">io.xlorey.fluxloader.shared</a>, </li>
 <li><a href="io/xlorey/fluxloader/utils/package-tree.html">io.xlorey.fluxloader.utils</a></li>
 </ul>
@@ -90,7 +94,7 @@ loadScripts(document, 'script');</script>
 <li class="circle">io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/Constants.html" class="type-name-link" title="class in io.xlorey.fluxloader.utils">Constants</a></li>
 <li class="circle">io.xlorey.fluxloader.client.core.<a href="io/xlorey/fluxloader/client/core/Core.html" class="type-name-link" title="class in io.xlorey.fluxloader.client.core">Core</a></li>
 <li class="circle">io.xlorey.fluxloader.server.core.<a href="io/xlorey/fluxloader/server/core/Core.html" class="type-name-link" title="class in io.xlorey.fluxloader.server.core">Core</a></li>
-<li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/Event.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">Event</a> (implements io.xlorey.fluxloader.interfaces.<a href="io/xlorey/fluxloader/interfaces/IEvent.html" title="interface in io.xlorey.fluxloader.interfaces">IEvent</a>)
+<li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/Event.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">Event</a>
 <ul>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnAcceptedFactionInvite.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnAcceptedFactionInvite</a></li>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnAcceptedSafehouseInvite.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnAcceptedSafehouseInvite</a></li>
@@ -227,7 +231,16 @@ loadScripts(document, 'script');</script>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPostMapLoad.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPostMapLoad</a></li>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPostRender.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPostRender</a></li>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPostSave.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPostSave</a></li>
-<li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPostUIDraw.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPostUIDraw</a></li>
+<li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPostTickRenderThread.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPostTickRenderThread</a>
+<ul>
+<li class="circle">io.xlorey.fluxloader.client.handlers.<a href="io/xlorey/fluxloader/client/handlers/OnPostTickRenderThreadHandler.html" class="type-name-link" title="class in io.xlorey.fluxloader.client.handlers">OnPostTickRenderThreadHandler</a></li>
+</ul>
+</li>
+<li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPostUIDraw.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPostUIDraw</a>
+<ul>
+<li class="circle">io.xlorey.fluxloader.client.handlers.<a href="io/xlorey/fluxloader/client/handlers/OnPostUIDrawHandler.html" class="type-name-link" title="class in io.xlorey.fluxloader.client.handlers">OnPostUIDrawHandler</a></li>
+</ul>
+</li>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPreAddCatDefs.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPreAddCatDefs</a></li>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPreAddForageDefs.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPreAddForageDefs</a></li>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPreAddItemDefs.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPreAddItemDefs</a></li>
@@ -263,7 +276,11 @@ loadScripts(document, 'script');</script>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnServerFinishSaving.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnServerFinishSaving</a></li>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnServerInitialize.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnServerInitialize</a></li>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnServerPinged.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnServerPinged</a></li>
-<li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnServerShutdown.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnServerShutdown</a></li>
+<li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnServerShutdown.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnServerShutdown</a>
+<ul>
+<li class="circle">io.xlorey.fluxloader.server.handlers.<a href="io/xlorey/fluxloader/server/handlers/OnServerShutdownHandler.html" class="type-name-link" title="class in io.xlorey.fluxloader.server.handlers">OnServerShutdownHandler</a></li>
+</ul>
+</li>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnServerStarted.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnServerStarted</a></li>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnServerStartSaving.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnServerStartSaving</a></li>
 <li class="circle">io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnServerStatisticReceived.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnServerStatisticReceived</a></li>
@@ -337,15 +354,26 @@ loadScripts(document, 'script');</script>
 <li class="circle">io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchKickUserCommand.html" class="type-name-link" title="class in io.xlorey.fluxloader.patches">PatchKickUserCommand</a></li>
 <li class="circle">io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchLuaEventManager.html" class="type-name-link" title="class in io.xlorey.fluxloader.patches">PatchLuaEventManager</a></li>
 <li class="circle">io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchQuitCommand.html" class="type-name-link" title="class in io.xlorey.fluxloader.patches">PatchQuitCommand</a></li>
+<li class="circle">io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchSpriteRenderer.html" class="type-name-link" title="class in io.xlorey.fluxloader.patches">PatchSpriteRenderer</a></li>
+<li class="circle">io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchUIManager.html" class="type-name-link" title="class in io.xlorey.fluxloader.patches">PatchUIManager</a></li>
 </ul>
 </li>
 <li class="circle">io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/PatchTools.html" class="type-name-link" title="class in io.xlorey.fluxloader.utils">PatchTools</a></li>
 <li class="circle">io.xlorey.fluxloader.server.api.<a href="io/xlorey/fluxloader/server/api/PlayerUtils.html" class="type-name-link" title="class in io.xlorey.fluxloader.server.api">PlayerUtils</a></li>
 <li class="circle">io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/Plugin.html" class="type-name-link" title="class in io.xlorey.fluxloader.plugin">Plugin</a> (implements io.xlorey.fluxloader.interfaces.<a href="io/xlorey/fluxloader/interfaces/IPlugin.html" title="interface in io.xlorey.fluxloader.interfaces">IPlugin</a>)</li>
 <li class="circle">io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginManager.html" class="type-name-link" title="class in io.xlorey.fluxloader.plugin">PluginManager</a></li>
+<li class="circle">io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginRegistry.html" class="type-name-link" title="class in io.xlorey.fluxloader.plugin">PluginRegistry</a></li>
 <li class="circle">io.xlorey.fluxloader.server.api.<a href="io/xlorey/fluxloader/server/api/ServerUtils.html" class="type-name-link" title="class in io.xlorey.fluxloader.server.api">ServerUtils</a></li>
 <li class="circle">io.xlorey.fluxloader.client.core.<a href="io/xlorey/fluxloader/client/core/StateManager.html" class="type-name-link" title="class in io.xlorey.fluxloader.client.core">StateManager</a></li>
+<li class="circle">io.xlorey.fluxloader.client.api.<a href="io/xlorey/fluxloader/client/api/TextTools.html" class="type-name-link" title="class in io.xlorey.fluxloader.client.api">TextTools</a></li>
 <li class="circle">io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/VersionChecker.html" class="type-name-link" title="class in io.xlorey.fluxloader.utils">VersionChecker</a></li>
+<li class="circle">io.xlorey.fluxloader.client.ui.<a href="io/xlorey/fluxloader/client/ui/Widget.html" class="type-name-link" title="class in io.xlorey.fluxloader.client.ui">Widget</a>
+<ul>
+<li class="circle">io.xlorey.fluxloader.client.ui.pluginMenu.<a href="io/xlorey/fluxloader/client/ui/pluginMenu/MainMenuButton.html" class="type-name-link" title="class in io.xlorey.fluxloader.client.ui.pluginMenu">MainMenuButton</a></li>
+<li class="circle">io.xlorey.fluxloader.client.ui.pluginMenu.<a href="io/xlorey/fluxloader/client/ui/pluginMenu/PluginMenu.html" class="type-name-link" title="class in io.xlorey.fluxloader.client.ui.pluginMenu">PluginMenu</a></li>
+</ul>
+</li>
+<li class="circle">io.xlorey.fluxloader.client.core.<a href="io/xlorey/fluxloader/client/core/WidgetManager.html" class="type-name-link" title="class in io.xlorey.fluxloader.client.core">WidgetManager</a></li>
 </ul>
 </li>
 </ul>
@@ -354,7 +382,7 @@ loadScripts(document, 'script');</script>
 <h2 title="Interface Hierarchy">Interface Hierarchy</h2>
 <ul>
 <li class="circle">io.xlorey.fluxloader.interfaces.<a href="io/xlorey/fluxloader/interfaces/ICommand.html" class="type-name-link" title="interface in io.xlorey.fluxloader.interfaces">ICommand</a></li>
-<li class="circle">io.xlorey.fluxloader.interfaces.<a href="io/xlorey/fluxloader/interfaces/IEvent.html" class="type-name-link" title="interface in io.xlorey.fluxloader.interfaces">IEvent</a></li>
+<li class="circle">io.xlorey.fluxloader.interfaces.<a href="io/xlorey/fluxloader/interfaces/IControlsWidget.html" class="type-name-link" title="interface in io.xlorey.fluxloader.interfaces">IControlsWidget</a></li>
 <li class="circle">io.xlorey.fluxloader.interfaces.<a href="io/xlorey/fluxloader/interfaces/IPatch.html" class="type-name-link" title="interface in io.xlorey.fluxloader.interfaces">IPatch</a></li>
 <li class="circle">io.xlorey.fluxloader.interfaces.<a href="io/xlorey/fluxloader/interfaces/IPlugin.html" class="type-name-link" title="interface in io.xlorey.fluxloader.interfaces">IPlugin</a></li>
 </ul>

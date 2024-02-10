@@ -1,6 +1,7 @@
 package io.xlorey.fluxloader.server.core;
 
 import io.xlorey.fluxloader.plugin.PluginManager;
+import io.xlorey.fluxloader.plugin.PluginRegistry;
 import io.xlorey.fluxloader.utils.Logger;
 
 /**
@@ -39,6 +40,6 @@ public class Core {
 
         PluginManager.loadPlugins(false);
 
-        PluginManager.executePlugins(PluginManager.getLoadedServerPlugins());
+        PluginManager.executePlugins(PluginRegistry.getLoadedServerPlugins());
     }
 }

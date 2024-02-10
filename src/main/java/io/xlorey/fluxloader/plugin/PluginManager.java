@@ -1,5 +1,6 @@
 package io.xlorey.fluxloader.plugin;
 
+import io.xlorey.fluxloader.interfaces.IControlsWidget;
 import io.xlorey.fluxloader.utils.Constants;
 import io.xlorey.fluxloader.utils.Logger;
 import io.xlorey.fluxloader.utils.VersionChecker;
@@ -7,6 +8,7 @@ import lombok.experimental.UtilityClass;
 import zombie.core.Core;
 import zombie.core.textures.Texture;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -25,60 +27,6 @@ public class PluginManager {
      * General plugin loader
      */
     private static PluginClassLoader pluginClassLoader;
-
-    /**
-     * All loaded information about plugins
-     * Key: plugin file
-     * Value: information about the plugin
-     */
-    private static final HashMap<File, Metadata> pluginsInfoRegistry = new HashMap<>();
-
-    /**
-     * Registry of icons of loaded plugins
-     * Key: plugin id
-     *Value: texture object
-     */
-    private static final HashMap<String, Texture> pluginIconRegistry = new HashMap<>();
-
-    /**
-     * Register of all loaded client plugins
-     * Key: "entryPoint:ID:Version"
-     * Value: plugin instance
-     */
-    private static final HashMap<String, Plugin> clientPluginsRegistry = new HashMap<>();
-
-    /**
-     * Register of all loaded server plugins
-     * Key: "entryPoint:ID:Version"
-     * Value: plugin instance
-     */
-    private static final HashMap<String, Plugin> serverPluginsRegistry = new HashMap<>();
-
-    /**
-     * Retrieves the list of loaded client plugins icons
-     * @return HashMap containing information about loaded client plugin icons, where the key is the plugin ID.
-     *         and the value is the corresponding texture instance.
-     */
-    public static HashMap<String, Texture> getPluginIconRegistry() {
-        return pluginIconRegistry;
-    }
-
-    /**
-     * Retrieves the list of loaded client plugins
-     * @return A HashMap containing information about loaded client plugins, where the key is "entryPoint:ID:Version"
-     *         and the value is the corresponding Plugin instance.
-     */
-    public static HashMap<String, Plugin> getLoadedClientPlugins() {
-        return clientPluginsRegistry;
-    }
-    /**
-     * Retrieves the list of loaded server plugins
-     * @return A HashMap containing information about loaded server plugins, where the key is "entryPoint:ID:Version"
-     *         and the value is the corresponding Plugin instance.
-     */
-    public static HashMap<String, Plugin> getLoadedServerPlugins() {
-        return serverPluginsRegistry;
-    }
 
     /**
      * Initializing the class loader
@@ -164,7 +112,7 @@ public class PluginManager {
                 Logger.print(String.format("No metadata found for potential plugin '%s'. Skipping...", plugin.getName()));
                 continue;
             }
-            pluginsInfoRegistry.put(plugin, metadata);
+            PluginRegistry.addPluginInfo(plugin, metadata);
         }
 
         /*
@@ -181,7 +129,7 @@ public class PluginManager {
             Loading the plugin
          */
         for (File plugin : sortedOrder) {
-            Metadata metadata = pluginsInfoRegistry.get(plugin);
+            Metadata metadata = PluginRegistry.getPluginInfo(plugin);
 
             int metadataRevision = metadata.getMetadataRevision();
 
@@ -218,8 +166,31 @@ public class PluginManager {
             URL pluginUrl = plugin.toURI().toURL();
             PluginClassLoader classLoader = new PluginClassLoader(new URL[]{pluginUrl}, pluginClassLoader);
 
-            loadEntryPoints(true, clientEntryPoints, clientPluginsRegistry, metadata, classLoader);
-            loadEntryPoints(false, serverEntryPoints, serverPluginsRegistry, metadata, classLoader);
+            loadEntryPoints(true, clientEntryPoints, metadata, classLoader);
+            loadEntryPoints(false, serverEntryPoints, metadata, classLoader);
+
+            if (isClient) {
+                String controlsClassName = metadata.getControlsEntrypoint();
+                if (controlsClassName != null && !controlsClassName.isEmpty()) {
+                    Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
+                    IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
+
+                    PluginRegistry.addPluginControls(metadata.getId(), controlsInstance);
+                }
+
+                String iconPath = metadata.getIcon();
+                URL iconUrl = classLoader.getResource(iconPath);
+
+                if (iconUrl != null) {
+                    try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
+                        Texture texture = new Texture(iconPath, bis, true);
+                        PluginRegistry.addPluginIcon(metadata.getId(), texture);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
+                    }
+                }
+            }
         }
     }
 
@@ -231,12 +202,11 @@ public class PluginManager {
      * or creating instances, the method throws an exception.
      * @param isClient flag indicating whether client or server entry points are loaded
      * @param entryPoints List of string identifiers of the plugin classes' entry points.
-     * @param targetRegistry The registry to which loaded plugin instances should be added.
      * @param metadata Plugin information used to log and associate instances with plugin data.
      * @param classLoader {@link PluginClassLoader} for loading plugin classes.
      * @throws Exception If errors occur while loading classes or creating instances.
      */
-    private static void loadEntryPoints(boolean isClient, List<String> entryPoints, HashMap<String, Plugin> targetRegistry, Metadata metadata, PluginClassLoader classLoader) throws Exception {
+    private static void loadEntryPoints(boolean isClient, List<String> entryPoints, Metadata metadata, PluginClassLoader classLoader) throws Exception {
         String pluginType = isClient ? "client" : "server";
 
         if (entryPoints == null || entryPoints.isEmpty()) {
@@ -262,8 +232,10 @@ public class PluginManager {
 
             String registryKey = String.format("%s:%s:%s", entryPoint, metadata.getId(), metadata.getVersion());
 
-            if (!targetRegistry.containsKey(registryKey)) {
-                targetRegistry.put(registryKey, pluginInstance);
+            if (isClient) {
+                PluginRegistry.addClientPlugin(registryKey, pluginInstance);
+            } else {
+                PluginRegistry.addServerPlugin(registryKey, pluginInstance);
             }
         }
     }
@@ -303,7 +275,7 @@ public class PluginManager {
         HashMap<String, File> pluginFilesMap = new HashMap<>();
 
         // Initializing the graph and states
-        for (Map.Entry<File, Metadata> entry : pluginsInfoRegistry.entrySet()) {
+        for (Map.Entry<File, Metadata> entry : PluginRegistry.getPluginInfoRegistry().entrySet()) {
             String pluginId = entry.getValue().getId();
             pluginFilesMap.put(pluginId, entry.getKey());
             state.put(pluginId, 0); // 0 - not visited, 1 - on the stack, 2 - visited
@@ -371,7 +343,7 @@ public class PluginManager {
      * @throws Exception in case the dependent plugin is not found among those found or its version does not meet the requirements
      */
     private static void dependencyVerification() throws Exception {
-        for (Map.Entry<File, Metadata> entry : pluginsInfoRegistry.entrySet()) {
+        for (Map.Entry<File, Metadata> entry : PluginRegistry.getPluginInfoRegistry().entrySet()) {
             Map<String, String> dependencies = entry.getValue().getDependencies();
 
             for (Map.Entry<String, String> depEntry : dependencies.entrySet()) {
@@ -393,7 +365,7 @@ public class PluginManager {
                         // Checking the presence of the plugin in the directory
                         boolean hasPlugin = false;
 
-                        for (Map.Entry<File, Metadata> checkEntry : pluginsInfoRegistry.entrySet()) {
+                        for (Map.Entry<File, Metadata> checkEntry : PluginRegistry.getPluginInfoRegistry().entrySet()) {
                             String id = checkEntry.getValue().getId();
                             String version = checkEntry.getValue().getVersion();
 

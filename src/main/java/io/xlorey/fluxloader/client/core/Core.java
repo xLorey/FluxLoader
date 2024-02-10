@@ -2,6 +2,8 @@ package io.xlorey.fluxloader.client.core;
 
 import io.xlorey.fluxloader.client.handlers.OnInitWorldHandler;
 import io.xlorey.fluxloader.client.handlers.OnMainMenuEnterHandler;
+import io.xlorey.fluxloader.client.handlers.OnPostTickRenderThreadHandler;
+import io.xlorey.fluxloader.client.handlers.OnPostUIDrawHandler;
 import io.xlorey.fluxloader.plugin.PluginManager;
 import io.xlorey.fluxloader.shared.EventManager;
 import io.xlorey.fluxloader.utils.Logger;
@@ -28,10 +30,13 @@ public class Core {
 
         Logger.print("FluxLoader Core initialization for the client...");
 
-        // Logic for enabling and disabling plugins
         EventManager.subscribe(new OnInitWorldHandler());
         EventManager.subscribe(new OnMainMenuEnterHandler());
+        EventManager.subscribe(new OnPostTickRenderThreadHandler());
+        EventManager.subscribe(new OnPostUIDrawHandler());
 
         PluginManager.loadPlugins(true);
+
+        WidgetManager.init();
     }
 }

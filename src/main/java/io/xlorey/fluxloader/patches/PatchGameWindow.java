@@ -47,7 +47,7 @@ public class PatchGameWindow extends PatchFile{
                 ctMethod.instrument(new ExprEditor() {
                     public void edit(MethodCall m) throws CannotCompileException {
                         if (m.getClassName().equals("org.lwjglx.opengl.Display") && m.getMethodName().equals("setTitle")) {
-                            String newTitle =  String.format("\"Project Zomboid by %s (v%s)\"", Constants.FLUX_NAME, Constants.FLUX_VERSION);
+                            String newTitle =  String.format("\"Project Zomboid with %s (v%s)\"", Constants.FLUX_NAME, Constants.FLUX_VERSION);
                             m.replace("$proceed(" + newTitle + ");");
                         }
                     }

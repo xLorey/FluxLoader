@@ -3,6 +3,7 @@ package io.xlorey.fluxloader.client.handlers;
 import io.xlorey.fluxloader.client.core.Core;
 import io.xlorey.fluxloader.events.OnMainMenuEnter;
 import io.xlorey.fluxloader.plugin.PluginManager;
+import io.xlorey.fluxloader.plugin.PluginRegistry;
 
 /**
  * Author: Deknil
@@ -18,7 +19,7 @@ public class OnMainMenuEnterHandler extends OnMainMenuEnter {
     @Override
     public void handleEvent() {
         if (Core.isPluginsExecuted) {
-            PluginManager.terminatePlugins(PluginManager.getLoadedClientPlugins());
+            PluginManager.terminatePlugins(PluginRegistry.getLoadedClientPlugins());
             Core.isPluginsExecuted = false;
         }
     }

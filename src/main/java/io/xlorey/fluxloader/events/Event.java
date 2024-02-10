@@ -1,7 +1,5 @@
 package io.xlorey.fluxloader.events;
 
-import io.xlorey.fluxloader.interfaces.IEvent;
-
 /**
  * Author: Deknil
  * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
@@ -9,7 +7,7 @@ import io.xlorey.fluxloader.interfaces.IEvent;
  * Description: Template class for all in-game events
  * <p>FluxLoader © 2024. All rights reserved.</p>
  */
-public abstract class Event implements IEvent {
+public abstract class Event {
     /**
      * Getting the event name
      * @return name of the event being implemented

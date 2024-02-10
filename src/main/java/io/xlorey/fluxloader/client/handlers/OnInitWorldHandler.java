@@ -3,6 +3,7 @@ package io.xlorey.fluxloader.client.handlers;
 import io.xlorey.fluxloader.client.core.Core;
 import io.xlorey.fluxloader.events.OnInitWorld;
 import io.xlorey.fluxloader.plugin.PluginManager;
+import io.xlorey.fluxloader.plugin.PluginRegistry;
 
 /**
  * Author: Deknil
@@ -18,7 +19,7 @@ public class OnInitWorldHandler extends OnInitWorld {
     @Override
     public void handleEvent() {
         if (!Core.isPluginsExecuted) {
-            PluginManager.executePlugins(PluginManager.getLoadedClientPlugins());
+            PluginManager.executePlugins(PluginRegistry.getLoadedClientPlugins());
             Core.isPluginsExecuted = true;
         }
     }
