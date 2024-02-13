@@ -52,7 +52,7 @@ public class PatchTools {
             methodModifier.accept(ctClass, ctMethod);
 
             // Saving a modified class
-            ctClass.writeFile(Installer.getClassPathFolder());
+            ctClass.writeFile(Installer.getGameFolderPath());
 
             // Detach a class to free up memory
             ctClass.detach();
@@ -93,7 +93,7 @@ public class PatchTools {
             methodModifier.accept(ctClass, ctMethod);
 
             // Saving a modified class
-            ctClass.writeFile(Installer.getClassPathFolder());
+            ctClass.writeFile(Installer.getGameFolderPath());
 
             // Detach a class to free up memory
             ctClass.detach();
@@ -130,7 +130,7 @@ public class PatchTools {
      */
     private static CtClass getCtClass(String className) throws NotFoundException {
         ClassPool pool = ClassPool.getDefault();
-        pool.appendClassPath(Installer.getClassPathFolder());
+        pool.appendClassPath(Installer.getGameFolderPath());
         return pool.get(className);
     }
 

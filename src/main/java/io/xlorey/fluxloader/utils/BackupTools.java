@@ -1,5 +1,6 @@
 package io.xlorey.fluxloader.utils;
 
+import io.xlorey.fluxloader.Installer;
 import lombok.experimental.UtilityClass;
 
 import java.io.IOException;
@@ -79,10 +80,10 @@ public class BackupTools {
      * @throws Exception if the specified class file does not exist or if modifications are detected in the class file.
      */
     public static void createBackup(String className) throws Exception {
-        String fixedClassPath = className.replace(".", "/") + ".class";
+        String fixedClassPath = Installer.getGameFolderPath() + className.replace(".", "/") + ".class";
 
         Path pathToClassFile = Paths.get(fixedClassPath);
-
+        Logger.print(pathToClassFile.toString());
         Logger.print(String.format("Preparing to create a backup file: '%s'...", pathToClassFile));
 
         if (!Files.exists(pathToClassFile))  {
@@ -141,7 +142,7 @@ public class BackupTools {
      * @throws IOException if there is an issue accessing the file system or restoring the files from their backups.
      */
     public static void restoreFile(String className) throws IOException {
-        String fixedClassPath = className.replace(".", "/") + ".class";
+        String fixedClassPath = Installer.getGameFolderPath() + className.replace(".", "/") + ".class";
 
         Path pathToClassFile = Paths.get(fixedClassPath);
 

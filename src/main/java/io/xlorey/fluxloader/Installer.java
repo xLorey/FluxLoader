@@ -53,7 +53,7 @@ public class Installer {
      * @return A File object pointing to the installer JAR file.
      * @throws URISyntaxException If the URL to the JAR file is not formatted correctly.
      */
-    public static File getInstallerJarFile() throws URISyntaxException {
+    private static File getInstallerJarFile() throws URISyntaxException {
         return new File(Main.class.getProtectionDomain().getCodeSource().getLocation().toURI());
     }
 
@@ -61,7 +61,7 @@ public class Installer {
      * Getting the path to the folder with the game files necessary to form the JVM context
      * @return path to the folder with game classes
      */
-    public static String getClassPathFolder() {
+    public static String getGameFolderPath() {
         return gameFolderPath.replace("zombie", "");
     }
 
@@ -114,7 +114,7 @@ public class Installer {
         Logger.print("Unpacking dependency files...");
         try {
             String jarPath = getInstallerJarFile().getPath();
-            String unpackPath = new File(jarPath).getParent();
+            String unpackPath = getGameFolderPath();
 
             Logger.print("Attempting to extract the core files...");
             JarTools.unpackJar(Constants.WHITELIST_FLUXLOADER_FILES, jarPath, unpackPath);
@@ -145,7 +145,7 @@ public class Installer {
         Logger.print("Removing dependency files...");
         try {
             String jarPath = getInstallerJarFile().getPath();
-            String unpackPath = new File(jarPath).getParent();
+            String unpackPath = getGameFolderPath();
 
             Logger.print("Attempting to delete core files...");
             JarTools.deleteJarFilesFromDirectory(Constants.WHITELIST_FLUXLOADER_FILES, jarPath, unpackPath);

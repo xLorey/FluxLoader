@@ -36,7 +36,7 @@ public class PatchKickUserCommand extends PatchFile{
                                     + "zombie.characters.IsoPlayer player = io.xlorey.fluxloader.server.api.PlayerUtils.getPlayerByUdpConnection($0);"
                                     + "java.lang.String adminName = this.getExecutorUsername().isEmpty() ? \"Console\" : this.getExecutorUsername();"
                                     + "if (player != null) {"
-                                    + EventManager.class.getName() + ".invokeEvent(\"onPlayerKick\", new Object[]{player, adminName, " + getClassName() + ".reason" + "});"
+                                    + EventManager.class.getName() + ".invokeEvent(\"onPlayerKick\", new Object[]{player, adminName, this.reason" + "});"
                                     + "}"
                                     + "$proceed($$);"
                                     + "}";

@@ -1,6 +1,6 @@
 package io.xlorey.fluxloader.events;
 
-import zombie.network.packets.hit.Player;
+import zombie.characters.IsoPlayer;
 
 /**
  * Author: Deknil
@@ -23,5 +23,5 @@ public abstract class OnPlayerKick extends Event {
      * @param adminName Nickname of the administrator who kicked the player
      * @param reason Reason for blocking the player.
      */
-    public void handleEvent(Player player, String adminName, String reason) {}
+    public void handleEvent(IsoPlayer player, String adminName, String reason) {}
 }
