@@ -31,7 +31,7 @@ public class Metadata {
     /**
      * Metadata form version
      */
-    private int metadataRevision;
+    private int revision;
 
     /**
      * Plugin name

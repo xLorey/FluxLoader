@@ -53,7 +53,7 @@ public class PluginManager {
                 continue;
             }
 
-            int metadataRevision = metadata.getMetadataRevision();
+            int metadataRevision = metadata.getRevision();
             List<String> clientEntryPoints = metadata.getEntrypoints().get("client");
             List<String> serverEntryPoints = metadata.getEntrypoints().get("server");
 
