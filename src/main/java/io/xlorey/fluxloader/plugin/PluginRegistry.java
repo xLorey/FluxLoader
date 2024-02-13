@@ -3,7 +3,6 @@ package io.xlorey.fluxloader.plugin;
 import io.xlorey.fluxloader.interfaces.IControlsWidget;
 import zombie.core.textures.Texture;
 
-import java.io.File;
 import java.util.HashMap;
 
 /**
@@ -14,13 +13,6 @@ import java.util.HashMap;
  * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 public class PluginRegistry {
-    /**
-     * All loaded information about plugins
-     * Key: plugin file
-     * Value: information about the plugin
-     */
-    private static final HashMap<File, Metadata> pluginsInfoRegistry = new HashMap<>();
-
     /**
      * Registry of icons of loaded plugins
      * Key: plugin id
@@ -48,14 +40,6 @@ public class PluginRegistry {
      * Value: plugin instance
      */
     private static final HashMap<String, Plugin> serverPluginsRegistry = new HashMap<>();
-
-    /**
-     * Retrieves the list of all loaded information about plugins
-     * @return HashMap containing information about loaded plugins found, their physical file as a key and metadata as a value
-     */
-    public static HashMap<File, Metadata> getPluginInfoRegistry() {
-        return pluginsInfoRegistry;
-    }
 
     /**
      * Retrieves the list of loaded client plugins controls
@@ -93,15 +77,6 @@ public class PluginRegistry {
     }
 
     /**
-     * Adds information about the plugin to the registry.
-     * @param pluginFile Plugin file
-     * @param metadata Plugin metadata
-     */
-    public static void addPluginInfo(File pluginFile, Metadata metadata) {
-        pluginsInfoRegistry.put(pluginFile, metadata);
-    }
-
-    /**
      * Adds a plugin icon to the registry.
      * @param pluginId Plugin ID
      * @param texture Texture of the plugin icon
@@ -121,7 +96,7 @@ public class PluginRegistry {
 
     /**
      * Adds a client plugin instance to the registry.
-     * @param pluginId Plugin ID, including entry point, ID and version
+     * @param pluginId Plugin ID, including entry point, ID and version (ENTRYPOINT:ID:VERSION)
      * @param plugin Plugin instance
      */
     public static void addClientPlugin(String pluginId, Plugin plugin) {
@@ -130,20 +105,11 @@ public class PluginRegistry {
 
     /**
      * Adds an instance of the server plugin to the registry.
-     * @param pluginId Plugin ID, including entry point, ID and version
+     * @param pluginId Plugin ID, including entry point, ID and version (ENTRYPOINT:ID:VERSION)
      * @param plugin Plugin instance
      */
     public static void addServerPlugin(String pluginId, Plugin plugin) {
         serverPluginsRegistry.put(pluginId, plugin);
-    }
-
-    /**
-     * Returns plugin metadata based on the plugin file.
-     * @param pluginFile Plugin file
-     * @return Plugin metadata, if found; otherwise null.
-     */
-    public static Metadata getPluginInfo(File pluginFile) {
-        return pluginsInfoRegistry.get(pluginFile);
     }
 
     /**
@@ -162,23 +128,5 @@ public class PluginRegistry {
      */
     public static IControlsWidget getPluginControls(String pluginId) {
         return pluginControlsRegistry.get(pluginId);
-    }
-
-    /**
-     * Returns a client plugin instance by its identifier.
-     * @param pluginId Plugin ID, including entry point, ID and version
-     * @return An instance of the client plugin, if found; otherwise null.
-     */
-    public static Plugin getClientPlugin(String pluginId) {
-        return clientPluginsRegistry.get(pluginId);
-    }
-
-    /**
-     * Returns a server plugin instance by its identifier.
-     * @param pluginId Plugin ID, including entry point, ID and version
-     * @return An instance of the server plugin, if found; otherwise null.
-     */
-    public static Plugin getServerPlugin(String pluginId) {
-        return serverPluginsRegistry.get(pluginId);
     }
 }

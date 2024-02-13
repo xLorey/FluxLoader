@@ -2,6 +2,7 @@ package io.xlorey.fluxloader.plugin;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import io.xlorey.fluxloader.utils.Constants;
 import io.xlorey.fluxloader.utils.Logger;
 import lombok.Data;
 
@@ -92,13 +93,8 @@ public class Metadata {
      * The directory path is normalized to prevent problems with various file systems.
      * @return A File object pointing to the normalized path to the plugin configuration directory.
      */
-    public File getConfigFolder() {
-        File pluginsDirectory = PluginManager.getPluginsDirectory();
-        String pluginId = getId();
-
-        Path path = Paths.get(pluginsDirectory.getAbsolutePath(), pluginId).normalize();
-
-        return path.toFile();
+    public final File getConfigFolder() {
+        return new File(Constants.PLUGINS_FOLDER_NAME, getId());
     }
 
     /**

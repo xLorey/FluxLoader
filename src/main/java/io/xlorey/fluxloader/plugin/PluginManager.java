@@ -26,14 +26,118 @@ public class PluginManager {
     /**
      * General plugin loader
      */
-    private static PluginClassLoader pluginClassLoader;
+    private static final PluginClassLoader pluginClassLoader = new PluginClassLoader(new URL[0], PluginManager.class.getClassLoader());;
 
     /**
-     * Initializing the class loader
+     * Loading plugins into the game context
+     * @param isClient flag indicating whether loading occurs on the client side
+     * @throws IOException in cases of input/output problems
      */
-    public static void initializePluginClassLoader() {
-        List<URL> urls = new ArrayList<>();
-        pluginClassLoader = new PluginClassLoader(urls.toArray(new URL[0]), PluginManager.class.getClassLoader());
+    public static void loadPlugins(boolean isClient) throws Exception {
+        Logger.print("Loading plugins into the environment...");
+
+        /*
+        Getting a list of plugins, checking if the folder exists and creating it otherwise
+         */
+        ArrayList<File> folderPluginsFiles = getPluginFiles();
+
+        /*
+        List of all plugins with valid metadata
+         */
+        HashMap<File, Metadata> validPlugins = new HashMap<>();
+
+        /*
+        Plugin Metadata Validation
+         */
+        for (File plugin : folderPluginsFiles) {
+            Metadata metadata = Metadata.getInfoFromFile(plugin);
+
+            if (metadata == null) {
+                Logger.print(String.format("No metadata found for potential plugin '%s'. Skipping...", plugin.getName()));
+                continue;
+            }
+
+            int metadataRevision = metadata.getMetadataRevision();
+            List<String> clientEntryPoints = metadata.getEntrypoints().get("client");
+            List<String> serverEntryPoints = metadata.getEntrypoints().get("server");
+
+            // Checking whether the metadata version matches the loader version
+            if (metadataRevision != Constants.PLUGINS_METADATA_REVISION) {
+                Logger.print(String.format("The metadata form for plugin '%s' does not conform to the current standard (Plugin: %s, Standard: %s)! Skipping...",
+                        plugin.getName(),
+                        metadataRevision,
+                        Constants.PLUGINS_METADATA_REVISION));
+                continue;
+            }
+
+            // Checking for empty entry points
+            if (!isValidEntryPoints(clientEntryPoints, "client", metadata) || !isValidEntryPoints(serverEntryPoints, "server", metadata)) {
+                continue;
+            }
+
+            // creating a folder for configs
+            File configFolder = metadata.getConfigFolder();
+            if (!configFolder.exists()) {
+                try {
+                    configFolder.mkdir();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Logger.print(String.format("An error occurred while creating the config folder for plugin '%s'", metadata.getId()));
+                }
+            }
+
+            validPlugins.put(plugin, metadata);
+        }
+
+        /*
+        Checking for dependency availability and versions
+         */
+        dependencyVerification(validPlugins);
+
+        /*
+        Sorting plugins by load order and Circular dependency check
+         */
+        ArrayList<File> sortedOrder = sortPluginsByLoadOrder(validPlugins);
+
+        /*
+        Loading the plugin
+         */
+        for (File plugin : sortedOrder) {
+            Metadata metadata = validPlugins.get(plugin);
+
+            List<String> clientEntryPoints = metadata.getEntrypoints().get("client");
+            List<String> serverEntryPoints = metadata.getEntrypoints().get("server");
+
+            // Creating a URL for the plugin
+            URL pluginUrl = plugin.toURI().toURL();
+            PluginClassLoader classLoader = new PluginClassLoader(new URL[]{pluginUrl}, pluginClassLoader);
+
+            loadEntryPoints(true, clientEntryPoints, metadata, classLoader);
+            loadEntryPoints(false, serverEntryPoints, metadata, classLoader);
+
+            if (isClient) {
+                String controlsClassName = metadata.getControlsEntrypoint();
+                if (controlsClassName != null && !controlsClassName.isEmpty()) {
+                    Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
+                    IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
+
+                    PluginRegistry.addPluginControls(metadata.getId(), controlsInstance);
+                }
+
+                String iconPath = metadata.getIcon();
+                URL iconUrl = classLoader.getResource(iconPath);
+
+                if (iconUrl != null) {
+                    try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
+                        Texture texture = new Texture(iconPath, bis, true);
+                        PluginRegistry.addPluginIcon(metadata.getId(), texture);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -85,116 +189,6 @@ public class PluginManager {
     }
 
     /**
-     * Loading plugins into the game context
-     * @param isClient flag indicating whether loading occurs on the client side
-     * @throws IOException in cases of input/output problems
-     */
-    public static void loadPlugins(boolean isClient) throws Exception {
-        Logger.print("Loading plugins into the environment...");
-
-        /*
-          Checking the presence of a folder for plugins and validating it
-         */
-        checkPluginFolder();
-
-        /*
-           Getting a list of plugins
-         */
-        ArrayList<File> pluginFiles = getPluginFiles();
-
-        /*
-            Searching for plugins in a directory
-         */
-        for (File plugin : pluginFiles) {
-            Metadata metadata = Metadata.getInfoFromFile(plugin);
-
-            if (metadata == null) {
-                Logger.print(String.format("No metadata found for potential plugin '%s'. Skipping...", plugin.getName()));
-                continue;
-            }
-            PluginRegistry.addPluginInfo(plugin, metadata);
-        }
-
-        /*
-            Checking for dependency availability and versions
-         */
-        dependencyVerification();
-
-        /*
-            Sorting plugins by load order and Circular dependency check
-         */
-        ArrayList<File> sortedOrder = sortPluginsByLoadOrder();
-
-        /*
-            Loading the plugin
-         */
-        for (File plugin : sortedOrder) {
-            Metadata metadata = PluginRegistry.getPluginInfo(plugin);
-
-            int metadataRevision = metadata.getMetadataRevision();
-
-            if (metadataRevision != Constants.PLUGINS_METADATA_REVISION) {
-                Logger.print(String.format("The metadata form for plugin '%s' does not conform to the current standard (Plugin: %s, Standard: %s)! Skipping...",
-                        plugin.getName(),
-                        metadataRevision,
-                        Constants.PLUGINS_METADATA_REVISION));
-                continue;
-            }
-
-            List<String> clientEntryPoints = metadata.getEntrypoints().get("client");
-            List<String> serverEntryPoints = metadata.getEntrypoints().get("server");
-
-            // Checking for empty entry points
-            if (!isValidEntryPoints(clientEntryPoints, "client", metadata) || !isValidEntryPoints(serverEntryPoints, "server", metadata)) {
-                continue;
-            }
-
-            // creating a folder for configs
-            File configFolder = metadata.getConfigFolder();
-            if (!configFolder.exists()) {
-                try {
-                    configFolder.mkdir();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Logger.print(String.format("An error occurred while creating the config folder for plugin '%s'", metadata.getId()));
-                }
-            }
-
-            initializePluginClassLoader();
-
-            // Creating a URL for the plugin
-            URL pluginUrl = plugin.toURI().toURL();
-            PluginClassLoader classLoader = new PluginClassLoader(new URL[]{pluginUrl}, pluginClassLoader);
-
-            loadEntryPoints(true, clientEntryPoints, metadata, classLoader);
-            loadEntryPoints(false, serverEntryPoints, metadata, classLoader);
-
-            if (isClient) {
-                String controlsClassName = metadata.getControlsEntrypoint();
-                if (controlsClassName != null && !controlsClassName.isEmpty()) {
-                    Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
-                    IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
-
-                    PluginRegistry.addPluginControls(metadata.getId(), controlsInstance);
-                }
-
-                String iconPath = metadata.getIcon();
-                URL iconUrl = classLoader.getResource(iconPath);
-
-                if (iconUrl != null) {
-                    try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
-                        Texture texture = new Texture(iconPath, bis, true);
-                        PluginRegistry.addPluginIcon(metadata.getId(), texture);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
-                    }
-                }
-            }
-        }
-    }
-
-    /**
      * Loads plugin input points using the provided class loader.
      * This method is designed to load and initialize plugin classes based on lists of input points.
      * For each input point in the list, the method tries to load the corresponding class, create an instance
@@ -209,16 +203,13 @@ public class PluginManager {
     private static void loadEntryPoints(boolean isClient, List<String> entryPoints, Metadata metadata, PluginClassLoader classLoader) throws Exception {
         String pluginType = isClient ? "client" : "server";
 
-        if (entryPoints == null || entryPoints.isEmpty()) {
+        if (entryPoints.isEmpty()) {
             Logger.print(String.format("There are no %s entry points for plugin '%s'", pluginType, metadata.getId()));
             return;
         }
 
-        int totalEntryPoints = entryPoints.size();
-        int currentEntryPointIndex = 0;
-
-        for (String entryPoint : entryPoints) {
-            currentEntryPointIndex++;
+        for (int index = 0; index < entryPoints.size(); index++) {
+            String entryPoint = entryPoints.get(index);
 
             Class<?> pluginClass = Class.forName(entryPoint, true, classLoader);
             Plugin pluginInstance = (Plugin) pluginClass.getDeclaredConstructor().newInstance();
@@ -226,7 +217,7 @@ public class PluginManager {
             pluginInstance.setMetadata(metadata);
 
             Logger.print(String.format("Loading %s plugin entry point %d/%d: '%s'(ID: '%s', Version: %s)...",
-                    pluginType, currentEntryPointIndex, totalEntryPoints, metadata.getName(), metadata.getId(), metadata.getVersion()));
+                    pluginType, index + 1, entryPoints.size(), metadata.getName(), metadata.getId(), metadata.getVersion()));
 
             pluginInstance.onInitialize();
 
@@ -241,53 +232,32 @@ public class PluginManager {
     }
 
     /**
-     * Checks for the presence of a list of entry points for the plugin.
-     * This method is used to check if entry points are defined for a plugin.
-     * If the list of entry points is null, the method writes a message about skipping loading the plugin
-     * and returns false. An empty list is considered valid.
-     *
-     * @param entryPoints List of plugin entry points. Can be null.
-     * @param type The type of entry points (e.g. "client" or "server").
-     * @param metadata Plugin information used for logging.
-     * @return true if the list of entry points is not null, false otherwise.
-     */
-    private static boolean isValidEntryPoints(List<String> entryPoints, String type, Metadata metadata) {
-        if (entryPoints == null) {
-            Logger.print(String.format("Entry points list is null for %s plugin '%s' (ID: '%s', Version: %s). Skipping...",
-                    type, metadata.getName(), metadata.getId(), metadata.getVersion()));
-            return false;
-        }
-        return true;
-    }
-
-    /**
      * Sorts plugins by load order using topological sorting.
      * This method takes into account the dependencies between plugins and arranges them in such a way
      * so that each plugin is loaded after all the plugins it depends on have been loaded.
-     *
      * @return List of plugin files, sorted in download order.
      * @throws Exception in case a cyclic dependency or other error is detected.
      */
-    private static ArrayList<File> sortPluginsByLoadOrder() throws Exception {
+    private static ArrayList<File> sortPluginsByLoadOrder(HashMap<File, Metadata> pluginsMap) throws Exception {
         HashMap<String, List<String>> graph = new HashMap<>();
         HashMap<String, Integer> state = new HashMap<>();
         ArrayList<String> sortedOrder = new ArrayList<>();
         HashMap<String, File> pluginFilesMap = new HashMap<>();
 
         // Initializing the graph and states
-        for (Map.Entry<File, Metadata> entry : PluginRegistry.getPluginInfoRegistry().entrySet()) {
+        for (Map.Entry<File, Metadata> entry : pluginsMap.entrySet()) {
             String pluginId = entry.getValue().getId();
-            pluginFilesMap.put(pluginId, entry.getKey());
+            File pluginFile = entry.getKey();
+
+            pluginFilesMap.put(pluginId, pluginFile);
             state.put(pluginId, 0); // 0 - not visited, 1 - on the stack, 2 - visited
 
-            if (!pluginId.equals("project-zomboid") && !pluginId.equals("flux-loader")) {
-                graph.putIfAbsent(pluginId, new ArrayList<>());
+            graph.putIfAbsent(pluginId, new ArrayList<>());
 
-                for (String dependency : entry.getValue().getDependencies().keySet()) {
-                    if (!dependency.equals("project-zomboid") && !dependency.equals("flux-loader")) {
-                        graph.putIfAbsent(dependency, new ArrayList<>());
-                        graph.get(dependency).add(pluginId);
-                    }
+            for (String dependency : entry.getValue().getDependencies().keySet()) {
+                if (!dependency.equals("project-zomboid") && !dependency.equals("flux-loader")) {
+                    graph.putIfAbsent(dependency, new ArrayList<>());
+                    graph.get(dependency).add(pluginId);
                 }
             }
         }
@@ -311,7 +281,6 @@ public class PluginManager {
     /**
      * Helps perform topological sorting using the DFS algorithm.
      * This method also checks for circular dependencies between plugins.
-     *
      * @param current The current node being processed (plugin ID).
      * @param graph Dependency graph, where the key is the plugin identifier and the value is a list of dependencies.
      * @param state A dictionary to keep track of the state of each node during the traversal process.
@@ -342,8 +311,8 @@ public class PluginManager {
      * Checking plugins for their dependencies and ensuring that their versions meet the requirements
      * @throws Exception in case the dependent plugin is not found among those found or its version does not meet the requirements
      */
-    private static void dependencyVerification() throws Exception {
-        for (Map.Entry<File, Metadata> entry : PluginRegistry.getPluginInfoRegistry().entrySet()) {
+    private static void dependencyVerification(HashMap<File, Metadata> pluginsMap) throws Exception {
+        for (Map.Entry<File, Metadata> entry : pluginsMap.entrySet()) {
             Map<String, String> dependencies = entry.getValue().getDependencies();
 
             for (Map.Entry<String, String> depEntry : dependencies.entrySet()) {
@@ -365,7 +334,7 @@ public class PluginManager {
                         // Checking the presence of the plugin in the directory
                         boolean hasPlugin = false;
 
-                        for (Map.Entry<File, Metadata> checkEntry : PluginRegistry.getPluginInfoRegistry().entrySet()) {
+                        for (Map.Entry<File, Metadata> checkEntry : pluginsMap.entrySet()) {
                             String id = checkEntry.getValue().getId();
                             String version = checkEntry.getValue().getVersion();
 
@@ -388,42 +357,34 @@ public class PluginManager {
     }
 
     /**
-     * Finds all JAR plugins in the specified directory.
+     * Checks for the presence of a list of entry points for the plugin.
+     * This method is used to check if entry points are defined for a plugin.
+     * If the list of entry points is null, the method writes a message about skipping loading the plugin
+     * and returns false. An empty list is considered valid.
+     * @param entryPoints List of plugin entry points. Can be null.
+     * @param type The type of entry points (e.g. "client" or "server").
+     * @param metadata Plugin information used for logging.
+     * @return true if the list of entry points is not null, false otherwise.
+     */
+    private static boolean isValidEntryPoints(List<String> entryPoints, String type, Metadata metadata) {
+        if (entryPoints == null) {
+            Logger.print(String.format("Entry points list is null for %s plugin '%s' (ID: '%s', Version: %s). Skipping...",
+                    type, metadata.getName(), metadata.getId(), metadata.getVersion()));
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Finds all JAR plugins in the specified directory. Also checks for the presence of a folder and
+     * creates it if it is missing.
+     * @throws IOException in cases of input/output problems
      * @return List of JAR files.
      */
-    public static ArrayList<File> getPluginFiles() {
-        ArrayList<File> jarFiles = new ArrayList<>();
-        File folder = getPluginsDirectory();
-
-        File[] files = folder.listFiles((File pathname) -> pathname.isFile() && pathname.getName().endsWith(".jar"));
-        if (files != null) {
-            Collections.addAll(jarFiles, files);
-        }
-
-        return jarFiles;
-    }
-
-    /**
-     * Gets the directory for plugins.
-     * This method creates and returns a File object that points to the directory
-     * defined in the constant Constants.PLUGINS_FOLDER_NAME. Directory in use
-     * for storing plugins. The method does not check whether the directory exists or is
-     * it is a valid directory; it simply returns a File object with the corresponding path.
-     * The folder is checked and validated when loading plugins.
-     * @return A File object representing the plugins folder.
-     */
-    public static File getPluginsDirectory() {
-        return new File(Constants.PLUGINS_FOLDER_NAME);
-    }
-
-    /**
-     * Checking for availability and creating a folder for plugins
-     * @throws IOException in cases of input/output problems
-     */
-    private static void checkPluginFolder() throws IOException {
+    private static ArrayList<File> getPluginFiles() throws IOException {
         Logger.print("Checking for plugins folder...");
 
-        File folder = getPluginsDirectory();
+        File folder = new File(Constants.PLUGINS_FOLDER_NAME);
 
         if (!folder.exists()) {
             if (!folder.mkdir()) {
@@ -434,5 +395,15 @@ public class PluginManager {
         if (!folder.isDirectory()) {
             throw new IOException("Path is not a directory: " + folder.getPath());
         }
+
+        ArrayList<File> jarFiles = new ArrayList<>();
+
+        File[] files = folder.listFiles((File pathname) -> pathname.isFile() && pathname.getName().endsWith(".jar"));
+
+        if (files != null) {
+            Collections.addAll(jarFiles, files);
+        }
+
+        return jarFiles;
     }
 }

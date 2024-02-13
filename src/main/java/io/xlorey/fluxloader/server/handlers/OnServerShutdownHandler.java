@@ -12,6 +12,9 @@ import io.xlorey.fluxloader.plugin.PluginRegistry;
  * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 public class OnServerShutdownHandler extends OnServerShutdown {
+    /**
+     * Called Event Handling Method
+     */
     @Override
     public void handleEvent() {
         PluginManager.terminatePlugins(PluginRegistry.getLoadedServerPlugins());

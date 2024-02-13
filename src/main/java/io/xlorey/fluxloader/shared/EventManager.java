@@ -20,6 +20,10 @@ import java.util.Map;
  */
 @UtilityClass
 public class EventManager {
+    /**
+     * List of all listeners for specific events, where the key is the event name,
+     * and the value is a list of all event handlers (listeners)
+     */
     private static final Map<String, List<Event>> listeners = new HashMap<>();
 
     /**

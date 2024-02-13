@@ -37,25 +37,19 @@ public class Plugin implements IPlugin {
      * Plugin initialization event
      */
     @Override
-    public void onInitialize() {
-
-    }
+    public void onInitialize() {}
 
     /**
      * Plugin start event
      */
     @Override
-    public void onExecute() {
-
-    }
+    public void onExecute() {}
 
     /**
      * Plugin termination event
      */
     @Override
-    public void onTerminate() {
-
-    }
+    public void onTerminate() {}
 
     /**
      * Checks if the supplied configuration file name ends in ".yml".
@@ -63,7 +57,7 @@ public class Plugin implements IPlugin {
      * @param configName Name of the configuration file to check and modify.
      * @return The name of the configuration file with the ".yml" extension appended if it was missing.
      */
-    private String validateConfigName(String configName) {
+    private final String validateConfigName(String configName) {
         if (!configName.endsWith(".yml")) {
             configName += ".yml";
         }
@@ -75,7 +69,7 @@ public class Plugin implements IPlugin {
      * The directory path is normalized to prevent problems with various file systems.
      * @return A File object pointing to the normalized path to the plugin configuration directory.
      */
-    public File getConfigFolder() {
+    public final File getConfigFolder() {
         return getMetadata().getConfigFolder();
     }
 
@@ -86,7 +80,7 @@ public class Plugin implements IPlugin {
      * without specifying the full path.
      * @return A string containing the absolute path to the configuration file.
      */
-    public String getConfigPath(String configName) {
+    public final String getConfigPath(String configName) {
         configName = validateConfigName(configName);
         return new File(getMetadata().getConfigFolder().getAbsolutePath() + File.separator + configName).getAbsolutePath();
     }
@@ -98,7 +92,7 @@ public class Plugin implements IPlugin {
      * @param configName The name of the configuration file. Must be specified without a path, for example "config.yml".
      * @return A {@link File} object pointing to the configuration file with the specified name.
      */
-    public File getConfigFile(String configName) {
+    public final File getConfigFile(String configName) {
         configName = validateConfigName(configName);
         return new File(getMetadata().getConfigFolder().getAbsolutePath() + File.separator + configName);
     }
@@ -112,7 +106,7 @@ public class Plugin implements IPlugin {
      * If the 'config.yml' file is not found in the JAR resources, or if errors occur when reading or writing this file
      * into the configuration file, then null is set to the config location.
      */
-    public void saveDefaultConfig() {
+    public final void saveDefaultConfig() {
         File defaultConfig = getConfigFile("config.yml");
 
         if (!defaultConfig.exists()) {

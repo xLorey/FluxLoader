@@ -6,6 +6,7 @@
 - Added a centralized registry for all plugin data
 - Changed basic widget templates
 - The event and patch system has been rewritten
+- Refactored plugin loader
 
 # FluxLoader v0.7.1
 - Fixed creation of plugins folder

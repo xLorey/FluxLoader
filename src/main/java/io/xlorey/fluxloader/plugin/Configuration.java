@@ -60,7 +60,7 @@ public class Configuration {
      * If there is no file in the JAR resources, the method creates a new empty configuration file.
      * If the file already exists, the method simply loads the configuration from that file.
      */
-    public void copyOrLoadConfig() {
+    public final void copyOrLoadConfig() {
         File configFile = new File(configPath);
 
         if (!isExists()) {
@@ -92,7 +92,7 @@ public class Configuration {
      * After checking for the existence of the file (or creating it), the download occurs
      * configurations using the load() method.
      */
-    public void createOrLoadConfig() {
+    public final void createOrLoadConfig() {
         if (!isExists()) {
             create();
         }
@@ -106,7 +106,7 @@ public class Configuration {
      * from the file, effectively refreshing the configuration in memory.
      * After reloading, the updated configuration is available for use.
      */
-    public void reload() {
+    public final void reload() {
         Logger.print("Reloading the configuration file: " + configName);
 
         save();
@@ -122,7 +122,7 @@ public class Configuration {
      * If an I/O error occurs while writing to a file.
      * The exception is caught and output to the stacktrace, but is not thrown further.
      */
-    public void save() {
+    public final void save() {
         DumperOptions options = new DumperOptions();
         options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
         options.setProcessComments(true);
@@ -145,7 +145,7 @@ public class Configuration {
      * If an I/O error occurs while reading a file,
      * the exception is caught and pushed onto the trace stack, but is not thrown further.
      */
-    public void load() {
+    public final void load() {
         if (!isExists()) {
             return;
         }
@@ -166,7 +166,7 @@ public class Configuration {
      * Checks for the existence of a configuration file and creates it if it does not exist.
      * In case of an error, displays a stack trace.
      */
-    public void create() {
+    public final void create() {
         File configFile = new File(configPath);
 
         if (!configFile.exists()) {
@@ -185,7 +185,7 @@ public class Configuration {
      * Checks if the configuration file exists.
      * @return {@code true} if the configuration file exists, otherwise {@code false}.
      */
-    public boolean isExists() {
+    public final boolean isExists() {
         File configFile = new File(configPath);
         return configFile.exists();
     }
@@ -248,7 +248,7 @@ public class Configuration {
      * @param key Configuration key.
      * @return The integer value for the key, or 0 if the key is not found or the value is not a number.
      */
-    public int getInt(String key) {
+    public final int getInt(String key) {
         Object value = getConfigValue(key);
         return value instanceof Number ? ((Number) value).intValue() : 0;
     }
@@ -259,7 +259,7 @@ public class Configuration {
      * @param key Configuration key.
      * @return A Long value for the key, or 0L if the key is not found or the value is not a number.
      */
-    public long getLong(String key) {
+    public final long getLong(String key) {
         Object value = getConfigValue(key);
         return value instanceof Number ? ((Number) value).longValue() : 0L;
     }
@@ -270,7 +270,7 @@ public class Configuration {
      * @param key Configuration key.
      * @return A Short value for the key, or 0 if the key is not found or the value is not a number.
      */
-    public short getShort(String key) {
+    public final short getShort(String key) {
         Object value = getConfigValue(key);
         return value instanceof Number ? ((Number) value).shortValue() : 0;
     }
@@ -281,7 +281,7 @@ public class Configuration {
      * @param key Configuration key.
      * @return A Byte value for the key, or 0 if the key is not found or the value is not a number.
      */
-    public byte getByte(String key) {
+    public final byte getByte(String key) {
         Object value = getConfigValue(key);
         return value instanceof Number ? ((Number) value).byteValue() : 0;
     }
@@ -291,7 +291,7 @@ public class Configuration {
      * @param key Configuration key.
      * @param value Integer value to set.
      */
-    public void setInt(String key, int value) {
+    public final void setInt(String key, int value) {
         setConfigValue(key, value);
     }
 
@@ -300,7 +300,7 @@ public class Configuration {
      * @param key Configuration key.
      * @param value The Long value to set.
      */
-    public void setLong(String key, long value) {
+    public final void setLong(String key, long value) {
         setConfigValue(key, value);
     }
 
@@ -309,7 +309,7 @@ public class Configuration {
      * @param key Configuration key.
      * @param value The Short value to set.
      */
-    public void setShort(String key, short value) {
+    public final void setShort(String key, short value) {
         setConfigValue(key, value);
     }
 
@@ -318,7 +318,7 @@ public class Configuration {
      * @param key Configuration key.
      * @param value The Byte value to set.
      */
-    public void setByte(String key, byte value) {
+    public final void setByte(String key, byte value) {
         setConfigValue(key, value);
     }
 
@@ -328,7 +328,7 @@ public class Configuration {
      * @param key Configuration key.
      * @return The boolean value for the key, or false if the key is not found or the value is not a boolean.
      */
-    public boolean getBoolean(String key) {
+    public final boolean getBoolean(String key) {
         Object value = getConfigValue(key);
         return value instanceof Boolean ? (Boolean) value : false;
     }
@@ -338,7 +338,7 @@ public class Configuration {
      * @param key Configuration key.
      * @param value Boolean value to set.
      */
-    public void setBoolean(String key, boolean value) {
+    public final void setBoolean(String key, boolean value) {
         setConfigValue(key, value);
     }
 
@@ -348,7 +348,7 @@ public class Configuration {
      * @param key Configuration key.
      * @return The floating point value for the key, or 0.0 if the key is not found or the value is not a number.
      */
-    public double getDouble(String key) {
+    public final double getDouble(String key) {
         Object value = getConfigValue(key);
         return value instanceof Number ? ((Number) value).doubleValue() : 0.0;
     }
@@ -358,7 +358,7 @@ public class Configuration {
      * @param key Configuration key.
      * @param value The floating point value to set.
      */
-    public void setDouble(String key, double value) {
+    public final void setDouble(String key, double value) {
         setConfigValue(key, value);
     }
 
@@ -368,7 +368,7 @@ public class Configuration {
      * @param key Configuration key.
      * @return The float value for the key, or 0.0f if the key is not found or the value is not a number.
      */
-    public float getFloat(String key) {
+    public final float getFloat(String key) {
         Object value = getConfigValue(key);
         return value instanceof Number ? ((Number) value).floatValue() : 0.0f;
     }
@@ -378,7 +378,7 @@ public class Configuration {
      * @param key Configuration key.
      * @param value The floating point value to set.
      */
-    public void setFloat(String key, float value) {
+    public final void setFloat(String key, float value) {
         setConfigValue(key, value);
     }
 
@@ -389,7 +389,7 @@ public class Configuration {
      * @return A list of objects for the key, or an empty list if the key is not found or the value is not a list.
      */
     @SuppressWarnings("unchecked")
-    public List<Object> getList(String key) {
+    public final List<Object> getList(String key) {
         Object value = getConfigValue(key);
         return value instanceof List ? (List<Object>) value : new ArrayList<>();
     }
@@ -399,7 +399,7 @@ public class Configuration {
      * @param key Configuration key.
      * @param value List of objects to install.
      */
-    public void setList(String key, List<Object> value) {
+    public final void setList(String key, List<Object> value) {
         setConfigValue(key, value);
     }
 
@@ -409,7 +409,7 @@ public class Configuration {
      * @param key A configuration key that can include nested levels separated by dots.
      * @return The string value for the specified key, or {@code null} if the key is not found or the value is not a string.
      */
-    public String getString(String key) {
+    public final String getString(String key) {
         Object value = getConfigValue(key);
         return value instanceof String ? (String) value : null;
     }
@@ -419,7 +419,7 @@ public class Configuration {
      * @param key A configuration key that can include nested levels separated by dots.
      * @param value The string value to set to the specified key.
      */
-    public void setString(String key, String value) {
+    public final void setString(String key, String value) {
         setConfigValue(key, value);
     }
 
@@ -429,7 +429,7 @@ public class Configuration {
      * @param key Configuration key.
      * @return The character value for the key, or '\u0000' if the key is not found or the value is not a character.
      */
-    public char getChar(String key) {
+    public final char getChar(String key) {
         Object value = getConfigValue(key);
         return (value instanceof Character) ? (Character) value : '\u0000';
     }
@@ -439,7 +439,7 @@ public class Configuration {
      * @param key Configuration key.
      * @param value The character value to set.
      */
-    public void setChar(String key, char value) {
+    public final void setChar(String key, char value) {
         setConfigValue(key, value);
     }
 
@@ -449,7 +449,7 @@ public class Configuration {
      * @return The set of section keys, or {@code null} if the section is not found or is not a map.
      */
     @SuppressWarnings("unchecked")
-    public Set<String> getSectionKeys(String sectionKey) {
+    public final Set<String> getSectionKeys(String sectionKey) {
         Object section = getConfigValue(sectionKey);
 
         if (section instanceof Map) {
@@ -467,7 +467,7 @@ public class Configuration {
      * or {@code null} if the section is not found or is not a map.
      */
     @SuppressWarnings("unchecked")
-    public Collection<Object> getSectionValues(String sectionKey) {
+    public final Collection<Object> getSectionValues(String sectionKey) {
         Object section = getConfigValue(sectionKey);
         if (section instanceof Map) {
             return ((Map<String, Object>) section).values();
