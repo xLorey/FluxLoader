@@ -4,6 +4,7 @@ import io.xlorey.fluxloader.client.handlers.OnInitWorldHandler;
 import io.xlorey.fluxloader.client.handlers.OnMainMenuEnterHandler;
 import io.xlorey.fluxloader.client.handlers.OnPostTickRenderThreadHandler;
 import io.xlorey.fluxloader.client.handlers.OnPostUIDrawHandler;
+import io.xlorey.fluxloader.enums.EventPriority;
 import io.xlorey.fluxloader.plugin.PluginManager;
 import io.xlorey.fluxloader.shared.EventManager;
 import io.xlorey.fluxloader.utils.Logger;
@@ -30,10 +31,10 @@ public class Core {
 
         Logger.print("FluxLoader Core initialization for the client...");
 
-        EventManager.subscribe(new OnInitWorldHandler());
-        EventManager.subscribe(new OnMainMenuEnterHandler());
-        EventManager.subscribe(new OnPostTickRenderThreadHandler());
-        EventManager.subscribe(new OnPostUIDrawHandler());
+        EventManager.subscribe(new OnInitWorldHandler(), EventPriority.HIGHEST);
+        EventManager.subscribe(new OnMainMenuEnterHandler(), EventPriority.HIGHEST);
+        EventManager.subscribe(new OnPostTickRenderThreadHandler(), EventPriority.HIGHEST);
+        EventManager.subscribe(new OnPostUIDrawHandler(), EventPriority.HIGHEST);
 
         PluginManager.loadPlugins(true);
 

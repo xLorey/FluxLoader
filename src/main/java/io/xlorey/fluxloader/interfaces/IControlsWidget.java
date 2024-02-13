@@ -12,6 +12,7 @@ import imgui.ImVec2;
 public interface IControlsWidget {
     /**
      * Rendering controls in the plugin configuration menu
+     * @param parentSize parent panel dimensions
      */
     void render(ImVec2 parentSize);
 }

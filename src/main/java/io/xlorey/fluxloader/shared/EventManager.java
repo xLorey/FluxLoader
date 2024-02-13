@@ -1,14 +1,13 @@
 package io.xlorey.fluxloader.shared;
 
+import io.xlorey.fluxloader.enums.EventPriority;
 import io.xlorey.fluxloader.events.Event;
 import io.xlorey.fluxloader.utils.Logger;
+import lombok.Getter;
 import lombok.experimental.UtilityClass;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Author: Deknil
@@ -24,15 +23,25 @@ public class EventManager {
      * List of all listeners for specific events, where the key is the event name,
      * and the value is a list of all event handlers (listeners)
      */
-    private static final Map<String, List<Event>> listeners = new HashMap<>();
+    private static final Map<String, List<EventListener>> listeners = new HashMap<>();
 
     /**
      * Registers a listener object for a specific event.
      * @param listener Event listener. Must have a handleEvent method with a signature corresponding to the event.
+     * @param priority Event priority, events with lower priority are called last
+     */
+    public static void subscribe(Event listener, EventPriority priority) {
+        String eventName = listener.getEventName();
+        listeners.computeIfAbsent(eventName.toLowerCase(), k -> new ArrayList<>()).add(new EventListener(listener, priority));
+    }
+
+    /**
+     * Registers a listener object for a specific event. Handler priority is set to NORMAL
+     * @param listener Event listener. Must have a handleEvent method with a signature corresponding to the event.
      */
     public static void subscribe(Event listener) {
         String eventName = listener.getEventName();
-        listeners.computeIfAbsent(eventName.toLowerCase(), k -> new ArrayList<>()).add(listener);
+        listeners.computeIfAbsent(eventName.toLowerCase(), k -> new ArrayList<>()).add(new EventListener(listener, EventPriority.NORMAL));
     }
 
     /**
@@ -43,13 +52,17 @@ public class EventManager {
      * @param args Arguments to be passed to the event listener's handleEvent method. The type and number of arguments must match the expected parameters of the handleEvent method.
      */
     public void invokeEvent(String eventName, Object... args) {
-        List<Event> eventListeners = listeners.get(eventName.toLowerCase());
+        List<EventListener> eventListeners = listeners.get(eventName.toLowerCase());
 
         if (eventListeners == null) return;
 
-        for (Event listener : eventListeners) {
+        eventListeners.sort(Comparator.comparingInt(l -> l.getPriority().ordinal()));
+
+        for (EventListener listener : eventListeners) {
+            Event eventHandler = listener.getHandler();
+
             try {
-                invokeHandleEvent(listener, args);
+                invokeHandleEvent(eventHandler, args);
             } catch (Exception e) {
                 Logger.print(String.format("An error occurred while trying to call method '%s' in listener '%s'!",
                         eventName,
@@ -110,5 +123,30 @@ public class EventManager {
             }
         }
         return true;
+    }
+
+    /**
+     * Standard event listener class
+     */
+    @Getter
+    private static class EventListener{
+        /**
+         * Handler object for this event
+         */
+        private final Event handler;
+        /**
+         * Processing priority, according to the EventPriority enumeration
+         */
+        private final EventPriority priority;
+
+        /**
+         * Event Listener Data Constructor
+         * @param listener Handler object for this event
+         * @param eventPriority Processing priority, according to the EventPriority enumeration
+         */
+        public EventListener(Event listener, EventPriority eventPriority) {
+            this.handler = listener;
+            this.priority = eventPriority;
+        }
     }
 }

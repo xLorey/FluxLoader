@@ -276,6 +276,13 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/xlorey/fluxloader/shared/EventManager.html#%3Cinit%3E()" class="member-name-link">EventManager()</a> - Constructor for class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/EventManager.html" title="class in io.xlorey.fluxloader.shared">EventManager</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/xlorey/fluxloader/enums/EventPriority.html" class="type-name-link" title="enum class in io.xlorey.fluxloader.enums">EventPriority</a> - Enum Class in <a href="io/xlorey/fluxloader/enums/package-summary.html">io.xlorey.fluxloader.enums</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ Date: 13.02.2024
+ GitHub: <a href="https://github.com/Deknil">https://github.com/Deknil</a>
+ Description: The enumeration defines five event priority levels used to control the order in which events are processed in an application.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/plugin/PluginManager.html#executePlugins(java.util.HashMap)" class="member-name-link">executePlugins(HashMap&lt;String, Plugin&gt;)</a> - Static method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginManager.html" title="class in io.xlorey.fluxloader.plugin">PluginManager</a></dt>
 <dd>
 <div class="block">Starts the execution of all plugins specified in the past registry.</div>
@@ -1313,6 +1320,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Gets a collection of values for the specified configuration section.</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/shared/ServiceManager.html#getService(java.lang.Class)" class="member-name-link">getService(Class&lt;T&gt;)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/ServiceManager.html" title="class in io.xlorey.fluxloader.shared">ServiceManager</a></dt>
+<dd>
+<div class="block">Returns the registered service by its interface.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/plugin/Configuration.html#getShort(java.lang.String)" class="member-name-link">getShort(String)</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/Configuration.html" title="class in io.xlorey.fluxloader.plugin">Configuration</a></dt>
 <dd>
 <div class="block">Gets the Short value for the specified configuration key.</div>
@@ -2260,6 +2271,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Called Event Handling Method</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/enums/EventPriority.html#HIGH" class="member-name-link">HIGH</a> - Enum constant in enum class io.xlorey.fluxloader.enums.<a href="io/xlorey/fluxloader/enums/EventPriority.html" title="enum class in io.xlorey.fluxloader.enums">EventPriority</a></dt>
+<dd>
+<div class="block">High priority events.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/enums/EventPriority.html#HIGHEST" class="member-name-link">HIGHEST</a> - Enum constant in enum class io.xlorey.fluxloader.enums.<a href="io/xlorey/fluxloader/enums/EventPriority.html" title="enum class in io.xlorey.fluxloader.enums">EventPriority</a></dt>
+<dd>
+<div class="block">Highest priority events.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
@@ -2435,6 +2454,14 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/xlorey/fluxloader/utils/Logger.html#%3Cinit%3E()" class="member-name-link">Logger()</a> - Constructor for class io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/Logger.html" title="class in io.xlorey.fluxloader.utils">Logger</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/xlorey/fluxloader/enums/EventPriority.html#LOW" class="member-name-link">LOW</a> - Enum constant in enum class io.xlorey.fluxloader.enums.<a href="io/xlorey/fluxloader/enums/EventPriority.html" title="enum class in io.xlorey.fluxloader.enums">EventPriority</a></dt>
+<dd>
+<div class="block">Low priority events.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/enums/EventPriority.html#LOWEST" class="member-name-link">LOWEST</a> - Enum constant in enum class io.xlorey.fluxloader.enums.<a href="io/xlorey/fluxloader/enums/EventPriority.html" title="enum class in io.xlorey.fluxloader.enums">EventPriority</a></dt>
+<dd>
+<div class="block">Lowest priority events.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:M">M</h2>
 <dl class="index">
@@ -2486,6 +2513,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/fluxloader/enums/AccessLevel.html#NONE" class="member-name-link">NONE</a> - Enum constant in enum class io.xlorey.fluxloader.enums.<a href="io/xlorey/fluxloader/enums/AccessLevel.html" title="enum class in io.xlorey.fluxloader.enums">AccessLevel</a></dt>
 <dd>
 <div class="block">The default access level representing no special privileges.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/enums/EventPriority.html#NORMAL" class="member-name-link">NORMAL</a> - Enum constant in enum class io.xlorey.fluxloader.enums.<a href="io/xlorey/fluxloader/enums/EventPriority.html" title="enum class in io.xlorey.fluxloader.enums">EventPriority</a></dt>
+<dd>
+<div class="block">Events with normal priority.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:O">O</h2>
@@ -4788,6 +4819,10 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
+<dt><a href="io/xlorey/fluxloader/shared/ServiceManager.html#register(java.lang.Class,T)" class="member-name-link">register(Class&lt;T&gt;, T)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/ServiceManager.html" title="class in io.xlorey.fluxloader.shared">ServiceManager</a></dt>
+<dd>
+<div class="block">Registers a service by its interface.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/plugin/Configuration.html#reload()" class="member-name-link">reload()</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/Configuration.html" title="class in io.xlorey.fluxloader.plugin">Configuration</a></dt>
 <dd>
 <div class="block">Reloads the configuration file.</div>
@@ -4856,6 +4891,15 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/xlorey/fluxloader/server/api/ServerUtils.html#%3Cinit%3E()" class="member-name-link">ServerUtils()</a> - Constructor for class io.xlorey.fluxloader.server.api.<a href="io/xlorey/fluxloader/server/api/ServerUtils.html" title="class in io.xlorey.fluxloader.server.api">ServerUtils</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/xlorey/fluxloader/shared/ServiceManager.html" class="type-name-link" title="class in io.xlorey.fluxloader.shared">ServiceManager</a> - Class in <a href="io/xlorey/fluxloader/shared/package-summary.html">io.xlorey.fluxloader.shared</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ Date: 13.02.2024
+ Description: The service manager allows you to register services by their interfaces and access them</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/shared/ServiceManager.html#%3Cinit%3E()" class="member-name-link">ServiceManager()</a> - Constructor for class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/ServiceManager.html" title="class in io.xlorey.fluxloader.shared">ServiceManager</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="io/xlorey/fluxloader/plugin/Configuration.html#setBoolean(java.lang.String,boolean)" class="member-name-link">setBoolean(String, boolean)</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/Configuration.html" title="class in io.xlorey.fluxloader.plugin">Configuration</a></dt>
 <dd>
 <div class="block">Sets a boolean value for the specified configuration key.</div>
@@ -4914,6 +4958,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/fluxloader/client/core/StateManager.html#%3Cinit%3E()" class="member-name-link">StateManager()</a> - Constructor for class io.xlorey.fluxloader.client.core.<a href="io/xlorey/fluxloader/client/core/StateManager.html" title="class in io.xlorey.fluxloader.client.core">StateManager</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/xlorey/fluxloader/shared/EventManager.html#subscribe(io.xlorey.fluxloader.events.Event)" class="member-name-link">subscribe(Event)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/EventManager.html" title="class in io.xlorey.fluxloader.shared">EventManager</a></dt>
+<dd>
+<div class="block">Registers a listener object for a specific event.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/shared/EventManager.html#subscribe(io.xlorey.fluxloader.events.Event,io.xlorey.fluxloader.enums.EventPriority)" class="member-name-link">subscribe(Event, EventPriority)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/EventManager.html" title="class in io.xlorey.fluxloader.shared">EventManager</a></dt>
 <dd>
 <div class="block">Registers a listener object for a specific event.</div>
 </dd>
@@ -4976,12 +5024,21 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/enums/EventPriority.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class io.xlorey.fluxloader.enums.<a href="io/xlorey/fluxloader/enums/EventPriority.html" title="enum class in io.xlorey.fluxloader.enums">EventPriority</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this class with the specified name.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/enums/AccessLevel.html#values()" class="member-name-link">values()</a> - Static method in enum class io.xlorey.fluxloader.enums.<a href="io/xlorey/fluxloader/enums/AccessLevel.html" title="enum class in io.xlorey.fluxloader.enums">AccessLevel</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/enums/CommandScope.html#values()" class="member-name-link">values()</a> - Static method in enum class io.xlorey.fluxloader.enums.<a href="io/xlorey/fluxloader/enums/CommandScope.html" title="enum class in io.xlorey.fluxloader.enums">CommandScope</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum class, in
+the order they are declared.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/enums/EventPriority.html#values()" class="member-name-link">values()</a> - Static method in enum class io.xlorey.fluxloader.enums.<a href="io/xlorey/fluxloader/enums/EventPriority.html" title="enum class in io.xlorey.fluxloader.enums">EventPriority</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>

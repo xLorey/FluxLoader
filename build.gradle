@@ -121,7 +121,7 @@ tasks.register('generateJavaDoc', Javadoc) {
     classpath = configurations.compileClasspath
     destinationDir = file("docs/javadoc")
 
-    options.addStringOption('Xdoclint:none', '-quiet')
+//    options.addStringOption('Xdoclint:none', '-quiet')
 }
 
 /**
