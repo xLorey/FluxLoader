@@ -1,3 +1,17 @@
+# FluxLoader v0.8.0
+- Added missing `Configuration` data types
+- Added a method to the `Plugin` class to get the config folder inside the folder with all plugins (`./plugins/{pluginName}/...`)
+- Added item IDs to `Wiki`
+- Added plugin metadata structure version tracking
+- Added a centralized registry for all plugin data
+- Added implementation of a service manager for communication between plugins
+- Added the ability to set the priority for the event handler
+- Added display of administrator nickname in player ban and kick events
+- Changed basic widget templates
+- The event and patch system has been rewritten
+- Refactored plugin loader
+- The plugin class loader for services has been changed
+
 # FluxLoader v0.7.1
 - Fixed creation of plugins folder
 

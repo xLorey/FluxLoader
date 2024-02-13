@@ -42,7 +42,7 @@ dependencies {
     /**
      * Flux Loader - connects only in compileOnly format
      */
-    compileOnly files("libs/FluxLoader-0.6.0.jar")
+    compileOnly files("libs/FluxLoader-0.8.0.jar")
 }
 
 /**
@@ -79,6 +79,7 @@ In the project dependencies, you must indicate the current version of Flux Loade
 In the resource root of the project, for example, `src/main/java/resources/`, create a file `metadata.json`:
 ```json
 {
+  "revision": "1",
   "name": "Plugin Template",
   "description": "Basic plugin implementation",
   "id": "PluginTemplate",
@@ -102,11 +103,13 @@ In the resource root of the project, for example, `src/main/java/resources/`, cr
   "controlsEntrypoint": "io.xlorey.plugintemplate.client.PluginControls",
   "dependencies": {
     "project-zomboid": "=41.78.16",
-    "flux-loader": "=0.2.0"
+    "flux-loader": "=0.8.0"
   }
 }
 ```
 where:
+
+`revision` - metadata revision.
 
 `name` - plugin name.
 
@@ -209,7 +212,7 @@ public class Controls implements IControlsWidget {
      * Rendering controls using ImGui
      */
     @Override
-    public void render() {
+    public void render(float panelWidth) {
 
     }
 }

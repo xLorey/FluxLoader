@@ -21,11 +21,11 @@
     <img alt="GitHub release (with filter)" src="https://img.shields.io/github/v/release/xlorey/FluxLoader">
 </p>
 
-**Flux Loader** is a universal toolchain for creating plugins (mods) for the [Project Zomboid](https://store.steampowered.com/app/108600/Project_Zomboid/) game, oriented for both the client and the server. 
+**Flux Loader** is a universal toolchain for creating plugins (mods) for the [Project Zomboid](https://store.steampowered.com/app/108600/Project_Zomboid/) game, oriented for both the client and the server.
 This project is inspired by tools such as [Storm](https://github.com/pzstorm/storm), [PaperMC](https://github.com/PaperMC/Paper), [FabricMC](https://github.com/FabricMC/fabric), etc.
 
 # Introduction
-The problem of writing mods for Project Zomboid is largely due to the lack of detailed documentation and the limitations of the official API designed for modding. The main way to create mods through Lua provides only limited features, which poses certain difficulties for mod developers if they want to implement more complex and deep functionality. This means that developers have to use workarounds to implement more complex ideas and concepts, which can lead to increased development complexity and potential compatibility and stability problems. 
+The problem of writing mods for Project Zomboid is largely due to the lack of detailed documentation and the limitations of the official API designed for modding. The main way to create mods through Lua provides only limited features, which poses certain difficulties for mod developers if they want to implement more complex and deep functionality. This means that developers have to use workarounds to implement more complex ideas and concepts, which can lead to increased development complexity and potential compatibility and stability problems.
 
 In addition, the lack of official support for such methods may lead to the risk that mods may stop working with future updates of the game. All this affects mod developers, limiting their creativity and increasing the risks during development.
 
@@ -52,9 +52,7 @@ cd /D "{path}"
 ``{path}`` - is your path to the jar file folder
 
 > [!TIP]
-> For example, the path for the client: `C:\Program Files (x86)\Steam\steamapps\common\ProjectZomboid`
-> 
-> for the server: `C:\Program Files (x86)\Steam\steamapps\common\Project Zomboid Dedicated Server\java`
+> For example, the path for client and server: `C:\Program Files (x86)\Steam\steamapps\common\ProjectZomboid`
 
 5) Enter the installation command in the context of the folder with the downloaded jar file:
 ```bash
@@ -91,5 +89,5 @@ We welcome any help in the development of this project! How can you help:
 - **Take part in the development** - you can always create a fork and make corrections by sending them for acceptance (pull request).
 - **Join our community at discord** - we want to create a healthy community of enthusiastic developers where everyone can learn something and find new friends.
 
-# License 
+# License
 This project is licensed under [GNU General Public License v3.0](https://github.com/xLorey/FluxLoader/blob/master/LICENSE).
