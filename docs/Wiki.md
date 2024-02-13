@@ -9,7 +9,6 @@ We also highly recommend that you familiarize yourself with these resources, the
 -   [Project Zomboid Events](https://pzwiki.net/wiki/Lua_Events)
 -   [Item storage](./items/items.md)
 -   [Flux Loader Java Doc](https://xlorey.github.io/FluxLoader/)
--   [Flux Loader Java Doc](https://xlorey.github.io/FluxLoader/)
 
 # Content
 - [Beginning](./Beginning.md)
@@ -17,4 +16,5 @@ We also highly recommend that you familiarize yourself with these resources, the
 - [Console/Server commands](./CreateCommands.md)
 - [UI Widget](./UIWidget.md)
 - [Configuration files](./Configs.md)
+- [Services](./Services.md)
 - [Compilation](./Compilation.md)
