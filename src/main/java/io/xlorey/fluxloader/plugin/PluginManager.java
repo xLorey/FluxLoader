@@ -23,10 +23,6 @@ import java.util.*;
  */
 @UtilityClass
 public class PluginManager {
-    /**
-     * General plugin loader
-     */
-    private static final PluginClassLoader pluginClassLoader = new PluginClassLoader(new URL[0], PluginManager.class.getClassLoader());;
 
     /**
      * Loading plugins into the game context
@@ -110,7 +106,8 @@ public class PluginManager {
 
             // Creating a URL for the plugin
             URL pluginUrl = plugin.toURI().toURL();
-            PluginClassLoader classLoader = new PluginClassLoader(new URL[]{pluginUrl}, pluginClassLoader);
+            PluginClassLoader classLoader = new PluginClassLoader(new URL[]{pluginUrl});
+            PluginRegistry.addPluginLoader(metadata.getId(), classLoader);
 
             loadEntryPoints(true, clientEntryPoints, metadata, classLoader);
             loadEntryPoints(false, serverEntryPoints, metadata, classLoader);

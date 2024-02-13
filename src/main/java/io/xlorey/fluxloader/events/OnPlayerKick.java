@@ -20,7 +20,8 @@ public abstract class OnPlayerKick extends Event {
     /**
      * Called Event Handling Method
      * @param player An object of the player who was banned.
+     * @param adminName Nickname of the administrator who kicked the player
      * @param reason Reason for blocking the player.
      */
-    public void handleEvent(Player player, String reason) {}
+    public void handleEvent(Player player, String adminName, String reason) {}
 }

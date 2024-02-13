@@ -4,6 +4,8 @@ import io.xlorey.fluxloader.interfaces.IControlsWidget;
 import zombie.core.textures.Texture;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Author: Deknil
@@ -14,9 +16,21 @@ import java.util.HashMap;
  */
 public class PluginRegistry {
     /**
+     * A map containing cached Class objects.
+     * The keys are fully qualified class names and the values are corresponding Class objects.
+     */
+    private static final Map<String, Class<?>> classCache = new HashMap<>();
+
+    /**
+     * A map containing instances of PluginClassLoader.
+     * The keys are identifiers for each loader, and the values are corresponding PluginClassLoader instances.
+     */
+    private static final Map<String, PluginClassLoader> pluginLoaders = new LinkedHashMap<>();
+
+    /**
      * Registry of icons of loaded plugins
      * Key: plugin id
-     *Value: texture object
+     * Value: texture object
      */
     private static final HashMap<String, Texture> pluginIconRegistry = new HashMap<>();
 
@@ -40,6 +54,52 @@ public class PluginRegistry {
      * Value: plugin instance
      */
     private static final HashMap<String, Plugin> serverPluginsRegistry = new HashMap<>();
+
+    /**
+     * Retrieves the Class object for a given class name from the cache or loaders.
+     * If the class is not found in the cache, searches through all loaders to find the class.
+     * @param name The fully qualified name of the desired class.
+     * @return The Class object corresponding to the specified name, or {@code null} if the class could not be found.
+     */
+    public static Class<?> getClassByName(final String name) {
+        Class<?> cachedClass = classCache.get(name);
+
+        if (cachedClass != null) {
+            return cachedClass;
+        } else {
+            for (String current : pluginLoaders.keySet()) {
+                PluginClassLoader loader = pluginLoaders.get(current);
+
+                try {
+                    cachedClass = loader.findClass(name, false);
+                } catch (ClassNotFoundException exception) {}
+                if (cachedClass != null) {
+                    return cachedClass;
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Adds a Class object to the cache if it does not already exist.
+     * @param name  The fully qualified name of the class.
+     * @param clazz The Class object to be added to the cache.
+     */
+    public static void addClassInCache(final String name, final Class<?> clazz) {
+        if (!classCache.containsKey(name)) {
+            classCache.put(name, clazz);
+        }
+    }
+
+    /**
+     * Adding a plugin class loader to the repository
+     * @param id plugin identifier
+     * @param loader plugin class loader
+     */
+    public static void addPluginLoader(String id, PluginClassLoader loader) {
+        pluginLoaders.put(id, loader);
+    }
 
     /**
      * Retrieves the list of loaded client plugins controls
@@ -67,6 +127,7 @@ public class PluginRegistry {
     public static HashMap<String, Plugin> getLoadedClientPlugins() {
         return clientPluginsRegistry;
     }
+
     /**
      * Retrieves the list of loaded server plugins
      * @return A HashMap containing information about loaded server plugins, where the key is "entryPoint:ID:Version"

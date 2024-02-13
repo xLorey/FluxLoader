@@ -43,7 +43,7 @@ public abstract class Widget {
      * Invoking this method will schedule the widget for rendering on the screen.
      * It should be used to register the widget in a way that it becomes visible and active.
      */
-    public void addToScreen() {
+    public final void addToScreen() {
         if (WidgetManager.widgetsRegistry.contains(this)) return;
         WidgetManager.widgetsRegistry.add(this);
     }
@@ -53,7 +53,7 @@ public abstract class Widget {
      * This method should unregister the widget from being drawn on the screen.
      * Use it to hide the widget or stop its active functions on the UI.
      */
-    public void removeFromScreen() {
+    public final void removeFromScreen() {
         if (!WidgetManager.widgetsRegistry.contains(this)) return;
         WidgetManager.widgetsRegistry.remove(this);
     }
@@ -80,7 +80,7 @@ public abstract class Widget {
      * Captures mouse focus, redirecting mouse interaction to the current element.
      * This method is used to temporarily limit the user's interaction with others user interface elements.
      */
-    public void captureMouseFocus() {
+    public final void captureMouseFocus() {
         ImVec2 windowSize = ImGui.getWindowSize();
         ImVec2 windowPos = ImGui.getWindowPos();
 

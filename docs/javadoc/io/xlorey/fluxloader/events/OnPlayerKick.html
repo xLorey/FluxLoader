@@ -117,7 +117,8 @@ loadScripts(document, 'script');</script>
 <div class="block">Getting the event name</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleEvent(zombie.network.packets.hit.Player,java.lang.String)" class="member-name-link">handleEvent</a><wbr>(zombie.network.packets.hit.Player&nbsp;player,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#handleEvent(zombie.network.packets.hit.Player,java.lang.String,java.lang.String)" class="member-name-link">handleEvent</a><wbr>(zombie.network.packets.hit.Player&nbsp;player,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;adminName,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;reason)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Called Event Handling Method</div>
@@ -167,14 +168,16 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="handleEvent(zombie.network.packets.hit.Player,java.lang.String)">
+<section class="detail" id="handleEvent(zombie.network.packets.hit.Player,java.lang.String,java.lang.String)">
 <h3>handleEvent</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">handleEvent</span><wbr><span class="parameters">(zombie.network.packets.hit.Player&nbsp;player,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;adminName,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;reason)</span></div>
 <div class="block">Called Event Handling Method</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>player</code> - An object of the player who was banned.</dd>
+<dd><code>adminName</code> - Nickname of the administrator who kicked the player</dd>
 <dd><code>reason</code> - Reason for blocking the player.</dd>
 </dl>
 </section>

@@ -1,6 +1,7 @@
 package io.xlorey.fluxloader.client.ui.pluginMenu;
 
 import imgui.ImGui;
+import imgui.ImVec2;
 import imgui.flag.ImGuiCol;
 import imgui.flag.ImGuiStyleVar;
 import imgui.flag.ImGuiWindowFlags;
@@ -190,7 +191,7 @@ public class PluginMenu extends Widget {
             IControlsWidget controls = PluginRegistry.getPluginControlsRegistry().get(metadata.getId());
             if (controls != null) {
                 ImGui.newLine();
-                controls.render(ImGui.getItemRectSize());
+                controls.render(ImGui.getColumnWidth());
             }
         }
 

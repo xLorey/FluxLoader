@@ -6,9 +6,11 @@
 - Added a centralized registry for all plugin data
 - Added implementation of a service manager for communication between plugins
 - Added the ability to set the priority for the event handler
+- Added display of administrator nickname in player ban and kick events
 - Changed basic widget templates
 - The event and patch system has been rewritten
 - Refactored plugin loader
+- The plugin class loader for services has been changed
 
 # FluxLoader v0.7.1
 - Fixed creation of plugins folder

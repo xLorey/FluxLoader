@@ -30,7 +30,7 @@ public class EventManager {
      * @param listener Event listener. Must have a handleEvent method with a signature corresponding to the event.
      * @param priority Event priority, events with lower priority are called last
      */
-    public static void subscribe(Event listener, EventPriority priority) {
+    public static synchronized void subscribe(Event listener, EventPriority priority) {
         String eventName = listener.getEventName();
         listeners.computeIfAbsent(eventName.toLowerCase(), k -> new ArrayList<>()).add(new EventListener(listener, priority));
     }
@@ -39,7 +39,7 @@ public class EventManager {
      * Registers a listener object for a specific event. Handler priority is set to NORMAL
      * @param listener Event listener. Must have a handleEvent method with a signature corresponding to the event.
      */
-    public static void subscribe(Event listener) {
+    public static synchronized void subscribe(Event listener) {
         String eventName = listener.getEventName();
         listeners.computeIfAbsent(eventName.toLowerCase(), k -> new ArrayList<>()).add(new EventListener(listener, EventPriority.NORMAL));
     }

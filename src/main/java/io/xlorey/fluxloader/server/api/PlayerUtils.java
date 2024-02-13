@@ -29,6 +29,7 @@ public class PlayerUtils {
     public static IsoPlayer getPlayerByUdpConnection(UdpConnection udpConnection) {
         return getPlayerByUsername(udpConnection.username);
     }
+
     /**
      * Returns the player's IP address.
      * @param player The player instance for which you want to obtain the IP address.
@@ -102,7 +103,7 @@ public class PlayerUtils {
     public void kickPlayer(IsoPlayer player, String reason) {
         if (player == null) return;
 
-        EventManager.invokeEvent("onPlayerKick", player, reason);
+        EventManager.invokeEvent("onPlayerKick", player, "Console", reason);
 
         UdpConnection playerConnection = GameServer.getConnectionFromPlayer(player);
 
@@ -127,7 +128,7 @@ public class PlayerUtils {
     public void banPlayer(IsoPlayer player, String reason, boolean banIP, boolean banSteamID) {
         if (player == null) return;
 
-        EventManager.invokeEvent("onPlayerBan", player, reason);
+        EventManager.invokeEvent("onPlayerBan", player, "Console", reason);
 
         UdpConnection playerConnection = GameServer.getConnectionFromPlayer(player);
 

@@ -63,6 +63,10 @@ loadScripts(document, 'script');</script>
  Date: 08.02.2024
  Description: Enumerates various access levels with priorities for comparison.</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/plugin/PluginRegistry.html#addClassInCache(java.lang.String,java.lang.Class)" class="member-name-link">addClassInCache(String, Class&lt;?&gt;)</a> - Static method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginRegistry.html" title="class in io.xlorey.fluxloader.plugin">PluginRegistry</a></dt>
+<dd>
+<div class="block">Adds a Class object to the cache if it does not already exist.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/plugin/PluginRegistry.html#addClientPlugin(java.lang.String,io.xlorey.fluxloader.plugin.Plugin)" class="member-name-link">addClientPlugin(String, Plugin)</a> - Static method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginRegistry.html" title="class in io.xlorey.fluxloader.plugin">PluginRegistry</a></dt>
 <dd>
 <div class="block">Adds a client plugin instance to the registry.</div>
@@ -78,6 +82,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/fluxloader/plugin/PluginRegistry.html#addPluginIcon(java.lang.String,zombie.core.textures.Texture)" class="member-name-link">addPluginIcon(String, Texture)</a> - Static method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginRegistry.html" title="class in io.xlorey.fluxloader.plugin">PluginRegistry</a></dt>
 <dd>
 <div class="block">Adds a plugin icon to the registry.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/plugin/PluginRegistry.html#addPluginLoader(java.lang.String,io.xlorey.fluxloader.plugin.PluginClassLoader)" class="member-name-link">addPluginLoader(String, PluginClassLoader)</a> - Static method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginRegistry.html" title="class in io.xlorey.fluxloader.plugin">PluginRegistry</a></dt>
+<dd>
+<div class="block">Adding a plugin class loader to the repository</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/plugin/PluginRegistry.html#addServerPlugin(java.lang.String,io.xlorey.fluxloader.plugin.Plugin)" class="member-name-link">addServerPlugin(String, Plugin)</a> - Static method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginRegistry.html" title="class in io.xlorey.fluxloader.plugin">PluginRegistry</a></dt>
 <dd>
@@ -294,6 +302,15 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:F">F</h2>
 <dl class="index">
+<dt><a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html#findClass(java.lang.String)" class="member-name-link">findClass(String)</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html" title="class in io.xlorey.fluxloader.plugin">PluginClassLoader</a></dt>
+<dd>
+<div class="block">Finds and loads the class with the specified name from the URL search
+ path.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html#findClass(java.lang.String,boolean)" class="member-name-link">findClass(String, boolean)</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html" title="class in io.xlorey.fluxloader.plugin">PluginClassLoader</a></dt>
+<dd>
+<div class="block">Finds a class by name, optionally performing a global search.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html#findLoaded(java.lang.String)" class="member-name-link">findLoaded(String)</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html" title="class in io.xlorey.fluxloader.plugin">PluginClassLoader</a></dt>
 <dd>
 <div class="block">Finds a loaded class by name.</div>
@@ -339,6 +356,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/fluxloader/plugin/Configuration.html#getChar(java.lang.String)" class="member-name-link">getChar(String)</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/Configuration.html" title="class in io.xlorey.fluxloader.plugin">Configuration</a></dt>
 <dd>
 <div class="block">Gets the character value (char) for the specified configuration key.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/plugin/PluginRegistry.html#getClassByName(java.lang.String)" class="member-name-link">getClassByName(String)</a> - Static method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginRegistry.html" title="class in io.xlorey.fluxloader.plugin">PluginRegistry</a></dt>
+<dd>
+<div class="block">Retrieves the Class object for a given class name from the cache or loaders.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html#getClasses()" class="member-name-link">getClasses()</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html" title="class in io.xlorey.fluxloader.plugin">PluginClassLoader</a></dt>
+<dd>
+<div class="block">Retrieves the set of loaded class names.</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/interfaces/IPatch.html#getClassName()" class="member-name-link">getClassName()</a> - Method in interface io.xlorey.fluxloader.interfaces.<a href="io/xlorey/fluxloader/interfaces/IPatch.html" title="interface in io.xlorey.fluxloader.interfaces">IPatch</a></dt>
 <dd>
@@ -2251,11 +2276,11 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Called Event Handling Method</div>
 </dd>
-<dt><a href="io/xlorey/fluxloader/events/OnPlayerBan.html#handleEvent(zombie.network.packets.hit.Player,java.lang.String)" class="member-name-link">handleEvent(Player, String)</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPlayerBan.html" title="class in io.xlorey.fluxloader.events">OnPlayerBan</a></dt>
+<dt><a href="io/xlorey/fluxloader/events/OnPlayerBan.html#handleEvent(zombie.network.packets.hit.Player,java.lang.String,java.lang.String)" class="member-name-link">handleEvent(Player, String, String)</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPlayerBan.html" title="class in io.xlorey.fluxloader.events">OnPlayerBan</a></dt>
 <dd>
 <div class="block">Called Event Handling Method</div>
 </dd>
-<dt><a href="io/xlorey/fluxloader/events/OnPlayerKick.html#handleEvent(zombie.network.packets.hit.Player,java.lang.String)" class="member-name-link">handleEvent(Player, String)</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPlayerKick.html" title="class in io.xlorey.fluxloader.events">OnPlayerKick</a></dt>
+<dt><a href="io/xlorey/fluxloader/events/OnPlayerKick.html#handleEvent(zombie.network.packets.hit.Player,java.lang.String,java.lang.String)" class="member-name-link">handleEvent(Player, String, String)</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPlayerKick.html" title="class in io.xlorey.fluxloader.events">OnPlayerKick</a></dt>
 <dd>
 <div class="block">Called Event Handling Method</div>
 </dd>
@@ -4759,7 +4784,7 @@ loadScripts(document, 'script');</script>
  Date: 07.02.2024
  Description: A custom class loader for loading plugin classes.</div>
 </dd>
-<dt><a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html#%3Cinit%3E(java.net.URL%5B%5D,java.lang.ClassLoader)" class="member-name-link">PluginClassLoader(URL[], ClassLoader)</a> - Constructor for class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html" title="class in io.xlorey.fluxloader.plugin">PluginClassLoader</a></dt>
+<dt><a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html#%3Cinit%3E(java.net.URL%5B%5D)" class="member-name-link">PluginClassLoader(URL[])</a> - Constructor for class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginClassLoader.html" title="class in io.xlorey.fluxloader.plugin">PluginClassLoader</a></dt>
 <dd>
 <div class="block">Constructs a new PluginClassLoader for the specified URLs using the specified parent class loader.</div>
 </dd>
@@ -4847,7 +4872,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Rendering a custom element</div>
 </dd>
-<dt><a href="io/xlorey/fluxloader/interfaces/IControlsWidget.html#render(imgui.ImVec2)" class="member-name-link">render(ImVec2)</a> - Method in interface io.xlorey.fluxloader.interfaces.<a href="io/xlorey/fluxloader/interfaces/IControlsWidget.html" title="interface in io.xlorey.fluxloader.interfaces">IControlsWidget</a></dt>
+<dt><a href="io/xlorey/fluxloader/interfaces/IControlsWidget.html#render(float)" class="member-name-link">render(float)</a> - Method in interface io.xlorey.fluxloader.interfaces.<a href="io/xlorey/fluxloader/interfaces/IControlsWidget.html" title="interface in io.xlorey.fluxloader.interfaces">IControlsWidget</a></dt>
 <dd>
 <div class="block">Rendering controls in the plugin configuration menu</div>
 </dd>
@@ -4996,6 +5021,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/fluxloader/utils/JarTools.html#unpackJar(java.util.ArrayList,java.lang.String,java.lang.String)" class="member-name-link">unpackJar(ArrayList&lt;String&gt;, String, String)</a> - Static method in class io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/JarTools.html" title="class in io.xlorey.fluxloader.utils">JarTools</a></dt>
 <dd>
 <div class="block">Unpacking a Jar archive in a given directory</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/shared/ServiceManager.html#unregister(java.lang.Class)" class="member-name-link">unregister(Class&lt;T&gt;)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/ServiceManager.html" title="class in io.xlorey.fluxloader.shared">ServiceManager</a></dt>
+<dd>
+<div class="block">Removes a service from the list of registered ones</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/client/states/FluxLogoState.html#update()" class="member-name-link">update()</a> - Method in class io.xlorey.fluxloader.client.states.<a href="io/xlorey/fluxloader/client/states/FluxLogoState.html" title="class in io.xlorey.fluxloader.client.states">FluxLogoState</a></dt>
 <dd>

@@ -34,8 +34,9 @@ public class PatchBanSteamIDCommand extends PatchFile{
                         if (m.getClassName().equals("zombie.core.raknet.UdpConnection") && m.getMethodName().equals("forceDisconnect")) {
                             String code =  "{ "
                                     + "zombie.characters.IsoPlayer player = io.xlorey.fluxloader.server.api.PlayerUtils.getPlayerByUdpConnection($0);"
+                                    + "java.lang.String adminName = this.getExecutorUsername().isEmpty() ? \"Console\" : this.getExecutorUsername();"
                                     + "if (player != null) {"
-                                    + EventManager.class.getName() + ".invokeEvent(\"onPlayerBan\", new Object[]{player, \"\"});"
+                                    + EventManager.class.getName() + ".invokeEvent(\"onPlayerBan\", new Object[]{player, adminName, \"\"});"
                                     + "}"
                                     + "$proceed($$);"
                                     + "}";
