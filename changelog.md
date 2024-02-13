@@ -4,6 +4,7 @@
 - Added item IDs to `Wiki`
 - Added plugin metadata structure version tracking
 - Added a centralized registry for all plugin data
+- Added implementation of a service manager for communication between plugins
 - Changed basic widget templates
 - The event and patch system has been rewritten
 - Refactored plugin loader
