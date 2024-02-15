@@ -106,31 +106,34 @@ public class PluginManager {
 
             // Creating a URL for the plugin
             URL pluginUrl = plugin.toURI().toURL();
-            PluginClassLoader classLoader = new PluginClassLoader(new URL[]{pluginUrl});
-            PluginRegistry.addPluginLoader(metadata.getId(), classLoader);
 
-            loadEntryPoints(true, clientEntryPoints, metadata, classLoader);
-            loadEntryPoints(false, serverEntryPoints, metadata, classLoader);
+            // try-with-resources
+            try (PluginClassLoader classLoader = new PluginClassLoader(new URL[]{pluginUrl})) {
+                PluginRegistry.addPluginLoader(metadata.getId(), classLoader);
 
-            if (isClient) {
-                String controlsClassName = metadata.getControlsEntrypoint();
-                if (controlsClassName != null && !controlsClassName.isEmpty()) {
-                    Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
-                    IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
+                loadEntryPoints(true, clientEntryPoints, metadata, classLoader);
+                loadEntryPoints(false, serverEntryPoints, metadata, classLoader);
 
-                    PluginRegistry.addPluginControls(metadata.getId(), controlsInstance);
-                }
+                if (isClient) {
+                    String controlsClassName = metadata.getControlsEntrypoint();
+                    if (controlsClassName != null && !controlsClassName.isEmpty()) {
+                        Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
+                        IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
 
-                String iconPath = metadata.getIcon();
-                URL iconUrl = classLoader.getResource(iconPath);
+                        PluginRegistry.addPluginControls(metadata.getId(), controlsInstance);
+                    }
 
-                if (iconUrl != null) {
-                    try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
-                        Texture texture = new Texture(iconPath, bis, true);
-                        PluginRegistry.addPluginIcon(metadata.getId(), texture);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
+                    String iconPath = metadata.getIcon();
+                    URL iconUrl = classLoader.getResource(iconPath);
+
+                    if (iconUrl != null) {
+                        try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
+                            Texture texture = new Texture(iconPath, bis, true);
+                            PluginRegistry.addPluginIcon(metadata.getId(), texture);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
+                        }
                     }
                 }
             }
