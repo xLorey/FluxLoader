@@ -1,3 +1,7 @@
+# FluxLoader v0.8.1
+- Fixed Patchers (extra characters removed)
+- Fixed plugin loading (added resource release after loading)
+
 # FluxLoader v0.8.0
 - Added missing `Configuration` data types
 - Added a method to the `Plugin` class to get the config folder inside the folder with all plugins (`./plugins/{pluginName}/...`)
