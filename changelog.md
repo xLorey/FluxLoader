@@ -1,3 +1,6 @@
+# FluxLoader v0.8.2
+- Rolling back classLoader's close fixes (works 50%, sometimes has problems)
+
 # FluxLoader v0.8.1
 - Fixed Patchers (extra characters removed)
 - Fixed plugin loading (added resource release after loading)

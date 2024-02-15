@@ -18,7 +18,7 @@ import java.util.Set;
  * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 public class PluginClassLoader extends URLClassLoader {
-    private final Map<String, Class<?>> classes = new HashMap<String, Class<?>>();
+    private final Map<String, Class<?>> classes = new HashMap<>();
 
     /**
      * Constructs a new PluginClassLoader for the specified URLs using the specified parent class loader.
