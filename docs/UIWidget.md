@@ -42,7 +42,7 @@ All core widgets will render whenever and wherever you want if you add them to t
 Rendering occurs when the render method is called. All UI implementation is handled by ImGui, so we recommend reading the documentation for this library in its repository.
 By default, widgets do not intercept mouse click events, so you can click 'through' them on standard UI elements. To prevent this, you need to call `captureMouseFocus` after the `ImGui.begin` method, it will capture the mouse and not allow interaction with standard elements.
 
-To add it to the drawing process, you need to call the appropriate `addToScreenDraw` and `removeFromScreenDraw` methods in the right places:
+To add it to the drawing process, you need to call the appropriate `addToScreen` and `removeFromScreen` methods in the right places:
 ```java
 /**
  * Implementing a client plugin
