@@ -103,7 +103,7 @@ public class PatchGameServer extends PatchFile{
         PatchTools.patchMethod(getClassName(), "disconnectPlayer", "zombie.characters.IsoPlayer, zombie.core.raknet.UdpConnection", (ctClass, ctMethod) -> {
             try {
                 ctMethod.insertBefore( "{ " +
-                        EventManager.class.getName() + ".invokeEvent(\"onPlayerDisconnect\", new Object[]{$args}); " +
+                        EventManager.class.getName() + ".invokeEvent(\"onPlayerDisconnect\", $args); " +
                         "}");
             } catch (CannotCompileException e) {
                 throw new RuntimeException(e);

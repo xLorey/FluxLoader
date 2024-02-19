@@ -1,3 +1,6 @@
+# FluxLoader v0.8.3
+- Fixed `onPlayerDisconnect` event
+
 # FluxLoader v0.8.2
 - Rolling back classLoader's close fixes (works 50%, sometimes has problems)
 
