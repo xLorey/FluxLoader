@@ -3,6 +3,7 @@
 - Added new methods for configuration files
 - Added empty character constant and methods for colorizing chat messages
 - Added tools for managing isometric objects
+- Added events `onPluginInitialize`, `onPluginTerminate`, `onPluginExecute`
 - Changed the logic for saving and loading the standard configuration file
 - Fixed API provisions for chat
 

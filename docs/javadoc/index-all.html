@@ -430,6 +430,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the absolute path to the configuration file with the specified name.</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/shared/api/IsoObjectUtils.html#getDistance(zombie.iso.IsoObject,zombie.iso.IsoObject)" class="member-name-link">getDistance(IsoObject, IsoObject)</a> - Static method in class io.xlorey.fluxloader.shared.api.<a href="io/xlorey/fluxloader/shared/api/IsoObjectUtils.html" title="class in io.xlorey.fluxloader.shared.api">IsoObjectUtils</a></dt>
+<dd>
+<div class="block">Calculates the distance between two objects in isometric space.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/plugin/Configuration.html#getDouble(java.lang.String)" class="member-name-link">getDouble(String)</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/Configuration.html" title="class in io.xlorey.fluxloader.plugin">Configuration</a></dt>
 <dd>
 <div class="block">Gets the floating point value (double) for the specified configuration key.</div>
@@ -927,6 +931,18 @@ loadScripts(document, 'script');</script>
 <div class="block">Getting the event name</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/events/OnPlayerUpdate.html#getEventName()" class="member-name-link">getEventName()</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPlayerUpdate.html" title="class in io.xlorey.fluxloader.events">OnPlayerUpdate</a></dt>
+<dd>
+<div class="block">Getting the event name</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginExecute.html#getEventName()" class="member-name-link">getEventName()</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPluginExecute.html" title="class in io.xlorey.fluxloader.events">OnPluginExecute</a></dt>
+<dd>
+<div class="block">Getting the event name</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginInitialize.html#getEventName()" class="member-name-link">getEventName()</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPluginInitialize.html" title="class in io.xlorey.fluxloader.events">OnPluginInitialize</a></dt>
+<dd>
+<div class="block">Getting the event name</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginTerminate.html#getEventName()" class="member-name-link">getEventName()</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPluginTerminate.html" title="class in io.xlorey.fluxloader.events">OnPluginTerminate</a></dt>
 <dd>
 <div class="block">Getting the event name</div>
 </dd>
@@ -1662,6 +1678,18 @@ loadScripts(document, 'script');</script>
 <div class="block">Called Event Handling Method</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/server/handlers/OnServerShutdownHandler.html#handleEvent()" class="member-name-link">handleEvent()</a> - Method in class io.xlorey.fluxloader.server.handlers.<a href="io/xlorey/fluxloader/server/handlers/OnServerShutdownHandler.html" title="class in io.xlorey.fluxloader.server.handlers">OnServerShutdownHandler</a></dt>
+<dd>
+<div class="block">Called Event Handling Method</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginExecute.html#handleEvent(io.xlorey.fluxloader.plugin.Plugin)" class="member-name-link">handleEvent(Plugin)</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPluginExecute.html" title="class in io.xlorey.fluxloader.events">OnPluginExecute</a></dt>
+<dd>
+<div class="block">Called Event Handling Method</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginInitialize.html#handleEvent(io.xlorey.fluxloader.plugin.Plugin)" class="member-name-link">handleEvent(Plugin)</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPluginInitialize.html" title="class in io.xlorey.fluxloader.events">OnPluginInitialize</a></dt>
+<dd>
+<div class="block">Called Event Handling Method</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginTerminate.html#handleEvent(io.xlorey.fluxloader.plugin.Plugin)" class="member-name-link">handleEvent(Plugin)</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPluginTerminate.html" title="class in io.xlorey.fluxloader.events">OnPluginTerminate</a></dt>
 <dd>
 <div class="block">Called Event Handling Method</div>
 </dd>
@@ -2496,7 +2524,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Author: Deknil
  GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
  Date: 24.02.2024
- Description: TODO</div>
+ Description: A set of tools for working with isometric objects</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/shared/api/IsoObjectUtils.html#%3Cinit%3E()" class="member-name-link">IsoObjectUtils()</a> - Constructor for class io.xlorey.fluxloader.shared.api.<a href="io/xlorey/fluxloader/shared/api/IsoObjectUtils.html" title="class in io.xlorey.fluxloader.shared.api">IsoObjectUtils</a></dt>
 <dd>&nbsp;</dd>
@@ -3774,6 +3802,33 @@ loadScripts(document, 'script');</script>
  Description: Triggered when a player is being updated.</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/events/OnPlayerUpdate.html#%3Cinit%3E()" class="member-name-link">OnPlayerUpdate()</a> - Constructor for class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPlayerUpdate.html" title="class in io.xlorey.fluxloader.events">OnPlayerUpdate</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginExecute.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPluginExecute</a> - Class in <a href="io/xlorey/fluxloader/events/package-summary.html">io.xlorey.fluxloader.events</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ Date: 24.02.2024
+ Description: Event that triggered when the plugin is executed</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginExecute.html#%3Cinit%3E()" class="member-name-link">OnPluginExecute()</a> - Constructor for class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPluginExecute.html" title="class in io.xlorey.fluxloader.events">OnPluginExecute</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginInitialize.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPluginInitialize</a> - Class in <a href="io/xlorey/fluxloader/events/package-summary.html">io.xlorey.fluxloader.events</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ Date: 24.02.2024
+ Description: Event that triggered when the plugin is initialized</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginInitialize.html#%3Cinit%3E()" class="member-name-link">OnPluginInitialize()</a> - Constructor for class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPluginInitialize.html" title="class in io.xlorey.fluxloader.events">OnPluginInitialize</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginTerminate.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPluginTerminate</a> - Class in <a href="io/xlorey/fluxloader/events/package-summary.html">io.xlorey.fluxloader.events</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ Date: 24.02.2024
+ Description: Event that triggered when the plugin is terminated</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPluginTerminate.html#%3Cinit%3E()" class="member-name-link">OnPluginTerminate()</a> - Constructor for class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPluginTerminate.html" title="class in io.xlorey.fluxloader.events">OnPluginTerminate</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="io/xlorey/fluxloader/events/OnPostDistributionMerge.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPostDistributionMerge</a> - Class in <a href="io/xlorey/fluxloader/events/package-summary.html">io.xlorey.fluxloader.events</a></dt>
 <dd>
