@@ -8,25 +8,25 @@ import zombie.network.chat.ChatServer;
  * Author: Deknil
  * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
  * Date: 08.02.2024
- * Description: A set of tools for server management
+ * Description: A set of tools for chat management
  * <p>FluxLoader © 2024. All rights reserved.</p>
  */
 @UtilityClass
-public class ServerUtils {
+public class ChatUtils {
     /**
-     * Send a message to the server chat
+     * Sending a message to a general chat for all users
      * @param text Message text
      */
-    public static void sendServerChatMessage(String text) {
+    public static void sendMessageToAll(String text) {
         ChatServer.getInstance().sendMessageToServerChat(text);
     }
 
     /**
-     * Sending a message to a specific user on behalf of the server
+     * Sending a chat message to a specific user
      * @param playerConnection player connection
      * @param text Message text
      */
-    public static void sendServerChatMessage(UdpConnection playerConnection, String text) {
+    public static void sendMessageToPlayer(UdpConnection playerConnection, String text) {
         ChatServer.getInstance().sendMessageToServerChat(playerConnection, text);
     }
 }
