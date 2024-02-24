@@ -45,10 +45,10 @@ public class ClientPlugin extends Plugin {
         exampleCopy = new Configuration(getConfigPath("example.yml"), this);
         exampleCreate = new Configuration(getConfigPath("exampleOther.yml"), this);
 
-        exampleCopy.copyOrLoadConfig();
-        exampleCreate.create();
+        exampleCopy.load(); // Loading, with preliminary copying from JAR, or creating an empty file
+        exampleCreate.load(); // Creating an empty config file, since it is not in the JAR archive of the template (Or loadings if it is already in the config folder)
 
-        saveDefaultConfig();
+        saveDefaultConfig(); // Copying and loading the standard config (an empty config is created if it is not in the Jar archive)
 
         exampleCreate.setString("newStringKey", "Hello World!");
         exampleCreate.setString("newStringKey.nested", "Hello World nested!");

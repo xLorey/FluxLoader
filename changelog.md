@@ -1,3 +1,8 @@
+# FluxLoader v0.9.0
+- Added methods for getting and setting lists of specific types for plugin configs
+- Added new methods for configuration files
+- Changed the logic for saving and loading the standard configuration file
+
 # FluxLoader v0.8.3
 - Fixed `onPlayerDisconnect` event
 

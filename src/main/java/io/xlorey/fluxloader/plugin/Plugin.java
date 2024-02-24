@@ -107,29 +107,7 @@ public class Plugin implements IPlugin {
      * into the configuration file, then null is set to the config location.
      */
     public final void saveDefaultConfig() {
-        File defaultConfig = getConfigFile("config.yml");
-
-        if (!defaultConfig.exists()) {
-            try (InputStream in = getClass().getClassLoader().getResourceAsStream("config.yml");
-                 FileOutputStream out = new FileOutputStream(defaultConfig)) {
-                if (in == null) {
-                    Logger.print(String.format("Could not find 'config.yml' in JAR resources for plugin '%s'",
-                            getMetadata().getId()));
-                    config = null;
-                    return;
-                }
-
-                byte[] buffer = new byte[1024];
-                int bytesRead;
-                while ((bytesRead = in.read(buffer)) != -1) {
-                    out.write(buffer, 0, bytesRead);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        config = new Configuration(defaultConfig.getAbsolutePath(), this);
-        getConfig().load();
+        config = new Configuration(getConfigPath("config.yml"), this);
+        config.load();
     }
 }
