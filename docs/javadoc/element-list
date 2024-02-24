@@ -15,4 +15,5 @@ io.xlorey.fluxloader.server.api
 io.xlorey.fluxloader.server.core
 io.xlorey.fluxloader.server.handlers
 io.xlorey.fluxloader.shared
+io.xlorey.fluxloader.shared.api
 io.xlorey.fluxloader.utils
