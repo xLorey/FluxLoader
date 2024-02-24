@@ -1,14 +1,11 @@
 package io.xlorey.fluxloader.plugin;
 
 import io.xlorey.fluxloader.interfaces.IPlugin;
-import io.xlorey.fluxloader.utils.Logger;
+import io.xlorey.fluxloader.utils.Constants;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 /**
  * Author: Deknil
@@ -23,7 +20,7 @@ public class Plugin implements IPlugin {
      * Returns null if the configuration file was not saved/loaded
      */
     @Getter
-    private Configuration config;
+    private Configuration defaultConfig;
 
     /**
      * Field containing information about the plugin.
@@ -57,7 +54,7 @@ public class Plugin implements IPlugin {
      * @param configName Name of the configuration file to check and modify.
      * @return The name of the configuration file with the ".yml" extension appended if it was missing.
      */
-    private final String validateConfigName(String configName) {
+    private String validateConfigName(String configName) {
         if (!configName.endsWith(".yml")) {
             configName += ".yml";
         }
@@ -107,7 +104,7 @@ public class Plugin implements IPlugin {
      * into the configuration file, then null is set to the config location.
      */
     public final void saveDefaultConfig() {
-        config = new Configuration(getConfigPath("config.yml"), this);
-        config.load();
+        defaultConfig = new Configuration(getConfigPath(Constants.PLUGINS_DEFAULT_CONFIG_NAME), this);
+        defaultConfig.load();
     }
 }

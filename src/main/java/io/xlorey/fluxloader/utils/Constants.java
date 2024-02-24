@@ -27,6 +27,11 @@ public class Constants {
         public static final int PLUGINS_METADATA_REVISION = 1;
 
         /**
+         * Name of the default plugin config
+         */
+        public static final String PLUGINS_DEFAULT_CONFIG_NAME = "config.yml";
+
+        /**
          * Path to the FluxLoader logo
          */
         public static final String PATH_FLUXLOADER_LOGO = "io/xlorey/fluxloader/media/FluxLoader-Logo.png";
