@@ -11,7 +11,6 @@ import zombie.network.ServerWorldDatabase;
 import zombie.network.Userlog;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  * Author: Deknil
