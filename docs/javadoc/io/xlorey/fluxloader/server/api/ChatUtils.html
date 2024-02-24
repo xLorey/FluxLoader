@@ -44,13 +44,13 @@ loadScripts(document, 'script');</script>
 <ul class="sub-nav-list">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field-summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor-summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method-summary">Method</a></li>
 </ul>
 <ul class="sub-nav-list">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field-detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor-detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method-detail">Method</a></li>
 </ul>
@@ -85,6 +85,23 @@ loadScripts(document, 'script');</script>
 </section>
 <section class="summary">
 <ul class="summary-list">
+<!-- =========== FIELD SUMMARY =========== -->
+<li>
+<section class="field-summary" id="field-summary">
+<h2>Field Summary</h2>
+<div class="caption"><span>Fields</span></div>
+<div class="summary-table three-column-summary">
+<div class="table-header col-first">Modifier and Type</div>
+<div class="table-header col-second">Field</div>
+<div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color"><code><a href="#SPACE_SYMBOL" class="member-name-link">SPACE_SYMBOL</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">White space symbol, used to separate words after applying color, etc. to it.</div>
+</div>
+</div>
+</section>
+</li>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <li>
 <section class="constructor-summary" id="constructor-summary">
@@ -109,15 +126,34 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sendMessageToAll(java.lang.String)" class="member-name-link">sendMessageToAll</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text)</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getColorCode(float,float,float)" class="member-name-link">getColorCode</a><wbr>(float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Sending a message to a general chat for all users</div>
+<div class="block">Getting the color code for coloring a chat message</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getColorCode(int,int,int)" class="member-name-link">getColorCode</a><wbr>(int&nbsp;r,
+ int&nbsp;g,
+ int&nbsp;b)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Getting the color code for coloring a chat message</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getColorCode(zombie.core.Color)" class="member-name-link">getColorCode</a><wbr>(zombie.core.Color&nbsp;color)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Getting the color code for coloring a chat message</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sendMessageToPlayer(zombie.core.raknet.UdpConnection,java.lang.String)" class="member-name-link">sendMessageToPlayer</a><wbr>(zombie.core.raknet.UdpConnection&nbsp;playerConnection,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sendMessageToAll(java.lang.String)" class="member-name-link">sendMessageToAll</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Sending a message to a general chat for all users</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sendMessageToPlayer(zombie.core.raknet.UdpConnection,java.lang.String)" class="member-name-link">sendMessageToPlayer</a><wbr>(zombie.core.raknet.UdpConnection&nbsp;playerConnection,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Sending a chat message to a specific user</div>
 </div>
 </div>
@@ -132,6 +168,29 @@ loadScripts(document, 'script');</script>
 </section>
 <section class="details">
 <ul class="details-list">
+<!-- ============ FIELD DETAIL =========== -->
+<li>
+<section class="field-details" id="field-detail">
+<h2>Field Details</h2>
+<ul class="member-list">
+<li>
+<section class="detail" id="SPACE_SYMBOL">
+<h3>SPACE_SYMBOL</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">SPACE_SYMBOL</span></div>
+<div class="block">White space symbol, used to separate words after applying color, etc. to it.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../../../../../constant-values.html#io.xlorey.fluxloader.server.api.ChatUtils.SPACE_SYMBOL">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+</ul>
+</section>
+</li>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <li>
 <section class="constructor-details" id="constructor-detail">
@@ -151,6 +210,53 @@ loadScripts(document, 'script');</script>
 <section class="method-details" id="method-detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="getColorCode(float,float,float)">
+<h3>getColorCode</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getColorCode</span><wbr><span class="parameters">(float&nbsp;r,
+ float&nbsp;g,
+ float&nbsp;b)</span></div>
+<div class="block">Getting the color code for coloring a chat message</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>r</code> - Red color component in the range 0.0 to 1.0.</dd>
+<dd><code>g</code> - The green color component in the range 0.0 to 1.0.</dd>
+<dd><code>b</code> - The blue component in the range 0.0 to 1.0.</dd>
+<dt>Returns:</dt>
+<dd>Color code in RGB format.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getColorCode(int,int,int)">
+<h3>getColorCode</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getColorCode</span><wbr><span class="parameters">(int&nbsp;r,
+ int&nbsp;g,
+ int&nbsp;b)</span></div>
+<div class="block">Getting the color code for coloring a chat message</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>r</code> - Red color component in the range 0 to 255.</dd>
+<dd><code>g</code> - The green color component in the range 0 to 255.</dd>
+<dd><code>b</code> - The blue component in the range 0 to 255.</dd>
+<dt>Returns:</dt>
+<dd>Color code in RGB format.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getColorCode(zombie.core.Color)">
+<h3>getColorCode</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name">getColorCode</span><wbr><span class="parameters">(zombie.core.Color&nbsp;color)</span></div>
+<div class="block">Getting the color code for coloring a chat message</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>color</code> - Color object.</dd>
+<dt>Returns:</dt>
+<dd>Color code in RGB format.</dd>
+</dl>
+</section>
+</li>
 <li>
 <section class="detail" id="sendMessageToAll(java.lang.String)">
 <h3>sendMessageToAll</h3>
