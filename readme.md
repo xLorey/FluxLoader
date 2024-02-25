@@ -33,9 +33,12 @@ That is why, inspired by popular mod loaders in other games (for example, Minecr
 
 # Features
 Our tools already have:
-- The ability to easily subscribe to all game events, as well as to our custom ones (including the creation of new events);
-- The ability to easily add plugins by moving the Jar file to the plugins folder;
-- Custom documented tools for working with game methods.
+- 200+ default and custom events (with documentation) that you can easily subscribe to;
+- Working with client and server sides;
+- Custom documented tools for working with game methods;
+- Availability of [Wiki](docs/Wiki.md), which reveals in detail the process of creating a plugin;
+- Creating plugins for FluxLoader is very similar to creating plugins from Minecraft mod loaders (Paper, Fabric, Bukkit, etc);
+- The ability to easily add plugins by moving the Jar file to the plugins folder.
 
 # Installation
 To install this project, you need to do the following:
@@ -43,13 +46,13 @@ To install this project, you need to do the following:
 2) Transfer the downloaded Jar archive to the game folder (for the server, place it in the `java` subfolder).
 3) Open the terminal (Windows command prompt) in the folder where the downloaded Jar file is located. Or enter the following command
 ```bash
-cd /D "{path}"
+cd /D "path"
 ```
 ``cd`` - command to change the terminal context
 
 ``/D`` - the flag is necessary to change the directory (disk), you do not need to change it
 
-``{path}`` - is your path to the jar file folder
+``path`` - is your path to the jar file folder
 
 > [!TIP]
 > For example, the path for client and server: `C:\Program Files (x86)\Steam\steamapps\common\ProjectZomboid`

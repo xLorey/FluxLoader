@@ -22,12 +22,21 @@ import java.sql.SQLException;
 @UtilityClass
 public class PlayerUtils {
     /**
-     * Returns a player instance on its connection
+     * Getting a player's instance on his connection
      * @param udpConnection player connection
      * @return player instance or null if player not found
      */
     public static IsoPlayer getPlayerByUdpConnection(UdpConnection udpConnection) {
         return getPlayerByUsername(udpConnection.username);
+    }
+
+    /**
+     * Getting a player's connection based on his character
+     * @param player player instance
+     * @return the player's connection, or null if there is none
+     */
+    public static UdpConnection getUdpConnectionByPlayer(IsoPlayer player) {
+        return GameServer.getConnectionFromPlayer(player);
     }
 
     /**
@@ -100,12 +109,12 @@ public class PlayerUtils {
      * @param player Player instance
      * @param reason kick reason
      */
-    public void kickPlayer(IsoPlayer player, String reason) {
+    public static void kickPlayer(IsoPlayer player, String reason) {
         if (player == null) return;
 
         EventManager.invokeEvent("onPlayerKick", player, "Console", reason);
 
-        UdpConnection playerConnection = GameServer.getConnectionFromPlayer(player);
+        UdpConnection playerConnection = getUdpConnectionByPlayer(player);
 
         if (playerConnection == null) return;
 
@@ -125,12 +134,12 @@ public class PlayerUtils {
      * @param banIP flag whether to block by IP
      * @param banSteamID flag whether to block by SteamID
      */
-    public void banPlayer(IsoPlayer player, String reason, boolean banIP, boolean banSteamID) {
+    public static void banPlayer(IsoPlayer player, String reason, boolean banIP, boolean banSteamID) {
         if (player == null) return;
 
         EventManager.invokeEvent("onPlayerBan", player, "Console", reason);
 
-        UdpConnection playerConnection = GameServer.getConnectionFromPlayer(player);
+        UdpConnection playerConnection = getUdpConnectionByPlayer(player);
 
         if (playerConnection == null) return;
 
@@ -156,7 +165,7 @@ public class PlayerUtils {
      * @param player Player to block
      * @param reason Reason for blocking
      */
-    private void banBySteamID(IsoPlayer player, String reason) {
+    private static void banBySteamID(IsoPlayer player, String reason) {
         String steamID = SteamUtils.convertSteamIDToString(player.getSteamID());
         try {
             ServerWorldDatabase.instance.banSteamID(steamID, reason, true);
@@ -172,7 +181,7 @@ public class PlayerUtils {
      * @param player The player to block.
      * @param reason Reason for blocking.
      */
-    private void banByIP(UdpConnection playerConnection, IsoPlayer player, String reason) {
+    private static void banByIP(UdpConnection playerConnection, IsoPlayer player, String reason) {
         try {
             ServerWorldDatabase.instance.banIp(playerConnection.ip, player.getUsername(), reason, true);
         } catch (SQLException e) {
@@ -185,7 +194,7 @@ public class PlayerUtils {
      * Blocks a player by username.
      * @param player The player to block.
      */
-    private void banByName(IsoPlayer player) {
+    private static void banByName(IsoPlayer player) {
         try {
             ServerWorldDatabase.instance.banUser(player.getUsername(), true);
         } catch (SQLException e) {

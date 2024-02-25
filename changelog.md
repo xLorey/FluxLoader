@@ -1,3 +1,12 @@
+# FluxLoader v0.9.0
+- Added methods for getting and setting lists of specific types for plugin configs
+- Added new methods for configuration files
+- Added empty character constant and methods for colorizing chat messages
+- Added tools for managing isometric objects
+- Added events `onPluginInitialize`, `onPluginTerminate`, `onPluginExecute`
+- Changed the logic for saving and loading the standard configuration file
+- Fixed API provisions for chat
+
 # FluxLoader v0.8.3
 - Fixed `onPlayerDisconnect` event
 

@@ -4,7 +4,7 @@ import imgui.ImGui;
 import imgui.ImGuiIO;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
-import io.xlorey.fluxloader.client.api.TextTools;
+import io.xlorey.fluxloader.client.api.TextUtils;
 import io.xlorey.fluxloader.client.ui.pluginMenu.MainMenuButton;
 import io.xlorey.fluxloader.client.ui.pluginMenu.PluginMenu;
 import io.xlorey.fluxloader.client.ui.Widget;
@@ -107,12 +107,12 @@ public class WidgetManager {
             UIFont font = UIFont.Small;
             int margin = 10;
             int screenHeight = Core.getInstance().getScreenHeight();
-            int fontHeight = TextTools.getFontHeight(font);
+            int fontHeight = TextUtils.getFontHeight(font);
             int totalPlugins = PluginRegistry.getLoadedClientPlugins().size() + PluginRegistry.getLoadedServerPlugins().size();
             String creditsText = String.format("Patched with %s v%s", Constants.FLUX_NAME, Constants.FLUX_VERSION);
             String pluginsText = String.format("Loaded plugins: %s", totalPlugins);
-            TextTools.drawText(creditsText, font, margin,  screenHeight - fontHeight * 2 - margin, 1f, 1f, 1f, 0.5f);
-            TextTools.drawText(pluginsText, font, margin,  screenHeight - fontHeight - margin, 1f, 1f, 1f, 0.5f);
+            TextUtils.drawText(creditsText, font, margin,  screenHeight - fontHeight * 2 - margin, 1f, 1f, 1f, 0.5f);
+            TextUtils.drawText(pluginsText, font, margin,  screenHeight - fontHeight - margin, 1f, 1f, 1f, 0.5f);
         }
     }
 

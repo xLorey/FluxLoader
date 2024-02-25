@@ -1,6 +1,7 @@
 package io.xlorey.fluxloader.plugin;
 
 import io.xlorey.fluxloader.interfaces.IControlsWidget;
+import io.xlorey.fluxloader.shared.EventManager;
 import io.xlorey.fluxloader.utils.Constants;
 import io.xlorey.fluxloader.utils.Logger;
 import io.xlorey.fluxloader.utils.VersionChecker;
@@ -154,6 +155,7 @@ public class PluginManager {
 
             try {
                 pluginInstance.onExecute();
+                EventManager.invokeEvent("onPluginExecute", pluginInstance);
             } catch (Exception e) {
                 Logger.print(String.format("Plugin '%s' failed to execute correctly due to: %s", pluginId, e));
             }
@@ -178,6 +180,7 @@ public class PluginManager {
 
             try {
                 pluginInstance.onTerminate();
+                EventManager.invokeEvent("onPluginTerminate", pluginInstance);
             } catch (Exception e) {
                 Logger.print(String.format("Plugin '%s' failed to shut down correctly due to: %s", pluginId, e));
             }
@@ -218,6 +221,7 @@ public class PluginManager {
                     pluginType, index + 1, entryPoints.size(), metadata.getName(), metadata.getId(), metadata.getVersion()));
 
             pluginInstance.onInitialize();
+            EventManager.invokeEvent("onPluginInitialize", pluginInstance);
 
             String registryKey = String.format("%s:%s:%s", entryPoint, metadata.getId(), metadata.getVersion());
 

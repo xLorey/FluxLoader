@@ -10,7 +10,7 @@ import zombie.ui.UIFont;
  * Description: A set of tools for manipulating text and rendering it
  * <p>FluxLoader © 2024. All rights reserved.</p>
  */
-public class TextTools {
+public class TextUtils {
     /**
      * Drawing colored text at specified coordinates
      * @param text the text to be drawn. Must not be null
