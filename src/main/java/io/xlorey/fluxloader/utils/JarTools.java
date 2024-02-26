@@ -116,7 +116,8 @@ public class JarTools {
             while (entries.hasMoreElements()) {
                 JarEntry entry = entries.nextElement();
                 if (isPathAllowed(whiteListJarPath, entry.getName())) {
-                    Path pathToDelete = Paths.get(targetPath, entry.getName());
+                    Path pathToDelete = Paths.get(targetPath, entry.getName()).normalize();
+
                     if (Files.exists(pathToDelete)) {
                         deleteRecursively(pathToDelete.toFile());
                     }
