@@ -3,7 +3,6 @@ package io.xlorey.fluxloader.shared;
 import io.xlorey.fluxloader.enums.EventPriority;
 import io.xlorey.fluxloader.events.Event;
 import io.xlorey.fluxloader.utils.Logger;
-import lombok.Getter;
 import lombok.experimental.UtilityClass;
 
 import java.lang.reflect.Method;
@@ -56,10 +55,10 @@ public class EventManager {
 
         if (eventListeners == null) return;
 
-        eventListeners.sort(Comparator.comparingInt(l -> l.getPriority().ordinal()));
+        eventListeners.sort(Comparator.comparingInt(l -> l.priority().ordinal()));
 
         for (EventListener listener : eventListeners) {
-            Event eventHandler = listener.getHandler();
+            Event eventHandler = listener.handler();
 
             try {
                 invokeHandleEvent(eventHandler, args);
@@ -127,26 +126,8 @@ public class EventManager {
 
     /**
      * Standard event listener class
+     * @param handler  Handler object for this event
+     * @param priority Processing priority, according to the EventPriority enumeration
      */
-    @Getter
-    private static class EventListener{
-        /**
-         * Handler object for this event
-         */
-        private final Event handler;
-        /**
-         * Processing priority, according to the EventPriority enumeration
-         */
-        private final EventPriority priority;
-
-        /**
-         * Event Listener Data Constructor
-         * @param listener Handler object for this event
-         * @param eventPriority Processing priority, according to the EventPriority enumeration
-         */
-        public EventListener(Event listener, EventPriority eventPriority) {
-            this.handler = listener;
-            this.priority = eventPriority;
-        }
-    }
+    private record EventListener(Event handler, EventPriority priority) {}
 }
