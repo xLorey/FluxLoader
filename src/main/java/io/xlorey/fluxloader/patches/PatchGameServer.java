@@ -74,7 +74,7 @@ public class PatchGameServer extends PatchFile{
                 ctMethod.insertBefore( "{ " +
                         "if($1 != null) {" +
                         EventManager.class.getName() + ".invokeEvent(\"onSendConsoleCommand\", new Object[]{$1}); " +
-                        "java.lang.String customResult = io.xlorey.fluxloader.server.core.CommandsManager.handleCustomCommand($2, $1);" +
+                        "java.lang.String customResult = " + CommandsManager.class.getName() + ".handleCustomCommand($2, $1);" +
                         "if (customResult != null) return customResult;"+
                         "}" +
                         "}");

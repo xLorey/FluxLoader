@@ -272,6 +272,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Drawing colored text at specified coordinates</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/client/api/TextUtils.html#drawText(java.lang.String,zombie.ui.UIFont,int,int,zombie.core.Color)" class="member-name-link">drawText(String, UIFont, int, int, Color)</a> - Static method in class io.xlorey.fluxloader.client.api.<a href="io/xlorey/fluxloader/client/api/TextUtils.html" title="class in io.xlorey.fluxloader.client.api">TextUtils</a></dt>
+<dd>
+<div class="block">Drawing colored text at specified coordinates</div>
+</dd>
 </dl>
 <h2 class="title" id="I:E">E</h2>
 <dl class="index">
@@ -931,6 +935,10 @@ loadScripts(document, 'script');</script>
 <div class="block">Getting the event name</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/events/OnPlayerMove.html#getEventName()" class="member-name-link">getEventName()</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPlayerMove.html" title="class in io.xlorey.fluxloader.events">OnPlayerMove</a></dt>
+<dd>
+<div class="block">Getting the event name</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPlayerUnban.html#getEventName()" class="member-name-link">getEventName()</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPlayerUnban.html" title="class in io.xlorey.fluxloader.events">OnPlayerUnban</a></dt>
 <dd>
 <div class="block">Getting the event name</div>
 </dd>
@@ -1934,6 +1942,10 @@ loadScripts(document, 'script');</script>
 <div class="block">Called Event Handling Method</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/events/OnConnectionStateChanged.html#handleEvent(java.lang.String,java.lang.String)" class="member-name-link">handleEvent(String, String)</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnConnectionStateChanged.html" title="class in io.xlorey.fluxloader.events">OnConnectionStateChanged</a></dt>
+<dd>
+<div class="block">Called Event Handling Method</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPlayerUnban.html#handleEvent(java.lang.String,java.lang.String)" class="member-name-link">handleEvent(String, String)</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPlayerUnban.html" title="class in io.xlorey.fluxloader.events">OnPlayerUnban</a></dt>
 <dd>
 <div class="block">Called Event Handling Method</div>
 </dd>
@@ -3802,6 +3814,15 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/xlorey/fluxloader/events/OnPlayerMove.html#%3Cinit%3E()" class="member-name-link">OnPlayerMove()</a> - Constructor for class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPlayerMove.html" title="class in io.xlorey.fluxloader.events">OnPlayerMove</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPlayerUnban.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPlayerUnban</a> - Class in <a href="io/xlorey/fluxloader/events/package-summary.html">io.xlorey.fluxloader.events</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ Date: 07.02.2024
+ Description: Triggered when the player unban command is called.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/events/OnPlayerUnban.html#%3Cinit%3E()" class="member-name-link">OnPlayerUnban()</a> - Constructor for class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnPlayerUnban.html" title="class in io.xlorey.fluxloader.events">OnPlayerUnban</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="io/xlorey/fluxloader/events/OnPlayerUpdate.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnPlayerUpdate</a> - Class in <a href="io/xlorey/fluxloader/events/package-summary.html">io.xlorey.fluxloader.events</a></dt>
 <dd>
 <div class="block">Author: Deknil
@@ -4766,6 +4787,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">The patch method, which is called to make changes to the class</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/patches/PatchUnbanSteamIDCommand.html#patch()" class="member-name-link">patch()</a> - Method in class io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchUnbanSteamIDCommand.html" title="class in io.xlorey.fluxloader.patches">PatchUnbanSteamIDCommand</a></dt>
+<dd>
+<div class="block">The patch method, which is called to make changes to the class</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/patches/PatchUnbanUserCommand.html#patch()" class="member-name-link">patch()</a> - Method in class io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchUnbanUserCommand.html" title="class in io.xlorey.fluxloader.patches">PatchUnbanUserCommand</a></dt>
+<dd>
+<div class="block">The patch method, which is called to make changes to the class</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/patches/PatchBanSteamIDCommand.html" class="type-name-link" title="class in io.xlorey.fluxloader.patches">PatchBanSteamIDCommand</a> - Class in <a href="io/xlorey/fluxloader/patches/package-summary.html">io.xlorey.fluxloader.patches</a></dt>
 <dd>
 <div class="block">Author: Deknil
@@ -4906,6 +4935,28 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Patcher constructor</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/patches/PatchUnbanSteamIDCommand.html" class="type-name-link" title="class in io.xlorey.fluxloader.patches">PatchUnbanSteamIDCommand</a> - Class in <a href="io/xlorey/fluxloader/patches/package-summary.html">io.xlorey.fluxloader.patches</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ Date: 07.02.2024
+ Description: UnbanSteamIDCommand command patcher</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/patches/PatchUnbanSteamIDCommand.html#%3Cinit%3E(java.lang.String)" class="member-name-link">PatchUnbanSteamIDCommand(String)</a> - Constructor for class io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchUnbanSteamIDCommand.html" title="class in io.xlorey.fluxloader.patches">PatchUnbanSteamIDCommand</a></dt>
+<dd>
+<div class="block">Patcher constructor</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/patches/PatchUnbanUserCommand.html" class="type-name-link" title="class in io.xlorey.fluxloader.patches">PatchUnbanUserCommand</a> - Class in <a href="io/xlorey/fluxloader/patches/package-summary.html">io.xlorey.fluxloader.patches</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ Date: 07.02.2024
+ Description: UnbanUserCommand command patcher</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/patches/PatchUnbanUserCommand.html#%3Cinit%3E(java.lang.String)" class="member-name-link">PatchUnbanUserCommand(String)</a> - Constructor for class io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchUnbanUserCommand.html" title="class in io.xlorey.fluxloader.patches">PatchUnbanUserCommand</a></dt>
+<dd>
+<div class="block">Patcher constructor</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/utils/Constants.html#PATH_FLUXLOADER_LOGO" class="member-name-link">PATH_FLUXLOADER_LOGO</a> - Static variable in class io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/Constants.html" title="class in io.xlorey.fluxloader.utils">Constants</a></dt>
 <dd>
 <div class="block">Path to the FluxLoader logo</div>
@@ -4975,6 +5026,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/fluxloader/utils/Constants.html#PLUGINS_FOLDER_NAME" class="member-name-link">PLUGINS_FOLDER_NAME</a> - Static variable in class io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/Constants.html" title="class in io.xlorey.fluxloader.utils">Constants</a></dt>
 <dd>
 <div class="block">Folder name for plugins (mods)</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/utils/Constants.html#PLUGINS_METADATA_NAME" class="member-name-link">PLUGINS_METADATA_NAME</a> - Static variable in class io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/Constants.html" title="class in io.xlorey.fluxloader.utils">Constants</a></dt>
+<dd>
+<div class="block">Plugin metadata file name</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/utils/Constants.html#PLUGINS_METADATA_REVISION" class="member-name-link">PLUGINS_METADATA_REVISION</a> - Static variable in class io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/Constants.html" title="class in io.xlorey.fluxloader.utils">Constants</a></dt>
 <dd>

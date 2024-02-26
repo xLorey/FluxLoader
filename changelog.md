@@ -4,6 +4,7 @@
 - Added empty character constant and methods for colorizing chat messages
 - Added tools for managing isometric objects
 - Added events `onPluginInitialize`, `onPluginTerminate`, `onPluginExecute`
+- Added `onPlayerUnban` event
 - Changed the logic for saving and loading the standard configuration file
 - Fixed API provisions for chat
 
