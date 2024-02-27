@@ -54,7 +54,7 @@ public class Constants {
         /**
          * Link to project github
          */
-        public static final String GITHUB_LINK = "https://github.com/xLorey/FluxLoader-PZ";
+        public static final String GITHUB_LINK = "https://github.com/xLorey/FluxLoader";
 
         /**
          * Link to the project's discord channel

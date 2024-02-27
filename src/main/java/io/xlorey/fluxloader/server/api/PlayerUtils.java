@@ -45,7 +45,7 @@ public class PlayerUtils {
      * @return The player's IP address or null if the address is not found.
      */
     public static String getPlayerIP(IsoPlayer player) {
-        UdpConnection playerConnection = GameServer.getConnectionFromPlayer(player);
+        UdpConnection playerConnection = getUdpConnectionByPlayer(player);
         return playerConnection != null ? playerConnection.ip : null;
     }
 

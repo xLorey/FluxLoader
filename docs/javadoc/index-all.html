@@ -316,6 +316,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Method called when exiting state</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaExposer.html#exposeClass(java.lang.Class)" class="member-name-link">exposeClass(Class&lt;?&gt;)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaExposer.html" title="class in io.xlorey.fluxloader.shared">LuaExposer</a></dt>
+<dd>
+<div class="block">Method for exposing the class.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaExposer.html#exposeGlobalObject(java.lang.Object)" class="member-name-link">exposeGlobalObject(Object)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaExposer.html" title="class in io.xlorey.fluxloader.shared">LuaExposer</a></dt>
+<dd>
+<div class="block">Method for exposing a global object, which contain methods with annotation <code>LuaMethod</code>.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:F">F</h2>
 <dl class="index">
@@ -1330,6 +1338,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Getting the event name</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaExposer.html#getExposedClasses()" class="member-name-link">getExposedClasses()</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaExposer.html" title="class in io.xlorey.fluxloader.shared">LuaExposer</a></dt>
+<dd>
+<div class="block">Method for getting a collection of exposed classes.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaExposer.html#getExposedGlobalObjects()" class="member-name-link">getExposedGlobalObjects()</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaExposer.html" title="class in io.xlorey.fluxloader.shared">LuaExposer</a></dt>
+<dd>
+<div class="block">Method for getting a collection of exposed global objects.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/utils/JarTools.html#getFilesInJarFolder(java.lang.String,java.lang.String)" class="member-name-link">getFilesInJarFolder(String, String)</a> - Static method in class io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/JarTools.html" title="class in io.xlorey.fluxloader.utils">JarTools</a></dt>
 <dd>
 <div class="block">Retrieving a list of file paths in a given folder inside a JAR archive.</div>
@@ -1690,6 +1706,10 @@ loadScripts(document, 'script');</script>
 <div class="block">Called Event Handling Method</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/events/OnUpdateIcon.html#handleEvent()" class="member-name-link">handleEvent()</a> - Method in class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnUpdateIcon.html" title="class in io.xlorey.fluxloader.events">OnUpdateIcon</a></dt>
+<dd>
+<div class="block">Called Event Handling Method</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/server/handlers/OnServerInitHandler.html#handleEvent()" class="member-name-link">handleEvent()</a> - Method in class io.xlorey.fluxloader.server.handlers.<a href="io/xlorey/fluxloader/server/handlers/OnServerInitHandler.html" title="class in io.xlorey.fluxloader.server.handlers">OnServerInitHandler</a></dt>
 <dd>
 <div class="block">Called Event Handling Method</div>
 </dd>
@@ -2594,6 +2614,11 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Loads the configuration by copying the file from the JAR (if it exists in it).</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaManager.html#loadLuaFromFolder(java.lang.String,boolean)" class="member-name-link">loadLuaFromFolder(String, boolean)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaManager.html" title="class in io.xlorey.fluxloader.shared">LuaManager</a></dt>
+<dd>
+<div class="block">Searches for Lua files recursively in the specified folder and its subfolders,
+ adds them to the paths collection, and then runs each Lua file.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/plugin/PluginManager.html#loadPlugins(boolean)" class="member-name-link">loadPlugins(boolean)</a> - Static method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginManager.html" title="class in io.xlorey.fluxloader.plugin">PluginManager</a></dt>
 <dd>
 <div class="block">Loading plugins into the game context</div>
@@ -2615,6 +2640,24 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Lowest priority events.</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaExposer.html" class="type-name-link" title="class in io.xlorey.fluxloader.shared">LuaExposer</a> - Class in <a href="io/xlorey/fluxloader/shared/package-summary.html">io.xlorey.fluxloader.shared</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ Date: 27.02.2024
+ GitHub: <a href="https://github.com/Deknil">https://github.com/Deknil</a>
+ Description: A utility class for exposing classes and global objects for use in Lua scripts.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaExposer.html#%3Cinit%3E()" class="member-name-link">LuaExposer()</a> - Constructor for class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaExposer.html" title="class in io.xlorey.fluxloader.shared">LuaExposer</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaManager.html" class="type-name-link" title="class in io.xlorey.fluxloader.shared">LuaManager</a> - Class in <a href="io/xlorey/fluxloader/shared/package-summary.html">io.xlorey.fluxloader.shared</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ Date: 27.02.2024
+ GitHub: <a href="https://github.com/Deknil">https://github.com/Deknil</a>
+ Description: Provides utility methods for managing Lua scripts.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaManager.html#%3Cinit%3E()" class="member-name-link">LuaManager()</a> - Constructor for class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaManager.html" title="class in io.xlorey.fluxloader.shared">LuaManager</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:M">M</h2>
 <dl class="index">
@@ -4237,6 +4280,15 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/xlorey/fluxloader/events/OnServerFinishSaving.html#%3Cinit%3E()" class="member-name-link">OnServerFinishSaving()</a> - Constructor for class io.xlorey.fluxloader.events.<a href="io/xlorey/fluxloader/events/OnServerFinishSaving.html" title="class in io.xlorey.fluxloader.events">OnServerFinishSaving</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/xlorey/fluxloader/server/handlers/OnServerInitHandler.html" class="type-name-link" title="class in io.xlorey.fluxloader.server.handlers">OnServerInitHandler</a> - Class in <a href="io/xlorey/fluxloader/server/handlers/package-summary.html">io.xlorey.fluxloader.server.handlers</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ Date: 27.02.2024
+ Description: Handling server initialize, necessary to execute plugins</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/server/handlers/OnServerInitHandler.html#%3Cinit%3E()" class="member-name-link">OnServerInitHandler()</a> - Constructor for class io.xlorey.fluxloader.server.handlers.<a href="io/xlorey/fluxloader/server/handlers/OnServerInitHandler.html" title="class in io.xlorey.fluxloader.server.handlers">OnServerInitHandler</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="io/xlorey/fluxloader/events/OnServerInitialize.html" class="type-name-link" title="class in io.xlorey.fluxloader.events">OnServerInitialize</a> - Class in <a href="io/xlorey/fluxloader/events/package-summary.html">io.xlorey.fluxloader.events</a></dt>
 <dd>
 <div class="block">Author: Deknil
@@ -4269,7 +4321,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Author: Deknil
  GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
  Date: 08.02.2024
- Description: Handling server shutdown, necessary to shut down plugins</div>
+ Description: Handling server shutdown, necessary to terminate plugins</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/server/handlers/OnServerShutdownHandler.html#%3Cinit%3E()" class="member-name-link">OnServerShutdownHandler()</a> - Constructor for class io.xlorey.fluxloader.server.handlers.<a href="io/xlorey/fluxloader/server/handlers/OnServerShutdownHandler.html" title="class in io.xlorey.fluxloader.server.handlers">OnServerShutdownHandler</a></dt>
 <dd>&nbsp;</dd>
@@ -4775,6 +4827,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">The patch method, which is called to make changes to the class</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/patches/PatchLuaManager.html#patch()" class="member-name-link">patch()</a> - Method in class io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchLuaManager.html" title="class in io.xlorey.fluxloader.patches">PatchLuaManager</a></dt>
+<dd>
+<div class="block">The patch method, which is called to make changes to the class</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/patches/PatchQuitCommand.html#patch()" class="member-name-link">patch()</a> - Method in class io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchQuitCommand.html" title="class in io.xlorey.fluxloader.patches">PatchQuitCommand</a></dt>
 <dd>
 <div class="block">The patch method, which is called to make changes to the class</div>
@@ -4883,6 +4939,17 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Patcher constructor</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/patches/PatchLuaManager.html" class="type-name-link" title="class in io.xlorey.fluxloader.patches">PatchLuaManager</a> - Class in <a href="io/xlorey/fluxloader/patches/package-summary.html">io.xlorey.fluxloader.patches</a></dt>
+<dd>
+<div class="block">Author: Deknil
+ GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
+ Date: 27.02.2024
+ Description: LuaManager patcher</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/patches/PatchLuaManager.html#%3Cinit%3E(java.lang.String)" class="member-name-link">PatchLuaManager(String)</a> - Constructor for class io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchLuaManager.html" title="class in io.xlorey.fluxloader.patches">PatchLuaManager</a></dt>
+<dd>
+<div class="block">Patcher constructor</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/utils/PatchTools.html#patchMethod(java.lang.String,java.lang.String,java.lang.String,java.util.function.BiConsumer)" class="member-name-link">patchMethod(String, String, String, BiConsumer&lt;CtClass, CtMethod&gt;)</a> - Static method in class io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/PatchTools.html" title="class in io.xlorey.fluxloader.utils">PatchTools</a></dt>
 <dd>
 <div class="block">Patches a specified method within a given class by first adding an annotation to the method
@@ -4939,7 +5006,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Author: Deknil
  GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
- Date: 07.02.2024
+ Date: 26.02.2024
  Description: UnbanSteamIDCommand command patcher</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/patches/PatchUnbanSteamIDCommand.html#%3Cinit%3E(java.lang.String)" class="member-name-link">PatchUnbanSteamIDCommand(String)</a> - Constructor for class io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchUnbanSteamIDCommand.html" title="class in io.xlorey.fluxloader.patches">PatchUnbanSteamIDCommand</a></dt>
@@ -4950,7 +5017,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Author: Deknil
  GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
- Date: 07.02.2024
+ Date: 26.02.2024
  Description: UnbanUserCommand command patcher</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/patches/PatchUnbanUserCommand.html#%3Cinit%3E(java.lang.String)" class="member-name-link">PatchUnbanUserCommand(String)</a> - Constructor for class io.xlorey.fluxloader.patches.<a href="io/xlorey/fluxloader/patches/PatchUnbanUserCommand.html" title="class in io.xlorey.fluxloader.patches">PatchUnbanUserCommand</a></dt>
@@ -5066,6 +5133,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Removes the specified key and its value from the configuration.</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaExposer.html#removeExposedClass(java.lang.Class)" class="member-name-link">removeExposedClass(Class&lt;?&gt;)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaExposer.html" title="class in io.xlorey.fluxloader.shared">LuaExposer</a></dt>
+<dd>
+<div class="block">Method for removing a class from the collection of exposed classes.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaExposer.html#removeExposedGlobalObject(java.lang.Object)" class="member-name-link">removeExposedGlobalObject(Object)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaExposer.html" title="class in io.xlorey.fluxloader.shared">LuaExposer</a></dt>
+<dd>
+<div class="block">Method for removing a global object from the collection of exposed global objects.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/client/ui/Widget.html#removeFromScreen()" class="member-name-link">removeFromScreen()</a> - Method in class io.xlorey.fluxloader.client.ui.<a href="io/xlorey/fluxloader/client/ui/Widget.html" title="class in io.xlorey.fluxloader.client.ui">Widget</a></dt>
 <dd>
 <div class="block">Remove this widget from the screen draw queue.</div>
@@ -5093,6 +5168,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/fluxloader/utils/BackupTools.html#restoreFile(java.lang.String)" class="member-name-link">restoreFile(String)</a> - Static method in class io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/BackupTools.html" title="class in io.xlorey.fluxloader.utils">BackupTools</a></dt>
 <dd>
 <div class="block">Restores the specified class file and any additional related files from their backups.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaManager.html#runLua(java.lang.String,boolean)" class="member-name-link">runLua(String, boolean)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaManager.html" title="class in io.xlorey.fluxloader.shared">LuaManager</a></dt>
+<dd>
+<div class="block">Executes a Lua script located at the specified path.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:S">S</h2>
