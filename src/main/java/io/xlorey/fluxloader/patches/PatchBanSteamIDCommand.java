@@ -1,5 +1,6 @@
 package io.xlorey.fluxloader.patches;
 
+import io.xlorey.fluxloader.server.api.PlayerUtils;
 import io.xlorey.fluxloader.shared.EventManager;
 import io.xlorey.fluxloader.utils.PatchTools;
 import javassist.CannotCompileException;
@@ -33,7 +34,7 @@ public class PatchBanSteamIDCommand extends PatchFile{
                     public void edit(MethodCall m) throws CannotCompileException {
                         if (m.getClassName().equals("zombie.core.raknet.UdpConnection") && m.getMethodName().equals("forceDisconnect")) {
                             String code =  "{ "
-                                    + "zombie.characters.IsoPlayer player = io.xlorey.fluxloader.server.api.PlayerUtils.getPlayerByUdpConnection($0);"
+                                    + "zombie.characters.IsoPlayer player = " + PlayerUtils.class.getName() + ".getPlayerByUdpConnection($0);"
                                     + "java.lang.String adminName = this.getExecutorUsername().isEmpty() ? \"Console\" : this.getExecutorUsername();"
                                     + "if (player != null) {"
                                     + EventManager.class.getName() + ".invokeEvent(\"onPlayerBan\", new Object[]{player, adminName, \"\"});"

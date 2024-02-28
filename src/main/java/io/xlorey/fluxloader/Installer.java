@@ -29,10 +29,13 @@ public class Installer {
      * of the IPatch interface, which encapsulates the logic for modifying specific game files.
      */
     private static final ArrayList<IPatch> patches = new ArrayList<>(){{
+        add(new PatchLuaManager("zombie.Lua.LuaManager$Exposer"));
         add(new PatchGameWindow("zombie.GameWindow"));
         add(new PatchLuaEventManager("zombie.Lua.LuaEventManager"));
         add(new PatchBanSteamIDCommand("zombie.commands.serverCommands.BanSteamIDCommand"));
         add(new PatchBanUserCommand("zombie.commands.serverCommands.BanUserCommand"));
+        add(new PatchUnbanUserCommand("zombie.commands.serverCommands.UnbanUserCommand"));
+        add(new PatchUnbanSteamIDCommand("zombie.commands.serverCommands.UnbanSteamIDCommand"));
         add(new PatchKickUserCommand("zombie.commands.serverCommands.KickUserCommand"));
         add(new PatchQuitCommand("zombie.commands.serverCommands.QuitCommand"));
         add(new PatchChatServer("zombie.network.chat.ChatServer"));

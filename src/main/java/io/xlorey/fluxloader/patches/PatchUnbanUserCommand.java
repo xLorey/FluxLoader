@@ -1,6 +1,5 @@
 package io.xlorey.fluxloader.patches;
 
-import io.xlorey.fluxloader.server.api.PlayerUtils;
 import io.xlorey.fluxloader.shared.EventManager;
 import io.xlorey.fluxloader.utils.PatchTools;
 import javassist.CannotCompileException;
@@ -10,16 +9,16 @@ import javassist.expr.MethodCall;
 /**
  * Author: Deknil
  * GitHub: <a href=https://github.com/Deknil>https://github.com/Deknil</a>
- * Date: 07.02.2024
- * Description: BanUserCommand command patcher
+ * Date: 26.02.2024
+ * Description: UnbanUserCommand command patcher
  * <p>FluxLoader © 2024. All rights reserved.</p>
  */
-public class PatchKickUserCommand extends PatchFile{
+public class PatchUnbanUserCommand extends PatchFile{
     /**
      * Patcher constructor
      * @param className the full class name, e.g. 'zombie.GameWindow'
      */
-    public PatchKickUserCommand(String className) {
+    public PatchUnbanUserCommand(String className) {
         super(className);
     }
 
@@ -32,14 +31,11 @@ public class PatchKickUserCommand extends PatchFile{
             try {
                 ctMethod.instrument(new ExprEditor() {
                     public void edit(MethodCall m) throws CannotCompileException {
-                        if (m.getClassName().equals("zombie.core.raknet.UdpConnection") && m.getMethodName().equals("forceDisconnect")) {
+                        if (m.getClassName().contains("ServerWorldDatabase") && m.getMethodName().contains("banUser")) {
                             String code =  "{ "
-                                    + "zombie.characters.IsoPlayer player = " + PlayerUtils.class.getName() + ".getPlayerByUdpConnection($0);"
+                                    + "$_ = $proceed($$);"
                                     + "java.lang.String adminName = this.getExecutorUsername().isEmpty() ? \"Console\" : this.getExecutorUsername();"
-                                    + "if (player != null) {"
-                                    + EventManager.class.getName() + ".invokeEvent(\"onPlayerKick\", new Object[]{player, adminName, this.reason});"
-                                    + "}"
-                                    + "$proceed($$);"
+                                    + EventManager.class.getName() + ".invokeEvent(\"onPlayerUnban\", new Object[]{$1, adminName});"
                                     + "}";
                             m.replace(code);
                         }

@@ -2,7 +2,7 @@ package io.xlorey.fluxloader.server.core;
 
 import io.xlorey.fluxloader.enums.EventPriority;
 import io.xlorey.fluxloader.plugin.PluginManager;
-import io.xlorey.fluxloader.plugin.PluginRegistry;
+import io.xlorey.fluxloader.server.handlers.OnServerInitHandler;
 import io.xlorey.fluxloader.server.handlers.OnServerShutdownHandler;
 import io.xlorey.fluxloader.shared.EventManager;
 import io.xlorey.fluxloader.utils.Logger;
@@ -44,7 +44,6 @@ public class Core {
         PluginManager.loadPlugins(false);
 
         EventManager.subscribe(new OnServerShutdownHandler(), EventPriority.HIGHEST);
-
-        PluginManager.executePlugins(PluginRegistry.getLoadedServerPlugins());
+        EventManager.subscribe(new OnServerInitHandler(), EventPriority.HIGHEST);
     }
 }

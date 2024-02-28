@@ -121,21 +121,30 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Drawing colored text at specified coordinates</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getFontHeight(zombie.ui.UIFont)" class="member-name-link">getFontHeight</a><wbr>(zombie.ui.UIFont&nbsp;font)</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#drawText(java.lang.String,zombie.ui.UIFont,int,int,zombie.core.Color)" class="member-name-link">drawText</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ int&nbsp;posX,
+ int&nbsp;posY,
+ zombie.core.Color&nbsp;color)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Getting line height from a given font</div>
+<div class="block">Drawing colored text at specified coordinates</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getTextHeight(java.lang.String,zombie.ui.UIFont)" class="member-name-link">getTextHeight</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
- zombie.ui.UIFont&nbsp;font)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getFontHeight(zombie.ui.UIFont)" class="member-name-link">getFontHeight</a><wbr>(zombie.ui.UIFont&nbsp;font)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Returns the height of the given text in the specified font</div>
+<div class="block">Getting line height from a given font</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getTextWidth(java.lang.String,zombie.ui.UIFont)" class="member-name-link">getTextWidth</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getTextHeight(java.lang.String,zombie.ui.UIFont)" class="member-name-link">getTextHeight</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
  zombie.ui.UIFont&nbsp;font)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Returns the height of the given text in the specified font</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getTextWidth(java.lang.String,zombie.ui.UIFont)" class="member-name-link">getTextWidth</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Returns the width of the given text in the specified font</div>
 </div>
 </div>
@@ -169,6 +178,25 @@ loadScripts(document, 'script');</script>
 <section class="method-details" id="method-detail">
 <h2>Method Details</h2>
 <ul class="member-list">
+<li>
+<section class="detail" id="drawText(java.lang.String,zombie.ui.UIFont,int,int,zombie.core.Color)">
+<h3>drawText</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">drawText</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;text,
+ zombie.ui.UIFont&nbsp;font,
+ int&nbsp;posX,
+ int&nbsp;posY,
+ zombie.core.Color&nbsp;color)</span></div>
+<div class="block">Drawing colored text at specified coordinates</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>text</code> - the text to be drawn. Must not be null</dd>
+<dd><code>font</code> - text font corresponding to enum UIFont</dd>
+<dd><code>posX</code> - horizontal text position (X-coordinate), measured in pixels</dd>
+<dd><code>posY</code> - vertical position of the text (Y-coordinate), measured in pixels</dd>
+<dd><code>color</code> - color implementation object</dd>
+</dl>
+</section>
+</li>
 <li>
 <section class="detail" id="drawText(java.lang.String,zombie.ui.UIFont,int,int,float,float,float,float)">
 <h3>drawText</h3>

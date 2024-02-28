@@ -55,11 +55,11 @@ public class ClientPlugin extends Plugin {
 
         exampleCreate.save();
 
-        String defaultConfigText = getDefaultConfig().getString("message");
+        String defaultConfigText = getConfig().getString("message");
     }
 }
 ```
-To copy and load the standard config, we used the `saveDefaultConfig` method, this is the only config that can be accessed via `getDefaultConfig` at the entry point. All configs are instances of the `Configuration` class. It contains methods for creating, loading, saving, and manipulating primitive types, text, lists, and dictionaries. After each change to the config, it must be saved by calling the `save` method.
+To copy and load the standard config, we used the `saveDefaultConfig` method, this is the only config that can be accessed via `getConfig` at the entry point. All configs are instances of the `Configuration` class. It contains methods for creating, loading, saving, and manipulating primitive types, text, lists, and dictionaries. After each change to the config, it must be saved by calling the `save` method.
 
 To copy (create if not in the JAR) and load the template configuration, you must use the `load` method, it is similar to `saveDefaultConfig`, but is used for custom configurations. When creating a config object, you must specify the path where it will be saved. To avoid errors, we recommend getting it via `getConfigPath(configName)`, and the second argument must be passed an instance of the entry point, this is necessary for loading and copying the template from the `jar` archive.
 
@@ -69,6 +69,6 @@ To copy (create if not in the JAR) and load the template configuration, you must
 server:
     port: 27015
 ```
-If the key does not exist, then `null` will be returned upon retrieval. Also, if you access the default config via `getDefaultConfig`, but do not save it via `saveDefaultConfig`, an exception will be thrown, since in this case it will return `null`.
+If the key does not exist, then `null` will be returned upon retrieval. Also, if you access the default config via `getConfig`, but do not save it via `saveDefaultConfig`, an exception will be thrown, since in this case it will return `null`.
 
 If you don't want to create templates and do everything dynamically, then the declaration of the config object will remain the same, but the rest will be a little different. Creation occurs through `create`, you can check the presence of the file through `isExists` and then load it through `load`.

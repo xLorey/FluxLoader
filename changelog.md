@@ -4,8 +4,12 @@
 - Added empty character constant and methods for colorizing chat messages
 - Added tools for managing isometric objects
 - Added events `onPluginInitialize`, `onPluginTerminate`, `onPluginExecute`
+- Added `onPlayerUnban` event
+- Added the ability to expose classes and global objects (objects with separate methods for Lua) in a Lua context
+- Added tools for loading individual custom Lua scripts and loading scripts from a specific folder
 - Changed the logic for saving and loading the standard configuration file
 - Fixed API provisions for chat
+- Fixed launching plugins for the server, now `onExecute` is executed after the server is fully initialized
 
 # FluxLoader v0.8.3
 - Fixed `onPlayerDisconnect` event

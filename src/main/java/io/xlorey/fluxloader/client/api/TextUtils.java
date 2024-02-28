@@ -1,5 +1,7 @@
 package io.xlorey.fluxloader.client.api;
 
+import lombok.experimental.UtilityClass;
+import zombie.core.Color;
 import zombie.ui.TextManager;
 import zombie.ui.UIFont;
 
@@ -10,7 +12,20 @@ import zombie.ui.UIFont;
  * Description: A set of tools for manipulating text and rendering it
  * <p>FluxLoader © 2024. All rights reserved.</p>
  */
+@UtilityClass
 public class TextUtils {
+    /**
+     * Drawing colored text at specified coordinates
+     * @param text the text to be drawn. Must not be null
+     * @param font text font corresponding to enum UIFont
+     * @param posX horizontal text position (X-coordinate), measured in pixels
+     * @param posY vertical position of the text (Y-coordinate), measured in pixels
+     * @param color color implementation object
+     */
+    public static void drawText(String text, UIFont font, int posX, int posY, Color color) {
+        drawText(text, font, posX, posY, color.r, color.g, color.b, color.a);
+    }
+
     /**
      * Drawing colored text at specified coordinates
      * @param text the text to be drawn. Must not be null

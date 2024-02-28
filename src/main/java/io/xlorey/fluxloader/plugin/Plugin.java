@@ -2,8 +2,6 @@ package io.xlorey.fluxloader.plugin;
 
 import io.xlorey.fluxloader.interfaces.IPlugin;
 import io.xlorey.fluxloader.utils.Constants;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.io.File;
 
@@ -19,15 +17,12 @@ public class Plugin implements IPlugin {
      * Standard plugin configuration file
      * Returns null if the configuration file was not saved/loaded
      */
-    @Getter
-    private Configuration defaultConfig;
+    private Configuration config;
 
     /**
      * Field containing information about the plugin.
      * Metadata can include various information about the plugin, such as name, version, author, etc.
      */
-    @Setter
-    @Getter
     private Metadata metadata;
 
     /**
@@ -49,6 +44,30 @@ public class Plugin implements IPlugin {
     public void onTerminate() {}
 
     /**
+     * Returns plugin metadata.
+     * @return Plugin {@link Metadata} .
+     */
+    public final Metadata getMetadata() {
+        return metadata;
+    }
+
+    /**
+     * Sets the plugin metadata.
+     * @param metadata Plugin {@link Metadata} to install.
+     */
+    public final void setMetadata(Metadata metadata) {
+        this.metadata = metadata;
+    }
+
+    /**
+     * Returns the configuration object for this plugin.
+     * @return A {@link Configuration} object representing the plugin configuration.
+     */
+    public final Configuration getConfig() {
+        return config;
+    }
+
+    /**
      * Checks if the supplied configuration file name ends in ".yml".
      * If the file name does not end in ".yml", this extension is added.
      * @param configName Name of the configuration file to check and modify.
@@ -64,10 +83,10 @@ public class Plugin implements IPlugin {
     /**
      * Returns a File object representing the configuration directory for this plugin.
      * The directory path is normalized to prevent problems with various file systems.
-     * @return A File object pointing to the normalized path to the plugin configuration directory.
+     * @return A {@link File} object pointing to the normalized path to the plugin configuration directory.
      */
     public final File getConfigFolder() {
-        return getMetadata().getConfigFolder();
+        return metadata.getConfigFolder();
     }
 
     /**
@@ -79,7 +98,7 @@ public class Plugin implements IPlugin {
      */
     public final String getConfigPath(String configName) {
         configName = validateConfigName(configName);
-        return new File(getMetadata().getConfigFolder().getAbsolutePath() + File.separator + configName).getAbsolutePath();
+        return new File(metadata.getConfigFolder().getAbsolutePath() + File.separator + configName).getAbsolutePath();
     }
 
     /**
@@ -91,7 +110,7 @@ public class Plugin implements IPlugin {
      */
     public final File getConfigFile(String configName) {
         configName = validateConfigName(configName);
-        return new File(getMetadata().getConfigFolder().getAbsolutePath() + File.separator + configName);
+        return new File(metadata.getConfigFolder().getAbsolutePath() + File.separator + configName);
     }
 
     /**
@@ -104,7 +123,7 @@ public class Plugin implements IPlugin {
      * into the configuration file, then null is set to the config location.
      */
     public final void saveDefaultConfig() {
-        defaultConfig = new Configuration(getConfigPath(Constants.PLUGINS_DEFAULT_CONFIG_NAME), this);
-        defaultConfig.load();
+        config = new Configuration(getConfigPath(Constants.PLUGINS_DEFAULT_CONFIG_NAME), this);
+        config.load();
     }
 }

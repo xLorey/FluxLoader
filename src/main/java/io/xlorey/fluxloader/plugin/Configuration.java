@@ -177,7 +177,7 @@ public class Configuration {
      * Checks if the configuration is empty.
      * @return {@code true} if the configuration is empty, otherwise {@code false}.
      */
-    public final boolean isEmpty() {
+    public final synchronized boolean isEmpty() {
         return config.isEmpty();
     }
 
@@ -193,7 +193,7 @@ public class Configuration {
      * @param key The key to check for presence in the configuration.
      * @return {@code true} if the configuration contains the specified key, otherwise {@code false}.
      */
-    public final boolean contains(String key) {
+    public final synchronized boolean contains(String key) {
         return getConfigValue(key) != null;
     }
 
@@ -228,7 +228,7 @@ public class Configuration {
      * Merges the current configuration with another configuration by adding or replacing keys and values.
      * @param otherConfig Another configuration to merge the current configuration with.
      */
-    public final void merge(Map<String, Object> otherConfig) {
+    public final synchronized void merge(Map<String, Object> otherConfig) {
         mergeRecursive(config, otherConfig);
     }
 
@@ -236,7 +236,7 @@ public class Configuration {
      * Merges the current configuration with another configuration by adding or replacing keys and values.
      * @param otherConfig Another configuration to merge the current configuration with.
      */
-    public final void merge(Configuration otherConfig) {
+    public final synchronized void merge(Configuration otherConfig) {
         Map<String, Object> otherConfigMap = otherConfig.getAll();
         merge(otherConfigMap);
     }
@@ -247,7 +247,7 @@ public class Configuration {
      * @param sourceConfig Another configuration from which the keys and values are copied.
      */
     @SuppressWarnings("unchecked")
-    private void mergeRecursive(Map<String, Object> targetConfig, Map<String, Object> sourceConfig) {
+    private synchronized void mergeRecursive(Map<String, Object> targetConfig, Map<String, Object> sourceConfig) {
         for (Map.Entry<String, Object> entry : sourceConfig.entrySet()) {
             String key = entry.getKey();
             Object value = entry.getValue();
@@ -273,7 +273,7 @@ public class Configuration {
      * @return The value for the specified key or {@code null} if the key is not found or does not lead to a map.
      */
     @SuppressWarnings("unchecked")
-    private Object getConfigValue(String key) {
+    private synchronized Object getConfigValue(String key) {
         String[] keys = key.split("\\.");
         Map<String, Object> configMap = config;
 
@@ -296,7 +296,7 @@ public class Configuration {
      * @param value The value to set by the specified key.
      */
     @SuppressWarnings("unchecked")
-    private void setConfigValue(String key, Object value) {
+    private synchronized void setConfigValue(String key, Object value) {
         String[] keys = key.split("\\.");
         Map<String, Object> configMap = config;
 

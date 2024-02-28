@@ -4,11 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import io.xlorey.fluxloader.utils.Constants;
 import io.xlorey.fluxloader.utils.Logger;
-import lombok.Data;
+import lombok.Value;
 
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.jar.JarFile;
@@ -21,7 +19,7 @@ import java.util.zip.ZipEntry;
  * Description: The Metadata class represents plugin data loaded from the metadata.json file.
  * <p>FluxLoader © 2024. All rights reserved.</p>
  */
-@Data
+@Value
 public class Metadata {
     /**
      * Tool for working with JSON files
@@ -93,7 +91,7 @@ public class Metadata {
      * The directory path is normalized to prevent problems with various file systems.
      * @return A File object pointing to the normalized path to the plugin configuration directory.
      */
-    public final File getConfigFolder() {
+    public File getConfigFolder() {
         return new File(Constants.PLUGINS_FOLDER_NAME, getId());
     }
 
@@ -105,7 +103,7 @@ public class Metadata {
      */
     public static Metadata getInfoFromFile(File jarFile) throws IOException {
         try (JarFile jar = new JarFile(jarFile)) {
-            ZipEntry entry = jar.getEntry("metadata.json");
+            ZipEntry entry = jar.getEntry(Constants.PLUGINS_METADATA_NAME);
             if (entry != null) {
                 try (InputStream input = jar.getInputStream(entry);
                      BufferedReader reader = new BufferedReader(new InputStreamReader(input))) {

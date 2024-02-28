@@ -116,7 +116,13 @@ public class JarTools {
             while (entries.hasMoreElements()) {
                 JarEntry entry = entries.nextElement();
                 if (isPathAllowed(whiteListJarPath, entry.getName())) {
-                    Path pathToDelete = Paths.get(targetPath, entry.getName());
+                    Path pathToDelete = Paths.get(targetPath, entry.getName()).normalize();
+
+                    if (!pathToDelete.startsWith(Paths.get(targetPath).toAbsolutePath())) {
+                        Logger.print(String.format("Invalid path: '%s' attempts to escape target path. Skipping deletion.", pathToDelete));
+                        continue;
+                    }
+
                     if (Files.exists(pathToDelete)) {
                         deleteRecursively(pathToDelete.toFile());
                     }
