@@ -41,9 +41,9 @@ public class PatchLuaManager extends PatchFile{
             try {
                 String classCode =
                         "{" +
-                         EventManager.class.getName() + ".invokeEvent(\"onLuaScriptExecuted\", new Object[]{$1, $2});" +
+                         EventManager.class.getName() + ".invokeEvent(\"onLuaScriptExecute\", $args);" +
                         "}";
-                ctMethod.insertAfter(classCode);
+                ctMethod.insertBefore(classCode);
             } catch (CannotCompileException e) {
                 throw new RuntimeException(e);
             }

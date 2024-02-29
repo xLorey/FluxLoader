@@ -1,5 +1,5 @@
 # FluxLoader v0.10.0
-- Added `onLuaFilesLoaded` and `onLuaScriptExecuted` events
+- Added `onLuaFilesLoaded` and `onLuaScriptExecute` events
 - Fixed names of methods for exposing classes and objects
 - Fixed log output when creating backups and restoring
 

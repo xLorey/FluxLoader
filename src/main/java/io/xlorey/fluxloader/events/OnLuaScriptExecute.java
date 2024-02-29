@@ -7,13 +7,13 @@ package io.xlorey.fluxloader.events;
  * Description: Triggered when Lua script loaded.
  * <p>FluxLoader © 2024. All rights reserved.</p>
  */
-public abstract class OnLuaScriptExecuted extends Event {
+public abstract class OnLuaScriptExecute extends Event {
     /**
      * Getting the event name
      * @return name of the event being implemented
      */
     @Override
-    public String getEventName() { return "onLuaScriptExecuted"; }
+    public String getEventName() { return "onLuaScriptExecute"; }
     
     /**
     * Called Event Handling Method
