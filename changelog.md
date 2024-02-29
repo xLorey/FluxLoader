@@ -1,5 +1,7 @@
 # FluxLoader v0.10.0
 - Added `onLuaFilesLoaded` and `onLuaScriptExecute` events
+- Added `onChangeLanguage` events
+- Added translation system to `TranslationManager`
 - Fixed names of methods for exposing classes and objects
 - Fixed log output when creating backups and restoring
 

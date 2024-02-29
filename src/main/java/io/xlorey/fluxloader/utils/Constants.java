@@ -37,6 +37,11 @@ public class Constants {
         public static final String PLUGINS_METADATA_NAME = "metadata.json";
 
         /**
+         * Name of the folder with translations for plugins
+         */
+        public static final String PLUGINS_TRANSLATION_FOLDER = "translation";
+
+        /**
          * Path to the FluxLoader logo
          */
         public static final String PATH_FLUXLOADER_LOGO = "io/xlorey/fluxloader/media/FluxLoader-Logo.png";

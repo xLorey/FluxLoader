@@ -31,6 +31,7 @@ public class Installer {
     private static final ArrayList<IPatch> patches = new ArrayList<>(){{
         add(new PatchLuaManager("zombie.Lua.LuaManager"));
         add(new PatchLuaManagerExposer("zombie.Lua.LuaManager$Exposer"));
+        add(new PatchTranslator("zombie.core.Translator"));
         add(new PatchGameWindow("zombie.GameWindow"));
         add(new PatchLuaEventManager("zombie.Lua.LuaEventManager"));
         add(new PatchBanSteamIDCommand("zombie.commands.serverCommands.BanSteamIDCommand"));

@@ -7,6 +7,8 @@ import io.xlorey.fluxloader.utils.Logger;
 import lombok.Value;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.jar.JarFile;
@@ -93,6 +95,15 @@ public class Metadata {
      */
     public File getConfigFolder() {
         return new File(Constants.PLUGINS_FOLDER_NAME, getId());
+    }
+
+    /**
+     * Returns a Path object representing the translations folder for this plugin.
+     * The folder path is normalized to prevent problems with different file systems.
+     * @return An object of type File pointing to the normalized path to the folder with plugin translations.
+     */
+    public Path getTranslationFolder() {
+        return Paths.get(getConfigFolder().getAbsolutePath(), Constants.PLUGINS_TRANSLATION_FOLDER);
     }
 
     /**
