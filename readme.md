@@ -34,7 +34,7 @@ That is why, inspired by popular mod loaders in other games (for example, Minecr
 # Features
 Our tools already have:
 - 200+ default and custom events (with documentation) that you can easily subscribe to;
-- The ability to download custom Lua scripts;
+- The ability to load custom Lua scripts;
 - Custom translation system for plugins;
 - Working with client and server sides;
 - Custom documented tools for working with game methods;
