@@ -1,6 +1,7 @@
 package io.xlorey.fluxloader.plugin;
 
 import io.xlorey.fluxloader.interfaces.IPlugin;
+import io.xlorey.fluxloader.shared.TranslationManager;
 import io.xlorey.fluxloader.utils.Constants;
 
 import java.io.File;
@@ -42,6 +43,18 @@ public class Plugin implements IPlugin {
      */
     @Override
     public void onTerminate() {}
+
+    /**
+     * Obtaining translation from loaded plugin translation resource files (./translation/{country_code}.yml).
+     * The language of the resulting translation is set from the current one in the client/server.
+     * If there is no translation for a given language, the translation for the default language (EN) is returned,
+     * if there is no translation for the key at all, just the key is returned.
+     * @param key translation key (if the translation is nested, indicated with a dot, for example, "test.text")
+     * @return translation for the given key
+     */
+    public final String getTranslate(String key) {
+        return TranslationManager.getTranslate(metadata.getId(), key);
+    }
 
     /**
      * Returns plugin metadata.

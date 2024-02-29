@@ -2,6 +2,7 @@ package io.xlorey.fluxloader.plugin;
 
 import io.xlorey.fluxloader.interfaces.IControlsWidget;
 import io.xlorey.fluxloader.shared.EventManager;
+import io.xlorey.fluxloader.shared.TranslationManager;
 import io.xlorey.fluxloader.utils.Constants;
 import io.xlorey.fluxloader.utils.Logger;
 import io.xlorey.fluxloader.utils.VersionChecker;
@@ -12,8 +13,11 @@ import zombie.core.textures.Texture;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.*;
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * Author: Deknil
@@ -83,6 +87,16 @@ public class PluginManager {
                 }
             }
 
+            // creating a folder for translation
+            File translationFolder = metadata.getTranslationFolder().toFile();
+            if (!translationFolder.exists()) {
+                try {
+                    translationFolder.mkdir();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Logger.print(String.format("An error occurred while creating the translation folder for plugin '%s'", metadata.getId()));
+                }
+            }
             validPlugins.put(plugin, metadata);
         }
 
@@ -114,6 +128,12 @@ public class PluginManager {
             loadEntryPoints(true, clientEntryPoints, metadata, classLoader);
             loadEntryPoints(false, serverEntryPoints, metadata, classLoader);
 
+            // Extracting translation files
+            extractTranslationFiles(classLoader, metadata);
+
+            // Loading translations
+            TranslationManager.loadTranslations(metadata.getId(), metadata.getTranslationFolder());
+
             if (isClient) {
                 String controlsClassName = metadata.getControlsEntrypoint();
                 if (controlsClassName != null && !controlsClassName.isEmpty()) {
@@ -136,6 +156,43 @@ public class PluginManager {
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * Copies files with translations from the plugin resources folder to the configs folder (../plugins/{pluginID}/translation/).
+     * If the file exists, no copying occurs
+     * @param classLoader Plugin loader.
+     * @param metadata Plugin metadata.
+     */
+    private static void extractTranslationFiles(PluginClassLoader classLoader, Metadata metadata) {
+        try {
+            URL folderURL = classLoader.getResource(Constants.PLUGINS_TRANSLATION_FOLDER);
+            if (folderURL == null) return;
+
+            FileSystem fileSystem = FileSystems.newFileSystem(folderURL.toURI(), Collections.emptyMap());
+            Path folder = fileSystem.getPath(Constants.PLUGINS_TRANSLATION_FOLDER);
+            Path targetFolder = metadata.getTranslationFolder();
+
+            try (Stream<Path> walk = Files.walk(folder, 1)) {
+                walk.filter(Files::isRegularFile)
+                        .filter(path -> path.getFileName().toString().endsWith(".yml"))
+                        .forEach(path -> {
+                            try {
+                                Path targetFile = targetFolder.resolve(path.getFileName().toString());
+
+                                if (Files.exists(targetFile)) return;
+
+                                Files.copy(path, targetFile, StandardCopyOption.REPLACE_EXISTING);
+                            } catch (IOException e) {
+                                Logger.print(String.format("An error occurred while copying the translation file in plugin '%s'!", metadata.getId()));
+                                e.printStackTrace();
+                            }
+                        });
+            }
+        } catch (URISyntaxException | IOException e) {
+            Logger.print(String.format("An error occurred while retrieving translation resources in plugin '%s'!", metadata.getId()));
+            e.printStackTrace();
         }
     }
 

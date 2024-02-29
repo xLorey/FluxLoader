@@ -83,8 +83,7 @@ public class BackupTools {
         String fixedClassPath = Installer.getGameFolderPath() + className.replace(".", "/") + ".class";
 
         Path pathToClassFile = Paths.get(fixedClassPath);
-        Logger.print(pathToClassFile.toString());
-        Logger.print(String.format("Preparing to create a backup file: '%s'...", pathToClassFile));
+        Logger.print(String.format("Preparing to create a backup file '%s'...", pathToClassFile.getFileName()));
 
         if (!Files.exists(pathToClassFile))  {
             throw new IOException("Error creating backup file! The file is missing from the game folder: " + pathToClassFile.getFileName());
@@ -146,7 +145,7 @@ public class BackupTools {
 
         Path pathToClassFile = Paths.get(fixedClassPath);
 
-        Logger.print(String.format("Preparing to restore a file'%s'...", pathToClassFile));
+        Logger.print(String.format("Preparing to restore a file '%s'...", pathToClassFile.getFileName()));
 
         Path directoryPath = pathToClassFile.getParent();
 

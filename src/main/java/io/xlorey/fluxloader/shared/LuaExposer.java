@@ -8,8 +8,8 @@ import java.util.Set;
 
 /**
  * Author: Deknil
- * Date: 27.02.2024
  * GitHub: <a href="https://github.com/Deknil">https://github.com/Deknil</a>
+ * Date: 27.02.2024
  * Description: A utility class for exposing classes and global objects for use in Lua scripts.
  * <p> FluxLoader © 2024. All rights reserved. </p>
  */
@@ -29,7 +29,7 @@ public class LuaExposer {
      * Method for exposing the class.
      * @param clazz The class to expose.
      */
-    public static synchronized void exposeClass(Class<?> clazz) {
+    public static synchronized void addExposedClass(Class<?> clazz) {
         exposedClasses.add(clazz);
     }
 
@@ -37,7 +37,7 @@ public class LuaExposer {
      * Method for exposing a global object, which contain methods with annotation {@link se.krka.kahlua.integration.annotations.LuaMethod}.
      * @param globalObject The global object to expose.
      */
-    public static synchronized void exposeGlobalObject(Object globalObject) {
+    public static synchronized void addExposedGlobalObject(Object globalObject) {
         exposedGlobalObjects.add(globalObject);
     }
 
