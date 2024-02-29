@@ -33,6 +33,7 @@ public class LuaManager {
     /**
      * Searches for Lua files recursively in the specified folder and its subfolders,
      * adds them to the paths collection, and then runs each Lua file.
+     * After all files are loaded, fires the `OnLuaFilesLoaded` event
      * @param folderPath The path to the folder containing Lua files.
      * @param rewriteEvents A boolean indicating whether to rewrite events.
      * @throws NullPointerException if the specified folder path is null.
@@ -81,6 +82,8 @@ public class LuaManager {
                     basePath));
             e.printStackTrace();
         }
+
+        EventManager.invokeEvent("onLuaFilesLoaded", folderPath);
     }
 
     /**
