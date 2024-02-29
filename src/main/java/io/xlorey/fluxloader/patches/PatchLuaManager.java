@@ -1,11 +1,8 @@
 package io.xlorey.fluxloader.patches;
 
 import io.xlorey.fluxloader.shared.EventManager;
-import io.xlorey.fluxloader.shared.LuaExposer;
 import io.xlorey.fluxloader.utils.PatchTools;
 import javassist.CannotCompileException;
-import javassist.expr.ExprEditor;
-import javassist.expr.MethodCall;
 
 /**
  * Author: Deknil
