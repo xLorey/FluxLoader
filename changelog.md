@@ -1,3 +1,6 @@
+# FluxLoader v0.10.0
+- Added `onLuaFilesLoaded` and `onLuaScriptExecuted` events
+
 # FluxLoader v0.9.0
 - Added methods for getting and setting lists of specific types for plugin configs
 - Added new methods for configuration files

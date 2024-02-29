@@ -8,8 +8,8 @@ import java.util.Set;
 
 /**
  * Author: Deknil
- * Date: 27.02.2024
  * GitHub: <a href="https://github.com/Deknil">https://github.com/Deknil</a>
+ * Date: 27.02.2024
  * Description: A utility class for exposing classes and global objects for use in Lua scripts.
  * <p> FluxLoader © 2024. All rights reserved. </p>
  */

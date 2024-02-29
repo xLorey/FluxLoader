@@ -14,8 +14,8 @@ import java.util.*;
 
 /**
  * Author: Deknil
- * Date: 27.02.2024
  * GitHub: <a href="https://github.com/Deknil">https://github.com/Deknil</a>
+ * Date: 27.02.2024
  * Description: Provides utility methods for managing Lua scripts.
  * <p> FluxLoader © 2024. All rights reserved. </p>
  */
