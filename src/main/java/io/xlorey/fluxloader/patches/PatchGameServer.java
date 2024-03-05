@@ -32,13 +32,16 @@ public class PatchGameServer extends PatchFile{
         // Adding a server initialization event and starting the Flux Loader core
         PatchTools.patchMethod(getClassName(), "main", (ctClass, ctMethod) -> {
             try {
+                ctMethod.insertBefore(Core.class.getName() + ".preInit();");
                 ctMethod.insertBefore(Core.class.getName() + ".serverArgs = $1;");
 
                 ctMethod.instrument(new ExprEditor() {
                     public void edit(MethodCall m) throws CannotCompileException {
-                        if (m.getClassName().equals("zombie.core.logger.LoggerManager") && m.getMethodName().equals("init")) {
-                            m.replace("{ $proceed($$); " +
-                                    Core.class.getName() + ".init(); }");
+                        if (m.getClassName().contains("Translator") && m.getMethodName().equals("loadFiles")) {
+                            m.replace("{" +
+                                    "$proceed($$);" +
+                                    Core.class.getName() + ".init();" +
+                                    "}");
                         }
                     }
                 });

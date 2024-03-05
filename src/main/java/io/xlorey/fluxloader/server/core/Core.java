@@ -24,10 +24,9 @@ public class Core {
     public static String[] serverArgs;
 
     /**
-     * Initializing the loader
-     * @exception Exception in cases of unsuccessful core initialization
+     * Pre-initialization of the core. Loads before all server initializations.
      */
-    public static void init() throws Exception {
+    public static void preInit() {
         boolean isCoop = false;
 
         for (String serverArg : serverArgs) {
@@ -43,7 +42,14 @@ public class Core {
         if (!isCoop) Logger.printCredits();
 
         Logger.print("FluxLoader Core initialization for the server..");
+    }
 
+    /**
+     * Initializing the loader. Called after basic initializations, namely at the moment after the Translator
+     * is initialized
+     * @exception Exception in cases of unsuccessful core initialization
+     */
+    public static void init() throws Exception {
         PluginManager.loadPlugins(false);
 
         EventManager.subscribe(new OnServerShutdownHandler(), EventPriority.HIGHEST);

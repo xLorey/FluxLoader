@@ -33,7 +33,18 @@ public class PatchGameWindow extends PatchFile{
         // Basic initialization of FluxLoader
         PatchTools.patchMethod(getClassName(), "init", (ctClass, ctMethod) -> {
             try {
-                ctMethod.insertBefore("{ DoLoadingText(\"Loading Flux Loader\"); "+Core.class.getName() + ".init(); }");
+                ctMethod.insertBefore(Core.class.getName() + ".preInit();");
+                ctMethod.instrument(new ExprEditor() {
+                    public void edit(MethodCall m) throws CannotCompileException {
+                        if (m.getClassName().contains("Translator") && m.getMethodName().equals("loadFiles")) {
+                            String code =  "DoLoadingText(\"Loading Flux Loader\"); " + Core.class.getName() + ".init();";
+                            m.replace("{" +
+                                    "$proceed($$);" +
+                                    code +
+                                    "}");
+                        }
+                    }
+                });
                 ctMethod.insertAfter(StateManager.class.getName() + ".init();");
                 ctMethod.insertAfter(EventManager.class.getName() + ".invokeEvent(\"onGameWindowInitialized\", new Object[0]);");
             } catch (CannotCompileException e) {

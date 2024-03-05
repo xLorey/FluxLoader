@@ -125,14 +125,14 @@ public class PluginManager {
             PluginClassLoader classLoader = new PluginClassLoader(new URL[]{pluginUrl});
             PluginRegistry.addPluginLoader(metadata.getId(), classLoader);
 
-            loadEntryPoints(true, clientEntryPoints, metadata, classLoader);
-            loadEntryPoints(false, serverEntryPoints, metadata, classLoader);
-
             // Extracting translation files
             extractTranslationFiles(classLoader, metadata);
 
             // Loading translations
             TranslationManager.loadTranslations(metadata.getId(), metadata.getTranslationFolder());
+
+            loadEntryPoints(true, clientEntryPoints, metadata, classLoader);
+            loadEntryPoints(false, serverEntryPoints, metadata, classLoader);
 
             if (isClient) {
                 String controlsClassName = metadata.getControlsEntrypoint();
