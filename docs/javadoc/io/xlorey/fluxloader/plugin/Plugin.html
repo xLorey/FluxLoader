@@ -144,6 +144,16 @@ implements <a href="../interfaces/IPlugin.html" title="interface in io.xlorey.fl
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Obtaining translation from loaded plugin translation resource files (.</div>
 </div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#loadLua()" class="member-name-link">loadLua</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Loads Lua scripts from the resources folder with the default option to overwrite events.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#loadLua(boolean)" class="member-name-link">loadLua</a><wbr>(boolean&nbsp;isRewriteEvents)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Loads Lua scripts from the resources folder</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onExecute()" class="member-name-link">onExecute</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
@@ -321,6 +331,24 @@ implements <a href="../interfaces/IPlugin.html" title="interface in io.xlorey.fl
 <dd><code>configName</code> - The name of the configuration file. Must be specified without a path, for example "config.yml".</dd>
 <dt>Returns:</dt>
 <dd>A <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link"><code>File</code></a> object pointing to the configuration file with the specified name.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="loadLua()">
+<h3>loadLua</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadLua</span>()</div>
+<div class="block">Loads Lua scripts from the resources folder with the default option to overwrite events.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="loadLua(boolean)">
+<h3>loadLua</h3>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">loadLua</span><wbr><span class="parameters">(boolean&nbsp;isRewriteEvents)</span></div>
+<div class="block">Loads Lua scripts from the resources folder</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>isRewriteEvents</code> - true if events should be rewritten, false otherwise</dd>
 </dl>
 </section>
 </li>

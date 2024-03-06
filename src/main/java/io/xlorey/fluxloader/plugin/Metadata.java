@@ -107,6 +107,15 @@ public class Metadata {
     }
 
     /**
+     * Returns a Path object representing the Lua folder for this plugin.
+     * Folder path has been normalized to prevent problems with different file systems.
+     * @return An object of type File pointing to the normalized path to the Lua plugin folder.
+     */
+    public Path getLuaFolder() {
+        return Paths.get(getConfigFolder().getAbsolutePath(), Constants.PLUGINS_LUA_FOLDER);
+    }
+
+    /**
      * Getting plugin metadata
      * @param jarFile plugin file
      * @return plugin metadata in Metadata format

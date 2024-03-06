@@ -27,7 +27,12 @@ public class LuaManager {
      * @param rewriteEvents Determines whether to rewrite events in the Lua script.
      */
     public static void runLua(String path, boolean rewriteEvents) {
-        zombie.Lua.LuaManager.RunLua(path, rewriteEvents);
+        try {
+            zombie.Lua.LuaManager.RunLua(path, rewriteEvents);
+        } catch (Exception e) {
+            Logger.print(String.format("A critical error occurred while loading lua file '%s'!", path));
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -40,7 +45,6 @@ public class LuaManager {
      * @throws IllegalArgumentException if the specified folder path is empty.
      * @throws RuntimeException if an error occurs while accessing the 'paths' field or running Lua files.
      */
-    @SuppressWarnings("unchecked")
     public static void loadLuaFromFolder(String folderPath, boolean rewriteEvents) {
         Path pathFolder = Paths.get(folderPath);
         String basePath = pathFolder.normalize().toAbsolutePath().toString().replace("\\", "/");
@@ -59,6 +63,43 @@ public class LuaManager {
             basePath += "/";
         }
 
+        addLuaPath(basePath);
+
+        HashSet<String> luaFiles = findLuaFiles(basePath);
+
+        for (String luaFile : luaFiles) {
+            String fixedLuaPath = luaFile.replace("\\", "/");
+            runLua(fixedLuaPath, rewriteEvents);
+            CoopMaster.instance.update();
+        }
+
+        EventManager.invokeEvent("onLuaFilesLoaded", folderPath);
+    }
+
+    /**
+     * Adds the specified folder to the active Lua path.
+     * Adding a folder will allow lua files to access other lua files inside the folder via 'require'
+     * @param folder the folder to add to the Lua path
+     */
+    public static void addLuaActiveFolder(File folder) {
+        String basePath = folder.toPath().normalize().toAbsolutePath().toString().replace("\\", "/");
+
+        if (!folder.exists() || !folder.isDirectory()) return;
+
+        if (!basePath.endsWith("/")) {
+            basePath += "/";
+        }
+
+        addLuaPath(basePath);
+        findLuaFiles(basePath);
+    }
+
+    /**
+     * Adds the specified base path to the Lua paths if it's not already included.
+     * @param basePath the base path to add to the Lua paths
+     */
+    @SuppressWarnings("unchecked")
+    private static synchronized void addLuaPath(String basePath) {
         try {
             Class<?> luaManagerClass = zombie.Lua.LuaManager.class;
             Field pathsField = luaManagerClass.getDeclaredField("paths");
@@ -69,21 +110,10 @@ public class LuaManager {
             if (!paths.contains(basePath)) {
                 paths.add(basePath);
             }
-
-            HashSet<String> luaFiles = findLuaFiles(basePath);
-
-            for (String luaFile : luaFiles) {
-                String fixedLuaPath = luaFile.replace("\\", "/");
-                runLua(fixedLuaPath, rewriteEvents);
-                CoopMaster.instance.update();
-            }
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            Logger.print(String.format("A critical error occurred while loading Lua files from the '%s' folder!",
-                    basePath));
+            Logger.print(String.format("A critical error occurred while loading Lua files from the '%s' folder!", basePath));
             e.printStackTrace();
         }
-
-        EventManager.invokeEvent("onLuaFilesLoaded", folderPath);
     }
 
     /**

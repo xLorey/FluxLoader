@@ -2,6 +2,7 @@ package io.xlorey.fluxloader.plugin;
 
 import io.xlorey.fluxloader.interfaces.IControlsWidget;
 import io.xlorey.fluxloader.shared.EventManager;
+import io.xlorey.fluxloader.shared.LuaManager;
 import io.xlorey.fluxloader.shared.TranslationManager;
 import io.xlorey.fluxloader.utils.Constants;
 import io.xlorey.fluxloader.utils.Logger;
@@ -13,10 +14,13 @@ import zombie.core.textures.Texture;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.*;
 import java.util.*;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 import java.util.stream.Stream;
 
 /**
@@ -85,18 +89,8 @@ public class PluginManager {
                     e.printStackTrace();
                     Logger.print(String.format("An error occurred while creating the config folder for plugin '%s'", metadata.getId()));
                 }
-            }
+            };
 
-            // creating a folder for translation
-            File translationFolder = metadata.getTranslationFolder().toFile();
-            if (!translationFolder.exists()) {
-                try {
-                    translationFolder.mkdir();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Logger.print(String.format("An error occurred while creating the translation folder for plugin '%s'", metadata.getId()));
-                }
-            }
             validPlugins.put(plugin, metadata);
         }
 
@@ -126,7 +120,12 @@ public class PluginManager {
             PluginRegistry.addPluginLoader(metadata.getId(), classLoader);
 
             // Extracting translation files
-            extractTranslationFiles(classLoader, metadata);
+            copyResourcesFile(plugin, metadata, metadata.getTranslationFolder().toFile());
+
+            // Extracting lua files
+            File luaFolder = metadata.getLuaFolder().toFile();
+            copyResourcesFile(plugin, metadata, luaFolder);
+            LuaManager.addLuaActiveFolder(luaFolder);
 
             // Loading translations
             TranslationManager.loadTranslations(metadata.getId(), metadata.getTranslationFolder());
@@ -160,39 +159,47 @@ public class PluginManager {
     }
 
     /**
-     * Copies files with translations from the plugin resources folder to the configs folder (../plugins/{pluginID}/translation/).
-     * If the file exists, no copying occurs
-     * @param classLoader Plugin loader.
-     * @param metadata Plugin metadata.
+     * Copies resource files from a JAR plugin file to a target folder.
+     * @param pluginFile the JAR plugin file to extract resources from
+     * @param metadata the metadata of the plugin
+     * @param targetFolder the target folder to copy the resources to
+     * @throws RuntimeException if an IOException occurs during the resource extraction process
      */
-    private static void extractTranslationFiles(PluginClassLoader classLoader, Metadata metadata) {
-        try {
-            URL folderURL = classLoader.getResource(Constants.PLUGINS_TRANSLATION_FOLDER);
-            if (folderURL == null) return;
+    private static void copyResourcesFile(File pluginFile, Metadata metadata, File targetFolder) {
+        try (JarFile jarFile = new JarFile(pluginFile.getAbsoluteFile())) {
+            Logger.print(String.format("Trying to extract resource folder '%s' of plugin '%s'...", targetFolder.getName(), metadata.getId()));
 
-            FileSystem fileSystem = FileSystems.newFileSystem(folderURL.toURI(), Collections.emptyMap());
-            Path folder = fileSystem.getPath(Constants.PLUGINS_TRANSLATION_FOLDER);
-            Path targetFolder = metadata.getTranslationFolder();
+            Enumeration<JarEntry> entries = jarFile.entries();
 
-            try (Stream<Path> walk = Files.walk(folder, 1)) {
-                walk.filter(Files::isRegularFile)
-                        .filter(path -> path.getFileName().toString().endsWith(".yml"))
-                        .forEach(path -> {
-                            try {
-                                Path targetFile = targetFolder.resolve(path.getFileName().toString());
+            Path targetPath = targetFolder.toPath().toAbsolutePath().normalize();
 
-                                if (Files.exists(targetFile)) return;
+            while (entries.hasMoreElements()) {
+                JarEntry entry = entries.nextElement();
 
-                                Files.copy(path, targetFile, StandardCopyOption.REPLACE_EXISTING);
-                            } catch (IOException e) {
-                                Logger.print(String.format("An error occurred while copying the translation file in plugin '%s'!", metadata.getId()));
-                                e.printStackTrace();
-                            }
-                        });
+                String startPathName = targetFolder.getName() + "/";
+
+                if (!entry.getName().startsWith(startPathName)) continue;
+
+                Path extractPath = targetPath.resolve(entry.getName().substring(startPathName.length())).normalize();
+
+                if (!extractPath.startsWith(targetPath)) {
+                    throw new IOException("Entry is outside of the target dir: " + entry.getName());
+                }
+
+                if (extractPath.toFile().exists()) continue;
+
+                if (entry.isDirectory()) {
+                    Files.createDirectories(extractPath);
+                } else {
+                    try (InputStream inputStream = jarFile.getInputStream(entry)) {
+                        Files.copy(inputStream, extractPath, StandardCopyOption.REPLACE_EXISTING);
+                    }
+                }
             }
-        } catch (URISyntaxException | IOException e) {
-            Logger.print(String.format("An error occurred while retrieving translation resources in plugin '%s'!", metadata.getId()));
-            e.printStackTrace();
+
+            Logger.print(String.format("Unpacking resource folder '%s' of plugin '%s' completed!", targetFolder.getName(), metadata.getId()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

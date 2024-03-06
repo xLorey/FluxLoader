@@ -2,6 +2,8 @@
 - Added `onLuaFilesLoaded` and `onLuaScriptExecute` events
 - Added `onChangeLanguage` events
 - Added translation system to `TranslationManager`
+- Added logic for extracting lua files to the plugin configuration folder
+- Added methods for working with lua
 - The initialization location of the client and server core has been changed
 - Fixed names of methods for exposing classes and objects
 - Fixed log output when creating backups and restoring

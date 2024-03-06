@@ -40,7 +40,7 @@ public class PatchGameWindow extends PatchFile{
                         "}");
                 ctMethod.instrument(new ExprEditor() {
                     public void edit(MethodCall m) throws CannotCompileException {
-                        if (m.getClassName().contains("Translator") && m.getMethodName().equals("loadFiles")) {
+                        if (m.getClassName().contains("LuaManager") && m.getMethodName().equals("init")) {
                             String code =  "DoLoadingText(\"Loading Flux Loader\"); " + Core.class.getName() + ".init();";
                             m.replace("{" +
                                     "$proceed($$);" +
