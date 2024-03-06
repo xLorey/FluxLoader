@@ -2,7 +2,6 @@
 - Added `onLuaFilesLoaded` and `onLuaScriptExecute` events
 - Added `onChangeLanguage` events
 - Added translation system to `TranslationManager`
-- Added `preInit` methods in client and server core
 - The initialization location of the client and server core has been changed
 - Fixed names of methods for exposing classes and objects
 - Fixed log output when creating backups and restoring

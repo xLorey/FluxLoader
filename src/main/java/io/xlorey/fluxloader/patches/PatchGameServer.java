@@ -3,10 +3,13 @@ package io.xlorey.fluxloader.patches;
 import io.xlorey.fluxloader.server.core.CommandsManager;
 import io.xlorey.fluxloader.server.core.Core;
 import io.xlorey.fluxloader.shared.EventManager;
+import io.xlorey.fluxloader.utils.Logger;
 import io.xlorey.fluxloader.utils.PatchTools;
 import javassist.CannotCompileException;
 import javassist.expr.ExprEditor;
 import javassist.expr.MethodCall;
+
+import java.util.Arrays;
 
 /**
  * Author: Deknil
@@ -32,8 +35,14 @@ public class PatchGameServer extends PatchFile{
         // Adding a server initialization event and starting the Flux Loader core
         PatchTools.patchMethod(getClassName(), "main", (ctClass, ctMethod) -> {
             try {
-                ctMethod.insertBefore(Core.class.getName() + ".preInit();");
-                ctMethod.insertBefore(Core.class.getName() + ".serverArgs = $1;");
+                ctMethod.insertBefore("{" +
+                        "if (" + Arrays.class.getName() + ".asList($1).contains(\"-coop\")) {" +
+                        Logger.class.getName() + ".print(\"Launching a co-op server...\");" +
+                        "} else {" +
+                        Logger.class.getName() + ".printCredits();" +
+                        "}" +
+                        Logger.class.getName() + ".print(\"FluxLoader Core initialization for the server..\");" +
+                        "}");
 
                 ctMethod.instrument(new ExprEditor() {
                     public void edit(MethodCall m) throws CannotCompileException {
