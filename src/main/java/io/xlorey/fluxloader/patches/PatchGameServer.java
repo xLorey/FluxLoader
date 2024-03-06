@@ -46,7 +46,7 @@ public class PatchGameServer extends PatchFile{
 
                 ctMethod.instrument(new ExprEditor() {
                     public void edit(MethodCall m) throws CannotCompileException {
-                        if (m.getMethodName().equals("doMinimumInit")) {
+                        if (m.getClassName().contains("Translator") && m.getMethodName().equals("loadFiles")) {
                             m.replace("{" +
                                     "$proceed($$);" +
                                     Core.class.getName() + ".init();" +
