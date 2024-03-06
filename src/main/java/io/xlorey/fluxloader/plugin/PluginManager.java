@@ -124,9 +124,7 @@ public class PluginManager {
             TranslationManager.loadTranslations(metadata.getId(), metadata.getTranslationFolder());
 
             // Extracting lua files
-            File luaFolder = metadata.getLuaFolder().toFile();
-            copyResourcesFile(plugin, metadata, luaFolder);
-            LuaManager.addLuaActiveFolder(luaFolder);
+            copyResourcesFile(plugin, metadata, metadata.getLuaFolder().toFile());
 
             loadEntryPoints(true, clientEntryPoints, metadata, classLoader);
             loadEntryPoints(false, serverEntryPoints, metadata, classLoader);

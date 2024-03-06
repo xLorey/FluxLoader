@@ -111,7 +111,7 @@ public class LuaManager {
                 paths.add(basePath);
             }
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            Logger.print(String.format("A critical error occurred while loading Lua files from the '%s' folder!", basePath));
+            Logger.print(String.format("Critical error when adding Lua file path '%s' to the active list!", basePath));
             e.printStackTrace();
         }
     }
