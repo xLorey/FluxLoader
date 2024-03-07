@@ -1,16 +1,18 @@
 package io.xlorey.fluxloader.client.core;
 
-import imgui.*;
+import imgui.ImFontConfig;
+import imgui.ImFontGlyphRangesBuilder;
+import imgui.ImGui;
+import imgui.ImGuiIO;
 import imgui.gl3.ImGuiImplGl3;
 import imgui.glfw.ImGuiImplGlfw;
 import io.xlorey.fluxloader.client.api.TextUtils;
 import io.xlorey.fluxloader.client.core.fonts.FontAwesomeIcons;
+import io.xlorey.fluxloader.client.ui.Widget;
 import io.xlorey.fluxloader.client.ui.menu.Button;
 import io.xlorey.fluxloader.client.ui.menu.Menu;
-import io.xlorey.fluxloader.client.ui.Widget;
 import io.xlorey.fluxloader.plugin.PluginRegistry;
 import io.xlorey.fluxloader.utils.Constants;
-import io.xlorey.fluxloader.utils.Logger;
 import org.lwjglx.opengl.Display;
 import zombie.GameWindow;
 import zombie.core.Core;
@@ -19,9 +21,7 @@ import zombie.gameStates.MainScreenState;
 import zombie.ui.UIFont;
 
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 

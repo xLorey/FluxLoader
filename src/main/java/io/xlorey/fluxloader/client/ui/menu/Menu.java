@@ -1,14 +1,10 @@
 package io.xlorey.fluxloader.client.ui.menu;
 
 import imgui.ImGui;
-import imgui.ImVec2;
 import imgui.flag.ImGuiCol;
 import imgui.flag.ImGuiStyleVar;
-import imgui.flag.ImGuiTableFlags;
 import imgui.flag.ImGuiWindowFlags;
 import imgui.type.ImBoolean;
-import io.xlorey.fluxloader.client.api.WindowUtils;
-import io.xlorey.fluxloader.client.core.fonts.FontAwesomeIcons;
 import io.xlorey.fluxloader.client.ui.Widget;
 import io.xlorey.fluxloader.interfaces.IControlsWidget;
 import io.xlorey.fluxloader.plugin.Metadata;
