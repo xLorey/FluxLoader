@@ -2,7 +2,6 @@ package io.xlorey.fluxloader.plugin;
 
 import io.xlorey.fluxloader.interfaces.IControlsWidget;
 import io.xlorey.fluxloader.shared.EventManager;
-import io.xlorey.fluxloader.shared.LuaManager;
 import io.xlorey.fluxloader.shared.TranslationManager;
 import io.xlorey.fluxloader.utils.Constants;
 import io.xlorey.fluxloader.utils.Logger;
@@ -15,13 +14,13 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import java.util.stream.Stream;
 
 /**
  * Author: Deknil
@@ -68,7 +67,7 @@ public class PluginManager {
 
             // Checking whether the metadata version matches the loader version
             if (metadataRevision != Constants.PLUGINS_METADATA_REVISION) {
-                Logger.print(String.format("The metadata form for plugin '%s' does not conform to the current standard (Plugin: %s, Standard: %s)! Skipping...",
+                Logger.print(String.format("The metadata form for plugin '%s' does not conform to the current standard (Plugin: %s, FluxLoader: %s)! Skipping...",
                         plugin.getName(),
                         metadataRevision,
                         Constants.PLUGINS_METADATA_REVISION));
@@ -131,7 +130,7 @@ public class PluginManager {
 
             if (!isClient) continue;
 
-            // Loading the icon and plugin controls (for the plugin menu)
+            // Loading the plugin controls (for the plugin menu)
             String controlsClassName = metadata.getControlsEntrypoint();
             if (controlsClassName != null && !controlsClassName.isEmpty()) {
                 Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
@@ -140,6 +139,7 @@ public class PluginManager {
                 PluginRegistry.addPluginControls(metadata.getId(), controlsInstance);
             }
 
+            // Loading the plugin icon and
             String iconPath = metadata.getIcon();
             URL iconUrl = classLoader.getResource(iconPath);
 
