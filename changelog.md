@@ -16,6 +16,7 @@
 - Added tools for managing isometric objects
 - Added events `onPluginInitialize`, `onPluginTerminate`, `onPluginExecute`
 - Added `onPlayerUnban` event
+- Added `FontAwesome` icons and initialization of standard fonts
 - Added the ability to expose classes and global objects (objects with separate methods for Lua) in a Lua context
 - Added tools for loading individual custom Lua scripts and loading scripts from a specific folder
 - Changed the logic for saving and loading the standard configuration file

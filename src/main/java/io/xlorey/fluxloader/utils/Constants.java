@@ -49,7 +49,12 @@ public class Constants {
         /**
          * Path to the FluxLoader logo
          */
-        public static final String PATH_FLUXLOADER_LOGO = "io/xlorey/fluxloader/media/FluxLoader-Logo.png";
+        public static final String PATH_FLUXLOADER_LOGO = "io/xlorey/fluxloader/resources/FluxLoader-Logo.png";
+
+        /**
+         * Path to the resources folder
+         */
+        public static final String PATH_FLUXLOADER_RESOURCES = "io/xlorey/fluxloader/resources/";
 
         /**
          * Path to project files
