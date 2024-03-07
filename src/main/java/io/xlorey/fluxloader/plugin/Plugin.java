@@ -1,6 +1,7 @@
 package io.xlorey.fluxloader.plugin;
 
 import io.xlorey.fluxloader.interfaces.IPlugin;
+import io.xlorey.fluxloader.shared.LuaManager;
 import io.xlorey.fluxloader.shared.TranslationManager;
 import io.xlorey.fluxloader.utils.Constants;
 
@@ -124,6 +125,23 @@ public class Plugin implements IPlugin {
     public final File getConfigFile(String configName) {
         configName = validateConfigName(configName);
         return new File(metadata.getConfigFolder().getAbsolutePath() + File.separator + configName);
+    }
+
+    /**
+     * Loads Lua scripts from the resources folder with the default option to overwrite events.
+     */
+    public final void loadLua() {
+        loadLua(true);
+    }
+
+    /**
+     * Loads Lua scripts from the resources folder
+     * @param isRewriteEvents true if events should be rewritten, false otherwise
+     */
+    public final void loadLua(boolean isRewriteEvents) {
+        if (!metadata.getLuaFolder().toFile().exists()) return;
+
+        LuaManager.loadLuaFromFolder(metadata.getLuaFolder().toAbsolutePath().toString(), isRewriteEvents);
     }
 
     /**

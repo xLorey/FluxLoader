@@ -13,11 +13,14 @@ import zombie.core.textures.Texture;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
+import java.io.InputStream;
 import java.net.URL;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardCopyOption;
 import java.util.*;
-import java.util.stream.Stream;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 /**
  * Author: Deknil
@@ -64,7 +67,7 @@ public class PluginManager {
 
             // Checking whether the metadata version matches the loader version
             if (metadataRevision != Constants.PLUGINS_METADATA_REVISION) {
-                Logger.print(String.format("The metadata form for plugin '%s' does not conform to the current standard (Plugin: %s, Standard: %s)! Skipping...",
+                Logger.print(String.format("The metadata form for plugin '%s' does not conform to the current standard (Plugin: %s, FluxLoader: %s)! Skipping...",
                         plugin.getName(),
                         metadataRevision,
                         Constants.PLUGINS_METADATA_REVISION));
@@ -85,18 +88,8 @@ public class PluginManager {
                     e.printStackTrace();
                     Logger.print(String.format("An error occurred while creating the config folder for plugin '%s'", metadata.getId()));
                 }
-            }
+            };
 
-            // creating a folder for translation
-            File translationFolder = metadata.getTranslationFolder().toFile();
-            if (!translationFolder.exists()) {
-                try {
-                    translationFolder.mkdir();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    Logger.print(String.format("An error occurred while creating the translation folder for plugin '%s'", metadata.getId()));
-                }
-            }
             validPlugins.put(plugin, metadata);
         }
 
@@ -125,74 +118,85 @@ public class PluginManager {
             PluginClassLoader classLoader = new PluginClassLoader(new URL[]{pluginUrl});
             PluginRegistry.addPluginLoader(metadata.getId(), classLoader);
 
+            // Extracting translation files
+            copyResourcesFile(plugin, metadata, metadata.getTranslationFolder().toFile());
+            TranslationManager.loadTranslations(metadata.getId(), metadata.getTranslationFolder());
+
+            // Extracting lua files
+            copyResourcesFile(plugin, metadata, metadata.getLuaFolder().toFile());
+
             loadEntryPoints(true, clientEntryPoints, metadata, classLoader);
             loadEntryPoints(false, serverEntryPoints, metadata, classLoader);
 
-            // Extracting translation files
-            extractTranslationFiles(classLoader, metadata);
+            if (!isClient) continue;
 
-            // Loading translations
-            TranslationManager.loadTranslations(metadata.getId(), metadata.getTranslationFolder());
+            // Loading the plugin controls (for the plugin menu)
+            String controlsClassName = metadata.getControlsEntrypoint();
+            if (controlsClassName != null && !controlsClassName.isEmpty()) {
+                Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
+                IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
 
-            if (isClient) {
-                String controlsClassName = metadata.getControlsEntrypoint();
-                if (controlsClassName != null && !controlsClassName.isEmpty()) {
-                    Class<?> controlsClass = Class.forName(controlsClassName, true, classLoader);
-                    IControlsWidget controlsInstance = (IControlsWidget) controlsClass.getDeclaredConstructor().newInstance();
+                PluginRegistry.addPluginControls(metadata.getId(), controlsInstance);
+            }
 
-                    PluginRegistry.addPluginControls(metadata.getId(), controlsInstance);
-                }
+            // Loading the plugin icon and
+            String iconPath = metadata.getIcon();
+            URL iconUrl = classLoader.getResource(iconPath);
 
-                String iconPath = metadata.getIcon();
-                URL iconUrl = classLoader.getResource(iconPath);
-
-                if (iconUrl != null) {
-                    try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
-                        Texture texture = new Texture(iconPath, bis, true);
-                        PluginRegistry.addPluginIcon(metadata.getId(), texture);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                        throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
-                    }
+            if (iconUrl != null) {
+                try (BufferedInputStream bis = new BufferedInputStream(iconUrl.openStream())) {
+                    Texture texture = new Texture(iconPath, bis, true);
+                    PluginRegistry.addPluginIcon(metadata.getId(), texture);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    throw new Exception(String.format("Failed to load plugin '%s' icon texture", metadata.getId()));
                 }
             }
         }
     }
 
     /**
-     * Copies files with translations from the plugin resources folder to the configs folder (../plugins/{pluginID}/translation/).
-     * If the file exists, no copying occurs
-     * @param classLoader Plugin loader.
-     * @param metadata Plugin metadata.
+     * Copies resource files from a JAR plugin file to a target folder.
+     * @param pluginFile the JAR plugin file to extract resources from
+     * @param metadata the metadata of the plugin
+     * @param targetFolder the target folder to copy the resources to
+     * @throws RuntimeException if an IOException occurs during the resource extraction process
      */
-    private static void extractTranslationFiles(PluginClassLoader classLoader, Metadata metadata) {
-        try {
-            URL folderURL = classLoader.getResource(Constants.PLUGINS_TRANSLATION_FOLDER);
-            if (folderURL == null) return;
+    private static void copyResourcesFile(File pluginFile, Metadata metadata, File targetFolder) {
+        try (JarFile jarFile = new JarFile(pluginFile.getAbsoluteFile())) {
+            Logger.print(String.format("Trying to extract resource folder '%s' of plugin '%s'...", targetFolder.getName(), metadata.getId()));
 
-            FileSystem fileSystem = FileSystems.newFileSystem(folderURL.toURI(), Collections.emptyMap());
-            Path folder = fileSystem.getPath(Constants.PLUGINS_TRANSLATION_FOLDER);
-            Path targetFolder = metadata.getTranslationFolder();
+            Enumeration<JarEntry> entries = jarFile.entries();
 
-            try (Stream<Path> walk = Files.walk(folder, 1)) {
-                walk.filter(Files::isRegularFile)
-                        .filter(path -> path.getFileName().toString().endsWith(".yml"))
-                        .forEach(path -> {
-                            try {
-                                Path targetFile = targetFolder.resolve(path.getFileName().toString());
+            Path targetPath = targetFolder.toPath().toAbsolutePath().normalize();
 
-                                if (Files.exists(targetFile)) return;
+            while (entries.hasMoreElements()) {
+                JarEntry entry = entries.nextElement();
 
-                                Files.copy(path, targetFile, StandardCopyOption.REPLACE_EXISTING);
-                            } catch (IOException e) {
-                                Logger.print(String.format("An error occurred while copying the translation file in plugin '%s'!", metadata.getId()));
-                                e.printStackTrace();
-                            }
-                        });
+                String startPathName = targetFolder.getName() + "/";
+
+                if (!entry.getName().startsWith(startPathName)) continue;
+
+                Path extractPath = targetPath.resolve(entry.getName().substring(startPathName.length())).normalize();
+
+                if (!extractPath.startsWith(targetPath)) {
+                    throw new IOException("Entry is outside of the target dir: " + entry.getName());
+                }
+
+                if (extractPath.toFile().exists()) continue;
+
+                if (entry.isDirectory()) {
+                    Files.createDirectories(extractPath);
+                } else {
+                    try (InputStream inputStream = jarFile.getInputStream(entry)) {
+                        Files.copy(inputStream, extractPath, StandardCopyOption.REPLACE_EXISTING);
+                    }
+                }
             }
-        } catch (URISyntaxException | IOException e) {
-            Logger.print(String.format("An error occurred while retrieving translation resources in plugin '%s'!", metadata.getId()));
-            e.printStackTrace();
+
+            Logger.print(String.format("Unpacking resource folder '%s' of plugin '%s' completed!", targetFolder.getName(), metadata.getId()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 

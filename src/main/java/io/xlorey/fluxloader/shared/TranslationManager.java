@@ -87,6 +87,8 @@ public class TranslationManager {
      * @return the translation corresponding to the key and language, or the key itself if not found
      */
     public static String getTranslate(String id, String language, String key) {
+        key = key.trim();
+
         StringBuilder returnKey = new StringBuilder("%");
         String[] keyParts = key.split("\\.");
         for (String part : keyParts) {
@@ -95,25 +97,43 @@ public class TranslationManager {
         returnKey.append("%");
 
         // Checking the availability of translations for the specified identifier
-        if (!translationRegistry.containsKey(id)) return returnKey.toString();
+        if (!translationRegistry.containsKey(id)) {
+            Logger.print(String.format("Translation for id '%s' not found! (Key: '%s', Language: '%s')",
+                    id,
+                    key,
+                    language));
+            return returnKey.toString();
+        }
 
         Map<String, Map<String, Object>> translations = translationRegistry.get(id);
 
         // Checking the availability of translations for the specified language
         if (!translations.containsKey(language)) {
-            if (!translations.containsKey(Translator.getDefaultLanguage().name().toLowerCase())) return returnKey.toString();
+            Logger.print(String.format("Translation for language '%s' not found! (Key: '%s', ID: '%s')",
+                    language,
+                    key,
+                    id));
+            if (!translations.containsKey(Translator.getDefaultLanguage().name().toLowerCase())) {
+                Logger.print(String.format("Default language '%s' translation not found! (Key: '%s', ID: '%s')",
+                        Translator.getDefaultLanguage().name().toLowerCase(),
+                        key,
+                        id));
+                return returnKey.toString();
+            }
             language = Translator.getDefaultLanguage().name().toLowerCase();
         }
 
         Map<String, Object> languageTranslations = translations.get(language);
 
-        // Checking the availability of a translation for the specified key
-        if (!languageTranslations.containsKey(key)) {
-            return returnKey.toString();
-        }
-
         // Return the translation for the specified key
         String translation = getTranslationText(key, languageTranslations);
+        if (translation == null) {
+            Logger.print(String.format("Translation for key '%s' not found! (ID: '%s', Language: '%s')",
+                    key,
+                    id,
+                    language));
+        }
+
         return translation != null ? translation : returnKey.toString();
     }
 
@@ -126,13 +146,14 @@ public class TranslationManager {
     @SuppressWarnings("unchecked")
     private static String getTranslationText(String key, Map<String, Object> translationMap) {
         String[] keys = key.split("\\.");
-
         for (int i = 0; i < keys.length - 1; i++) {
-            translationMap = (Map<String, Object>) translationMap.get(keys[i]);
-            if (translationMap == null) {
-                return null;
-            }
+            Object obj = translationMap.get(keys[i]);
+
+            if (!(obj instanceof Map)) return null;
+
+            translationMap = (Map<String, Object>) obj;
         }
-        return (String) translationMap.get(keys[keys.length - 1]);
+        Object lastValue = translationMap.get(keys[keys.length - 1]);
+        return lastValue instanceof String ? (String) lastValue : null;
     }
 }

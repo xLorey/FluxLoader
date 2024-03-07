@@ -5,10 +5,6 @@ import io.xlorey.fluxloader.plugin.PluginManager;
 import io.xlorey.fluxloader.server.handlers.OnServerInitHandler;
 import io.xlorey.fluxloader.server.handlers.OnServerShutdownHandler;
 import io.xlorey.fluxloader.shared.EventManager;
-import io.xlorey.fluxloader.utils.Logger;
-
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 /**
  * Author: Deknil
@@ -19,34 +15,14 @@ import java.nio.file.Paths;
  */
 public class Core {
     /**
-     * Server starting arguments
-     */
-    public static String[] serverArgs;
-
-    /**
-     * Initializing the loader
+     * Initializing the loader. Called after basic initializations, namely at the moment after the Translator
+     * is initialized
      * @exception Exception in cases of unsuccessful core initialization
      */
     public static void init() throws Exception {
-        boolean isCoop = false;
-
-        for (String serverArg : serverArgs) {
-            if (serverArg != null) {
-                if (serverArg.equals("-coop")) {
-                    Logger.print("Launching a co-op server...");
-                    isCoop = true;
-                    break;
-                }
-            }
-        }
-
-        if (!isCoop) Logger.printCredits();
-
-        Logger.print("FluxLoader Core initialization for the server..");
-
-        PluginManager.loadPlugins(false);
-
         EventManager.subscribe(new OnServerShutdownHandler(), EventPriority.HIGHEST);
         EventManager.subscribe(new OnServerInitHandler(), EventPriority.HIGHEST);
+
+        PluginManager.loadPlugins(false);
     }
 }

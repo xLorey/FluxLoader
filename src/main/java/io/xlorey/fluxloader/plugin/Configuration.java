@@ -278,10 +278,11 @@ public class Configuration {
         Map<String, Object> configMap = config;
 
         for (int i = 0; i < keys.length - 1; i++) {
-            configMap = (Map<String, Object>) configMap.get(keys[i]);
-            if (configMap == null) {
-                return null;
-            }
+            Object obj = configMap.get(keys[i]);
+
+            if (!(obj instanceof Map)) return null;
+
+            configMap = (Map<String, Object>) obj;
         }
         return configMap.get(keys[keys.length - 1]);
     }

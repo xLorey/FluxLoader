@@ -83,6 +83,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Method for exposing a global object, which contain methods with annotation <code>LuaMethod</code>.</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/shared/LuaManager.html#addLuaActiveFolder(java.io.File)" class="member-name-link">addLuaActiveFolder(File)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaManager.html" title="class in io.xlorey.fluxloader.shared">LuaManager</a></dt>
+<dd>
+<div class="block">Adds the specified folder to the active Lua path.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/plugin/PluginRegistry.html#addPluginControls(java.lang.String,io.xlorey.fluxloader.interfaces.IControlsWidget)" class="member-name-link">addPluginControls(String, IControlsWidget)</a> - Static method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/PluginRegistry.html" title="class in io.xlorey.fluxloader.plugin">PluginRegistry</a></dt>
 <dd>
 <div class="block">Adds plugin controls to the registry.</div>
@@ -1410,6 +1414,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Retrieves a List of longs for the specified configuration key.</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/plugin/Metadata.html#getLuaFolder()" class="member-name-link">getLuaFolder()</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/Metadata.html" title="class in io.xlorey.fluxloader.plugin">Metadata</a></dt>
+<dd>
+<div class="block">Returns a Path object representing the Lua folder for this plugin.</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/plugin/Plugin.html#getMetadata()" class="member-name-link">getMetadata()</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/Plugin.html" title="class in io.xlorey.fluxloader.plugin">Plugin</a></dt>
 <dd>
 <div class="block">Returns plugin metadata.</div>
@@ -2496,7 +2504,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/xlorey/fluxloader/client/core/Core.html#init()" class="member-name-link">init()</a> - Static method in class io.xlorey.fluxloader.client.core.<a href="io/xlorey/fluxloader/client/core/Core.html" title="class in io.xlorey.fluxloader.client.core">Core</a></dt>
 <dd>
-<div class="block">Initializing the loader</div>
+<div class="block">Initializing the loader.</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/client/core/StateManager.html#init()" class="member-name-link">init()</a> - Static method in class io.xlorey.fluxloader.client.core.<a href="io/xlorey/fluxloader/client/core/StateManager.html" title="class in io.xlorey.fluxloader.client.core">StateManager</a></dt>
 <dd>
@@ -2508,7 +2516,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="io/xlorey/fluxloader/server/core/Core.html#init()" class="member-name-link">init()</a> - Static method in class io.xlorey.fluxloader.server.core.<a href="io/xlorey/fluxloader/server/core/Core.html" title="class in io.xlorey.fluxloader.server.core">Core</a></dt>
 <dd>
-<div class="block">Initializing the loader</div>
+<div class="block">Initializing the loader.</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/Installer.html#install()" class="member-name-link">install()</a> - Static method in class io.xlorey.fluxloader.<a href="io/xlorey/fluxloader/Installer.html" title="class in io.xlorey.fluxloader">Installer</a></dt>
 <dd>
@@ -2653,6 +2661,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/fluxloader/plugin/Configuration.html#load()" class="member-name-link">load()</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/Configuration.html" title="class in io.xlorey.fluxloader.plugin">Configuration</a></dt>
 <dd>
 <div class="block">Loads the configuration by copying the file from the JAR (if it exists in it).</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/plugin/Plugin.html#loadLua()" class="member-name-link">loadLua()</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/Plugin.html" title="class in io.xlorey.fluxloader.plugin">Plugin</a></dt>
+<dd>
+<div class="block">Loads Lua scripts from the resources folder with the default option to overwrite events.</div>
+</dd>
+<dt><a href="io/xlorey/fluxloader/plugin/Plugin.html#loadLua(boolean)" class="member-name-link">loadLua(boolean)</a> - Method in class io.xlorey.fluxloader.plugin.<a href="io/xlorey/fluxloader/plugin/Plugin.html" title="class in io.xlorey.fluxloader.plugin">Plugin</a></dt>
+<dd>
+<div class="block">Loads Lua scripts from the resources folder</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/shared/LuaManager.html#loadLuaFromFolder(java.lang.String,boolean)" class="member-name-link">loadLuaFromFolder(String, boolean)</a> - Static method in class io.xlorey.fluxloader.shared.<a href="io/xlorey/fluxloader/shared/LuaManager.html" title="class in io.xlorey.fluxloader.shared">LuaManager</a></dt>
 <dd>
@@ -5195,6 +5211,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Folder name for plugins (mods)</div>
 </dd>
+<dt><a href="io/xlorey/fluxloader/utils/Constants.html#PLUGINS_LUA_FOLDER" class="member-name-link">PLUGINS_LUA_FOLDER</a> - Static variable in class io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/Constants.html" title="class in io.xlorey.fluxloader.utils">Constants</a></dt>
+<dd>
+<div class="block">Name of the folder with lua for plugins</div>
+</dd>
 <dt><a href="io/xlorey/fluxloader/utils/Constants.html#PLUGINS_METADATA_NAME" class="member-name-link">PLUGINS_METADATA_NAME</a> - Static variable in class io.xlorey.fluxloader.utils.<a href="io/xlorey/fluxloader/utils/Constants.html" title="class in io.xlorey.fluxloader.utils">Constants</a></dt>
 <dd>
 <div class="block">Plugin metadata file name</div>
@@ -5300,10 +5320,6 @@ loadScripts(document, 'script');</script>
 <dt><a href="io/xlorey/fluxloader/server/api/ChatUtils.html#sendMessageToPlayer(zombie.core.raknet.UdpConnection,java.lang.String)" class="member-name-link">sendMessageToPlayer(UdpConnection, String)</a> - Static method in class io.xlorey.fluxloader.server.api.<a href="io/xlorey/fluxloader/server/api/ChatUtils.html" title="class in io.xlorey.fluxloader.server.api">ChatUtils</a></dt>
 <dd>
 <div class="block">Sending a chat message to a specific user</div>
-</dd>
-<dt><a href="io/xlorey/fluxloader/server/core/Core.html#serverArgs" class="member-name-link">serverArgs</a> - Static variable in class io.xlorey.fluxloader.server.core.<a href="io/xlorey/fluxloader/server/core/Core.html" title="class in io.xlorey.fluxloader.server.core">Core</a></dt>
-<dd>
-<div class="block">Server starting arguments</div>
 </dd>
 <dt><a href="io/xlorey/fluxloader/shared/ServiceManager.html" class="type-name-link" title="class in io.xlorey.fluxloader.shared">ServiceManager</a> - Class in <a href="io/xlorey/fluxloader/shared/package-summary.html">io.xlorey.fluxloader.shared</a></dt>
 <dd>

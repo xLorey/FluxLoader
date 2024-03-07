@@ -120,8 +120,13 @@ loadScripts(document, 'script');</script>
 <div class="block">Getting plugin metadata</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTranslationFolder()" class="member-name-link">getTranslationFolder</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getLuaFolder()" class="member-name-link">getLuaFolder</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns a Path object representing the Lua folder for this plugin.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTranslationFolder()" class="member-name-link">getTranslationFolder</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns a Path object representing the translations folder for this plugin.</div>
 </div>
 </div>
@@ -176,6 +181,18 @@ loadScripts(document, 'script');</script>
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>An object of type File pointing to the normalized path to the folder with plugin translations.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getLuaFolder()">
+<h3>getLuaFolder</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a></span>&nbsp;<span class="element-name">getLuaFolder</span>()</div>
+<div class="block">Returns a Path object representing the Lua folder for this plugin.
+ Folder path has been normalized to prevent problems with different file systems.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>An object of type File pointing to the normalized path to the Lua plugin folder.</dd>
 </dl>
 </section>
 </li>

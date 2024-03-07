@@ -42,6 +42,11 @@ public class Constants {
         public static final String PLUGINS_TRANSLATION_FOLDER = "translation";
 
         /**
+         * Name of the folder with lua for plugins
+         */
+        public static final String PLUGINS_LUA_FOLDER = "lua";
+
+        /**
          * Path to the FluxLoader logo
          */
         public static final String PATH_FLUXLOADER_LOGO = "io/xlorey/fluxloader/media/FluxLoader-Logo.png";
