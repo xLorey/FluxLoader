@@ -24,8 +24,8 @@ dependencies {
     /**
      * Other dependencies
      */
-    compileOnly 'org.projectlombok:lombok:1.18.30'
-    annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
 
 //    implementation 'net.bytebuddy:byte-buddy:1.14.11'
     implementation 'org.javassist:javassist:3.30.2-GA'
